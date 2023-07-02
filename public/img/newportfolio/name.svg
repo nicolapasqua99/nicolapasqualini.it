@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 57.094128 40.603241"
+   height="40.603241mm"
+   width="57.094128mm">
+  <defs
+     id="defs2" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-41.104173,-105.57448)"
+     id="layer1">
+    <text
+       id="text12"
+       y="146.17772"
+       x="35.639687"
+       style="font-style:normal;font-weight:normal;font-size:55.67795181px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#fc9e4f;fill-opacity:1;stroke:none;stroke-width:1.3919487"
+       xml:space="preserve"><tspan
+         style="fill:#fc9e4f;fill-opacity:1;stroke-width:1.3919487"
+         y="146.17772"
+         x="35.639687"
+         id="tspan10">N</tspan><tspan
+         id="tspan14"
+         style="fill:#fc9e4f;fill-opacity:1;stroke-width:1.3919487"
+         y="215.77516"
+         x="35.639687" /></text>
+    <text
+       transform="scale(1.004646,0.99537552)"
+       id="text18"
+       y="146.83691"
+       x="65.929504"
+       style="font-style:normal;font-weight:normal;font-size:55.92828751px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#202020;fill-opacity:1;stroke:none;stroke-width:1.39820719"
+       xml:space="preserve"><tspan
+         id="tspan20"
+         style="fill:#202020;fill-opacity:1;stroke-width:1.39820719"
+         y="146.83691"
+         x="65.929504">P</tspan></text>
+  </g>
+</svg>
