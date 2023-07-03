@@ -47,7 +47,7 @@ class MySelf extends React.Component {
             <>
                 <MySelfImg src='../img/newportfolio/photocolorsoldnew.svg' />
                 <MySelfTitle>Who i am</MySelfTitle>
-                <MySelfText primary={this.context.primaryColor}>
+                <MySelfText data-primary={this.context.primaryColor}>
                     Hi! I&apos;m Nicola Pasqualini and I&apos;m studying
                     Interface and Communication Technology at the University of
                     Trento. I love to develop software or interfaces and think
