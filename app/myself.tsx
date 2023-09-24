@@ -1,9 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-
-interface ColorProp {
-    primary?: string
-}
+import {primary, secondary, tertiary} from './configs/colors'
+import {ColorProp} from './models/styled.props.models'
 
 const MySelfImg = styled.img`
     position: absolute;
@@ -39,10 +37,14 @@ const MySelfText = styled.p<ColorProp>`
     color: ${(props) => props.primary || 'black'};
 `
 class MySelf extends React.Component {
+    state: ColorProp
+
     constructor(props: any) {
         super(props)
         this.state = {
-            value: null,
+            primary: primary,
+            secondary: secondary,
+            tertiary: tertiary,
         }
     }
 
@@ -51,7 +53,7 @@ class MySelf extends React.Component {
             <>
                 <MySelfImg src='../img/newportfolio/photocolorsoldnew.svg' />
                 <MySelfTitle>Who i am</MySelfTitle>
-                <MySelfText primary={this.context.primaryColor}>
+                <MySelfText primary={this.state.primary}>
                     Hi! I&apos;m Nicola Pasqualini and I&apos;m studying
                     Interface and Communication Technology at the University of
                     Trento. I love to develop software or interfaces and think

@@ -1,6 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import { primary, secondary, tertiary } from './configs/colors';
+import React from 'react'
+import styled from 'styled-components'
+import {primary, secondary, tertiary} from './configs/colors'
+import {ColorProp} from './models/styled.props.models'
 
 const StyledTitle = styled.h1`
     position: absolute;
@@ -12,30 +13,30 @@ const StyledTitle = styled.h1`
     font-size: 6vh;
     line-height: 6vh;
     cursor: default;
-    color: ${props => props.color || 'white'};;
+    color: ${(props) => props.color || 'white'};
     text-align: center;
     font-weight: 600;
-    font:;
 `
 
-class Title extends React.Component{
-    constructor(props) {
-        super(props);
+class Title extends React.Component {
+    state: ColorProp
+
+    constructor(props: any) {
+        super(props)
         this.state = {
-            primaryColor: primary,
-            secondaryColor: secondary,
-            tertiaryColor: tertiary,
-        };
+            primary: primary,
+            secondary: secondary,
+            tertiary: tertiary,
+        }
     }
 
     render() {
-        return(
-            <StyledTitle color={this.state.tertiaryColor}>
+        return (
+            <StyledTitle color={this.state.tertiary}>
                 NICOLA PASQUALINI
             </StyledTitle>
-        );
+        )
     }
 }
 
-export default Title;
-    
+export default Title

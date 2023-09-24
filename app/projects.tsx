@@ -1,10 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {primary, secondary, tertiary} from './configs/colors'
-
-interface ColorProp {
-    primary?: string
-}
+import {ColorProp} from './models/styled.props.models'
 
 const TitleList = styled.h2<ColorProp>`
     position: relative;
@@ -27,7 +24,7 @@ const Container = styled.div`
     line-height: 6rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: ;
+    justify-content: center;
 `
 
 const TitleProject = styled.h3<ColorProp>`
@@ -98,26 +95,28 @@ const UniProjectDesc = styled.p<ColorProp>`
 `
 
 class Projects extends React.Component {
+    state: ColorProp
+
     constructor(props: any) {
         super(props)
         this.state = {
-            primaryColor: primary,
-            secondaryColor: secondary,
-            tertiaryColor: tertiary,
+            primary: primary,
+            secondary: secondary,
+            tertiary: tertiary,
         }
     }
 
     render() {
         return (
             <>
-                <TitleList color={this.state.primaryColor}>
+                <TitleList color={this.state.primary}>
                     Some project I&apos;ve worked on
                 </TitleList>
                 <Container>
-                    <TitleProject color={this.state.primaryColor}>
+                    <TitleProject color={this.state.primary}>
                         My Site
                     </TitleProject>
-                    <ProjectDesc color={this.state.primaryColor}>
+                    <ProjectDesc color={this.state.primary}>
                         That&apos;s the site you are visiting right now,
                         It&apos;s a special project for me because I&apos;ve
                         been working on it for years now, and I think I started
@@ -129,25 +128,25 @@ class Projects extends React.Component {
                         sufficient to allow me to use it as a portfolio to
                         present myself to others.
                     </ProjectDesc>
-                    <TitleProject color={this.state.primaryColor}>
+                    <TitleProject color={this.state.primary}>
                         University Projects
                     </TitleProject>
-                    <ProjectDesc color={this.state.primaryColor}>
+                    <ProjectDesc color={this.state.primary}>
                         During my years of studying at university, I got the
                         chance to be part of some projects. Some of them had
                         nothing to do with informatics and some of them were
                         pure code development.
                     </ProjectDesc>
-                    <TitleUniProject color={this.state.primaryColor}>
+                    <TitleUniProject color={this.state.primary}>
                         CodeFrag
                     </TitleUniProject>
-                    <TitleUniProject color={this.state.primaryColor}>
+                    <TitleUniProject color={this.state.primary}>
                         Moview
                     </TitleUniProject>
-                    <TitleUniProject color={this.state.primaryColor}>
+                    <TitleUniProject color={this.state.primary}>
                         BOOM
                     </TitleUniProject>
-                    <UniProjectDesc color={this.state.primaryColor}>
+                    <UniProjectDesc color={this.state.primary}>
                         CodeFrag is a platform that developers can use to share
                         snippets of code from various programming languages. The
                         work I&apos;ve done with my group was to interview some
@@ -158,7 +157,7 @@ class Projects extends React.Component {
                     </UniProjectDesc>
                     <UniProjectDesc
                         className={'middle'}
-                        color={this.state.primaryColor}>
+                        color={this.state.primary}>
                         Moview is a chatbot that is able to suggest films to the
                         user based on some key parameters. This project started
                         by doing some research about competitors and doing a lot
@@ -173,7 +172,7 @@ class Projects extends React.Component {
                             https://t.me/moview_chatbot
                         </a>
                     </UniProjectDesc>
-                    <UniProjectDesc color={this.state.primaryColor}>
+                    <UniProjectDesc color={this.state.primary}>
                         BOOM is the name we gave to a project about finding a
                         solution to the low number of visitors to the museum. We
                         did many different tasks, starting from a general
@@ -182,24 +181,24 @@ class Projects extends React.Component {
                         Proposition Canvas. After the research, we created a
                         postcard and a poster to advertise our idea.
                     </UniProjectDesc>
-                    <TitleProject color={this.state.primaryColor}>
+                    <TitleProject color={this.state.primary}>
                         Some other projects i did
                     </TitleProject>
-                    <ProjectDesc color={this.state.primaryColor}>
+                    <ProjectDesc color={this.state.primary}>
                         Those are projects I&apos;ve done because I wanted to
                         help someone or because I got the occasion to start a
                         big project that sadly ended up closing.
                     </ProjectDesc>
-                    <TitleUniProject color={this.state.primaryColor}>
+                    <TitleUniProject color={this.state.primary}>
                         Munari Automazioni
                     </TitleUniProject>
-                    <TitleUniProject color={this.state.primaryColor}>
+                    <TitleUniProject color={this.state.primary}>
                         Miari Magazine
                     </TitleUniProject>
-                    <TitleUniProject color={this.state.primaryColor}>
+                    <TitleUniProject color={this.state.primary}>
                         Miari Admin
                     </TitleUniProject>
-                    <UniProjectDesc color={this.state.primaryColor}>
+                    <UniProjectDesc color={this.state.primary}>
                         This is a website for an Italian society that introduces
                         the society and the services it provides, as well as the
                         possibility to request an estimate for a specific work.
@@ -211,7 +210,7 @@ class Projects extends React.Component {
                     </UniProjectDesc>
                     <UniProjectDesc
                         className={'middle'}
-                        color={this.state.primaryColor}>
+                        color={this.state.primary}>
                         Miari Magazine is a website where photographers can view
                         the work of their colleagues, read interviews, and
                         submit their own work. 
@@ -221,7 +220,7 @@ class Projects extends React.Component {
                             www.miarimagazine.com
                         </a>
                     </UniProjectDesc>
-                    <UniProjectDesc color={this.state.primaryColor}>
+                    <UniProjectDesc color={this.state.primary}>
                         Miari Admin is a simple website with authentication
                         created in Django that lets Miari Magazine admins look
                         at the submission that has been sent.

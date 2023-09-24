@@ -6,6 +6,7 @@ import {
     parallaxColorNavbarUnderline,
 } from './configs/parallaxData'
 import {primary, secondary, tertiary} from './configs/colors'
+import {ColorProp} from './models/styled.props.models'
 
 const StyledNav = styled.nav`
     position: fixed;
@@ -59,12 +60,14 @@ const StyledNavItem = styled.li`
 `
 
 class Navbar extends React.Component {
-    constructor(props) {
+    state: ColorProp
+
+    constructor(props: any) {
         super(props)
         this.state = {
-            primaryColor: primary,
-            secondaryColor: secondary,
-            tertiaryColor: tertiary,
+            primary: primary,
+            secondary: secondary,
+            tertiary: tertiary,
         }
     }
 

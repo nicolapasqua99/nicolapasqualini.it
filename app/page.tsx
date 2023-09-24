@@ -10,8 +10,10 @@ import MySelf from './myself'
 import Projects from './projects'
 import Contacts from './contacts'
 import {parallaxBackgroundNavbar} from './configs/parallaxData'
+import {ColorProp} from './models/styled.props.models'
+import {PageState} from './models/page.state.model'
 
-const Section = styled.div`
+const Section = styled.div<ColorProp>`
     position: relative;
     top: 0;
     left: 0;
@@ -46,7 +48,7 @@ const Rect = styled.div`
     height: 100vh;
 `
 
-const RectErrorResponsiveness = styled.div`
+const RectErrorResponsiveness = styled.div<ColorProp>`
     position: absolute;
     top: 0;
     left: 0;
@@ -65,30 +67,27 @@ const RectErrorResponsiveness = styled.div`
 
 class Page extends React.Component {
     public rectDim: React.RefObject<HTMLDivElement>
-    public state: {
-        primaryColor: string
-        secondaryColor: string
-        tertiaryColor: string
-        little: boolean
-    }
+    public state: PageState
 
     constructor(props: any) {
         super(props)
         this.rectDim = React.createRef()
         this.state = {
-            primaryColor: primary,
-            secondaryColor: secondary,
-            tertiaryColor: tertiary,
+            primary: primary,
+            secondary: secondary,
+            tertiary: tertiary,
             little: true,
         }
     }
 
     updateRatio(): void {
         let ratio
-        let width
-        let heigth
-        width = this.rectDim.current.offsetWidth
-        heigth = this.rectDim.current.offsetHeight
+        let width = 100
+        let heigth = 100
+        if (this.rectDim.current) {
+            width = this.rectDim.current.offsetWidth
+            heigth = this.rectDim.current.offsetHeight
+        }
         ratio = width / heigth
         if (ratio > 1.78) {
             this.setState({little: true})
@@ -100,11 +99,13 @@ class Page extends React.Component {
 
     componentDidMount() {
         let ratio
-        let width
-        let height
-        width = this.rectDim.current.offsetWidth
-        height = this.rectDim.current.offsetHeight
-        ratio = width / height
+        let width = 100
+        let heigth = 100
+        if (this.rectDim.current) {
+            width = this.rectDim.current.offsetWidth
+            heigth = this.rectDim.current.offsetHeight
+        }
+        ratio = width / heigth
         if (ratio > 1.78) {
             this.setState({little: true})
         } else {
@@ -131,22 +132,22 @@ class Page extends React.Component {
                     <Social />
                     <Section
                         id='HOME'
-                        color={this.state.primaryColor}>
+                        color={this.state.primary}>
                         <Title />
                     </Section>
                     <Section
                         id='BIO'
-                        color={this.state.secondaryColor}>
+                        color={this.state.secondary}>
                         <MySelf />
                     </Section>
                     <Section
                         id='PROJECTS'
-                        color={this.state.secondaryColor}>
+                        color={this.state.secondary}>
                         <Projects />
                     </Section>
                     <Section
                         id='CONTACT'
-                        color={this.state.tertiaryColor}>
+                        color={this.state.tertiary}>
                         <Contacts />
                     </Section>
                 </>
@@ -155,7 +156,7 @@ class Page extends React.Component {
             return (
                 <>
                     <Rect ref={this.rectDim} />
-                    <RectErrorResponsiveness color={this.state.primaryColor}>
+                    <RectErrorResponsiveness color={this.state.primary}>
                         <h1>
                             I know is bad news, but i miss responsiveness on
                             this version of the website, if you see this the

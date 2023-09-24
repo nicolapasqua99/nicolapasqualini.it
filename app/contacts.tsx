@@ -2,8 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import {ReactSVG} from 'react-svg'
 import {primary, secondary, tertiary} from './configs/colors'
+import {ColorProp} from './models/styled.props.models'
 
-const TitleList = styled.h2`
+const TitleList = styled.h2<ColorProp>`
     position: relative;
     padding-top: 64vh;
     padding-bottom: 2vh;
@@ -16,7 +17,7 @@ const TitleList = styled.h2`
     color: ${(props) => props.color || 'black'};
 `
 
-const SocialLink = styled.a`
+const SocialLink = styled.a<ColorProp>`
     width: 4vw;
     height: 4vw;
     position: relative;
@@ -63,7 +64,7 @@ const Container = styled.div`
     line-height: 6rem;
 `
 
-const DescContact = styled.h3`
+const DescContact = styled.h3<ColorProp>`
     position: relative;
     top: 2vh;
     left: 0vw;
@@ -76,7 +77,7 @@ const DescContact = styled.h3`
     color: ${(props) => props.color || 'black'};
 `
 
-const Contact = styled.p`
+const Contact = styled.p<ColorProp>`
     position: relative;
     padding-top: 5vh;
     padding-bottom: 3vh;
@@ -94,49 +95,46 @@ const Contact = styled.p`
 `
 
 class Contacts extends React.Component {
-    state: {
-        primaryColor: string
-        secondaryColor: string
-        tertiaryColor: string
-    }
+    state: ColorProp
+
     constructor(props: any) {
         super(props)
         this.state = {
-            primaryColor: primary,
-            secondaryColor: secondary,
-            tertiaryColor: tertiary,
+            primary: primary,
+            secondary: secondary,
+            tertiary: tertiary,
         }
     }
 
     render() {
         return (
             <>
-                <TitleList color={this.state.secondaryColor}>
+                <TitleList color={this.state.secondary}>
                     Get in Touch with me on my Social
                 </TitleList>
                 {/* <SocialLink
-                    color={this.state.secondaryColor}
+                    color={this.state.secondary}
                     target={'blank'}
                     href='https://www.instagram.com/nicolapasqua99/'>
                     <ReactSVG src='../img/newportfolio/icons/instagram.svg' />
                 </SocialLink>
                 <SocialLink
-                    color={this.state.secondaryColor}
+                    color={this.state.secondary}
                     target={'blank'}
                     href='https://www.linkedin.com/in/nicola-pasqualini-27988219a'>
                     <ReactSVG src='../img/newportfolio/icons/linkedin.svg' />
                 </SocialLink>
                 <SocialLink
-                    color={this.state.secondaryColor}
+                    color={this.state.secondary}
                     target={'blank'}
                     href='https://github.com/nicolapasqua99'>
                     <ReactSVG src='../img/newportfolio/icons/github.svg' />
                 </SocialLink> */}
                 <Container>
-                    <DescContact color={this.state.secondaryColor}>
+                    <DescContact color={this.state.secondary}>
                         Or send me an email at
                     </DescContact>
-                    <Contact color={this.state.secondaryColor}>
+                    <Contact color={this.state.secondary}>
                         <a href='nicolapasqua99@gmail.com'>
                             nicolapasqua99@gmail.com
                         </a>
