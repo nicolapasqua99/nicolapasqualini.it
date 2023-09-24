@@ -2,7 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import {primary, secondary, tertiary} from './configs/colors'
 
-const TitleList = styled.h2`
+interface ColorProp {
+    primary?: string
+}
+
+const TitleList = styled.h2<ColorProp>`
     position: relative;
     padding-top: 12vh;
     left: 0vh;
@@ -26,7 +30,7 @@ const Container = styled.div`
     justify-content: ;
 `
 
-const TitleProject = styled.h3`
+const TitleProject = styled.h3<ColorProp>`
     position: relative;
     left: 0vh;
     margin: auto;
@@ -38,7 +42,7 @@ const TitleProject = styled.h3`
     color: ${(props) => props.color || 'black'};
 `
 
-const ProjectDesc = styled.p`
+const ProjectDesc = styled.p<ColorProp>`
     position: relative;
     padding-top: 2vh;
     padding-bottom: 3vh;
@@ -52,7 +56,7 @@ const ProjectDesc = styled.p`
     color: ${(props) => props.color || 'black'};
 `
 
-const TitleUniProject = styled.h4`
+const TitleUniProject = styled.h4<ColorProp>`
     position: relative;
     left: 0vh;
     width: 20vw;
@@ -64,7 +68,7 @@ const TitleUniProject = styled.h4`
     color: ${(props) => props.color || 'black'};
 `
 
-const UniProjectDesc = styled.p`
+const UniProjectDesc = styled.p<ColorProp>`
     position: relative;
     left: 0vh;
     padding: 2vh 2vw 3vh 2vw;
@@ -94,7 +98,7 @@ const UniProjectDesc = styled.p`
 `
 
 class Projects extends React.Component {
-    constructor(props) {
+    constructor(props: any) {
         super(props)
         this.state = {
             primaryColor: primary,

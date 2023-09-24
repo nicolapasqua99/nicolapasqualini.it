@@ -1,6 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
+interface ColorProp {
+    primary?: string
+}
+
 const MySelfImg = styled.img`
     position: absolute;
     left: 5vw;
@@ -11,7 +15,7 @@ const MySelfImg = styled.img`
     font-size: 3rem;
 `
 
-const MySelfTitle = styled.h2`
+const MySelfTitle = styled.h2<ColorProp>`
     position: absolute;
     top: 45vh;
     right: 5vw;
@@ -23,7 +27,7 @@ const MySelfTitle = styled.h2`
     color: ${(props) => props.primary || 'black'};
 `
 
-const MySelfText = styled.p`
+const MySelfText = styled.p<ColorProp>`
     position: absolute;
     top: 55vh;
     right: 10vw;
@@ -47,7 +51,7 @@ class MySelf extends React.Component {
             <>
                 <MySelfImg src='../img/newportfolio/photocolorsoldnew.svg' />
                 <MySelfTitle>Who i am</MySelfTitle>
-                <MySelfText data-primary={this.context.primaryColor}>
+                <MySelfText primary={this.context.primaryColor}>
                     Hi! I&apos;m Nicola Pasqualini and I&apos;m studying
                     Interface and Communication Technology at the University of
                     Trento. I love to develop software or interfaces and think
