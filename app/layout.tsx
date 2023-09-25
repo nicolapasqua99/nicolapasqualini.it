@@ -11,7 +11,10 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
                     rel='icon'
                     href='/name.png'
                     sizes='any'
-                />
+                /> 
+    <title>Nicola Pasqualini</title>
+    <meta name="description" content="I am a developer! ">
+
             </head>
             <body className={quicksand.className}>{children}</body>
         </html>
