@@ -1,0 +1,40 @@
+@media (prefers-color-scheme: dark) {
+    :root {
+        background-color: #222222;
+    }
+    main {
+        width: 90vw;
+        margin: auto;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        text-align: center;
+    }
+    div.title {
+        width: 50%;
+        height: 20%
+    }
+    div.title h1 {
+        background-color: green;
+        color: black;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        background-color: #fff;
+    }
+    main {
+        width: 90vw;
+        margin: auto;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        text-align: center;
+    }
+    h1 {
+        color: ;
+    }
+}
