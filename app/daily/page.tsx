@@ -1,3 +1,6 @@
+
+"use client"
+
 import "./page.css"
 import styled from "styled-components"
 import { saveAs } from "file-saver"
