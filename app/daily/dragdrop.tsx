@@ -62,7 +62,7 @@ export default function DragDropFile() {
 		e.preventDefault()
 		e.stopPropagation()
 		if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-			e.dataTransfer.files[0].text().then(text => {
+			e.dataTransfer.files[0].text().then((text: string) => {
 				setText(text)
 				setDragActive(false)
 			})
@@ -71,9 +71,9 @@ export default function DragDropFile() {
 
 	return (
 		<>
-			<TextBox type="text" name="lastData" id="lastData" value={text} onChange={e => setText(e.target.value)}/>
+			<TextBox type="text" name="lastData" id="lastData" value={text} onChange={(e: any) => setText(e.target.value)}/>
 			{true && (
-				<DragNDrop id="form-file-upload" onDragEnter={handleDrag} onSubmit={e => e.preventDefault()}>
+				<DragNDrop id="form-file-upload" onDragEnter={handleDrag} onSubmit={(e: any) => e.preventDefault()}>
 					<p>Drag and drop your file here</p>
 					<DragNDropDiv
 						id="drag-file-element"
