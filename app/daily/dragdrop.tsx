@@ -47,7 +47,7 @@ export default function DragDropFile() {
 	const [text, setText] = React.useState('')
 
 	// handle drag events
-	const handleDrag = function (e) {
+	const handleDrag = function (e: any) {
 		e.preventDefault()
 		e.stopPropagation()
 		if (e.type === 'dragenter' || e.type === 'dragover') {
@@ -58,7 +58,7 @@ export default function DragDropFile() {
 	}
 
 	// triggers when file is dropped
-	const handleDrop = function (e) {
+	const handleDrop = function (e: any) {
 		e.preventDefault()
 		e.stopPropagation()
 		if (e.dataTransfer.files && e.dataTransfer.files[0]) {
