@@ -1,0 +1,20 @@
+@media (prefers-color-scheme: dark) {
+    :root {
+        background-color: #222222;
+    }
+    main {
+        width: 100vw;
+        height: 100vh;
+        margin: auto;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-content: center;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        background-color: #fff;
+    }
+}
