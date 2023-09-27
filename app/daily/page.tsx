@@ -2,7 +2,7 @@ import "./page.css"
 import styled from "styled-components"
 import { saveAs } from "file-saver"
 import { DragDropFile } from './dragdrop'
-import Person from './Person'
+import Person from './person'
 
 const Title = styled.h1`
   position: fixed;
