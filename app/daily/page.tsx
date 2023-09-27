@@ -4,7 +4,7 @@
 import "./page.css"
 import styled from "styled-components"
 import { saveAs } from "file-saver"
-import { DragDropFile } from './dragdrop'
+// import { DragDropFile } from './dragdrop'
 import Person from './person'
 
 const Title = styled.h1`
@@ -43,23 +43,23 @@ const PersonBox = styled.div`
 
 const persons = ['AAAAA', 'BBBBB', 'AAAAA', 'BBBBB', 'AAAAA', 'BBBBB', 'AAAAA', 'BBBBB', 'AAAAA']
 
-function download() {
-  let jobValue = document.getElementById("lastData").value
-  let blob = new Blob([jobValue], { type: "text/plain;charset=utf-8" })
-  saveAs(blob, "sprint68.txt")
-}
+// function download() {
+//   let jobValue = document.getElementById("lastData").value
+//   let blob = new Blob([jobValue], { type: "text/plain;charset=utf-8" })
+//   saveAs(blob, "sprint68.txt")
+// }
 
 export default function Home() {
   return (
     <main>
       <Title>Sprint nr: 68</Title>
-      <DownloadBtn onClick={download}>export</DownloadBtn>
+      {/* <DownloadBtn onClick={download}>export</DownloadBtn> */}
       <PersonBox>
       {persons.map((person, index) => 
         <Person key={index} person={person} />
       )}
       </PersonBox>
-      <DragDropFile></DragDropFile>
+      {/* <DragDropFile></DragDropFile> */}
     </main>
   );
 }
