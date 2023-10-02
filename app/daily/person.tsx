@@ -23,7 +23,7 @@ const PersonContainer = styled.p<{ talks: boolean, x: number, y: number }>`
 export default function Person(props: any) {
     const [talked, setTalked] = useState(false)
     return (
-        <PersonContainer x={props.x} y={props.y} talks={true} onClick={() => setTalked(!talked)}>
+        <PersonContainer x={props.x} y={props.y} talks={talked} onClick={() => setTalked(!talked)}>
             {props.person}
         </PersonContainer>
     )
