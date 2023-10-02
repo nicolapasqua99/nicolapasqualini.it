@@ -5,38 +5,29 @@ import styled from 'styled-components'
 import Person from './person'
 
 const Title = styled.h1`
-    position: fixed;
-    top: 8px;
-    left: 5vw;
-    font-size: 24px;
+    font-size: 56px;
     text-align: center;
+    width: 100%;
 `
 
-const DownloadBtn = styled.button`
+const TitleBox = styled.div`
     position: fixed;
-    margin-top: 24px;
-    right: 5vw;
-    font-size: 16px;
-    text-align: center;
-    padding: 4px 12px 4px 12px;
-    background-color: white;
-    color: black;
-    cursor: pointer;
-    &:hover {
-        background-color: black;
-        color: white;
-    }
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 20vh;
 `
 
 const PersonBox = styled.div`
     position: fixed;
-    width: 90vw;
-    height: 20vh;
-    bottom: 5vh;
-    left: 5vw;
+    top: 20vh;
+    left: 0;
+    width: 100vw;
+    height: 80vh;
     display: flex;
     flex-flow: row wrap;
-    align-items: center;
+    justify-content: center;
+    align-content: center;
 `
 
 const persons = ['AAAAA', 'BBBBB', 'AAAAA', 'BBBBB', 'AAAAA', 'BBBBB', 'AAAAA', 'BBBBB', 'AAAAA']
@@ -44,9 +35,9 @@ const persons = ['AAAAA', 'BBBBB', 'AAAAA', 'BBBBB', 'AAAAA', 'BBBBB', 'AAAAA', 
 export default function Home() {
     return (
         <main>
-            <div>
+            <TitleBox>
                 <Title>Sprint nr: 68</Title>
-            </div>
+            </TitleBox>
             <PersonBox>
                 {persons.map((person, index) => (
                     <Person key={index} person={person} x={index} y={index} />
