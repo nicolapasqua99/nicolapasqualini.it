@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 
-const PersonContainer = styled.p<{ talks: boolean }>`
+const PersonContainer = styled.p<{ talks: boolean, x: number, y: number }>`
     width: calc(10vw - 12px);
     height: 32px;
     line-height: 32px;
@@ -23,7 +23,7 @@ const PersonContainer = styled.p<{ talks: boolean }>`
 export default function Person(props: any) {
     const [talked, setTalked] = useState(false)
     return (
-        <PersonContainer talks={talked} onClick={() => setTalked(!talked)}>
+        <PersonContainer x={props.x} y={props.y} talks={talked} onClick={() => setTalked(!talked)}>
             {props.person}
         </PersonContainer>
     )
