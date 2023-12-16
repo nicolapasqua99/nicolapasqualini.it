@@ -1,14 +1,25 @@
 @media (prefers-color-scheme: dark) {
-    :root {
-        background-color: #222222;
-    }
     main {
-        background-color: wheat;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(90deg, rgba(207, 33, 62, 1) 0%, rgba(79, 92, 158, 1) 100%);
+    }
+    header {
+        background: rgba(255, 255, 255, 1);
+        h1 {
+            color: rgba(0, 0, 0, 1);
+        }
     }
 }
 
 @media (prefers-color-scheme: light) {
     :root {
         background-color: #fff;
+    }
+    header {
+        background: #222;
+        h1 {
+            color: white;
+        }
     }
 }
