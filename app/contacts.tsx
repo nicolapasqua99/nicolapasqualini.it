@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import {ReactSVG} from 'react-svg'
-import {primary, secondary, tertiary} from './configs/colors'
-import {ColorProp} from './models/styled.props.models'
+import { ReactSVG } from 'react-svg'
+import { primary, secondary, tertiary } from './configs/colors'
+import { ColorProp } from './models/styled.props.models'
 
 const TitleList = styled.h2<ColorProp>`
     position: relative;
@@ -14,7 +14,7 @@ const TitleList = styled.h2<ColorProp>`
     font-size: 4rem;
     font-weight: 600;
     text-align: center;
-    color: ${(props) => props.color || 'black'};
+    color: ${props => props.color || 'black'};
 `
 
 const SocialLink = styled.a<ColorProp>`
@@ -39,7 +39,7 @@ const SocialLink = styled.a<ColorProp>`
         left: calc(-1vw - 2px);
         width: 6vw;
         height: 6vw;
-        border: 2px solid ${(props) => props.color || 'white'};
+        border: 2px solid ${props => props.color || 'white'};
     }
     & div {
         width: 4vw;
@@ -50,7 +50,7 @@ const SocialLink = styled.a<ColorProp>`
         width: 100%;
         height: 100%;
         & path {
-            fill: ${(props) => props.color || 'white'} !important;
+            fill: ${props => props.color || 'white'} !important;
         }
     }
 `
@@ -74,7 +74,7 @@ const DescContact = styled.h3<ColorProp>`
     font-size: 2.5rem;
     font-weight: 400;
     text-align: center;
-    color: ${(props) => props.color || 'black'};
+    color: ${props => props.color || 'black'};
 `
 
 const Contact = styled.p<ColorProp>`
@@ -88,9 +88,9 @@ const Contact = styled.p<ColorProp>`
     font-size: 4rem;
     font-weight: 400;
     text-align: center;
-    color: ${(props) => props.color || 'black'};
+    color: ${props => props.color || 'black'};
     & a {
-        color: ${(props) => props.color || 'black'};
+        color: ${props => props.color || 'black'};
     }
 `
 
@@ -102,16 +102,14 @@ class Contacts extends React.Component {
         this.state = {
             primary: primary,
             secondary: secondary,
-            tertiary: tertiary,
+            tertiary: tertiary
         }
     }
 
     render() {
         return (
             <>
-                <TitleList color={this.state.secondary}>
-                    Get in Touch with me on my Social
-                </TitleList>
+                <TitleList color={this.state.secondary}>Get in Touch with me on my Social</TitleList>
                 {/* <SocialLink
                     color={this.state.secondary}
                     target={'blank'}
@@ -131,13 +129,9 @@ class Contacts extends React.Component {
                     <ReactSVG src='../img/newportfolio/icons/github.svg' />
                 </SocialLink> */}
                 <Container>
-                    <DescContact color={this.state.secondary}>
-                        Or send me an email at
-                    </DescContact>
+                    <DescContact color={this.state.secondary}>Or send me an email at</DescContact>
                     <Contact color={this.state.secondary}>
-                        <a href='nicolapasqua99@gmail.com'>
-                            nicolapasqua99@gmail.com
-                        </a>
+                        <a href="nicolapasqua99@gmail.com">nicolapasqua99@gmail.com</a>
                     </Contact>
                 </Container>
             </>

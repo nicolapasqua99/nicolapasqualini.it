@@ -2,16 +2,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import Plx from 'react-plx'
-import {primary, secondary, tertiary} from './configs/colors'
+import { primary, secondary, tertiary } from './configs/colors'
 import Title from './title'
 import Navbar from './navbar'
 import Social from './social'
 import MySelf from './myself'
 import Projects from './projects'
 import Contacts from './contacts'
-import {parallaxBackgroundNavbar} from './configs/parallaxData'
-import {ColorProp} from './models/styled.props.models'
-import {PageState} from './models/page.state.model'
+import { parallaxBackgroundNavbar } from './configs/parallaxData'
+import { ColorProp } from './models/styled.props.models'
+import { PageState } from './models/page.state.model'
 
 const Section = styled.div<ColorProp>`
     position: relative;
@@ -19,7 +19,7 @@ const Section = styled.div<ColorProp>`
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: ${(props) => props.color || 'white'};
+    background-color: ${props => props.color || 'white'};
     scroll-snap-align: start;
     &#PROJECTS {
         height: 150vh;
@@ -54,7 +54,7 @@ const RectErrorResponsiveness = styled.div<ColorProp>`
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: ${(props) => props.color || 'white'};
+    background-color: ${props => props.color || 'white'};
     & h1 {
         position: absolute;
         width: 80vw;
@@ -76,7 +76,7 @@ class Page extends React.Component {
             primary: primary,
             secondary: secondary,
             tertiary: tertiary,
-            little: true,
+            little: true
         }
     }
 
@@ -90,9 +90,9 @@ class Page extends React.Component {
         }
         ratio = width / heigth
         if (ratio > 1.78) {
-            this.setState({little: true})
+            this.setState({ little: true })
         } else {
-            this.setState({little: false})
+            this.setState({ little: false })
         }
         console.log(this.state.little, ratio)
     }
@@ -107,9 +107,9 @@ class Page extends React.Component {
         }
         ratio = width / heigth
         if (ratio > 1.78) {
-            this.setState({little: true})
+            this.setState({ little: true })
         } else {
-            this.setState({little: false})
+            this.setState({ little: false })
         }
         window.addEventListener('resize', this.updateRatio.bind(this))
     }
@@ -130,24 +130,16 @@ class Page extends React.Component {
                     </Header>
                     <Navbar />
                     <Social />
-                    <Section
-                        id='HOME'
-                        color={this.state.primary}>
+                    <Section id="HOME" color={this.state.primary}>
                         <Title />
                     </Section>
-                    <Section
-                        id='BIO'
-                        color={this.state.secondary}>
+                    <Section id="BIO" color={this.state.secondary}>
                         <MySelf />
                     </Section>
-                    <Section
-                        id='PROJECTS'
-                        color={this.state.secondary}>
+                    <Section id="PROJECTS" color={this.state.secondary}>
                         <Projects />
                     </Section>
-                    <Section
-                        id='CONTACT'
-                        color={this.state.tertiary}>
+                    <Section id="CONTACT" color={this.state.tertiary}>
                         <Contacts />
                     </Section>
                 </>
@@ -158,11 +150,8 @@ class Page extends React.Component {
                     <Rect ref={this.rectDim} />
                     <RectErrorResponsiveness color={this.state.primary}>
                         <h1>
-                            I know is bad news, but i miss responsiveness on
-                            this version of the website, if you see this the
-                            aspect ratio of your screen is too much vertical
-                            oriented, you can resize your window if you are on
-                            pc or try to rotate you device.
+                            I know is bad news, but i miss responsiveness on this version of the website, if you see this the aspect ratio of your screen is too much vertical oriented, you can resize your window if you are on pc or try to rotate you
+                            device.
                         </h1>
                     </RectErrorResponsiveness>
                 </>

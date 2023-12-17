@@ -1,12 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import Plx from 'react-plx'
-import {
-    parallaxColorNavbar,
-    parallaxColorNavbarUnderline,
-} from './configs/parallaxData'
-import {primary, secondary, tertiary} from './configs/colors'
-import {ColorProp} from './models/styled.props.models'
+import { parallaxColorNavbar, parallaxColorNavbarUnderline } from './configs/parallaxData'
+import { primary, secondary, tertiary } from './configs/colors'
+import { ColorProp } from './models/styled.props.models'
 
 const StyledNav = styled.nav`
     position: fixed;
@@ -67,7 +64,7 @@ class Navbar extends React.Component {
         this.state = {
             primary: primary,
             secondary: secondary,
-            tertiary: tertiary,
+            tertiary: tertiary
         }
     }
 
@@ -77,31 +74,31 @@ class Navbar extends React.Component {
                 <Plx parallaxData={parallaxColorNavbar}>
                     <NavList>
                         <StyledNavItem>
-                            <a href='#CONTACT'>CONTACT</a>
+                            <a href="#CONTACT">CONTACT</a>
                             <Plx parallaxData={parallaxColorNavbarUnderline}>
                                 <span />
                             </Plx>
                         </StyledNavItem>
                         <StyledNavItem>
-                            <a href='#PROJECTS'>PROJECTS</a>
+                            <a href="#PROJECTS">PROJECTS</a>
                             <Plx parallaxData={parallaxColorNavbarUnderline}>
                                 <span />
                             </Plx>
                         </StyledNavItem>
                         <StyledNavItem>
-                            <a href='#SKILLS'>SKILLS</a>
+                            <a href="#SKILLS">SKILLS</a>
                             <Plx parallaxData={parallaxColorNavbarUnderline}>
                                 <span />
                             </Plx>
                         </StyledNavItem>
                         <StyledNavItem>
-                            <a href='#BIO'>BIO</a>
+                            <a href="#BIO">BIO</a>
                             <Plx parallaxData={parallaxColorNavbarUnderline}>
                                 <span />
                             </Plx>
                         </StyledNavItem>
                         <StyledNavItem>
-                            <a href='#HOME'>HOME</a>
+                            <a href="#HOME">HOME</a>
                             <Plx parallaxData={parallaxColorNavbarUnderline}>
                                 <span />
                             </Plx>

@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import {ReactSVG} from 'react-svg'
+import { ReactSVG } from 'react-svg'
 import Plx from 'react-plx'
-import {primary, secondary, tertiary} from './configs/colors'
-import {contactsStyles} from './configs/parallaxData'
-import {SocialState} from './models/social.state.model'
-import {SocialIcon} from './models/social.icons.model'
+import { primary, secondary, tertiary } from './configs/colors'
+import { contactsStyles } from './configs/parallaxData'
+import { SocialState } from './models/social.state.model'
+import { SocialIcon } from './models/social.icons.model'
 
 const MyUl = styled.ul`
     z-index: 20;
@@ -79,14 +79,10 @@ const MyUl = styled.ul`
 function ContactList(props: any) {
     const list = props.list
     const listItems = list.map((item: SocialIcon, index: number) => (
-        <Plx
-            key={index + '_li'}
-            parallaxData={item.parallaxPosition}>
+        <Plx key={index + '_li'} parallaxData={item.parallaxPosition}>
             <li>
                 <span />
-                <a
-                    target={'blank'}
-                    href={item.link}>
+                <a target={'blank'} href={item.link}>
                     <Plx parallaxData={item.parallaxColor}>
                         <ReactSVG src={item.src} />
                     </Plx>
@@ -107,7 +103,7 @@ class Social extends React.Component {
             primary: primary,
             secondary: secondary,
             tertiary: tertiary,
-            contactStyles: contactsStyles,
+            contactStyles: contactsStyles
         }
     }
     render() {

@@ -6,7 +6,7 @@ const persons = ['AAAAA', 'BBBBB', 'AAAAAAAAAAAA AAAAAAAAAAAAAAAAAA', 'BBBBB', '
 export default function Home() {
     return (
         <main>
-            <div className="hcrollable">
+            <div className="scrollable">
                 <header className="lateraltitlebox">
                     <h1 className="lateraltitle">sprint daily</h1>
                 </header>

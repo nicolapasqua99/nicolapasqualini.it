@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import {primary, secondary, tertiary} from './configs/colors'
-import {ColorProp} from './models/styled.props.models'
+import { primary, secondary, tertiary } from './configs/colors'
+import { ColorProp } from './models/styled.props.models'
 
 const MySelfImg = styled.img`
     position: absolute;
@@ -22,7 +22,7 @@ const MySelfTitle = styled.h2<ColorProp>`
     font-size: 4.5rem;
     font-weight: 600;
     text-align: center;
-    color: ${(props) => props.primary || 'black'};
+    color: ${props => props.primary || 'black'};
 `
 
 const MySelfText = styled.p<ColorProp>`
@@ -34,7 +34,7 @@ const MySelfText = styled.p<ColorProp>`
     font-size: 3.5rem;
     font-weight: 400;
     text-align: center;
-    color: ${(props) => props.primary || 'black'};
+    color: ${props => props.primary || 'black'};
 `
 class MySelf extends React.Component {
     state: ColorProp
@@ -44,20 +44,17 @@ class MySelf extends React.Component {
         this.state = {
             primary: primary,
             secondary: secondary,
-            tertiary: tertiary,
+            tertiary: tertiary
         }
     }
 
     render() {
         return (
             <>
-                <MySelfImg src='../img/newportfolio/photocolorsoldnew.svg' />
+                <MySelfImg src="../img/newportfolio/photocolorsoldnew.svg" />
                 <MySelfTitle>Who i am</MySelfTitle>
                 <MySelfText primary={this.state.primary}>
-                    Hi! I&apos;m Nicola Pasqualini and I&apos;m studying
-                    Interface and Communication Technology at the University of
-                    Trento. I love to develop software or interfaces and think
-                    about how they will help people. My biggest passion is to
+                    Hi! I&apos;m Nicola Pasqualini and I&apos;m studying Interface and Communication Technology at the University of Trento. I love to develop software or interfaces and think about how they will help people. My biggest passion is to
                     get myself and my work every day better.
                 </MySelfText>
             </>
