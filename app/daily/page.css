@@ -23,3 +23,43 @@
         }
     }
 }
+
+div.scrollable {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+header.lateraltitlebox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 56px;
+    z-index: 2;
+}
+
+h1.lateraltitle {
+    font-size: 56px;
+    text-align: center;
+    width: 100vh;
+    height: 56px;
+    text-transform: uppercase;
+    transform: rotate(90deg) translateX(-56px);
+    transform-origin: left bottom;
+}
+
+div.personcontainer {
+    position: relative;
+    top: 0vh;
+    left: 56px;
+    width: calc(100vw - 56px);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+    z-index: 1;
+}
