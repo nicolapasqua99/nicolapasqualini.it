@@ -48,7 +48,8 @@ export default function Person(props: any) {
     return (
         <PersonContainer x={props.x} y={props.y} talks={talked} onClick={() => setTalked(!talked)}>
             <span></span>
-            <p>{props.person}</p>
+            <p>{props.person.name}</p>
+            <p>{props.person.context}</p>
         </PersonContainer>
     )
 }
