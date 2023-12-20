@@ -56,16 +56,6 @@ export default function Home() {
                         <Person key={index} index={index} person={person} />
                     ))}
                 </div>
-                <div className="personcontainer">
-                    {persons.map((person, index) => (
-                        <Person key={index} index={index} person={person} />
-                    ))}
-                </div>
-                <div className="personcontainer">
-                    {persons.map((person, index) => (
-                        <Person key={index} index={index} person={person} />
-                    ))}
-                </div>
             </div>
         </main>
     )
