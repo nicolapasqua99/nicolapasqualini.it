@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 
-const PersonContainer = styled.div<{ talks: boolean, x: number, y: number }>`
+const PersonContainer = styled.div<{ talks: boolean }>`
     width: calc(15vw - 4px);
     height: calc(15vw - 4px);
     margin: 16px;
@@ -27,15 +27,9 @@ const PersonContainer = styled.div<{ talks: boolean, x: number, y: number }>`
         background-color: rgb(255, 255, 255);
     }
     & p {
-        position: absolute;
         width: calc(15% - 4px);
         height: calc(20% - 4px);
         font-size: 24px;
-        display: flex;
-        flex-flow: row wrap;
-        align-items: center;
-        justify-content: center;
-        word-wrap: wrap;
         text-align: center;
     }
     ::selection {
@@ -43,13 +37,24 @@ const PersonContainer = styled.div<{ talks: boolean, x: number, y: number }>`
     }
 `
 
+const Placeholder = styled.div`
+    width: calc(15vw - 2px);
+    height: calc(15vw - 2px);
+    margin: 16px;
+`
+
 export default function Person(props: any) {
     const [talked, setTalked] = useState(false)
-    return (
-        <PersonContainer x={props.x} y={props.y} talks={talked} onClick={() => setTalked(!talked)}>
-            <span></span>
-            <p>{props.person.name}</p>
-            <p>{props.person.context}</p>
-        </PersonContainer>
-    )
+    
+    if(props.person.role == 'PLACEHOLDER'){
+        <Placeholder />
+    } else {
+        return (
+            <PersonContainer talks={talked} onClick={() => setTalked(!talked)}>
+                <span></span>
+                <p>{props.person.name}</p>
+                <p>{props.person.role}</p>
+            </PersonContainer>
+        )
+    }
 }

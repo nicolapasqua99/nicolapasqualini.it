@@ -4,46 +4,47 @@ import Person from './person'
 const persons = [
     {
         name: 'Leonardo',
-        context: 'Mobile'
+        role: 'Mobile'
     },
     {
         name: 'Sofia',
-        context: 'Frontend'
+        role: 'Frontend'
     },
     {
         name: 'Nicola',
-        context: 'Frontend'
+        role: 'Frontend'
     },
     {
         name: 'Massimo M.',
-        context: 'Scada'
+        role: 'Scada'
     },
     {
         name: 'Massimo P.',
-        context: 'Backend'
+        role: 'Backend'
+    },
+    {
+        name: 'NOONE',
+        role: 'PLACEHOLDER'
     },
     {
         name: 'Biagio',
-        context: 'DH'
+        role: 'DH'
     },
     {
         name: 'Mara',
-        context: 'Application Server'
+        role: 'Application Server'
     },
     {
         name: 'Marco',
-        context: 'Application Server'
+        role: 'Application Server'
     },
     {
         name: 'Emiliano',
-        context: 'KPI'
-    }
-]
-
-const persons_second = [
+        role: 'KPI'
+    },
     {
         name: 'Federico',
-        context: 'Backend'
+        role: 'Backend'
     }
 ]
 
@@ -56,12 +57,7 @@ export default function Home() {
                 </header>
                 <div className="personcontainer">
                     {persons.map((person, index) => (
-                        <Person key={index} person={person} x={index} y={index} />
-                    ))}
-                </div>
-                <div className="personcontainer">
-                    {persons_second.map((person, index) => (
-                        <Person key={index} person={person} x={index} y={index} />
+                        <Person key={index} person={person} />
                     ))}
                 </div>
             </div>
