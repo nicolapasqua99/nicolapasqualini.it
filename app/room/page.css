@@ -33,6 +33,7 @@ div.scrollable {
     width: 100vw;
     height: 100vh;
     overflow-y: scroll;
+    margin-top: 56px;
 }
 
 header.lateraltitlebox {
