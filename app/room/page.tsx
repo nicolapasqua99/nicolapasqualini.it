@@ -23,10 +23,6 @@ const persons = [
         role: 'Backend'
     },
     {
-        name: 'NOONE',
-        role: 'PLACEHOLDER'
-    },
-    {
         name: 'Biagio',
         role: 'DH'
     },
@@ -57,7 +53,7 @@ export default function Home() {
                 </header>
                 <div className="personcontainer">
                     {persons.map((person, index) => (
-                        <Person key={index} person={person} />
+                        <Person key={index} index={index} person={person} />
                     ))}
                 </div>
             </div>

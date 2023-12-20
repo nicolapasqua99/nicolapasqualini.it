@@ -57,7 +57,7 @@ export default function Person(props: any) {
     else if (props.index == 8) className = 'margin-right-half'
 
     return (
-        <PersonContainer className="{className}" talks={talked} onClick={() => setTalked(!talked)}>
+        <PersonContainer className={className} talks={talked} onClick={() => setTalked(!talked)}>
             <span className="tick" />
             <p>{props.person.name}</p>
             <span className="dot" />
