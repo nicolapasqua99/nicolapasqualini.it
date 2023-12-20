@@ -37,7 +37,7 @@ const PersonContainer = styled.div<{ talks: boolean }>`
         height: 6px;
         margin: 8px;
         border-radius: 3px;
-        background-color: rgb(255, 255, 255);
+        background-color: ${props => (props.talks ? 'rgb(0, 0, 0, .6)' : 'rgb(0, 0, 0, .2)')};
     }
     & p {
         width: 100%;

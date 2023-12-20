@@ -48,8 +48,8 @@ export default function Home() {
     return (
         <main>
             <div className="scrollable">
-                <header className="lateraltitlebox">
-                    <h1 className="lateraltitle">sprint daily</h1>
+                <header className="titlebox">
+                    <h1 className="title">sprint daily</h1>
                 </header>
                 <div className="personcontainer">
                     {persons.map((person, index) => (
