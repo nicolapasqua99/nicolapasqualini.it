@@ -27,7 +27,7 @@ const PersonContainer = styled.div<{ talks: boolean }>`
         position: absolute;
         width: 50px;
         height: 50px;
-        transition: opacity .4s ease;
+        transition: .4s ease all;
         clip-path: polygon(0% 70%, 30% 100%, 100% 30%, 85% 15%, 30% 70%, 15% 55%);
         opacity: ${props => (props.talks ? '1' : '0')};
         background-color: rgb(255, 255, 255);
@@ -37,6 +37,7 @@ const PersonContainer = styled.div<{ talks: boolean }>`
         height: 6px;
         margin: 8px;
         border-radius: 3px;
+        transition: .4s ease all;
         background-color: ${props => (props.talks ? 'rgb(255, 255, 255, .2)' : 'rgb(255, 255, 255, 1)')};
     }
     & p {
@@ -45,6 +46,7 @@ const PersonContainer = styled.div<{ talks: boolean }>`
         text-align: center;
     }
     ::selection {
+        transition: .4s ease all;
         color: ${props => (props.talks ? 'rgb(255, 255, 255, .2)' : 'rgb(255, 255, 255, 1)')};
     }
 `
