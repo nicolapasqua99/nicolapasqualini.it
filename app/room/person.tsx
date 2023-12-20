@@ -4,8 +4,6 @@ import { useState } from 'react'
 import styled from 'styled-components'
 
 const PersonContainer = styled.div<{ talks: boolean }>`
-    width: calc(15vw - 4px);
-    height: calc(15vw - 4px);
     margin: 16px;
     border-radius: 50%;
     border: 2px solid white;
@@ -48,6 +46,27 @@ const PersonContainer = styled.div<{ talks: boolean }>`
     ::selection {
         transition: .4s ease all;
         color: ${props => (props.talks ? 'rgb(255, 255, 255, .2)' : 'rgb(255, 255, 255, 1)')};
+    }
+    
+    @media only screen and (min-width: 1250px) {
+        & {
+            width: calc(15vw - 4px);
+            height: calc(15vw - 4px);
+        }
+    }
+
+    @media only screen and (max-width: 1250px) {
+        & {
+            width: 25vw;
+            height: 25vw;
+        }
+    }
+
+    @media only screen and (max-width: 700px) {
+        & {
+            width: 75vw;
+            height: 75vw;
+        }
     }
 `
 
