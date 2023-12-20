@@ -14,10 +14,16 @@ const PersonContainer = styled.div<{ talks: boolean }>`
     background-color: ${props => (props.talks ? 'rgb(0, 0, 0, .6)' : 'rgb(0, 0, 0, .2)')};
     color: ${props => (props.talks ? 'rgb(255, 255, 255, .2)' : 'rgb(255, 255, 255, 1)')};
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column;
     align-items: center;
     justify-content: center;
-    & span  {
+    &.margin-left-half {
+        margin-left: calc(7.5vw + 16px);
+    }
+    &.margin-right-half {
+        margin-right: calc(7.5vw + 16px);
+    }
+    & span.tick  {
         position: absolute;
         width: 50px;
         height: 50px;
@@ -26,9 +32,15 @@ const PersonContainer = styled.div<{ talks: boolean }>`
         opacity: ${props => (props.talks ? '1' : '0')};
         background-color: rgb(255, 255, 255);
     }
+    & span.dot  {
+        width: 40px;
+        height: 6px;
+        margin: 8px;
+        border-radius: 3px;
+        background-color: rgb(255, 255, 255);
+    }
     & p {
-        width: calc(15% - 4px);
-        height: calc(20% - 4px);
+        width: 100%;
         font-size: 24px;
         text-align: center;
     }
@@ -37,24 +49,19 @@ const PersonContainer = styled.div<{ talks: boolean }>`
     }
 `
 
-const Placeholder = styled.div`
-    width: calc(15vw - 2px);
-    height: calc(15vw - 2px);
-    margin: 16px;
-`
-
 export default function Person(props: any) {
     const [talked, setTalked] = useState(false)
-    
-    if(props.person.role == 'PLACEHOLDER'){
-        <Placeholder />
-    } else {
-        return (
-            <PersonContainer talks={talked} onClick={() => setTalked(!talked)}>
-                <span></span>
-                <p>{props.person.name}</p>
-                <p>{props.person.role}</p>
-            </PersonContainer>
-        )
-    }
+
+    let className: string = '';
+    if(props.index == 5) className = 'margin-left-half'
+    else if (props.index == 8) className = 'margin-right-half'
+
+    return (
+        <PersonContainer className="{className}" talks={talked} onClick={() => setTalked(!talked)}>
+            <span className="tick" />
+            <p>{props.person.name}</p>
+            <span className="dot" />
+            <p>{props.person.role}</p>
+        </PersonContainer>
+    )
 }
