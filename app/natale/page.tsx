@@ -174,11 +174,20 @@ const FourthSlide = styled.div<any>`
         text-align: center;
         font-size: 64px;
     }
+    & a {
+        color: #000;
+        width: 80vw;
+        top: 9vw;
+        text-align: center;
+        font-size: 20px;
+        margin-top: 16px;
+        position: absolute;
+    }
     & img {
         position: absolute;
-        left: 20vw;
+        left: 25vw;
         top: 12vw;
-        width: 60vw;
+        width: 50vw;
         height: auto;
     }
 `
@@ -193,7 +202,7 @@ const MySelfImg = styled.img`
 
 const NextSlide = styled.div<any>`
     position: fixed;
-    bottom: 16px;
+    bottom: ${props => (props.showbutton == '0vh' ? '-100px' : '16px')};
     left: 48vw;
     background-color: #b42d1a;
     width: 4vw;
@@ -259,8 +268,8 @@ export default function Home() {
                 <div>
                     <h1>La nascita di una grandissima idea</h1>
                     <p>
-                        L'idea per questo regalo ha delle radici molto profonde nella storia dei pinguini e del loro non poter volare, nella storia di Groot e del suo faticare a farsi capire. Ci sono voluti mesi, anni, decenni di ricerche per capire
-                        quale fosse la soluzione più adatta per renderti felice in questo 2023.
+                        L@apos;idea per questo regalo ha delle radici molto profonde nella storia dei pinguini e del loro non poter volare, nella storia di Groot e del suo faticare a farsi capire. Ci sono voluti mesi, anni, decenni di ricerche per
+                        capire quale fosse la soluzione più adatta per renderti felice in questo 2023.
                     </p>
                     <MySelfImg src="../img/ninochestudia.jpeg" />
                 </div>
@@ -268,16 +277,24 @@ export default function Home() {
             <ThirdSlide showsection={showThirdSlide.toString()}>
                 <div>
                     <h1>Conclusioni</h1>
-                    <p>Dai che ci siamo... Non saprei che altro aggiungere senza scrivere troppe cose a caso, la prossima slide contiene il tuo regalo, buon natale ninetta, ti amo.</p>
+                    <p>
+                        Scherzo dai non perdo tempo in cose a caso.
+                        <br />
+                        Per fortuna che un regalo me l@apos;hai consigliato tu ed un altro l@apos;ho trovato a caso. Ma non mi bastava, volevo prepararti qualcosa di più significativo per tutti i regali che ti sei sempre impegnata a farmi, un
+                        qualcosa per ringraziarti di esserci, di permettermi di amarti.
+                        <br />
+                        La prossima sezione contiene @apos;il regalo@apos;, non sarà il regalo vero e proprio ma solo l@apos;inizio di quello che ho pensato, che dovremmo poi completare assieme, e dovremmo portare poi a casettanini.
+                    </p>
                 </div>
             </ThirdSlide>
             <FourthSlide showsection={showFourthSlide.toString()}>
                 <div>
                     <h1>Regalooooooo</h1>
-                    <img src="" />
+                    <a href="https://liquorepersonalizzato.it/builder">https://liquorepersonalizzato.it/builder</a>
+                    <img src="../img/ginlogo.png" />
                 </div>
             </FourthSlide>
-            <NextSlide onClick={() => animation()} />
+            <NextSlide showbutton={showFourthSlide.toString()} onClick={() => animation()} />
         </main>
     )
 }
