@@ -268,7 +268,7 @@ export default function Home() {
                 <div>
                     <h1>La nascita di una grandissima idea</h1>
                     <p>
-                        L@apos;idea per questo regalo ha delle radici molto profonde nella storia dei pinguini e del loro non poter volare, nella storia di Groot e del suo faticare a farsi capire. Ci sono voluti mesi, anni, decenni di ricerche per
+                        L&apos;idea per questo regalo ha delle radici molto profonde nella storia dei pinguini e del loro non poter volare, nella storia di Groot e del suo faticare a farsi capire. Ci sono voluti mesi, anni, decenni di ricerche per
                         capire quale fosse la soluzione più adatta per renderti felice in questo 2023.
                     </p>
                     <MySelfImg src="../img/ninochestudia.jpeg" />
@@ -280,10 +280,10 @@ export default function Home() {
                     <p>
                         Scherzo dai non perdo tempo in cose a caso.
                         <br />
-                        Per fortuna che un regalo me l@apos;hai consigliato tu ed un altro l@apos;ho trovato a caso. Ma non mi bastava, volevo prepararti qualcosa di più significativo per tutti i regali che ti sei sempre impegnata a farmi, un
+                        Per fortuna che un regalo me l&apos;hai consigliato tu ed un altro l&apos;ho trovato a caso. Ma non mi bastava, volevo prepararti qualcosa di più significativo per tutti i regali che ti sei sempre impegnata a farmi, un
                         qualcosa per ringraziarti di esserci, di permettermi di amarti.
                         <br />
-                        La prossima sezione contiene @apos;il regalo@apos;, non sarà il regalo vero e proprio ma solo l@apos;inizio di quello che ho pensato, che dovremmo poi completare assieme, e dovremmo portare poi a casettanini.
+                        La prossima sezione contiene &apos;il regalo&apos;, non sarà il regalo vero e proprio ma solo l&apos;inizio di quello che ho pensato, che dovremmo poi completare assieme, e dovremmo portare poi a casettanini.
                     </p>
                 </div>
             </ThirdSlide>
