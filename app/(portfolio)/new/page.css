@@ -1,0 +1,115 @@
+:root {
+    --primary: '#28827d';
+    --secondary: '#EFEEE5';
+    --tertiary: '#274546';
+    --light-background: '#FFFFFF';
+    --dark-background: '#000000';
+}
+.mobile-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--light-background), 'white';
+    & .body {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: calc(100vh - 0rem);
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        & .social-container {
+            position: absolute;
+            top: 5vh;
+            height: 48vh;
+            left: 5vw;
+            width: 90vw;
+            & .social-icon {
+                height: 6rem;
+                width: 6rem;
+            }
+            & svg {
+                height: 6rem;
+                width: 6rem;
+                padding: 0rem;
+                z-index: 4;
+                cursor: pointer;
+            }
+            & .social-icon.github {
+                position: absolute;
+                top: 33%;
+                left: 0%;
+                & svg path {
+                    fill: #0d1117 !important;
+                }
+            }
+            & .social-icon.linkedin {
+                position: absolute;
+                top: 6%;
+                left: 31%;
+                & svg path {
+                    fill: #0077b7 !important;
+                }
+            }
+            & .social-icon.instagram {
+                position: absolute;
+                top: 20%;
+                left: 89%;
+                & svg path {
+                    fill: #fb3958 !important;
+                }
+            }
+        }
+        & .text-container {
+            width: 100%;
+            height: fit-content;
+        }
+        & .text-line {
+            width: 100%;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        & span {
+            text-align: center;
+            color: var(--secondary), 'black';
+            font-size: 3rem;
+            background-color: var(--light-background), 'white';
+            &.big-text {
+                font-size: 4rem;
+                font-weight: bold;
+            }
+            &.margin-left {
+                margin-left: 4px;
+            }
+        }
+        & .arrow {
+            position: absolute;
+            bottom: 24px;
+            height: 48px;
+            width: 48px;
+            transform: rotate(-90deg);
+            transform-origin: center center;
+            & > div > svg > path {
+                fill: var(--secondary), 'black';
+            }
+        }
+    }
+    span.golden {
+        width: 90vw;
+        height: 144vw;
+        background-image: url(./\(portfolio_configs\)/sezione-aurea-fibonacci.jpg);
+        /* border-radius: 50%; */
+        /* border: 1px solid black; */
+        position: fixed;
+        left: 5vw;
+        top: 20vw;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}

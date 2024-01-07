@@ -3,4 +3,7 @@ export interface ColorProp {
     secondary?: string
     tertiary?: string
     color?: string
+    lightbackground?: string
+    darkbackground?: string
+    background?: string
 }
