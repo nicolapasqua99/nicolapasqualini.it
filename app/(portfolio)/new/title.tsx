@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { primary, secondary, tertiary } from './configs/colors'
-import { ColorProp } from './models/styled.props.models'
+import { primary, secondary, tertiary } from './(portfolio_configs)/colors'
+import { ColorProp } from '../../(utils)/(models)/styled.props.models'
 
 const StyledTitle = styled.h1`
     position: absolute;

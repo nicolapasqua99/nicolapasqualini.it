@@ -1,6 +1,6 @@
 import Person from './person'
 
-import { RoomPerson } from '../models/room.person.model'
+import { RoomPerson } from '../../(utils)/(models)/room.person.model'
 
 import './page.css'
 

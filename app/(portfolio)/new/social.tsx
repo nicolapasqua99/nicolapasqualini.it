@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import { ReactSVG } from 'react-svg'
 import Plx from 'react-plx'
-import { primary, secondary, tertiary } from './configs/colors'
-import { contactsStyles } from './configs/parallaxData'
-import { SocialState } from './models/social.state.model'
-import { SocialIcon } from './models/social.icons.model'
+import { primary, secondary, tertiary } from './(portfolio_configs)/colors'
+import { contactsStyles } from './(portfolio_configs)/parallaxData'
+import { SocialState } from '../../(utils)/(models)/social.state.model'
+import { SocialIcon } from '../../(utils)/(models)/social.icons.model'
 
 const MyUl = styled.ul`
     z-index: 20;

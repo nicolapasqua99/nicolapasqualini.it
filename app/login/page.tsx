@@ -4,7 +4,7 @@ import './page.css'
 
 import { FormEvent, useState } from 'react'
 import { UserCredential, signInWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../configs/firebase'
+import { auth } from '../(utils)/(configs)/firebase'
 
 export default function Home() {
     const [isLoading, setIsLoading] = useState<boolean>(false)

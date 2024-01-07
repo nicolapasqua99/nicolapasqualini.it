@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import Plx from 'react-plx'
-import { parallaxColorNavbar, parallaxColorNavbarUnderline } from './configs/parallaxData'
-import { primary, secondary, tertiary } from './configs/colors'
-import { ColorProp } from './models/styled.props.models'
+import { parallaxColorNavbar, parallaxColorNavbarUnderline } from './(portfolio_configs)/parallaxData'
+import { primary, secondary, tertiary } from './(portfolio_configs)/colors'
+import { ColorProp } from '../../(utils)/(models)/styled.props.models'
 
 const StyledNav = styled.nav`
     position: fixed;

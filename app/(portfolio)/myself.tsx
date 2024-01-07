@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { primary, secondary, tertiary } from './configs/colors'
-import { ColorProp } from './models/styled.props.models'
+import { primary, secondary, tertiary } from './(portfolio_configs)/colors'
+import { ColorProp } from '../(utils)/(models)/styled.props.models'
 
 const MySelfImg = styled.img`
     position: absolute;

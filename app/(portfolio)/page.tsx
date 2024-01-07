@@ -2,16 +2,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import Plx from 'react-plx'
-import { primary, secondary, tertiary } from './configs/colors'
+import { primary, secondary, tertiary } from './(portfolio_configs)/colors'
 import Title from './title'
 import Navbar from './navbar'
 import Social from './social'
 import MySelf from './myself'
 import Projects from './projects'
 import Contacts from './contacts'
-import { parallaxBackgroundNavbar } from './configs/parallaxData'
-import { ColorProp } from './models/styled.props.models'
-import { PageState } from './models/page.state.model'
+import { parallaxBackgroundNavbar } from './(portfolio_configs)/parallaxData'
+import { ColorProp } from '../(utils)/(models)/styled.props.models'
+import { PageState } from '../(utils)/(models)/page.state.model'
 
 const Section = styled.div<ColorProp>`
     position: relative;
