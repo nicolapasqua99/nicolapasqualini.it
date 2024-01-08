@@ -1,9 +1,9 @@
 :root {
-    --primary: '#28827d';
-    --secondary: '#EFEEE5';
-    --tertiary: '#274546';
-    --light-background: '#FFFFFF';
-    --dark-background: '#000000';
+    --primary: #28827d;
+    --secondary: #efeee5;
+    --tertiary: #274546;
+    --light-background: #efeee5;
+    --dark-background: #000000;
 }
 .mobile-container {
     position: absolute;
@@ -11,7 +11,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: var(--light-background), 'white';
+    background-color: var(--light-background);
     & .body {
         position: absolute;
         top: 0;
@@ -44,7 +44,8 @@
                 top: 33%;
                 left: 0%;
                 & svg path {
-                    fill: #0d1117 !important;
+                    /* fill: #0d1117 !important; */
+                    fill: var(--primary) !important;
                 }
             }
             & .social-icon.linkedin {
@@ -52,7 +53,8 @@
                 top: 6%;
                 left: 31%;
                 & svg path {
-                    fill: #0077b7 !important;
+                    /* fill: #0077b7 !important; */
+                    fill: var(--primary) !important;
                 }
             }
             & .social-icon.instagram {
@@ -60,7 +62,8 @@
                 top: 20%;
                 left: 89%;
                 & svg path {
-                    fill: #fb3958 !important;
+                    /* fill: #fb3958 !important; */
+                    fill: var(--primary) !important;
                 }
             }
         }
@@ -77,9 +80,9 @@
         }
         & span {
             text-align: center;
-            color: var(--secondary), 'black';
+            color: var(--primary);
             font-size: 3rem;
-            background-color: var(--light-background), 'white';
+            background-color: var(--light-background);
             &.big-text {
                 font-size: 4rem;
                 font-weight: bold;
@@ -96,20 +99,8 @@
             transform: rotate(-90deg);
             transform-origin: center center;
             & > div > svg > path {
-                fill: var(--secondary), 'black';
+                fill: var(--primary);
             }
         }
-    }
-    span.golden {
-        width: 90vw;
-        height: 144vw;
-        background-image: url(./\(portfolio_configs\)/sezione-aurea-fibonacci.jpg);
-        /* border-radius: 50%; */
-        /* border: 1px solid black; */
-        position: fixed;
-        left: 5vw;
-        top: 20vw;
-        background-size: cover;
-        background-repeat: no-repeat;
     }
 }

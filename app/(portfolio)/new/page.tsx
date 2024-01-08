@@ -76,9 +76,9 @@ class Page extends React.Component {
                 <>
                     <Rect ref={this.rectDim} />
                     <div className="mobile-container">
-                        <span className="golden"></span>
                         <div className="body">
                             <div className="social-container">
+                                <ReactSVG className="social-icon" src="../img/newportfolio/aureal_section.svg" />
                                 <ReactSVG className="social-icon github" src="../img/newportfolio/icons/github.svg" />
                                 <ReactSVG className="social-icon linkedin" src="../img/newportfolio/icons/linkedin.svg" />
                                 <ReactSVG className="social-icon instagram" src="../img/newportfolio/icons/instagram.svg" />
