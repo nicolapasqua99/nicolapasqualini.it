@@ -5,7 +5,6 @@ import styled from 'styled-components'
 
 const PersonContainer = styled.div<{ talks: boolean }>`
     margin: 16px;
-    border-radius: 50%;
     border: 2px solid white;
     cursor: pointer;
     transition: .4s ease all;
@@ -15,13 +14,19 @@ const PersonContainer = styled.div<{ talks: boolean }>`
     flex-flow: column;
     align-items: center;
     justify-content: center;
+    &.low {
+        border-radius: 50%;
+    }
+    &.normal {
+        border-radius: 0%;
+    }
     &.margin-left-half {
         margin-left: calc(7.5vw + 16px);
     }
     &.margin-right-half {
         margin-right: calc(7.5vw + 16px);
     }
-    & span.tick  {
+    & span.tick {
         position: absolute;
         width: 50px;
         height: 50px;
@@ -30,7 +35,7 @@ const PersonContainer = styled.div<{ talks: boolean }>`
         opacity: ${props => (props.talks ? '1' : '0')};
         background-color: rgb(255, 255, 255);
     }
-    & span.dot  {
+    & span.dot {
         width: 40px;
         height: 6px;
         margin: 8px;
@@ -74,8 +79,9 @@ export default function Person(props: any) {
     const [talked, setTalked] = useState(false)
 
     let className: string = '';
-    if(props.index == 5) className = 'margin-left-half'
-    else if (props.index == 8) className = 'margin-right-half'
+
+    if (props.index == 5) className = 'margin-left-half ' + props.priority
+    else if (props.index == 8) className = 'margin-right-half ' + props.priority
 
     return (
         <PersonContainer className={className} talks={talked} onClick={() => setTalked(!talked)}>

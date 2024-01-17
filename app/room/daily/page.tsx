@@ -9,72 +9,86 @@ export default function Home() {
         {
             name: 'Leonardo',
             role: 'Mobile',
-            show: true
+            show: true,
+            priority: 'normal'
         },
         {
-            name: 'Sofia',
+            name: 'Fabio',
             role: 'Frontend',
-            show: true
+            show: true,
+            priority: 'normal'
         },
         {
             name: 'Nicola',
             role: 'Frontend',
-            show: true
+            show: true,
+            priority: 'normal'
         },
         {
             name: 'Massimo M.',
             role: 'Scada',
-            show: true
+            show: true,
+            priority: 'normal'
         },
         {
             name: 'Massimo P.',
             role: 'Backend',
-            show: true
+            show: true,
+            priority: 'normal'
         },
         {
             name: 'Biagio',
             role: 'DH',
-            show: true
+            show: true,
+            priority: 'normal'
         },
         {
             name: 'Mara',
             role: 'Application Server',
-            show: true
+            show: true,
+            priority: 'normal'
         },
         {
             name: 'Marco',
             role: 'Application Server',
-            show: true
+            show: true,
+            priority: 'normal'
         },
         {
             name: 'Emiliano',
             role: 'KPI',
-            show: true
+            show: true,
+            priority: 'normal'
         },
         {
             name: 'Federico',
             role: 'Backend',
-            show: true
+            show: true,
+            priority: 'normal'
         },
         {
-            name: 'Ilaria',
+            name: 'Stefania',
             role: 'Scrum Master',
-            show: true
+            show: true,
+            priority: 'low'
         },
         {
             name: 'Cristian',
             role: 'Project Owner',
-            show: true
+            show: true,
+            priority: 'low'
         },
         {
             name: 'Mattia',
             role: 'Test',
-            show: true
+            show: true,
+            priority: 'normal'
         },
         {
             name: 'Luca',
             role: 'Test',
-            show: false
+            show: false,
+            priority: 'normal'
         }
     ]
 
