@@ -15,10 +15,10 @@ const PersonContainer = styled.div<{ talks: boolean }>`
     align-items: center;
     justify-content: center;
     &.low {
-        border-radius: 50%;
+        border-radius: 0%;
     }
     &.normal {
-        border-radius: 0%;
+        border-radius: 50%;
     }
     &.margin-left-half {
         margin-left: calc(7.5vw + 16px);
