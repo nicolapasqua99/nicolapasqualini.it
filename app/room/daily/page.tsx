@@ -67,6 +67,12 @@ export default function Home() {
             priority: 'normal'
         },
         {
+            name: 'Mattia',
+            role: 'Test',
+            show: true,
+            priority: 'normal'
+        },
+        {
             name: 'Stefania',
             role: 'Scrum Master',
             show: true,
@@ -79,16 +85,10 @@ export default function Home() {
             priority: 'low'
         },
         {
-            name: 'Mattia',
-            role: 'Test',
-            show: true,
-            priority: 'normal'
-        },
-        {
             name: 'Luca',
             role: 'Test',
             show: false,
-            priority: 'normal'
+            priority: 'low'
         }
     ]
 
