@@ -78,10 +78,10 @@ const PersonContainer = styled.div<{ talks: boolean }>`
 export default function Person(props: any) {
     const [talked, setTalked] = useState(false)
 
-    let className: string = '';
+    let className: string = props.person.priority;
 
-    if (props.index == 5) className = 'margin-left-half ' + props.priority
-    else if (props.index == 8) className = 'margin-right-half ' + props.priority
+    if (props.index == 5) className += ' margin-left-half' 
+    else if (props.index == 8) className += ' margin-right-half'
 
     return (
         <PersonContainer className={className} talks={talked} onClick={() => setTalked(!talked)}>
