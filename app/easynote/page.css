@@ -1,0 +1,29 @@
+main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    .sidebar_menu, .sidebar_navigator, .textarea_container {
+        height: 100%;
+    }
+    .sidebar_menu {
+        width: 48px;
+        background-color: beige;
+    }
+    .sidebar_navigator {
+        width: 360px;
+        background-color: aqua;
+    }
+    .textarea_container {
+        width: 100%;
+        background-color: beige;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    
+}
+
+@media (prefers-color-scheme: light) {
+    
+}
