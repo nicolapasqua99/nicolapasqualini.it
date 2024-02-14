@@ -8,14 +8,20 @@ main {
     }
     .sidebar_menu {
         width: 48px;
+        margin: 0px 24px;
         background-color: beige;
+        div {
+            width: 48px;
+            margin: 24px 0;
+            background-color: white;
+        }
     }
     .sidebar_navigator {
-        width: 360px;
-        background-color: aqua;
+        width: 520px;
+        background-color: cadetblue;
     }
     .textarea_container {
-        width: 100%;
+        width: -webkit-fill-available;
         background-color: beige;
     }
 }
