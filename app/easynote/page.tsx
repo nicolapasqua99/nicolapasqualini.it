@@ -11,7 +11,7 @@ export default function Home() {
                 <div>B</div>
             </div>
             <div className="sidebar_navigator">
-
+                <h1>Your Notes</h1>
             </div>
             <div className="textarea_container">
 
