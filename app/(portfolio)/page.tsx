@@ -21,8 +21,16 @@ const Section = styled.div<ColorProp>`
     height: 100vh;
     background-color: ${props => props.color || 'white'};
     scroll-snap-align: start;
+    &#BIO, &#PROJECTS {
+        width: calc(100vw - 80px);
+        margin: 40px;
+        border: 2px solid black;    
+    }
+    &#BIO {
+        height: calc(100vh - 80px);
+    }
     &#PROJECTS {
-        height: 150vh;
+        height: calc(164vh - 80px);
     }
 `
 

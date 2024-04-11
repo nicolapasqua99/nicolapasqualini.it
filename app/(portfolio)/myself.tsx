@@ -54,8 +54,7 @@ class MySelf extends React.Component {
                 <MySelfImg src="../img/newportfolio/photocolorsoldnew.svg" />
                 <MySelfTitle>Who i am</MySelfTitle>
                 <MySelfText primary={this.state.primary}>
-                    Hi! I&apos;m Nicola Pasqualini and I&apos;m studying Interface and Communication Technology at the University of Trento. I love to develop software or interfaces and think about how they will help people. My biggest passion is to
-                    get myself and my work every day better.
+                    Hi! I&apos;m Nicola Pasqualini and I&apos; work as a frontend developer at Arcoda srl, in Trento. I&apos;m passionate about learning new technologies and resolve complex problem. I also love 3d printing and hiking. 
                 </MySelfText>
             </>
         )
