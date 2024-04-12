@@ -27,7 +27,7 @@ const Section = styled.div<ColorProp>`
         border: 2px solid black;    
     }
     &#BIO {
-        height: calc(100vh - 80px);
+        height: calc(100vh - 180px);
     }
     &#PROJECTS {
         height: calc(164vh - 80px);

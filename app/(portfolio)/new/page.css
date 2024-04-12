@@ -5,6 +5,7 @@
     --light-background: #efeee5;
     --dark-background: #000000;
 }
+
 .mobile-container {
     position: absolute;
     top: 0;
@@ -12,25 +13,26 @@
     width: 100vw;
     height: 100vh;
     background-color: var(--light-background);
-    & .body {
+    & .bio {
         position: absolute;
         top: 0;
         left: 0;
         width: 100vw;
         height: calc(100vh - 0rem);
         display: flex;
-        flex-flow: row wrap;
+        flex-direction: column;
         justify-content: center;
-        align-items: center;
         & .social-container {
-            position: absolute;
-            top: 5vh;
-            height: 48vh;
-            left: 5vw;
-            width: 90vw;
+            width: 50%;
+            margin-left: 25%;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-around;
+            margin-top: 2rem;
             & .social-icon {
                 height: 6rem;
                 width: 6rem;
+                margin: 2rem;
             }
             & svg {
                 height: 6rem;
@@ -40,27 +42,18 @@
                 cursor: pointer;
             }
             & .social-icon.github {
-                position: absolute;
-                top: 33%;
-                left: 0%;
                 & svg path {
                     /* fill: #0d1117 !important; */
                     fill: var(--primary) !important;
                 }
             }
             & .social-icon.linkedin {
-                position: absolute;
-                top: 6%;
-                left: 31%;
                 & svg path {
                     /* fill: #0077b7 !important; */
                     fill: var(--primary) !important;
                 }
             }
             & .social-icon.instagram {
-                position: absolute;
-                top: 20%;
-                left: 89%;
                 & svg path {
                     /* fill: #fb3958 !important; */
                     fill: var(--primary) !important;
@@ -91,15 +84,60 @@
                 margin-left: 4px;
             }
         }
-        & .arrow {
+        & .arrow-container {
             position: absolute;
-            bottom: 24px;
-            height: 48px;
-            width: 48px;
-            transform: rotate(-90deg);
-            transform-origin: center center;
-            & > div > svg > path {
-                fill: var(--primary);
+            bottom: 0;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            & .arrow {
+                margin-bottom: 24px;
+                height: 48px;
+                width: 48px;
+                transform: rotate(-90deg);
+                transform-origin: center center;
+                &>div>svg>path {
+                    fill: var(--primary);
+                }
+            }
+        }
+    }
+    & .skills {
+        position: absolute;
+        top: 100vh;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--primary);
+        & h1 {
+            margin: 8rem 0;
+            font-size: 4rem;
+            color: var(--light-background);
+            width: 100%;
+            text-align: center;
+        }
+        & .skill_list{
+            height: calc(100vh - 20rem);
+            width: 90vw;
+            margin: 0 5vw;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+            align-items: center;
+            & .skill_container {
+                width: 30rem;
+                height: 30rem;
+                color: var(--light-background);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 2rem;
+                & svg {
+                    position: absolute;
+                    width: 30rem;
+                    height: 30rem;
+                }
             }
         }
     }
