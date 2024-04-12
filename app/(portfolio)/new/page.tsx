@@ -22,7 +22,8 @@ class Page extends React.Component {
         super(props)
         this.rectDim = React.createRef()
         this.state = {
-            little: true
+            little: true,
+            ratio: 0
         }
     }
 

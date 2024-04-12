@@ -76,6 +76,7 @@ class Page extends React.Component {
             primary: primary,
             secondary: secondary,
             tertiary: tertiary,
+            ratio: 0,
             little: true
         }
     }
