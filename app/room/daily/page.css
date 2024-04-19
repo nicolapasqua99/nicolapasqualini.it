@@ -29,11 +29,15 @@
 div.scrollable {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    left: 5vw;
+    width: 90vw;
+    height: calc(100vh - 84px);
     overflow-y: scroll;
-    margin-top: 56px;
+    margin-top: 28px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
 }
 
 header.lateraltitlebox {
@@ -76,11 +80,53 @@ h1.title {
 div.personcontainer {
     position: relative;
     top: 0vh;
-    left: 5vw;
-    width: 90vw;
+    left: 0vw;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column;
     justify-content: center;
-    align-content: center;
+    align-items: center;
     z-index: 1;
+    border: 1px solid white;
+}
+div.personcontainer h2{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+    text-transform: capitalize;
+    text-decoration: underline;
+}
+div.personcontainer h3{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: white;
+    text-transform: capitalize;
+}
+
+@media only screen and (min-width: 1250px) {
+    div.personcontainer h2{
+        margin: 16px 8px;
+    }
+    div.personcontainer h3{
+        width: 12vw;
+    }
+}
+
+@media only screen and (max-width: 1250px) {
+    div.personcontainer h3{
+        width: 20vw;
+        height: 20vw;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    div.personcontainer h3{
+        width: 75vw;
+        height: 75vw;
+    }
 }

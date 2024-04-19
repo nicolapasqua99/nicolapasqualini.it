@@ -15,21 +15,15 @@ const PersonContainer = styled.div<{ talks: boolean }>`
     align-items: center;
     justify-content: center;
     &.low {
-        border-radius: 0%;
+        border-radius: 10%;
     }
     &.normal {
-        border-radius: 50%;
-    }
-    &.margin-left-half {
-        margin-left: calc(7.5vw + 16px);
-    }
-    &.margin-right-half {
-        margin-right: calc(7.5vw + 16px);
+        border-radius: 10%;
     }
     & span.tick {
         position: absolute;
-        width: 50px;
-        height: 50px;
+        width: 30px;
+        height: 30px;
         transition: .4s ease all;
         clip-path: polygon(0% 70%, 30% 100%, 100% 30%, 85% 15%, 30% 70%, 15% 55%);
         opacity: ${props => (props.talks ? '1' : '0')};
@@ -37,7 +31,7 @@ const PersonContainer = styled.div<{ talks: boolean }>`
     }
     & span.dot {
         width: 40px;
-        height: 6px;
+        height: 4px;
         margin: 8px;
         border-radius: 3px;
         transition: .4s ease all;
@@ -45,28 +39,25 @@ const PersonContainer = styled.div<{ talks: boolean }>`
     }
     & p {
         width: 100%;
-        font-size: 24px;
+        font-size: 16px;
         text-align: center;
     }
     ::selection {
         transition: .4s ease all;
         color: ${props => (props.talks ? 'rgb(255, 255, 255, .2)' : 'rgb(255, 255, 255, 1)')};
     }
-    
     @media only screen and (min-width: 1250px) {
         & {
-            width: calc(15vw - 4px);
-            height: calc(15vw - 4px);
+            width: 6vw;
+            height: 6vw;
         }
     }
-
     @media only screen and (max-width: 1250px) {
         & {
             width: 25vw;
             height: 25vw;
         }
     }
-
     @media only screen and (max-width: 700px) {
         & {
             width: 75vw;
@@ -79,9 +70,6 @@ export default function Person(props: any) {
     const [talked, setTalked] = useState(false)
 
     let className: string = props.person.priority;
-
-    if (props.index == 5) className += ' margin-left-half' 
-    else if (props.index == 8) className += ' margin-right-half'
 
     return (
         <PersonContainer className={className} talks={talked} onClick={() => setTalked(!talked)}>
