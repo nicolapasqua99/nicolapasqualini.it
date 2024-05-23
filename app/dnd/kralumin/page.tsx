@@ -351,7 +351,7 @@ export default function Home() {
             </div>
             <div className="abilities">
                 {abilities.map((ability: AbilityEntry) => {
-                    return <div>
+                    return <div key={ability.name}>
                         <span className='description'>{ability.name}</span>
                         <span>{ability.baseValue}/{getAbilityModifier(ability.baseValue)}</span>
                     </div>
@@ -359,8 +359,8 @@ export default function Home() {
             </div>
             <div className="skills">
 
-                {skills.map((skill: any) => {
-                    return <div>
+                {skills.map((skill: Skill) => {
+                    return <div key={skill.name}>
                         <span className='description'>{skill.name}({skill.base})</span>
                         <span>{skill.value}({skill.proficiencyShort})</span>
                     </div>
