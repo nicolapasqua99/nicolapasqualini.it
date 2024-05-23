@@ -6,7 +6,7 @@
     color: rgb(28, 33, 34);
     scroll-behavior: smooth;
 }
-::-webkit-scrollbar {
+body::-webkit-scrollbar {
     display: none;
 }
 
