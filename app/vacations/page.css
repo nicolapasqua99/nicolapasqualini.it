@@ -13,11 +13,11 @@ main {
 header {
     display: flex;
     flex-direction: row;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
     height: 48px;
     width: calc(90vw - 48px);
-    margin: 24px auto 0;
+    margin: 0px auto 0;
     border-bottom: 1px solid;
     padding: 24px;
     & i {
@@ -28,8 +28,19 @@ header {
         margin: 0 8px;
     }
     & span {
-        font-size: 24px;
+        font-size: 16px;
         margin: 0 8px;
+        padding: 8px 24px;
+        border-radius: 12px;
+        border: 2px solid var(--tertiary);
+        background-color: white;
+        cursor: pointer;
+        color: var(--tertiary);
+        user-select: none;
+        &.active {
+            background-color: var(--tertiary);
+            color: white;
+        }
     }
 }
 
@@ -38,7 +49,12 @@ header {
     width: 90vw;
     margin: 0 auto;
     flex-direction: column;
-    &::-webkit-scrollbar-track {
+    overflow-y: scroll;
+    height: calc(100vh - 97px);
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    /* &::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         background-color: #f5f5f5;
         border-bottom-left-radius: 8px;
@@ -57,7 +73,7 @@ header {
         background-color: var(--primary);
         border-bottom-left-radius: 8px;
         border-bottom-right-radius: 8px;
-    }
+    } */
 }
 table {
     transform: translate(0, 0);
@@ -68,7 +84,7 @@ table {
         display: block;
         position: absolute;
         font-size: 54px;
-        width: 144px;
+        width: 156px;
         text-align: center;
         padding: 0 12px;
         transform: translateY(-48px);
@@ -130,10 +146,10 @@ table {
             width: 100px;
             font-weight: 600;
             &.pastMonth {
-                opacity: .2;
+                opacity: 0.2;
             }
             &:first-of-type {
-                width: 144px;
+                width: 156px;
                 display: block;
                 font-weight: 100;
                 border-right: none;

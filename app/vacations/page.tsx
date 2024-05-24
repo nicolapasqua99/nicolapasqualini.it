@@ -1,5 +1,7 @@
-import { get } from 'http'
+'use client'
+
 import './page.css'
+import { useState } from 'react'
 
 const csvData: string = `Anno;2023;;;;;;;;;;;;2024;;;;;;;;;;;;2025;;;;;;;;;;;
 Mese;Gennaio;Febbraio;Marzo;Aprile;Maggio;Giugno;Luglio;Agosto;Settembre;Ottobre;Novembre;Dicembre;Gennaio;Febbraio;Marzo;Aprile;Maggio;Giugno;Luglio;Agosto;Settembre;Ottobre;Novembre;Dicembre;Gennaio;Febbraio;Marzo;Aprile;Maggio;Giugno;Luglio;Agosto;Settembre;Ottobre;Novembre;Dicembre;
@@ -76,6 +78,9 @@ export default function Home() {
     let todayMonth: number = new Date().getMonth()
     let todayYear: string = new Date().getFullYear().toString()
 
+    const [showPermits, setShowPermits] = useState(true)
+    const [showVacations, setShowVacations] = useState(true)
+
     return (
         <main>
             <header>
@@ -84,8 +89,18 @@ export default function Home() {
                     <h2>Vacations</h2>
                 </div>
                 <div>
-                    <span>Ferie</span>
-                    <span>Permessi</span>
+                    {showVacations && (
+                        <span className="active" onClick={() => setShowVacations(false)}>
+                            Ferie
+                        </span>
+                    )}
+                    {!showVacations && <span onClick={() => setShowVacations(true)}>Ferie</span>}
+                    {showPermits && (
+                        <span className="active" onClick={() => setShowPermits(false)}>
+                            Permessi
+                        </span>
+                    )}
+                    {!showPermits && <span onClick={() => setShowPermits(true)}>Permessi</span>}
                 </div>
             </header>
             <div className="table-container">
@@ -101,126 +116,138 @@ export default function Home() {
                                 </tr>
                             </thead>
                             <tbody id={year}>
-                                <tr>
-                                    <td>Gained Vacations</td>
-                                    {Object.keys(csvDataObject[year]).map((month: string, monthIndex: number) => {
-                                        if (year < todayYear)
-                                            return (
-                                                <td className="pastMonth" key={year + '_' + month + '_gainedVacationHours'}>
-                                                    {csvDataObject[year][month].gainedVacationHours}
-                                                </td>
-                                            )
-                                        else if (year == todayYear && monthIndex < todayMonth)
-                                            return (
-                                                <td className="pastMonth" key={year + '_' + month + '_gainedVacationHours'}>
-                                                    {csvDataObject[year][month].gainedVacationHours}
-                                                </td>
-                                            )
-                                        else if (year == todayYear && monthIndex >= todayMonth) return <td key={year + '_' + month + '_gainedVacationHours'}>{csvDataObject[year][month].gainedVacationHours}</td>
-                                        else if (year > todayYear) return <td key={year + '_' + month + '_gainedVacationHours'}>{csvDataObject[year][month].gainedVacationHours}</td>
-                                        else return <td></td>
-                                    })}
-                                </tr>
-                                <tr>
-                                    <td>Gained Permits</td>
-                                    {Object.keys(csvDataObject[year]).map((month: string, monthIndex: number) => {
-                                        if (year < todayYear)
-                                            return (
-                                                <td className="pastMonth" key={year + '_' + month + '_gainedPermitHours'}>
-                                                    {csvDataObject[year][month].gainedPermitHours}
-                                                </td>
-                                            )
-                                        else if (year == todayYear && monthIndex < todayMonth)
-                                            return (
-                                                <td className="pastMonth" key={year + '_' + month + '_gainedPermitHours'}>
-                                                    {csvDataObject[year][month].gainedPermitHours}
-                                                </td>
-                                            )
-                                        else if (year == todayYear && monthIndex >= todayMonth) return <td key={year + '_' + month + '_gainedPermitHours'}>{csvDataObject[year][month].gainedPermitHours}</td>
-                                        else if (year > todayYear) return <td key={year + '_' + month + '_gainedPermitHours'}>{csvDataObject[year][month].gainedPermitHours}</td>
-                                        else return <td></td>
-                                    })}
-                                </tr>
-                                <tr>
-                                    <td>Used Vacations</td>
-                                    {Object.keys(csvDataObject[year]).map((month: string, monthIndex: number) => {
-                                        if (year < todayYear)
-                                            return (
-                                                <td className="pastMonth" key={year + '_' + month + '_usedVacationHours'}>
-                                                    {csvDataObject[year][month].usedVacationHours}
-                                                </td>
-                                            )
-                                        else if (year == todayYear && monthIndex < todayMonth)
-                                            return (
-                                                <td className="pastMonth" key={year + '_' + month + '_usedVacationHours'}>
-                                                    {csvDataObject[year][month].usedVacationHours}
-                                                </td>
-                                            )
-                                        else if (year == todayYear && monthIndex >= todayMonth) return <td key={year + '_' + month + '_usedVacationHours'}>{csvDataObject[year][month].usedVacationHours}</td>
-                                        else if (year > todayYear) return <td key={year + '_' + month + '_usedVacationHours'}>{csvDataObject[year][month].usedVacationHours}</td>
-                                        else return <td></td>
-                                    })}
-                                </tr>
-                                <tr>
-                                    <td>Used Permits</td>
-                                    {Object.keys(csvDataObject[year]).map((month: string, monthIndex: number) => {
-                                        if (year < todayYear)
-                                            return (
-                                                <td className="pastMonth" key={year + '_' + month + '_usedPermitHours'}>
-                                                    {csvDataObject[year][month].usedPermitHours}
-                                                </td>
-                                            )
-                                        else if (year == todayYear && monthIndex < todayMonth)
-                                            return (
-                                                <td className="pastMonth" key={year + '_' + month + '_usedPermitHours'}>
-                                                    {csvDataObject[year][month].usedPermitHours}
-                                                </td>
-                                            )
-                                        else if (year == todayYear && monthIndex >= todayMonth) return <td key={year + '_' + month + '_usedPermitHours'}>{csvDataObject[year][month].usedPermitHours}</td>
-                                        else if (year > todayYear) return <td key={year + '_' + month + '_usedPermitHours'}>{csvDataObject[year][month].usedPermitHours}</td>
-                                        else return <td></td>
-                                    })}
-                                </tr>
-                                <tr>
-                                    <td>Available Vacations</td>
-                                    {Object.keys(csvDataObject[year]).map((month: string, monthIndex: number) => {
-                                        if (year < todayYear)
-                                            return (
-                                                <td className="pastMonth" key={year + '_' + month + '_gainedVacationHours'}>
-                                                    {getTotalVacations(monthIndex, year)}
-                                                </td>
-                                            )
-                                        else if (year == todayYear && monthIndex < todayMonth)
-                                            return (
-                                                <td className="pastMonth" key={year + '_' + month + '_gainedVacationHours'}>
-                                                    {getTotalVacations(monthIndex, year)}
-                                                </td>
-                                            )
-                                        else if (year == todayYear && monthIndex >= todayMonth) return <td key={year + '_' + month + '_gainedVacationHours'}>{getTotalVacations(monthIndex, year)}</td>
-                                        else if (year > todayYear) return <td key={year + '_' + month + '_gainedVacationHours'}>{getTotalVacations(monthIndex, year)}</td>
-                                        else return <td></td>
-                                    })}
-                                </tr>
-                                <tr>
-                                    <td>Available Pemits</td>
-                                    {Object.keys(csvDataObject[year]).map((month: string, monthIndex: number) => {
-                                        if (year < todayYear)
-                                            return (
-                                                <td className="pastMonth" key={year + '_' + month + '_gainedVacationHours'}>
-                                                    {getTotalPermits(monthIndex, year)}
-                                                </td>
-                                            )
-                                        else if (year == todayYear && monthIndex < todayMonth)
-                                            return (
-                                                <td className="pastMonth" key={year + '_' + month + '_gainedVacationHours'}>
-                                                    {getTotalPermits(monthIndex, year)}
-                                                </td>
-                                            )
-                                        else if (year == todayYear && monthIndex >= todayMonth) return <td key={year + '_' + month + '_gainedVacationHours'}>{getTotalPermits(monthIndex, year)}</td>
-                                        else if (year > todayYear) return <td key={year + '_' + month + '_gainedVacationHours'}>{getTotalPermits(monthIndex, year)}</td>
-                                        else return <td></td>
-                                    })}
-                                </tr>
+                                {showVacations && (
+                                    <tr>
+                                        <td>Ferie guadagnate</td>
+                                        {Object.keys(csvDataObject[year]).map((month: string, monthIndex: number) => {
+                                            if (year < todayYear)
+                                                return (
+                                                    <td className="pastMonth" key={year + '_' + month + '_gainedVacationHours'}>
+                                                        {csvDataObject[year][month].gainedVacationHours}
+                                                    </td>
+                                                )
+                                            else if (year == todayYear && monthIndex < todayMonth)
+                                                return (
+                                                    <td className="pastMonth" key={year + '_' + month + '_gainedVacationHours'}>
+                                                        {csvDataObject[year][month].gainedVacationHours}
+                                                    </td>
+                                                )
+                                            else if (year == todayYear && monthIndex >= todayMonth) return <td key={year + '_' + month + '_gainedVacationHours'}>{csvDataObject[year][month].gainedVacationHours}</td>
+                                            else if (year > todayYear) return <td key={year + '_' + month + '_gainedVacationHours'}>{csvDataObject[year][month].gainedVacationHours}</td>
+                                            return <td></td>
+                                        })}
+                                    </tr>
+                                )}
+                                {showPermits && (
+                                    <tr>
+                                        <td>Permessi guadagnati</td>
+                                        {Object.keys(csvDataObject[year]).map((month: string, monthIndex: number) => {
+                                            if (year < todayYear)
+                                                return (
+                                                    <td className="pastMonth" key={year + '_' + month + '_gainedPermitHours'}>
+                                                        {csvDataObject[year][month].gainedPermitHours}
+                                                    </td>
+                                                )
+                                            else if (year == todayYear && monthIndex < todayMonth)
+                                                return (
+                                                    <td className="pastMonth" key={year + '_' + month + '_gainedPermitHours'}>
+                                                        {csvDataObject[year][month].gainedPermitHours}
+                                                    </td>
+                                                )
+                                            else if (year == todayYear && monthIndex >= todayMonth) return <td key={year + '_' + month + '_gainedPermitHours'}>{csvDataObject[year][month].gainedPermitHours}</td>
+                                            else if (year > todayYear) return <td key={year + '_' + month + '_gainedPermitHours'}>{csvDataObject[year][month].gainedPermitHours}</td>
+                                            return <td></td>
+                                        })}
+                                    </tr>
+                                )}
+                                {showVacations && (
+                                    <tr>
+                                        <td>Ferie godute</td>
+                                        {Object.keys(csvDataObject[year]).map((month: string, monthIndex: number) => {
+                                            if (year < todayYear)
+                                                return (
+                                                    <td className="pastMonth" key={year + '_' + month + '_usedVacationHours'}>
+                                                        {csvDataObject[year][month].usedVacationHours}
+                                                    </td>
+                                                )
+                                            else if (year == todayYear && monthIndex < todayMonth)
+                                                return (
+                                                    <td className="pastMonth" key={year + '_' + month + '_usedVacationHours'}>
+                                                        {csvDataObject[year][month].usedVacationHours}
+                                                    </td>
+                                                )
+                                            else if (year == todayYear && monthIndex >= todayMonth) return <td key={year + '_' + month + '_usedVacationHours'}>{csvDataObject[year][month].usedVacationHours}</td>
+                                            else if (year > todayYear) return <td key={year + '_' + month + '_usedVacationHours'}>{csvDataObject[year][month].usedVacationHours}</td>
+                                            return <td></td>
+                                        })}
+                                    </tr>
+                                )}
+                                {showPermits && (
+                                    <tr>
+                                        <td>Permessi goduti</td>
+                                        {Object.keys(csvDataObject[year]).map((month: string, monthIndex: number) => {
+                                            if (year < todayYear)
+                                                return (
+                                                    <td className="pastMonth" key={year + '_' + month + '_usedPermitHours'}>
+                                                        {csvDataObject[year][month].usedPermitHours}
+                                                    </td>
+                                                )
+                                            else if (year == todayYear && monthIndex < todayMonth)
+                                                return (
+                                                    <td className="pastMonth" key={year + '_' + month + '_usedPermitHours'}>
+                                                        {csvDataObject[year][month].usedPermitHours}
+                                                    </td>
+                                                )
+                                            else if (year == todayYear && monthIndex >= todayMonth) return <td key={year + '_' + month + '_usedPermitHours'}>{csvDataObject[year][month].usedPermitHours}</td>
+                                            else if (year > todayYear) return <td key={year + '_' + month + '_usedPermitHours'}>{csvDataObject[year][month].usedPermitHours}</td>
+                                            return <td></td>
+                                        })}
+                                    </tr>
+                                )}
+                                {showVacations && (
+                                    <tr>
+                                        <td>Ferie disponibili</td>
+                                        {Object.keys(csvDataObject[year]).map((month: string, monthIndex: number) => {
+                                            if (year < todayYear)
+                                                return (
+                                                    <td className="pastMonth" key={year + '_' + month + '_gainedVacationHours'}>
+                                                        {getTotalVacations(monthIndex, year)}
+                                                    </td>
+                                                )
+                                            else if (year == todayYear && monthIndex < todayMonth)
+                                                return (
+                                                    <td className="pastMonth" key={year + '_' + month + '_gainedVacationHours'}>
+                                                        {getTotalVacations(monthIndex, year)}
+                                                    </td>
+                                                )
+                                            else if (year == todayYear && monthIndex >= todayMonth) return <td key={year + '_' + month + '_gainedVacationHours'}>{getTotalVacations(monthIndex, year)}</td>
+                                            else if (year > todayYear) return <td key={year + '_' + month + '_gainedVacationHours'}>{getTotalVacations(monthIndex, year)}</td>
+                                            return <td></td>
+                                        })}
+                                    </tr>
+                                )}
+                                {showPermits && (
+                                    <tr>
+                                        <td>Permessi disponibili</td>
+                                        {Object.keys(csvDataObject[year]).map((month: string, monthIndex: number) => {
+                                            if (year < todayYear)
+                                                return (
+                                                    <td className="pastMonth" key={year + '_' + month + '_gainedVacationHours'}>
+                                                        {getTotalPermits(monthIndex, year)}
+                                                    </td>
+                                                )
+                                            else if (year == todayYear && monthIndex < todayMonth)
+                                                return (
+                                                    <td className="pastMonth" key={year + '_' + month + '_gainedVacationHours'}>
+                                                        {getTotalPermits(monthIndex, year)}
+                                                    </td>
+                                                )
+                                            else if (year == todayYear && monthIndex >= todayMonth) return <td key={year + '_' + month + '_gainedVacationHours'}>{getTotalPermits(monthIndex, year)}</td>
+                                            else if (year > todayYear) return <td key={year + '_' + month + '_gainedVacationHours'}>{getTotalPermits(monthIndex, year)}</td>
+                                            return <td></td>
+                                        })}
+                                    </tr>
+                                )}
                             </tbody>
                         </table>
                     )
