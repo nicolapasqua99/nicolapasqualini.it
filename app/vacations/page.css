@@ -91,8 +91,8 @@ table {
         }
     }
     & tbody {
-        &::after {
-            content: attr(id);
+        &::before {
+            content: '';
             position: absolute;
             top: 40px;
             left: 181px;
@@ -100,12 +100,18 @@ table {
             height: calc((40px * 6) + 5px);
             box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
             border-radius: 12px;
+        }
+        &::after {
+            content: attr(id);
+            position: absolute;
+            top: 40px;
+            left: 181px;
             font-family: 'Oxanium', sans-serif;
             font-optical-sizing: auto;
             font-weight: 800;
             font-style: normal;
-            font-size: 236px;
-            line-height: 190px;
+            font-size: 324px;
+            line-height: 282px;
             color: var(--primary-low-opacity);
         }
         & tr {
@@ -130,10 +136,9 @@ table {
                 width: 144px;
                 display: block;
                 font-weight: 100;
-            }
-            &:first-of-type {
                 border-right: none;
                 border-bottom: none;
+                text-align: right;
             }
             &:last-of-type {
                 border-right: none;
