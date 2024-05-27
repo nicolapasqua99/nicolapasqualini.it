@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import TypeIt from 'typeit-react'
 import { primary, secondary, tertiary } from './(portfolio_configs)/colors'
 import { ColorProp } from '../(utils)/(models)/styled.props.models'
 
@@ -13,115 +14,91 @@ const StyledSkillsContainer = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    & div {
+    justify-content: center;
+    & span.center-wider {
+        position: absolute;
         font-size: 4rem;
-        color: ${props => props.color || 'white'};
-        display: flex;
-        align-items: center;
-        text-indent: 4rem;
-        justify-content: center;
-        &:nth-child(1) {
-            margin-top: 0;
-            margin-right: 0;
-            margin-bottom: 0;
-            margin-left: 0;
-            width: calc(33.3%);
-            height: calc(33.3%);
-            text-indent: 0rem;
-            font-weight: 600;
-            font-size: 6rem;
-            background: transparent;
+        height: 32rem;
+        width: 32rem;
+        border: 1rem solid ${props => props.colors.primary || 'black'};
+        border-radius: 1rem;
+        background-color: ${props => props.colors.secondary || 'black'};
+        transform: rotate(45deg);
+    }
+    & span.center-wide {
+        position: absolute;
+        font-size: 4rem;
+        height: 16rem;
+        width: 16rem;
+        border: 1rem solid ${props => props.colors.primary || 'black'};
+        background-color: ${props => props.colors.secondary || 'black'};
+        border-radius: 1rem;
+        & h6 {
+            position: absolute;
+            width: 20rem;
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            color: ${props => props.colors.primary || 'black'};
+            transform: translate(-2rem, -6rem);
+            &.modeling-title,
+            &.soft-skills-title {
+                transform: translate(-2rem, 19rem);
+            }
         }
-        &:nth-child(2) {
-            margin-top: 0;
-            margin-right: 0;
-            margin-bottom: 0;
-            margin-left: 0px;
-            width: calc(33.3% - 4px);
-            height: calc(33.3% - 2px);
-            border-left: 2px solid ${props => props.color || 'white'};
-            border-right: 2px solid ${props => props.color || 'white'};
-            border-top: 2px solid ${props => props.color || 'white'};
-            background: transparent;
+        &.right {
+            transform: rotate(45deg);
         }
-        &:nth-child(3) {
-            margin-top: 0;
-            margin-right: 0;
-            margin-bottom: 0;
-            margin-left: 0;
-            width: calc(33.3% - 2px);
-            height: calc(33.3% - 2px);
-            border-right: 2px solid ${props => props.color || 'white'};
-            border-top: 2px solid ${props => props.color || 'white'};
-            background: transparent;
+        &.left {
+            transform: rotate(-45deg);
         }
-        &:nth-child(4) {
-            margin-top: 0;
-            margin-right: 0;
-            margin-bottom: 0;
-            margin-left: 0;
-            width: calc(33.3% - 2px);
-            height: calc(33.3% - 4px);
-            border-left: 2px solid ${props => props.color || 'white'};
-            border-top: 2px solid ${props => props.color || 'white'};
-            border-bottom: 2px solid ${props => props.color || 'white'};
-            background: transparent;
+    }
+    & span.center {
+        position: absolute;
+        font-size: 4rem;
+        height: 4rem;
+        width: 4rem;
+        transform: rotate(45deg);
+        background-color: ${props => props.colors.secondary || 'black'};
+        background-color: ${props => props.colors.primary || 'black'};
+        border: 1rem solid ${props => props.colors.primary || 'black'};
+        border-radius: 1rem;
+    }
+    & span.lancet {
+        position: absolute;
+        height: 46rem;
+        width: 1rem;
+        border-radius: 1rem;
+        background-color: ${props => props.colors.primary || 'black'};
+    }
+    & span.angled-lancet {
+        position: absolute;
+        height: 1rem;
+        width: 45.2rem;
+        border-radius: 1rem;
+        background-color: ${props => props.colors.primary || 'black'};
+    }
+    & div.body {
+        position: absolute;
+        height: calc(50% - 2rem);
+        width: calc(50% - 2rem);
+        background-color: ${props => props.colors.primary || 'black'};
+        opacity: 0.2;
+        &.developer {
+            right: 0;
+            top: 0;
         }
-        &:nth-child(5) {
-            margin-top: 0;
-            margin-right: 0;
-            margin-bottom: 0;
-            margin-left: 0px;
-            width: calc(33.3% - 4px);
-            height: calc(33.3% - 4px);
-            border: 2px solid ${props => props.color || 'white'};
-            background: transparent;
+        &.designer {
+            left: 0;
+            top: 0;
         }
-        &:nth-child(6) {
-            margin-top: 0;
-            margin-right: 0;
-            margin-bottom: 0;
-            margin-left: 0;
-            width: calc(33.3% - 2px);
-            height: calc(33.3% - 4px);
-            border-right: 2px solid ${props => props.color || 'white'};
-            border-top: 2px solid ${props => props.color || 'white'};
-            border-bottom: 2px solid ${props => props.color || 'white'};
-            background: transparent;
+        &.modeling {
+            left: 0;
+            bottom: 0;
         }
-        &:nth-child(7) {
-            margin-top: 0;
-            margin-right: 0;
-            margin-bottom: 0;
-            margin-left: 0;
-            width: calc(33.3% - 2px);
-            height: calc(33.3% - 2px);
-            border-left: 2px solid ${props => props.color || 'white'};
-            border-bottom: 2px solid ${props => props.color || 'white'};
-            background: transparent;
-        }
-        &:nth-child(8) {
-            margin-top: 0;
-            margin-right: 0;
-            margin-bottom: 0;
-            margin-left: 0px;
-            width: calc(33.3% - 4px);
-            height: calc(33.3% - 2px);
-            border-left: 2px solid ${props => props.color || 'white'};
-            border-right: 2px solid ${props => props.color || 'white'};
-            border-bottom: 2px solid ${props => props.color || 'white'};
-            background: transparent;
-        }
-        &:nth-child(9) {
-            margin-top: 0;
-            margin-right: 0;
-            margin-bottom: 0;
-            margin-left: 0;
-            width: calc(33.3% - 2px);
-            height: calc(33.3% - 2px);
-            border-right: 2px solid ${props => props.color || 'white'};
-            border-bottom: 2px solid ${props => props.color || 'white'};
-            background: transparent;
+        &.soft-skills {
+            right: 0;
+            bottom: 0;
         }
     }
 `
@@ -140,16 +117,31 @@ class Skills extends React.Component {
     render() {
         return (
             <>
-                <StyledSkillsContainer color={this.state.tertiary}>
-                    <div>My Skills</div>
-                    <div>Web Developer</div>
-                    <div>Basic 3D Modeling</div>
-                    <div>image</div>
-                    <div>Creativity</div>
-                    <div>Curiosity</div>
-                    <div>image</div>
-                    <div>image</div>
-                    <div>A Tech Enthusiast</div>
+                <StyledSkillsContainer colors={this.state}>
+                    <div className="developer body">
+                        <h6 className="developer-title">Developer</h6>
+                    </div>
+                    <div className="designer body">
+                        <h6 className="developer-title">UX Designer</h6>
+                    </div>
+                    <div className="modeling body">
+                        <h6 className="developer-title">3D Modeling</h6>
+                    </div>
+                    <div className="soft-skills body">
+                        <h6 className="developer-title">Other Skills</h6>
+                    </div>
+                    <span className="lancet"></span>
+                    <span className="angled-lancet"></span>
+                    <span className="center-wider"></span>
+                    <span className="center-wide right">
+                        <h6 className="developer-title">Developer</h6>
+                        <h6 className="modeling-title">3D Modeling</h6>
+                    </span>
+                    <span className="center-wide left">
+                        <h6 className="designer-title">UX Designer</h6>
+                        <h6 className="soft-skills-title">Other Skills</h6>
+                    </span>
+                    <span className="center"></span>
                 </StyledSkillsContainer>
             </>
         )
