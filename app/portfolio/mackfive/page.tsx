@@ -77,7 +77,7 @@ class Page extends React.Component {
             secondary: secondary,
             tertiary: tertiary,
             ratio: 0,
-            little: true
+            mobile: true
         }
     }
 
@@ -95,7 +95,7 @@ class Page extends React.Component {
         } else {
             this.setState({ little: false })
         }
-        console.log(this.state.little, ratio)
+        console.log(this.state.mobile, ratio)
     }
 
     componentDidMount() {
@@ -120,7 +120,7 @@ class Page extends React.Component {
     }
 
     render() {
-        if (this.state.little) {
+        if (this.state.mobile) {
             return (
                 <>
                     <Rect ref={this.rectDim} />

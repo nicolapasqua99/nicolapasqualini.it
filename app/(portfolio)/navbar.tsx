@@ -91,18 +91,18 @@ class Navbar extends React.Component {
                                 <span />
                             </Plx>
                         </StyledNavItem>
-                        <StyledNavItem>
+                        {/* <StyledNavItem>
                             <a href="#BIO">BIO</a>
                             <Plx parallaxData={parallaxColorNavbarUnderline}>
                                 <span />
                             </Plx>
-                        </StyledNavItem>
-                        <StyledNavItem>
+                        </StyledNavItem> */}
+                        {/* <StyledNavItem>
                             <a href="#HOME">HOME</a>
                             <Plx parallaxData={parallaxColorNavbarUnderline}>
                                 <span />
                             </Plx>
-                        </StyledNavItem>
+                        </StyledNavItem> */}
                     </NavList>
                 </Plx>
             </StyledNav>

@@ -8,7 +8,7 @@ import { primary, secondary, tertiary } from './(portfolio_configs)/colors'
 import Title from './title'
 import Navbar from './navbar'
 import Social from './social'
-import MySelf from './myself'
+import Skills from './skills'
 import Projects from './projects'
 import Contacts from './contacts'
 import { parallaxBackgroundNavbar } from './(portfolio_configs)/parallaxData'
@@ -24,14 +24,20 @@ const Section = styled.div<ColorProp>`
     height: 100vh;
     background-color: ${props => props.color || 'white'};
     scroll-snap-align: start;
-    &#BIO, &#PROJECTS {
-        width: calc(100vw - 80px);
-        margin: 40px;
-        border: 2px solid black;    
+    &#HOME {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
-    &#BIO {
-        height: calc(100vh - 180px);
-    }
+    // &#BIO, &#PROJECTS {
+    //     width: calc(100vw - 80px);
+    //     margin: 40px;
+    //     border: 2px solid black;    
+    // }
+    // &#BIO {
+    //     height: calc(100vh - 180px);
+    // }
     &#PROJECTS {
         height: calc(164vh - 80px);
     }
@@ -111,7 +117,7 @@ class Page extends React.Component {
             primary: primary,
             secondary: secondary,
             tertiary: tertiary,
-            little: true,
+            mobile: true,
             ratio: 0
         }
     }
@@ -131,7 +137,7 @@ class Page extends React.Component {
             this.setState({ little: false })
         }
         this.setState({ratio: ratio})
-        console.log(this.state.little, ratio)
+        console.log(this.state.mobile, ratio)
     }
 
     componentDidMount() {
@@ -157,7 +163,7 @@ class Page extends React.Component {
     }
 
     render() {
-        if (this.state.little) {
+        if (!this.state.mobile) {
             return (
                 <>
                 {this.state.ratio}
@@ -233,8 +239,8 @@ class Page extends React.Component {
                     <Section id="HOME" color={this.state.primary}>
                         <Title />
                     </Section>
-                    <Section id="BIO" color={this.state.secondary}>
-                        <MySelf />
+                    <Section id="SKILLS" color={this.state.secondary}>
+                        <Skills />
                     </Section>
                     <Section id="PROJECTS" color={this.state.secondary}>
                         <Projects />

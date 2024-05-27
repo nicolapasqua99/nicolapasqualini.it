@@ -22,7 +22,7 @@ class Page extends React.Component {
         super(props)
         this.rectDim = React.createRef()
         this.state = {
-            little: true,
+            mobile: true,
             ratio: 0
         }
     }
@@ -41,7 +41,7 @@ class Page extends React.Component {
         } else {
             this.setState({ little: false })
         }
-        console.log(this.state.little, ratio)
+        console.log(this.state.mobile, ratio)
     }
 
     componentDidMount() {
@@ -66,7 +66,7 @@ class Page extends React.Component {
     }
 
     render() {
-        if (this.state.little) {
+        if (this.state.mobile) {
             return (
                 <>
                     <Rect ref={this.rectDim} />
