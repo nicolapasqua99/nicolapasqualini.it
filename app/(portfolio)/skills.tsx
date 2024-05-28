@@ -20,9 +20,9 @@ const StyledSkillsContainer = styled.div`
         font-size: 4rem;
         height: 32rem;
         width: 32rem;
-        border: 1rem solid ${props => props.colors.primary || 'black'};
+        border: 1rem solid ${props => props.theme.primary || 'black'};
         border-radius: 1rem;
-        background-color: ${props => props.colors.secondary || 'black'};
+        background-color: ${props => props.theme.secondary || 'black'};
         transform: rotate(45deg);
     }
     & span.center-wide {
@@ -30,8 +30,8 @@ const StyledSkillsContainer = styled.div`
         font-size: 4rem;
         height: 16rem;
         width: 16rem;
-        border: 1rem solid ${props => props.colors.primary || 'black'};
-        background-color: ${props => props.colors.secondary || 'black'};
+        border: 1rem solid ${props => props.theme.primary || 'black'};
+        background-color: ${props => props.theme.secondary || 'black'};
         border-radius: 1rem;
         & h6 {
             position: absolute;
@@ -39,7 +39,7 @@ const StyledSkillsContainer = styled.div`
             font-size: 3rem;
             font-weight: 700;
             text-align: center;
-            color: ${props => props.colors.primary || 'black'};
+            color: ${props => props.theme.primary || 'black'};
             transform: translate(-2rem, -6rem);
             &.modeling-title,
             &.soft-skills-title {
@@ -59,9 +59,9 @@ const StyledSkillsContainer = styled.div`
         height: 4rem;
         width: 4rem;
         transform: rotate(45deg);
-        background-color: ${props => props.colors.secondary || 'black'};
-        background-color: ${props => props.colors.primary || 'black'};
-        border: 1rem solid ${props => props.colors.primary || 'black'};
+        background-color: ${props => props.theme.secondary || 'black'};
+        background-color: ${props => props.theme.primary || 'black'};
+        border: 1rem solid ${props => props.theme.primary || 'black'};
         border-radius: 1rem;
     }
     & span.lancet {
@@ -69,20 +69,20 @@ const StyledSkillsContainer = styled.div`
         height: 46rem;
         width: 1rem;
         border-radius: 1rem;
-        background-color: ${props => props.colors.primary || 'black'};
+        background-color: ${props => props.theme.primary || 'black'};
     }
     & span.angled-lancet {
         position: absolute;
         height: 1rem;
         width: 45.2rem;
         border-radius: 1rem;
-        background-color: ${props => props.colors.primary || 'black'};
+        background-color: ${props => props.theme.primary || 'black'};
     }
     & div.body {
         position: absolute;
         height: calc(50% - 2rem);
         width: calc(50% - 2rem);
-        background-color: ${props => props.colors.primary || 'black'};
+        background-color: ${props => props.theme.primary || 'black'};
         opacity: 0.2;
         &.developer {
             right: 0;
@@ -117,7 +117,7 @@ class Skills extends React.Component {
     render() {
         return (
             <>
-                <StyledSkillsContainer colors={this.state}>
+                <StyledSkillsContainer data-theme={this.state}>
                     <div className="developer body">
                         <h6 className="developer-title">Developer</h6>
                     </div>
@@ -149,24 +149,3 @@ class Skills extends React.Component {
 }
 
 export default Skills
-
-// {
-//     main: 'A Tech Enthusiast',
-//     subSkills: 'I love tech and other mancraft, and I love to understand how they works'
-// },
-// {
-//    main: 'A Developer',
-//    subSkills: 'Through the years I learned to code in various language, the ones I know better are Typescript, Python and a little of Rust'
-// },
-// {
-//     main: 'A Web Developer',
-//     subSkills: 'My best field is web development, I can use Angular, React and NextJS framework'
-// },
-// {
-//     main: 'A 3D Printing Enthusiast',
-//     subSkills: 'I love to create things that are tailored to my needs, to make my life easier'
-// },
-// {
-//     main: 'A Learner',
-//     subSkills: 'I just love to read books and forum to learn new things'
-// }

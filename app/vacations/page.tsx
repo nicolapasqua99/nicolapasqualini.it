@@ -134,7 +134,7 @@ export default function Home() {
                                                 )
                                             else if (year == todayYear && monthIndex >= todayMonth) return <td key={year + '_' + month + '_gainedVacationHours'}>{csvDataObject[year][month].gainedVacationHours}</td>
                                             else if (year > todayYear) return <td key={year + '_' + month + '_gainedVacationHours'}>{csvDataObject[year][month].gainedVacationHours}</td>
-                                            return <td></td>
+                                            return <td key={year + '_' + month + '_empty_cell'}></td>
                                         })}
                                     </tr>
                                 )}
@@ -156,7 +156,7 @@ export default function Home() {
                                                 )
                                             else if (year == todayYear && monthIndex >= todayMonth) return <td key={year + '_' + month + '_gainedPermitHours'}>{csvDataObject[year][month].gainedPermitHours}</td>
                                             else if (year > todayYear) return <td key={year + '_' + month + '_gainedPermitHours'}>{csvDataObject[year][month].gainedPermitHours}</td>
-                                            return <td></td>
+                                            return <td key={year + '_' + month + '_empty_cell'}></td>
                                         })}
                                     </tr>
                                 )}
@@ -178,7 +178,7 @@ export default function Home() {
                                                 )
                                             else if (year == todayYear && monthIndex >= todayMonth) return <td key={year + '_' + month + '_usedVacationHours'}>{csvDataObject[year][month].usedVacationHours}</td>
                                             else if (year > todayYear) return <td key={year + '_' + month + '_usedVacationHours'}>{csvDataObject[year][month].usedVacationHours}</td>
-                                            return <td></td>
+                                            return <td key={year + '_' + month + '_empty_cell'}></td>
                                         })}
                                     </tr>
                                 )}
@@ -200,7 +200,7 @@ export default function Home() {
                                                 )
                                             else if (year == todayYear && monthIndex >= todayMonth) return <td key={year + '_' + month + '_usedPermitHours'}>{csvDataObject[year][month].usedPermitHours}</td>
                                             else if (year > todayYear) return <td key={year + '_' + month + '_usedPermitHours'}>{csvDataObject[year][month].usedPermitHours}</td>
-                                            return <td></td>
+                                            return <td key={year + '_' + month + '_empty_cell'}></td>
                                         })}
                                     </tr>
                                 )}
@@ -222,7 +222,7 @@ export default function Home() {
                                                 )
                                             else if (year == todayYear && monthIndex >= todayMonth) return <td key={year + '_' + month + '_gainedVacationHours'}>{getTotalVacations(monthIndex, year)}</td>
                                             else if (year > todayYear) return <td key={year + '_' + month + '_gainedVacationHours'}>{getTotalVacations(monthIndex, year)}</td>
-                                            return <td></td>
+                                            return <td key={year + '_' + month + '_empty_cell'}></td>
                                         })}
                                     </tr>
                                 )}
@@ -244,7 +244,7 @@ export default function Home() {
                                                 )
                                             else if (year == todayYear && monthIndex >= todayMonth) return <td key={year + '_' + month + '_gainedVacationHours'}>{getTotalPermits(monthIndex, year)}</td>
                                             else if (year > todayYear) return <td key={year + '_' + month + '_gainedVacationHours'}>{getTotalPermits(monthIndex, year)}</td>
-                                            return <td></td>
+                                            return <td key={year + '_' + month + '_empty_cell'}></td>
                                         })}
                                     </tr>
                                 )}
