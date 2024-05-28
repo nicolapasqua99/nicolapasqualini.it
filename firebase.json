@@ -62,5 +62,11 @@
       "enabled": true
     },
     "singleProjectMode": true
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "remoteconfig": {
+    "template": "remoteconfig.template.json"
   }
 }
