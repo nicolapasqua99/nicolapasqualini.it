@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import './page.css'
 
 type Ability = 'STR' | 'DEX' | 'CON' | 'INT' | 'WIS' | 'CHA'
@@ -281,7 +282,7 @@ export default function Home() {
                 </div>
             </div>
             <div className='basic-stats-and-image'>
-                <img src="../img/dnd/kralumin.jpg" alt="Kralumin il bardo" />
+                <Image src="../img/dnd/kralumin.jpg" alt="Kralumin il bardo" />
                 <div className="stats">
                     <div className="stat">
                         <span className="value">

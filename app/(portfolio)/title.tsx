@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { primary, secondary, tertiary } from './(portfolio_configs)/colors'
 import { ColorProp } from '../(utils)/(models)/styled.props.models'
+import Image from 'next/image'
 
 const StyledTitleImgContainer = styled.div`
     position: absolute;
@@ -65,9 +66,9 @@ class Title extends React.Component {
     render() {
         return (
             <>
-                {/* <StyledTitleImgContainer color={this.state.tertiary}>
-                    <img src="../img/newportfolio/photocolorsoldnew.svg" alt="Me" />
-                </StyledTitleImgContainer> */}
+                <StyledTitleImgContainer color={this.state.tertiary}>
+                    <Image src="../img/newportfolio/photocolorsoldnew.svg" alt="Me" />
+                </StyledTitleImgContainer>
                 <StyledTitle color={this.state.tertiary}>NICOLA PASQUALINI</StyledTitle>
                 <StyledSubTitle color={this.state.tertiary}>I&apos; work as a frontend developer at Arcoda srl, in Trento. I&apos;m passionate about learning new technologies and resolve complex problem. I also love 3d printing and hiking.</StyledSubTitle>
             </>

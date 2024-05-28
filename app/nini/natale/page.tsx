@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import './page.css'
 import styled from 'styled-components'
+import Image from 'next/image'
 
 const Title = styled.div<any>`
     width: 100vw;
@@ -291,7 +292,7 @@ export default function Home() {
                 <div>
                     <h1>Regalooooooo</h1>
                     <a href="https://liquorepersonalizzato.it/builder">https://liquorepersonalizzato.it/builder</a>
-                    <img src="../img/ginlogo.png" />
+                    <Image src="../img/ginlogo.png" alt="Logo gin"/>
                 </div>
             </FourthSlide>
             <NextSlide showbutton={showFourthSlide.toString()} onClick={() => animation()} />
