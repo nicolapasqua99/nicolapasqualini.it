@@ -31,7 +31,6 @@ const StyledSkillsContainer = styled.div`
         height: 16rem;
         width: 16rem;
         border: 1rem solid var(--primary);
-        background-color: var(--secondary);
         border-radius: 1rem;
         & h6 {
             position: absolute;
@@ -58,52 +57,83 @@ const StyledSkillsContainer = styled.div`
         font-size: 4rem;
         height: 4rem;
         width: 4rem;
-        transform: rotate(45deg);
+        transform: translateY(0rem) rotate(45deg);
         background-color: var(--secondary);
         background-color: var(--primary);
         border: 1rem solid var(--primary);
         border-radius: 1rem;
+        // border-top-left-radius: 6rem;
+        // border-top-right-radius: 2rem;
+        // border-bottom-right-radius: 6rem;
+        // border-bottom-left-radius: 2rem;
     }
     & span.lancet {
         position: absolute;
-        height: 46rem;
-        width: 1rem;
         border-radius: 1rem;
         background-color: var(--primary);
-    }
-    & span.angled-lancet {
-        position: absolute;
-        height: 1rem;
-        width: 45.2rem;
-        border-radius: 1rem;
-        background-color: var(--primary);
+        &.horizontal {
+            height: 1rem;
+            width: 60rem;
+        }
+        &.vertical {
+            height: 60rem;
+            width: 1rem;
+        }
     }
     & div.body {
         position: absolute;
         height: 32rem;
         width: 32rem;
-        background-color: var(--primary-low-opacity);
+        // background-color: var(--primary-low-opacity);
         display: flex;
         flex-direction: column;
         &.developer {
             align-items: flex-end;
             justify-content: flex-start;
+            justify-content: center;
             transform: translate(-23rem, -23rem) rotate(45deg);
+            & p:nth-of-type(1) {
+                transform: rotate(12deg);
+            }
+            & p:nth-of-type(3) {
+                transform: rotate(-12deg);
+            }
         }
         &.designer {
             align-items: flex-start;
             justify-content: flex-end;
+            justify-content: center;
             transform: translate(23rem, -23rem) rotate(-45deg);
+            & p:nth-of-type(1) {
+                transform: rotate(-12deg);
+            }
+            & p:nth-of-type(3) {
+                transform: rotate(12deg);
+            }
         }
         &.soft-skills {
             align-items: flex-start;
             justify-content: flex-end;
+            justify-content: center;
             transform: translate(23rem, 23rem) rotate(45deg);
+            & p:nth-of-type(1) {
+                transform: rotate(-12deg);
+            }
+            & p:nth-of-type(3) {
+                transform: rotate(12deg);
+            }
         }
         &.modeling {
             align-items: flex-end;
             justify-content: flex-start;
+            justify-content: center;
             transform: translate(-23rem, 23rem) rotate(-45deg);
+            & p:nth-of-type(1) {
+                transform: rotate(12deg);
+            }
+            & p:nth-of-type(3) {
+                transform: rotate(-12deg);
+            }
         }
         & p {
             font-size: 3rem;
@@ -150,9 +180,10 @@ class Skills extends React.Component {
                         <p>React</p>
                         <p>NextJS</p>
                     </div>
-                    <span className="lancet"></span>
-                    <span className="angled-lancet"></span>
+                    <span className="lancet horizontal"></span>
+                    <span className="lancet vertical"></span>
                     <span className="center-wider"></span>
+                    <span className="center"></span>
                     <span className="center-wide right">
                         <h6 className="designer-title">UX Designer</h6>
                         <h6 className="modeling-title">3D Modeling</h6>
@@ -161,7 +192,6 @@ class Skills extends React.Component {
                         <h6 className="developer-title">Developer</h6>
                         <h6 className="soft-skills-title">Other Skills</h6>
                     </span>
-                    <span className="center"></span>
                 </StyledSkillsContainer>
             </>
         )
