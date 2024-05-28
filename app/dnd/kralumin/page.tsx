@@ -282,7 +282,7 @@ export default function Home() {
                 </div>
             </div>
             <div className='basic-stats-and-image'>
-                <Image src="../img/dnd/kralumin.jpg" alt="Kralumin il bardo" />
+                <Image src="../img/dnd/kralumin.jpg" alt="Kralumin il bardo" width={500} height={500}/>
                 <div className="stats">
                     <div className="stat">
                         <span className="value">

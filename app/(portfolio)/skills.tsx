@@ -20,9 +20,9 @@ const StyledSkillsContainer = styled.div`
         font-size: 4rem;
         height: 32rem;
         width: 32rem;
-        border: 1rem solid ${props => props.theme.primary || 'black'};
+        border: 1rem solid var(--primary);
         border-radius: 1rem;
-        background-color: ${props => props.theme.secondary || 'black'};
+        background-color: var(--secondary);
         transform: rotate(45deg);
     }
     & span.center-wide {
@@ -30,8 +30,8 @@ const StyledSkillsContainer = styled.div`
         font-size: 4rem;
         height: 16rem;
         width: 16rem;
-        border: 1rem solid ${props => props.theme.primary || 'black'};
-        background-color: ${props => props.theme.secondary || 'black'};
+        border: 1rem solid var(--primary);
+        background-color: var(--secondary);
         border-radius: 1rem;
         & h6 {
             position: absolute;
@@ -39,7 +39,7 @@ const StyledSkillsContainer = styled.div`
             font-size: 3rem;
             font-weight: 700;
             text-align: center;
-            color: ${props => props.theme.primary || 'black'};
+            color: var(--primary);
             transform: translate(-2rem, -6rem);
             &.modeling-title,
             &.soft-skills-title {
@@ -59,9 +59,9 @@ const StyledSkillsContainer = styled.div`
         height: 4rem;
         width: 4rem;
         transform: rotate(45deg);
-        background-color: ${props => props.theme.secondary || 'black'};
-        background-color: ${props => props.theme.primary || 'black'};
-        border: 1rem solid ${props => props.theme.primary || 'black'};
+        background-color: var(--secondary);
+        background-color: var(--primary);
+        border: 1rem solid var(--primary);
         border-radius: 1rem;
     }
     & span.lancet {
@@ -69,36 +69,48 @@ const StyledSkillsContainer = styled.div`
         height: 46rem;
         width: 1rem;
         border-radius: 1rem;
-        background-color: ${props => props.theme.primary || 'black'};
+        background-color: var(--primary);
     }
     & span.angled-lancet {
         position: absolute;
         height: 1rem;
         width: 45.2rem;
         border-radius: 1rem;
-        background-color: ${props => props.theme.primary || 'black'};
+        background-color: var(--primary);
     }
     & div.body {
         position: absolute;
-        height: calc(50% - 2rem);
-        width: calc(50% - 2rem);
-        background-color: ${props => props.theme.primary || 'black'};
-        opacity: 0.2;
+        height: 32rem;
+        width: 32rem;
+        background-color: var(--primary-low-opacity);
+        display: flex;
+        flex-direction: column;
         &.developer {
-            right: 0;
-            top: 0;
+            align-items: flex-end;
+            justify-content: flex-start;
+            transform: translate(-23rem, -23rem) rotate(45deg);
         }
         &.designer {
-            left: 0;
-            top: 0;
-        }
-        &.modeling {
-            left: 0;
-            bottom: 0;
+            align-items: flex-start;
+            justify-content: flex-end;
+            transform: translate(23rem, -23rem) rotate(-45deg);
         }
         &.soft-skills {
-            right: 0;
-            bottom: 0;
+            align-items: flex-start;
+            justify-content: flex-end;
+            transform: translate(23rem, 23rem) rotate(45deg);
+        }
+        &.modeling {
+            align-items: flex-end;
+            justify-content: flex-start;
+            transform: translate(-23rem, 23rem) rotate(-45deg);
+        }
+        & p {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--primary);
+            margin: 1rem 2rem;
         }
     }
 `
@@ -117,28 +129,36 @@ class Skills extends React.Component {
     render() {
         return (
             <>
-                <StyledSkillsContainer data-theme={this.state}>
+                <StyledSkillsContainer data-primary={this.state.primary} data-secondary={this.state.secondary} data-tertiary={this.state.tertiary}>
                     <div className="developer body">
-                        <h6 className="developer-title">Developer</h6>
+                        <p>Angular</p>
+                        <p>React</p>
+                        <p>NextJS</p>
                     </div>
                     <div className="designer body">
-                        <h6 className="developer-title">UX Designer</h6>
+                        <p>Angular</p>
+                        <p>React</p>
+                        <p>NextJS</p>
                     </div>
                     <div className="modeling body">
-                        <h6 className="developer-title">3D Modeling</h6>
+                        <p>Angular</p>
+                        <p>React</p>
+                        <p>NextJS</p>
                     </div>
                     <div className="soft-skills body">
-                        <h6 className="developer-title">Other Skills</h6>
+                        <p>Angular</p>
+                        <p>React</p>
+                        <p>NextJS</p>
                     </div>
                     <span className="lancet"></span>
                     <span className="angled-lancet"></span>
                     <span className="center-wider"></span>
                     <span className="center-wide right">
-                        <h6 className="developer-title">Developer</h6>
+                        <h6 className="designer-title">UX Designer</h6>
                         <h6 className="modeling-title">3D Modeling</h6>
                     </span>
                     <span className="center-wide left">
-                        <h6 className="designer-title">UX Designer</h6>
+                        <h6 className="developer-title">Developer</h6>
                         <h6 className="soft-skills-title">Other Skills</h6>
                     </span>
                     <span className="center"></span>
