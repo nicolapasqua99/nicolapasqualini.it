@@ -135,8 +135,6 @@ export default function Home() {
     head.unshift('Giorno')
     head.unshift(' ')
 
-    console.log(csvDataObject)
-
     const [selectedLocation, setSelectedLocation] = useState('')
     const [selectedIssue, setSelectedIssue] = useState('')
     const [selectedActivity, setSelectedActivity] = useState('')
@@ -157,14 +155,14 @@ export default function Home() {
                     <thead>
                         <tr>
                             {head.map(header => (
-                                <th>{header}</th>
+                                <th key={header + '_head'}>{header}</th>
                             ))}
                         </tr>
                     </thead>
                     <tbody>
                         {Object.keys(csvDataObject).map(key => {
                             return (
-                                <tr>
+                                <tr key={key + '_row'}>
                                     <td>{key.substring(0, 10)}</td>
                                     {csvDataObject[key].day === selectedDay && <td className="interactive selected" onClick={() => setSelectedDay(0)}>{csvDataObject[key].day}</td>}
                                     {csvDataObject[key].day !== selectedDay && <td className="interactive" onClick={() => setSelectedDay(csvDataObject[key].day)}>{csvDataObject[key].day}</td>}
