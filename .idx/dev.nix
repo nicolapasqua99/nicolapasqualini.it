@@ -3,6 +3,8 @@
   packages = [
     pkgs.nodejs_20
     pkgs.corepack
+    pkgs.python311Packages.pip
+    pkgs.typescript
   ];
   idx.extensions = [
     "github.vscode-github-actions"
