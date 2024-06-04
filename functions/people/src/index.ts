@@ -4,7 +4,7 @@ import { getFirestore } from 'firebase-admin/firestore'
 
 initializeApp()
 
-exports.getPeopleData = onRequest(async (req, res) => {
+exports.getPeopleData = onRequest({ cors: true }, async (req, res) => {
     const collectionData = await getFirestore().collection('people').get()
     if (collectionData) {
         let data: any = []
@@ -16,4 +16,3 @@ exports.getPeopleData = onRequest(async (req, res) => {
         res.json('Data requested not found')
     }
 })
-

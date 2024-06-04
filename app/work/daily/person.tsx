@@ -14,7 +14,7 @@ const PersonContainer = styled.div<{ talks: boolean }>`
     flex-flow: column;
     align-items: center;
     justify-content: center;
-    &.low {
+    &.lower {
         border-radius: 10%;
     }
     &.normal {
@@ -76,7 +76,7 @@ export default function Person(props: any) {
             <span className="tick" />
             <p>{props.person.name}</p>
             <span className="dot" />
-            <p>{props.person.role}</p>
+            <p>{props.person.field}</p>
         </PersonContainer>
     )
 }

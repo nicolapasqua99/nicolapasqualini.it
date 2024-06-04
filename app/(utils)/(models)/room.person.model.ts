@@ -1,7 +1,7 @@
 export interface RoomPerson {
     name: string
-    show: boolean
-    priority: 'low' | 'normal'
+    priority: 'lower' | 'normal'
+    field: string
 }
 
 export interface RoomPersonsObject {
