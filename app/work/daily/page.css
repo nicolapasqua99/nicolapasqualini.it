@@ -1,43 +1,24 @@
-@media (prefers-color-scheme: dark) {
-    main {
-        width: 100vw;
-        height: 100vh;
-        background: linear-gradient(90deg, rgba(207, 33, 62, 1) 0%, rgba(79, 92, 158, 1) 100%);
-    }
-    header {
-        background: rgba(255, 255, 255, 1);
-        h1 {
-            color: rgba(0, 0, 0, 1);
-        }
+main {
+    width: 100vw;
+    height: calc(100vh - 56px);
+    padding-bottom: 56px;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--tertiary) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header {
+    h1 {
+        color: var(--secondary);
+        text-decoration: underline;
     }
 }
-
-@media (prefers-color-scheme: light) {
-    main {
-        width: 100vw;
-        height: 100vh;
-        background: linear-gradient(90deg, rgba(207, 33, 62, 1) 0%, rgba(79, 92, 158, 1) 100%);
-    }
-    header {
-        background: #222;
-        h1 {
-            color: white;
-        }
-    }
-}
-
 div.scrollable {
-    position: absolute;
-    top: 0;
-    left: 5vw;
-    width: 90vw;
-    height: calc(100vh - 84px);
     overflow-y: scroll;
-    margin-top: 28px;
     display: flex;
     flex-flow: row wrap;
-    align-items: flex-start;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
     &::-webkit-scrollbar {
         display: none;
     }
@@ -64,7 +45,7 @@ h1.lateraltitle {
 
 header.titlebox {
     position: fixed;
-    bottom: 0;
+    bottom: 2rem;
     left: 0;
     height: 56px;
     width: 100vw;
@@ -80,7 +61,7 @@ h1.title {
     margin-top: 12px;
 }
 
-div.personcontainer {
+div.people-container {
     position: relative;
     top: 0vh;
     left: 0vw;
@@ -90,8 +71,10 @@ div.personcontainer {
     align-items: center;
     z-index: 1;
     border: 2px solid white;
-    width: 15%;
+    width: 13%;
     border-radius: 2rem;
+    margin: 2rem;
+    flex-basis: 12%;
     & h2 {
         display: flex;
         flex-flow: row nowrap;
@@ -115,7 +98,7 @@ div.personcontainer {
 }
 
 @media only screen and (min-width: 1250px) {
-    div.personcontainer {
+    div.people-container {
         & h2 {
             margin: 16px 8px;
         }
@@ -126,7 +109,7 @@ div.personcontainer {
 }
 
 @media only screen and (max-width: 1250px) {
-    div.personcontainer {
+    div.people-container {
         & h3 {
             width: 20vw;
             height: 20vw;
@@ -135,10 +118,95 @@ div.personcontainer {
 }
 
 @media only screen and (max-width: 700px) {
-    div.personcontainer {
+    div.people-container {
         & h3 {
             width: 75vw;
             height: 75vw;
         }
+    }
+}
+
+div.person-container {
+    margin: 16px;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: 0.4s ease all;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    &.lower {
+        border-radius: 10%;
+    }
+    &.normal {
+        border-radius: 10%;
+    }
+    & span.tick {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        transition: 0.4s ease all;
+        clip-path: polygon(0% 70%, 30% 100%, 100% 30%, 85% 15%, 30% 70%, 15% 55%);
+        background-color: rgb(255, 255, 255);
+    }
+    & span.dot {
+        width: 40px;
+        height: 4px;
+        margin: 8px;
+        border-radius: 3px;
+        transition: 0.4s ease all;
+    }
+    & p {
+        width: 100%;
+        font-size: 16px;
+        text-align: center;
+        text-transform: capitalize;
+    }
+    ::selection {
+        transition: 0.4s ease all;
+    }
+    &.talked {
+        background-color: rgb(0, 0, 0, 0.6);
+        color: rgb(255, 255, 255, 0.2);
+        & span.dot {
+            background-color: rgb(255, 255, 255, 0.2);
+        }
+        & span.tick {
+            opacity: 1;
+        }
+        &::selection {
+            color: rgb(255, 255, 255, 0.2);
+        }
+    }
+    &.not-talked {
+        background-color: rgb(0, 0, 0, 0.2);
+        color: rgb(255, 255, 255, 1);
+        & span.dot {
+            background-color: rgb(255, 255, 255, 1);
+        }
+        & span.tick {
+            opacity: 0;
+        }
+        &::selection {
+            color: rgb(255, 255, 255, 1);
+        }
+    }
+}
+@media only screen and (min-width: 1250px) {
+    div.person-container {
+        width: 9vw;
+        height: 6vw;
+    }
+}
+@media only screen and (max-width: 1250px) {
+    div.person-container {
+        width: 25vw;
+        height: 25vw;
+    }
+}
+@media only screen and (max-width: 700px) {
+    div.person-container {
+        width: 75vw;
+        height: 75vw;
     }
 }

@@ -1,5 +1,3 @@
-'use client'
-
 import Person from './person'
 
 import { RoomPerson, RoomPersonsObject } from '../../(utils)/(models)/room.person.model'
@@ -20,11 +18,16 @@ async function getPeopleData() {
 
 function getRoomPeopleObject(people: RoomPerson[]): Record<string, RoomPerson[]> {
     let roomPeople: Record<string, RoomPerson[]> = {}
+    let orderedRoomPeople: Record<string, RoomPerson[]> = {}
     people.forEach((person: RoomPerson) => {
         roomPeople[person.field] = roomPeople[person.field] || []
         roomPeople[person.field].push(person)
     })
     return roomPeople
+    // Object.keys(roomPeople)
+    //     .sort((a: string, b:string) => roomPeople[a].length < roomPeople[b].length ? 1 : -1)
+    //     .forEach((field: string) => orderedRoomPeople[field] = roomPeople[field])
+    // return orderedRoomPeople
 }
 
 export default async function Home() {
@@ -34,17 +37,18 @@ export default async function Home() {
 
     return (
         <main>
+            <header className="titlebox">
+                <h1 className="title">sprint daily</h1>
+            </header>
             <div className="scrollable">
-                <header className="titlebox">
-                    <h1 className="title">sprint daily</h1>
-                </header>
-                {Object.keys(people).map((field: string) => 
-                    <div className='personcontainer'>
-                        {people[field].map((person: RoomPerson, index: number) => <Person key={index} index={index} person={person} />)}
+                {Object.keys(people).map((field: string) => (
+                    <div className="people-container" key={field}>
+                        {people[field].map((person: RoomPerson, index: number) => (
+                            <Person key={index} index={index} person={person} />
+                        ))}
                         <h2 className="field">{field}</h2>
                     </div>
-                
-                )}
+                ))}
             </div>
         </main>
     )

@@ -1,11 +1,3 @@
-:root {
-    --primary: #28827d;
-    --primary-low-opacity: rgba(40, 130, 125, .2);
-    --secondary: #efeee5;
-    --tertiary: #274546;
-    --light-background: #efeee5;
-    --dark-background: #000000;
-}
 .mobile-container {
     position: absolute;
     top: 0;
