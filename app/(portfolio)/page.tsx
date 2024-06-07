@@ -29,6 +29,7 @@ const Section = styled.div<ColorProp>`
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        background-color: var(--tertiary);
     }
     // &#BIO, &#PROJECTS {
     //     width: calc(100vw - 80px);

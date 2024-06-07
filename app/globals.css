@@ -9,14 +9,22 @@
 body::-webkit-scrollbar {
     display: none;
 }
+.viridian {
+    --viridian: rgba(107, 144, 128, 1);
+    --cambridge-blue: rgba(164, 195, 178, 1);
+    --mint-green: rgba(204, 227, 222, 1);
+    --sandy-brown: rgba(252, 176, 126, 1);
+    --midnight-green: rgba(8, 76, 97, 1);
+}
 :root {
-    --primary: #28827d;
-    --primary-low-opacity: rgba(40, 130, 125, .2);
-    --secondary: #efeee5;
-    --secondary-low-opacity: rgba(239, 238, 229, .2);
-    --tertiary: #274546;
+    --primary: rgba(252, 176, 126, 1);
+    --primary-low-opacity: rgba(252, 176, 126, .2);
+    --secondary: rgba(8, 76, 97, 1);
+    --secondary-low-opacity: rgba(8, 76, 97, .2);
+    --tertiary: rgba(204, 227, 222, 1);
     --light-background: #efeee5;
     --dark-background: #000000;
+    --gradient: radial-gradient(ellipse at left top, var(--primary) 0%, var(--tertiary) 100%);
     --old-gradient: linear-gradient(90deg, #28827d 0%, rgba(79, 92, 158, 1) 100%);
 }
 /* http://meyerweb.com/eric/tools/css/reset/

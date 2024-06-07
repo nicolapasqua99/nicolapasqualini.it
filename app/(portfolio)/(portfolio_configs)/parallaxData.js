@@ -6,8 +6,8 @@ const parallaxBackgroundNavbar = [
         duration: '90vh',
         properties: [
             {
-                startValue: primary,
-                endValue: primary,
+                startValue: tertiary,
+                endValue: tertiary,
                 property: 'backgroundColor',
             },
         ],
@@ -17,7 +17,7 @@ const parallaxBackgroundNavbar = [
         duration: '20vh',
         properties: [
             {
-                startValue: primary,
+                startValue: tertiary,
                 endValue: secondary,
                 property: 'backgroundColor',
             },
@@ -39,10 +39,10 @@ const parallaxBackgroundNavbar = [
 const parallaxColorNavbar = [
     {
         start: '0vh',
-        duration: '170vh',
+        duration: '90vh',
         properties: [
             {
-                startValue: tertiary,
+                startValue: secondary,
                 endValue: tertiary,
                 property: 'color',
             },
@@ -70,10 +70,10 @@ const parallaxColorNavbar = [
 const parallaxColorNavbarUnderline = [
     {
         start: '0vh',
-        duration: '170vh',
+        duration: '90vh',
         properties: [
             {
-                startValue: tertiary,
+                startValue: secondary,
                 endValue: tertiary,
                 property: 'backgroundColor',
             },
@@ -266,10 +266,10 @@ const thirdIcon = [
 const parallaxColorIcons = [
     {
         start: '0vh',
-        duration: '170vh',
+        duration: '90vh',
         properties: [
             {
-                startValue: tertiary,
+                startValue: secondary,
                 endValue: tertiary,
                 property: 'fill',
             },
@@ -280,7 +280,7 @@ const parallaxColorIcons = [
         duration: '10vh',
         properties: [
             {
-                startValue: primary,
+                startValue: tertiary,
                 endValue: secondary,
                 property: 'fill',
             },

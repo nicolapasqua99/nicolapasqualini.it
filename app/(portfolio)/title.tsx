@@ -23,7 +23,7 @@ const StyledTitleImgContainer = styled.div`
         width: 100%;
         height: 100%;
         display: block;
-        background-color: ${props => props.color || 'white'};
+        background-color: var(--secondary);
         border-top-right-radius: 20%;
         border-top-left-radius: 20%;
         border-bottom-right-radius: 20%;
@@ -36,7 +36,7 @@ const StyledTitle = styled.h1`
     height: 8rem;
     font-size: 8rem;
     line-height: 8rem;
-    color: ${props => props.color || 'white'};
+    color: var(--secondary);
     font-weight: 600;
 `
 
@@ -47,7 +47,7 @@ const StyledSubTitle = styled.p`
     line-height: 4rem;
     margin-top: 4rem;
     cursor: default;
-    color: ${props => props.color || 'white'};
+    color: var(--secondary);
     text-align: center;
     font-weight: 500;
 `
@@ -67,11 +67,11 @@ class Title extends React.Component {
     render() {
         return (
             <>
-                {/* <StyledTitleImgContainer color={this.state.tertiary}>
+                {/* <StyledTitleImgContainer>
                     <Image src="../img/newportfolio/photocolorsoldnew.svg" alt="Me" width={100} height={100} />
                 </StyledTitleImgContainer> */}
-                <StyledTitle color={this.state.tertiary}>NICOLA PASQUALINI</StyledTitle>
-                <StyledSubTitle color={this.state.tertiary}>I&apos; work as a frontend developer at Arcoda srl, in Trento. I&apos;m passionate about learning new technologies and resolve complex problem. I also love 3d printing and hiking.</StyledSubTitle>
+                <StyledTitle>NICOLA PASQUALINI</StyledTitle>
+                <StyledSubTitle>I&apos; work as a frontend developer at Arcoda srl, in Trento. I&apos;m passionate about learning new technologies and resolve complex problem. I also love 3d printing and hiking.</StyledSubTitle>
             </>
         )
     }
