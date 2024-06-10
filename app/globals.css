@@ -18,10 +18,15 @@ body::-webkit-scrollbar {
 }
 :root {
     --primary: rgba(252, 176, 126, 1);
+    --primary-medium-opacity: rgba(252, 176, 126, .6);
     --primary-low-opacity: rgba(252, 176, 126, .2);
     --secondary: rgba(8, 76, 97, 1);
+    --secondary-no-opacity: rgba(8, 76, 97, 0);
+    --secondary-medium-opacity: rgba(8, 76, 97, .6);
     --secondary-low-opacity: rgba(8, 76, 97, .2);
     --tertiary: rgba(204, 227, 222, 1);
+    --tertiary-medium-opacity: rgba(204, 227, 222, .6);
+    --tertiary-low-opacity: rgba(204, 227, 222, .2);
     --light-background: #efeee5;
     --dark-background: #000000;
     --gradient: radial-gradient(ellipse at left top, var(--primary) 0%, var(--tertiary) 100%);

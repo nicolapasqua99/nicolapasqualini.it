@@ -42,12 +42,15 @@ export default async function Home() {
             </header>
             <div className="scrollable">
                 {Object.keys(people).map((field: string) => (
-                    <div className="people-container" key={field}>
-                        {people[field].map((person: RoomPerson, index: number) => (
-                            <Person key={index} index={index} person={person} />
-                        ))}
-                        <h2 className="field">{field}</h2>
-                    </div>
+                    <>
+                        <div className="people-container" key={field}>
+                            {people[field].map((person: RoomPerson, index: number) => (
+                                <Person key={index} index={index} person={person} />
+                            ))}
+                            <h2 className="field">{field}</h2>
+                        </div>
+                        <span className="divider"></span>
+                    </>
                 ))}
             </div>
         </main>
