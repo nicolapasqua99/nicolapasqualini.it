@@ -31,10 +31,13 @@ const Section = styled.div<ColorProp>`
         justify-content: center;
         background-color: var(--tertiary);
     }
+    &#SKILLS {
+        height: 300vh;
+    }
     // &#BIO, &#PROJECTS {
     //     width: calc(100vw - 80px);
     //     margin: 40px;
-    //     border: 2px solid black;    
+    //     border: 2px solid black;
     // }
     // &#BIO {
     //     height: calc(100vh - 180px);
@@ -86,7 +89,7 @@ const RectErrorResponsiveness = styled.div<ColorProp>`
 class Page extends React.Component {
     public rectDim: React.RefObject<HTMLDivElement>
     public state: PageState
-    public skills: {main: string, subSkills: string}[]
+    public skills: { main: string; subSkills: string }[]
 
     constructor(props: any) {
         super(props)
@@ -97,8 +100,8 @@ class Page extends React.Component {
                 subSkills: 'I love tech and other mancraft, and I love to understand how they works'
             },
             {
-               main: 'A Developer',
-               subSkills: 'Through the years I learned to code in various language, the ones I know better are Typescript, Python and a little of Rust' 
+                main: 'A Developer',
+                subSkills: 'Through the years I learned to code in various language, the ones I know better are Typescript, Python and a little of Rust'
             },
             {
                 main: 'A Web Developer',
@@ -112,7 +115,6 @@ class Page extends React.Component {
                 main: 'A Learner',
                 subSkills: 'I just love to read books and forum to learn new things'
             }
-
         ]
         this.state = {
             primary: primary,
@@ -137,7 +139,7 @@ class Page extends React.Component {
         } else {
             this.setState({ little: false })
         }
-        this.setState({ratio: ratio})
+        this.setState({ ratio: ratio })
         console.log(this.state.mobile, ratio)
     }
 
@@ -155,7 +157,7 @@ class Page extends React.Component {
         } else {
             this.setState({ little: false })
         }
-        this.setState({ratio: ratio})
+        this.setState({ ratio: ratio })
         window.addEventListener('resize', this.updateRatio.bind(this))
     }
 
@@ -167,7 +169,6 @@ class Page extends React.Component {
         if (!this.state.mobile) {
             return (
                 <>
-                {this.state.ratio}
                     <Rect ref={this.rectDim} />
                     <div className="mobile-container">
                         <div className="bio">
@@ -194,10 +195,10 @@ class Page extends React.Component {
                                     <a href="https://github.com/nicolapasqua99/" target="_blank" rel="noopener noreferrer">
                                         <ReactSVG className="social-icon github" src="../img/newportfolio/icons/github.svg" />
                                     </a>
-                                    <a href='https://www.linkedin.com/in/nicola-pasqualini' target="_blank" rel="noopener noreferrer">
+                                    <a href="https://www.linkedin.com/in/nicola-pasqualini" target="_blank" rel="noopener noreferrer">
                                         <ReactSVG className="social-icon linkedin" src="../img/newportfolio/icons/linkedin.svg" />
                                     </a>
-                                    <a href='https://www.instagram.com/nicolapasqua99/' target="_blank" rel="noopener noreferrer">
+                                    <a href="https://www.instagram.com/nicolapasqua99/" target="_blank" rel="noopener noreferrer">
                                         <ReactSVG className="social-icon instagram" src="../img/newportfolio/icons/instagram.svg" />
                                     </a>
                                 </div>
@@ -206,20 +207,69 @@ class Page extends React.Component {
                                 <ReactSVG className="arrow" src="../img/newportfolio/icons/arrow.svg" />
                             </div>
                         </div>
-                        <div className='skills'>
-                            <h1>Who am I?</h1>
-                            <div className='skill_list'>
-                                {this.skills.map((item) => {
-                                    return <span key="item.main" className='skill_container'>
-                                        <h6>{item.main}</h6>
-                                        <p>{item.subSkills}</p>
-                                        {/* <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                                            <path fill="var(--tertiary)" d="M21.6,-25C29.3,-19.3,37.7,-13.7,40,-6.2C42.3,1.2,38.4,10.6,33.2,18.6C27.9,26.6,21.2,33.2,13.3,35.7C5.3,38.3,-3.8,36.9,-11.8,33.5C-19.8,30.1,-26.7,24.7,-29.8,17.9C-33,11,-32.5,2.7,-32,-6.6C-31.4,-15.8,-30.9,-26,-25.5,-32.1C-20.2,-38.3,-10.1,-40.5,-1.6,-38.7C6.9,-36.8,13.9,-30.8,21.6,-25Z" width="100%" height="100%" transform="translate(50 50)" stroke-width="0"></path>
-                                        </svg> */}
-                                    </span>
-                                })}
-                                
-                              
+                        <div className="skills">
+                            <h1>Skills</h1>
+                            <div className="skill_list">
+                                <span className="skill_container">
+                                    <p>Skill 1</p>
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                        <path
+                                            fill="var(--tertiary)"
+                                            d="M21.6,-25C29.3,-19.3,37.7,-13.7,40,-6.2C42.3,1.2,38.4,10.6,33.2,18.6C27.9,26.6,21.2,33.2,13.3,35.7C5.3,38.3,-3.8,36.9,-11.8,33.5C-19.8,30.1,-26.7,24.7,-29.8,17.9C-33,11,-32.5,2.7,-32,-6.6C-31.4,-15.8,-30.9,-26,-25.5,-32.1C-20.2,-38.3,-10.1,-40.5,-1.6,-38.7C6.9,-36.8,13.9,-30.8,21.6,-25Z"
+                                            width="100%"
+                                            height="100%"
+                                            transform="translate(50 50)"
+                                            stroke-width="0"></path>
+                                    </svg>
+                                </span>
+                                <span className="skill_container">
+                                    <p>Skill 2</p>
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                        <path
+                                            fill="var(--tertiary)"
+                                            d="M21.6,-25C29.3,-19.3,37.7,-13.7,40,-6.2C42.3,1.2,38.4,10.6,33.2,18.6C27.9,26.6,21.2,33.2,13.3,35.7C5.3,38.3,-3.8,36.9,-11.8,33.5C-19.8,30.1,-26.7,24.7,-29.8,17.9C-33,11,-32.5,2.7,-32,-6.6C-31.4,-15.8,-30.9,-26,-25.5,-32.1C-20.2,-38.3,-10.1,-40.5,-1.6,-38.7C6.9,-36.8,13.9,-30.8,21.6,-25Z"
+                                            width="100%"
+                                            height="100%"
+                                            transform="translate(50 50)"
+                                            stroke-width="0"></path>
+                                    </svg>
+                                </span>
+                                <span className="skill_container">
+                                    <p>Skill 3</p>
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                        <path
+                                            fill="var(--tertiary)"
+                                            d="M21.6,-25C29.3,-19.3,37.7,-13.7,40,-6.2C42.3,1.2,38.4,10.6,33.2,18.6C27.9,26.6,21.2,33.2,13.3,35.7C5.3,38.3,-3.8,36.9,-11.8,33.5C-19.8,30.1,-26.7,24.7,-29.8,17.9C-33,11,-32.5,2.7,-32,-6.6C-31.4,-15.8,-30.9,-26,-25.5,-32.1C-20.2,-38.3,-10.1,-40.5,-1.6,-38.7C6.9,-36.8,13.9,-30.8,21.6,-25Z"
+                                            width="100%"
+                                            height="100%"
+                                            transform="translate(50 50)"
+                                            stroke-width="0"></path>
+                                    </svg>
+                                </span>
+                                <span className="skill_container">
+                                    <p>Skill 4</p>
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                        <path
+                                            fill="var(--tertiary)"
+                                            d="M21.6,-25C29.3,-19.3,37.7,-13.7,40,-6.2C42.3,1.2,38.4,10.6,33.2,18.6C27.9,26.6,21.2,33.2,13.3,35.7C5.3,38.3,-3.8,36.9,-11.8,33.5C-19.8,30.1,-26.7,24.7,-29.8,17.9C-33,11,-32.5,2.7,-32,-6.6C-31.4,-15.8,-30.9,-26,-25.5,-32.1C-20.2,-38.3,-10.1,-40.5,-1.6,-38.7C6.9,-36.8,13.9,-30.8,21.6,-25Z"
+                                            width="100%"
+                                            height="100%"
+                                            transform="translate(50 50)"
+                                            stroke-width="0"></path>
+                                    </svg>
+                                </span>
+                                <span className="skill_container">
+                                    <p>Skill 5</p>
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                        <path
+                                            fill="var(--tertiary)"
+                                            d="M21.6,-25C29.3,-19.3,37.7,-13.7,40,-6.2C42.3,1.2,38.4,10.6,33.2,18.6C27.9,26.6,21.2,33.2,13.3,35.7C5.3,38.3,-3.8,36.9,-11.8,33.5C-19.8,30.1,-26.7,24.7,-29.8,17.9C-33,11,-32.5,2.7,-32,-6.6C-31.4,-15.8,-30.9,-26,-25.5,-32.1C-20.2,-38.3,-10.1,-40.5,-1.6,-38.7C6.9,-36.8,13.9,-30.8,21.6,-25Z"
+                                            width="100%"
+                                            height="100%"
+                                            transform="translate(50 50)"
+                                            stroke-width="0"></path>
+                                    </svg>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -228,7 +278,7 @@ class Page extends React.Component {
         } else {
             return (
                 <>
-                {this.state.ratio}
+                    {this.state.ratio}
                     <Rect ref={this.rectDim} />
                     <Header>
                         <Plx parallaxData={parallaxBackgroundNavbar}>

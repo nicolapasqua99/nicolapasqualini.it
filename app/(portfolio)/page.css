@@ -1,3 +1,4 @@
+
 .mobile-container {
     position: absolute;
     top: 0;
@@ -100,7 +101,7 @@
         top: 100vh;
         left: 0;
         width: 100vw;
-        height: auto;
+        height: 100vh;
         background-color: var(--primary);
         & h1 {
             margin: 8rem 0;
@@ -110,38 +111,25 @@
             text-align: center;
         }
         & .skill_list{
+            height: calc(100vh - 20rem);
             width: 90vw;
             margin: 0 5vw;
             display: flex;
             flex-flow: row wrap;
             justify-content: space-around;
             align-items: center;
-            padding-bottom: 8rem;
             & .skill_container {
-                width: 30vh;
-                height: 30vh;
-                background-color: var(--tertiary);
-                margin: 2rem;
+                width: 30rem;
+                height: 30rem;
+                color: var(--light-background);
                 display: flex;
-                flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                & h6, & p{
-                    text-align: center;                    
-                    color: var(--light-background);
-                    margin: 2rem;
-                }
-                & h6 {
-                    font-size: 3rem;
-                }
-                & p {
-                    font-size: 2rem;
-                    line-height: 2.4rem;
-                }
+                font-size: 2rem;
                 & svg {
                     position: absolute;
-                    width: 100%;
-                    height: 100%;
+                    width: 30rem;
+                    height: 30rem;
                 }
             }
         }

@@ -3,28 +3,57 @@ import styled from 'styled-components'
 import TypeIt from 'typeit-react'
 import { primary, secondary, tertiary } from './(portfolio_configs)/colors'
 import { ColorProp } from '../(utils)/(models)/styled.props.models'
-import Plx from 'react-plx'
+import Plx, { PlxItem } from 'react-plx'
 
 const StyledSkillsContainer = styled.div`
     position: absolute;
-    top: calc(8vh + 8rem);
-    width: 80vw;
-    height: calc(84vh - 8rem);
-    margin: 0 10vw;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    & .sectionContainer {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        width: 80vw;
+        height: calc(84vh - 8rem);
+        margin: calc(8vh + 8rem) 10vw;
+    }
+    & .title {
+        font-size: 8rem;
+        border-radius: 1rem;
+        padding: 2rem;
+        text-align: center;
+        width: 26rem;
+    }
     & .center-wider {
         position: absolute;
         font-size: 4rem;
-        height: 32rem;
-        width: 32rem;
+        color: transparent;
+        text-align: center;
         border: 1rem solid var(--tertiary);
         border-radius: 1rem;
         background-color: var(--secondary);
         transform: rotate(45deg);
+        // box-shadow: inset 20px 20px 60px #063e4f, inset -20px -20px 60px #0a5a73, 20px 20px 60px #063e4f, -20px -20px 60px #0a5a73;
+        &.dots {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            height: 15rem;
+            width: 15rem;
+            padding: 0.5rem;
+            & .dot {
+                display: block;
+                width: 4%;
+                height: 4%;
+                margin: 1.13%;
+                background-color: var(--primary);
+                border-radius: 50%;
+            }
+        }
     }
     & .center-wide {
         position: absolute;
@@ -39,28 +68,34 @@ const StyledSkillsContainer = styled.div`
             font-size: 3rem;
             font-weight: 700;
             text-align: center;
-            color: var(--tertiary);
-            transform: translate(-4rem, -6rem);
+            color: var(--primary);
+            transform: translate(-5rem, -6rem);
             &.modeling-title,
             &.soft-skills-title {
-                transform: translate(-4rem, 19rem);
+                transform: translate(-5rem, 19rem);
             }
         }
-    }
-    & .center {
-        position: absolute;
-        font-size: 4rem;
-        height: 4rem;
-        width: 4rem;
-        transform: translateY(0rem) rotate(45deg);
-        background-color: var(--secondary);
-        background-color: var(--tertiary);
-        border: 1rem solid var(--tertiary);
-        border-radius: 1rem;
-        // border-top-left-radius: 6rem;
-        // border-top-right-radius: 2rem;
-        // border-bottom-right-radius: 6rem;
-        // border-bottom-left-radius: 2rem;
+        &.right {
+            border-color: transparent;
+        }
+        &.dots {
+            // box-shadow: -20px -20px 60px #063e4f, 20px 20px 60px #0a5a73;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            height: 15rem;
+            width: 15rem;
+            padding: 0.5rem;
+            & .dot {
+                // box-shadow: 0px 0px 18px -2px var(--tertiary);
+                display: block;
+                width: 10%;
+                height: 10%;
+                margin: 1.25%;
+                background-color: var(--primary);
+                border-radius: 50%;
+            }
+        }
     }
     & .lancet {
         position: absolute;
@@ -153,24 +188,189 @@ class Skills extends React.Component {
         }
     }
 
-    lancetParallax = [
+    sectionParallax = [
         {
-            start: '50vh',
-            duration: '20vh',
+            start: '0vh',
+            duration: '100vh',
             properties: [
                 {
                     startValue: 0,
+                    endValue: 0,
+                    unit: 'vh',
+                    property: 'translateY'
+                }
+            ]
+        },
+        {
+            start: '100vh',
+            duration: '200vh',
+            properties: [
+                {
+                    startValue: 0,
+                    endValue: 200,
+                    unit: 'vh',
+                    property: 'translateY'
+                }
+            ]
+        }
+    ]
+
+    titleParallax: PlxItem[] = [
+        {
+            start: '0vh',
+            end: '100vh',
+            properties: [
+                {
+                    startValue: 1,
+                    endValue: 1,
+                    property: 'scale'
+                },
+                {
+                    startValue: 'rgba(255, 255, 255, 0)',
+                    endValue: 'rgba(255, 255, 255, 0)',
+                    property: 'backgroundColor'
+                },
+                {
+                    startValue: tertiary,
+                    endValue: tertiary,
+                    property: 'color'
+                }
+            ]
+        },
+        {
+            start: '100vh',
+            end: '110vh',
+            properties: [
+                {
+                    startValue: 1,
                     endValue: 0.5,
+                    property: 'scale'
+                },
+                {
+                    startValue: 'rgba(255, 255, 255, 0)',
+                    endValue: 'rgba(255, 255, 255, 0)',
+                    property: 'backgroundColor'
+                },
+                {
+                    startValue: tertiary,
+                    endValue: 'rgba(255, 255, 255, 0)',
+                    property: 'color'
+                }
+            ]
+        },
+        {
+            start: '110vh',
+            end: '120vh',
+            properties: [
+                {
+                    startValue: 0.5,
+                    endValue: 0.5,
+                    property: 'scale'
+                },
+                {
+                    startValue: 'rgba(255, 255, 255, 0)',
+                    endValue: 'rgba(255, 255, 255, 0)',
+                    property: 'backgroundColor'
+                },
+                {
+                    startValue: 'rgba(255, 255, 255, 0)',
+                    endValue: 'rgba(255, 255, 255, 0)',
+                    property: 'color'
+                }
+            ]
+        },
+        {
+            start: '120vh',
+            end: '150vh',
+            properties: [
+                {
+                    startValue: 0.5,
+                    endValue: 0.5,
+                    property: 'scale'
+                },
+                {
+                    startValue: 'rgba(255, 255, 255, 0)',
+                    endValue: 'rgba(255, 255, 255, 0)',
+                    property: 'backgroundColor'
+                },
+                {
+                    startValue: 'rgba(255, 255, 255, 0)',
+                    endValue: 'rgba(255, 255, 255, 0)',
+                    property: 'color'
+                }
+            ]
+        }
+    ]
+
+    centerWiderParallax = [
+        {
+            start: '0vh',
+            duration: '100vh',
+            properties: [
+                {
+                    startValue: 30,
+                    endValue: 30,
+                    unit: 'rem',
+                    property: 'width'
+                },
+                {
+                    startValue: 12,
+                    endValue: 12,
+                    unit: 'rem',
+                    property: 'height'
+                },
+                {
+                    startValue: 0,
+                    endValue: 0,
+                    unit: 'deg',
+                    property: 'rotate'
+                }
+            ]
+        },
+        {
+            start: '100vh',
+            duration: '30vh',
+            properties: [
+                {
+                    startValue: 30,
+                    endValue: 34,
+                    unit: 'rem',
+                    property: 'width'
+                },
+                {
+                    startValue: 12,
+                    endValue: 34,
+                    unit: 'rem',
+                    property: 'height'
+                },
+                {
+                    startValue: 0,
+                    endValue: 45,
+                    unit: 'deg',
+                    property: 'rotate'
+                }
+            ]
+        }
+    ]
+
+    lancetParallax = [
+        {
+            start: '0vh',
+            duration: '100vh',
+            properties: [
+                {
+                    startValue: 0,
+                    endValue: 0,
                     property: 'scale'
                 }
             ]
         },
         {
-            start: '70vh',
-            duration: '10vh',
+            start: '150vh',
+            duration: '20vh',
             properties: [
                 {
-                    startValue: 0.5,
+                    startValue: 0,
                     endValue: 1,
                     property: 'scale'
                 }
@@ -181,10 +381,21 @@ class Skills extends React.Component {
     lancetHorizontalParallax = [...this.lancetParallax]
     lancetVerticalParallax = [...this.lancetParallax]
 
-    centerParallax = [
+    centerWideParallax = [
         {
-            start: '50vh',
-            duration: '20vh',
+            start: '0vh',
+            duration: '100vh',
+            properties: [
+                {
+                    startValue: 0,
+                    endValue: 0,
+                    property: 'scale'
+                }
+            ]
+        },
+        {
+            start: '110vh',
+            duration: '10vh',
             properties: [
                 {
                     startValue: 0,
@@ -194,8 +405,8 @@ class Skills extends React.Component {
             ]
         },
         {
-            start: '70vh',
-            duration: '20vh',
+            start: '120vh',
+            duration: '30vh',
             properties: [
                 {
                     startValue: 0.5,
@@ -206,26 +417,55 @@ class Skills extends React.Component {
         }
     ]
 
-    centerWideParallax = [
+    centerWideDotsParallax = [
         {
-            start: '50vh',
-            duration: '20vh',
+            start: '0vh',
+            duration: '110vh',
             properties: [
                 {
+                    startValue: 45,
+                    endValue: 45,
+                    unit: 'deg',
+                    property: 'rotate'
+                },
+                {
                     startValue: 0,
-                    endValue: 0.5,
-                    property: 'scale'
+                    endValue: 0,
+                    property: 'opacity'
                 }
             ]
         },
         {
-            start: '70vh',
-            duration: '30vh',
+            start: '110vh',
+            duration: '20vh',
             properties: [
                 {
-                    startValue: 0.5,
-                    endValue: 1,
-                    property: 'scale'
+                    startValue: 45,
+                    endValue: 45,
+                    unit: 'deg',
+                    property: 'rotate'
+                },
+                {
+                    startValue: 0,
+                    endValue: 0,
+                    property: 'opacity'
+                }
+            ]
+        },
+        {
+            start: '150vh',
+            duration: '20vh',
+            properties: [
+                {
+                    startValue: 45,
+                    endValue: 45,
+                    unit: 'deg',
+                    property: 'rotate'
+                },
+                {
+                    startValue: 0,
+                    endValue: 0.8,
+                    property: 'opacity'
                 }
             ]
         }
@@ -233,33 +473,33 @@ class Skills extends React.Component {
 
     centerWideRightParallax = [
         {
-            start: '50vh',
-            duration: '20vh',
+            start: '0vh',
+            duration: '110vh',
             properties: [
                 {
                     startValue: 0,
-                    endValue: 0.5,
+                    endValue: 0,
                     property: 'scale'
                 },
                 {
-                    startValue: 45,
-                    endValue: 45,
+                    startValue: 0,
+                    endValue: 0,
                     unit: 'deg',
                     property: 'rotate'
                 }
             ]
         },
         {
-            start: '70vh',
-            duration: '30vh',
+            start: '110vh',
+            duration: '20vh',
             properties: [
                 {
-                    startValue: 0.5,
+                    startValue: 0,
                     endValue: 1,
                     property: 'scale'
                 },
                 {
-                    startValue: 45,
+                    startValue: 0,
                     endValue: 45,
                     unit: 'deg',
                     property: 'rotate'
@@ -270,71 +510,34 @@ class Skills extends React.Component {
 
     centerWideLeftParallax = [
         {
-            start: '50vh',
-            duration: '20vh',
+            start: '0vh',
+            duration: '110vh',
             properties: [
                 {
                     startValue: 0,
-                    endValue: 0.5,
+                    endValue: 0,
                     property: 'scale'
                 },
                 {
-                    startValue: -45,
-                    endValue: -45,
+                    startValue: 0,
+                    endValue: 0,
                     unit: 'deg',
                     property: 'rotate'
                 }
             ]
         },
         {
-            start: '70vh',
-            duration: '30vh',
-            properties: [
-                {
-                    startValue: 0.5,
-                    endValue: 1,
-                    property: 'scale'
-                },
-                {
-                    startValue: -45,
-                    endValue: -45,
-                    unit: 'deg',
-                    property: 'rotate'
-                }
-            ]
-        }
-    ]
-
-    centerWiderParallax = [
-        {
-            start: '50vh',
+            start: '110vh',
             duration: '20vh',
             properties: [
                 {
                     startValue: 0,
-                    endValue: 0.5,
-                    property: 'scale'
-                },
-                {
-                    startValue: 45,
-                    endValue: 45,
-                    unit: 'deg',
-                    property: 'rotate'
-                }
-            ]
-        },
-        {
-            start: '70vh',
-            duration: '40vh',
-            properties: [
-                {
-                    startValue: 0.5,
                     endValue: 1,
                     property: 'scale'
                 },
                 {
-                    startValue: 45,
-                    endValue: 45,
+                    startValue: 0,
+                    endValue: -45,
                     unit: 'deg',
                     property: 'rotate'
                 }
@@ -345,39 +548,53 @@ class Skills extends React.Component {
     render() {
         return (
             <>
-                <StyledSkillsContainer data-primary={this.state.primary} data-secondary={this.state.secondary} data-tertiary={this.state.tertiary}>
-                    {/* <div className="developer body">
-                        <p>Angular</p>
-                        <p>React</p>
-                        <p>NextJS</p>
-                    </div>
-                    <div className="designer body">
-                        <p>Figma</p>
-                        <p>Sketch</p>
-                        <p>NextJS</p>
-                    </div>
-                    <div className="modeling body">
-                        <p>Angular</p>
-                        <p>React</p>
-                        <p>NextJS</p>
-                    </div>
-                    <div className="soft-skills body">
-                        <p>Angular</p>
-                        <p>React</p>
-                        <p>NextJS</p>
-                    </div> */}
-                    <Plx parallaxData={this.lancetHorizontalParallax} className="lancet horizontal" />
-                    <Plx parallaxData={this.lancetVerticalParallax} className="lancet vertical" />
-                    <Plx parallaxData={this.centerWiderParallax} className="center-wider"/>
-                    <Plx parallaxData={this.centerWideRightParallax} className="center-wide right">
-                        <h6 className="designer-title">UX/UI Designer</h6>
-                        <h6 className="modeling-title">3D Modeling</h6>
+                <StyledSkillsContainer>
+                    <Plx parallaxData={this.sectionParallax} className="sectionContainer">
+                        {/* <div className="developer body">
+                            <p>Angular</p>
+                            <p>React</p>
+                            <p>NextJS</p>
+                        </div>
+                        <div className="designer body">
+                            <p>Figma</p>
+                            <p>Sketch</p>
+                            <p>NextJS</p>
+                        </div>
+                        <div className="modeling body">
+                            <p>Angular</p>
+                            <p>React</p>
+                            <p>NextJS</p>
+                        </div>
+                        <div className="soft-skills body">
+                            <p>Angular</p>
+                            <p>React</p>
+                            <p>NextJS</p>
+                        </div>*/}
+                        {/* <Plx animateWhenNotInViewport={true} parallaxData={this.lancetHorizontalParallax} className="lancet horizontal" /> */}
+                        {/* <Plx animateWhenNotInViewport={true} parallaxData={this.lancetVerticalParallax} className="lancet vertical" /> */}
+                        <Plx animateWhenNotInViewport={true} parallaxData={this.centerWiderParallax} className="center-wider dots">
+                            SKILLS
+                            {/* {Array.from(Array(256).keys()).map((dot: number) => {
+                                return <span className="dot"></span>
+                            })} */}
+                        </Plx>
+                        <Plx animateWhenNotInViewport={true} parallaxData={this.centerWideRightParallax} className="center-wide right">
+                            <h6 className="designer-title">UX/UI Designer</h6>
+                            <h6 className="modeling-title">3D Modeling</h6>
+                        </Plx>
+                        <Plx animateWhenNotInViewport={true} parallaxData={this.centerWideLeftParallax} className="center-wide left">
+                            <h6 className="developer-title">Developer</h6>
+                            <h6 className="soft-skills-title">Other Skills</h6>
+                        </Plx>
+                        <Plx className="title" parallaxData={this.titleParallax}>
+                            SKILLS
+                        </Plx>
+                        <Plx animateWhenNotInViewport={true} parallaxData={this.centerWideDotsParallax} className="center-wide dots">
+                            {Array.from(Array(64).keys()).map((dot: number) => {
+                                return <span className="dot"></span>
+                            })}
+                        </Plx>
                     </Plx>
-                    <Plx parallaxData={this.centerWideLeftParallax} className="center-wide left">
-                        <h6 className="developer-title">Developer</h6>
-                        <h6 className="soft-skills-title">Other Skills</h6>
-                    </Plx>
-                    <Plx parallaxData={this.centerParallax} className="center" />
                 </StyledSkillsContainer>
             </>
         )
