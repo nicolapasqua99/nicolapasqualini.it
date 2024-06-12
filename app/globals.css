@@ -2,7 +2,7 @@
     --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
         'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
         'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
-    font-size: 0.85vh;
+    font-size: 8px;
     color: rgb(28, 33, 34);
     scroll-behavior: smooth;
 }
@@ -17,10 +17,10 @@ body::-webkit-scrollbar {
     --midnight-green: rgba(8, 76, 97, 1);
 }
 :root {
-    --primary: rgba(252, 176, 126, 1);
+    --primary: rgba(252, 176, 126, 1); /* #fcb07e */
     --primary-medium-opacity: rgba(252, 176, 126, .6);
     --primary-low-opacity: rgba(252, 176, 126, .2);
-    --secondary: rgba(8, 76, 97, 1);
+    --secondary: rgba(8, 76, 97, 1);/* #084c61 */
     --secondary-no-opacity: rgba(8, 76, 97, 0);
     --secondary-medium-opacity: rgba(8, 76, 97, .6);
     --secondary-low-opacity: rgba(8, 76, 97, .2);

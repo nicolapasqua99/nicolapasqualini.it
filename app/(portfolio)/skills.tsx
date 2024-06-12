@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import TypeIt from 'typeit-react'
 import { primary, secondary, tertiary } from './(portfolio_configs)/colors'
 import { ColorProp } from '../(utils)/(models)/styled.props.models'
+import { ReactSVG } from 'react-svg'
 import Plx, { PlxItem } from 'react-plx'
 
 const StyledSkillsContainer = styled.div`
@@ -12,21 +13,29 @@ const StyledSkillsContainer = styled.div`
     width: 100%;
     height: 100%;
     & .sectionContainer {
+        width: 80vw;
+        height: calc(84vh - 8rem);
+        margin: calc(8vh + 8rem) 10vw;
+    }
+    & .content {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
-        width: 80vw;
-        height: calc(84vh - 8rem);
-        margin: calc(8vh + 8rem) 10vw;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
     }
     & .title {
-        font-size: 8rem;
+        font-size: 4rem;
         border-radius: 1rem;
-        padding: 2rem;
+        padding: 1rem;
         text-align: center;
-        width: 26rem;
+        width: 22rem;
     }
     & .center-wider {
         position: absolute;
@@ -37,7 +46,6 @@ const StyledSkillsContainer = styled.div`
         border-radius: 1rem;
         background-color: var(--secondary);
         transform: rotate(45deg);
-        // box-shadow: inset 20px 20px 60px #063e4f, inset -20px -20px 60px #0a5a73, 20px 20px 60px #063e4f, -20px -20px 60px #0a5a73;
         &.dots {
             display: flex;
             flex-direction: row;
@@ -79,7 +87,6 @@ const StyledSkillsContainer = styled.div`
             border-color: transparent;
         }
         &.dots {
-            // box-shadow: -20px -20px 60px #063e4f, 20px 20px 60px #0a5a73;
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
@@ -87,7 +94,6 @@ const StyledSkillsContainer = styled.div`
             width: 15rem;
             padding: 0.5rem;
             & .dot {
-                // box-shadow: 0px 0px 18px -2px var(--tertiary);
                 display: block;
                 width: 10%;
                 height: 10%;
@@ -114,58 +120,89 @@ const StyledSkillsContainer = styled.div`
     }
     & .body {
         position: absolute;
-        height: 32rem;
-        width: 32rem;
-        // background-color: var(--tertiary-low-opacity);
         display: flex;
         flex-direction: column;
-        &.developer {
-            align-items: flex-end;
-            justify-content: flex-start;
-            justify-content: center;
-            transform: translate(-23rem, -23rem) rotate(45deg);
-            & p:nth-of-type(1) {
-                transform: rotate(12deg);
+        & .cpu-text {
+            position: absolute;
+            z-index: 2;
+            & > div {
+                display: contents;
             }
-            & p:nth-of-type(3) {
-                transform: rotate(-12deg);
+            & svg {
+                height: 100%;
             }
+            & rect.primary-fill,
+            & circle.primary-fill,
+            & path.primary-fill,
+            & line.primary-fill {
+                fill: var(--primary);
+            }
+            & rect.primary-stroke,
+            & circle.primary-stroke,
+            & path.primary-stroke,
+            & line.primary-stroke {
+                stroke: var(--primary);
+            }
+            & rect.transparent-fill,
+            & circle.transparent-fill,
+            & path.transparent-fill,
+            & line.transparent-fill {
+                fill: transparent;
+            }
+            & rect.transparent-stroke,
+            & circle.transparent-stroke,
+            & path.transparent-stroke,
+            & line.transparent-stroke {
+                stroke: transparent;
+            }
+        }
+        & .mask {
+            mask-repeat: no-repeat;
+            position: absolute;
+            z-index: 1;
+            width: 700px;
+            height: 400px;
+        }
+        & .bg {
+            background: radial-gradient(circle, rgba(252, 176, 126, 0.16) 0%, rgba(252, 176, 126, 0.16) 12%, rgba(252, 176, 126, 1) 12%, rgba(252, 176, 126, 1) 22%, rgba(8, 76, 97, 1) 26%);
+            width: 100%;
+            height: 100%;
         }
         &.designer {
-            align-items: flex-start;
-            justify-content: flex-end;
-            justify-content: center;
-            transform: translate(23rem, -23rem) rotate(-45deg);
-            & p:nth-of-type(1) {
-                transform: rotate(-12deg);
+            & .mask {
+                mask-image: url(../img/newportfolio/skills-svg/TOP-LEFT.svg);
             }
-            & p:nth-of-type(3) {
-                transform: rotate(12deg);
-            }
-        }
-        &.soft-skills {
-            align-items: flex-start;
-            justify-content: flex-end;
-            justify-content: center;
-            transform: translate(23rem, 23rem) rotate(45deg);
-            & p:nth-of-type(1) {
-                transform: rotate(-12deg);
-            }
-            & p:nth-of-type(3) {
-                transform: rotate(12deg);
-            }
-        }
-        &.modeling {
             align-items: flex-end;
             justify-content: flex-start;
             justify-content: center;
-            transform: translate(-23rem, 23rem) rotate(-45deg);
-            & p:nth-of-type(1) {
-                transform: rotate(12deg);
+            transform: translate(-0rem, -25rem);
+        }
+        &.developer {
+            & .mask {
+                mask-image: url(../img/newportfolio/skills-svg/TOP-RIGHT.svg);
             }
-            & p:nth-of-type(3) {
-                transform: rotate(-12deg);
+            align-items: flex-start;
+            justify-content: flex-end;
+            justify-content: center;
+            transform: translate(0rem, -25rem);
+        }
+        &.soft-skills {
+            & .mask {
+                mask-image: url(../img/newportfolio/skills-svg/BOTTOM-RIGHT.svg);
             }
+            align-items: flex-start;
+            justify-content: flex-end;
+            justify-content: center;
+            transform: translate(0rem, 25rem);
+        }
+        &.modeling {
+            & .mask {
+                mask-image: url(../img/newportfolio/skills-svg/BOTTOM-LEFT.svg);
+            }
+            align-items: flex-end;
+            justify-content: flex-start;
+            justify-content: center;
+            transform: translate(-0rem, 25rem);
         }
         & p {
             font-size: 3rem;
@@ -545,55 +582,274 @@ class Skills extends React.Component {
         }
     ]
 
+    maskParallaxTopLeft: PlxItem[] = [
+        {
+            start: '0vh',
+            end: '130vh',
+            properties: [
+                {
+                    startValue: 0,
+                    endValue: 0,
+                    property: 'scale'
+                },
+                {
+                    startValue: 200,
+                    endValue: 200,
+                    property: 'translateY'
+                },
+                {
+                    startValue: 350,
+                    endValue: 350,
+                    property: 'translateX'
+                }
+            ]
+        },
+        {
+            start: '130vh',
+            end: '170vh',
+            properties: [
+                {
+                    startValue: 0,
+                    endValue: 10,
+                    property: 'scale'
+                },
+                {
+                    startValue: 200,
+                    endValue: 200,
+                    property: 'translateY'
+                },
+                {
+                    startValue: 350,
+                    endValue: 350,
+                    property: 'translateX'
+                }
+            ]
+        }
+    ]
+
+    maskParallaxTopRight: PlxItem[] = [
+        {
+            start: '0vh',
+            end: '130vh',
+            properties: [
+                {
+                    startValue: 0,
+                    endValue: 0,
+                    property: 'scale'
+                },
+                {
+                    startValue: 200,
+                    endValue: 200,
+                    property: 'translateY'
+                },
+                {
+                    startValue: -350,
+                    endValue: -350,
+                    property: 'translateX'
+                }
+            ]
+        },
+        {
+            start: '130vh',
+            end: '170vh',
+            properties: [
+                {
+                    startValue: 0,
+                    endValue: 10,
+                    property: 'scale'
+                },
+                {
+                    startValue: 200,
+                    endValue: 200,
+                    property: 'translateY'
+                },
+                {
+                    startValue: -350,
+                    endValue: -350,
+                    property: 'translateX'
+                }
+            ]
+        }
+    ]
+
+    maskParallaxBottomRight: PlxItem[] = [
+        {
+            start: '0vh',
+            end: '130vh',
+            properties: [
+                {
+                    startValue: 0,
+                    endValue: 0,
+                    property: 'scale'
+                },
+                {
+                    startValue: -200,
+                    endValue: -200,
+                    property: 'translateY'
+                },
+                {
+                    startValue: -350,
+                    endValue: -350,
+                    property: 'translateX'
+                }
+            ]
+        },
+        {
+            start: '130vh',
+            end: '170vh',
+            properties: [
+                {
+                    startValue: 0,
+                    endValue: 10,
+                    property: 'scale'
+                },
+                {
+                    startValue: -200,
+                    endValue: -200,
+                    property: 'translateY'
+                },
+                {
+                    startValue: -350,
+                    endValue: -350,
+                    property: 'translateX'
+                }
+            ]
+        }
+    ]
+
+    maskParallaxBottomLeft: PlxItem[] = [
+        {
+            start: '0vh',
+            end: '130vh',
+            properties: [
+                {
+                    startValue: 0,
+                    endValue: 0,
+                    property: 'scale'
+                },
+                {
+                    startValue: -200,
+                    endValue: -200,
+                    property: 'translateY'
+                },
+                {
+                    startValue: 350,
+                    endValue: 350,
+                    property: 'translateX'
+                }
+            ]
+        },
+        {
+            start: '130vh',
+            end: '170vh',
+            properties: [
+                {
+                    startValue: 0,
+                    endValue: 10,
+                    property: 'scale'
+                },
+                {
+                    startValue: -200,
+                    endValue: -200,
+                    property: 'translateY'
+                },
+                {
+                    startValue: 350,
+                    endValue: 350,
+                    property: 'translateX'
+                }
+            ]
+        }
+    ]
+
+    svgParallax: PlxItem[] = [
+        {
+            start: '0vh',
+            end: '140vh',
+            properties: [
+                {
+                    startValue: 0,
+                    endValue: 0,
+                    property: 'opacity'
+                }
+            ]
+        },
+        {
+            start: '145vh',
+            end: '150vh',
+            properties: [
+                {
+                    startValue: 0,
+                    endValue: 1,
+                    property: 'opacity'
+                }
+            ]
+        }
+    ]
+
     render() {
         return (
             <>
                 <StyledSkillsContainer>
                     <Plx parallaxData={this.sectionParallax} className="sectionContainer">
-                        {/* <div className="developer body">
-                            <p>Angular</p>
-                            <p>React</p>
-                            <p>NextJS</p>
-                        </div>
-                        <div className="designer body">
-                            <p>Figma</p>
-                            <p>Sketch</p>
-                            <p>NextJS</p>
-                        </div>
-                        <div className="modeling body">
-                            <p>Angular</p>
-                            <p>React</p>
-                            <p>NextJS</p>
-                        </div>
-                        <div className="soft-skills body">
-                            <p>Angular</p>
-                            <p>React</p>
-                            <p>NextJS</p>
-                        </div>*/}
                         {/* <Plx animateWhenNotInViewport={true} parallaxData={this.lancetHorizontalParallax} className="lancet horizontal" /> */}
                         {/* <Plx animateWhenNotInViewport={true} parallaxData={this.lancetVerticalParallax} className="lancet vertical" /> */}
-                        <Plx animateWhenNotInViewport={true} parallaxData={this.centerWiderParallax} className="center-wider dots">
-                            SKILLS
-                            {/* {Array.from(Array(256).keys()).map((dot: number) => {
-                                return <span className="dot"></span>
-                            })} */}
-                        </Plx>
-                        <Plx animateWhenNotInViewport={true} parallaxData={this.centerWideRightParallax} className="center-wide right">
-                            <h6 className="designer-title">UX/UI Designer</h6>
-                            <h6 className="modeling-title">3D Modeling</h6>
-                        </Plx>
-                        <Plx animateWhenNotInViewport={true} parallaxData={this.centerWideLeftParallax} className="center-wide left">
-                            <h6 className="developer-title">Developer</h6>
-                            <h6 className="soft-skills-title">Other Skills</h6>
-                        </Plx>
-                        <Plx className="title" parallaxData={this.titleParallax}>
-                            SKILLS
-                        </Plx>
-                        <Plx animateWhenNotInViewport={true} parallaxData={this.centerWideDotsParallax} className="center-wide dots">
-                            {Array.from(Array(64).keys()).map((dot: number) => {
-                                return <span className="dot"></span>
-                            })}
-                        </Plx>
+                        <div className="content">
+                            <div className="designer body">
+                                <div className="mask">
+                                    <Plx animateWhenNotInViewport={true} parallaxData={this.maskParallaxTopLeft} className="bg" />
+                                </div>
+                                <Plx animateWhenNotInViewport={true} parallaxData={this.svgParallax} className="cpu-text">
+                                    <ReactSVG src="../img/newportfolio/skills-svg/TOP-LEFT.svg" />
+                                </Plx>
+                            </div>
+                            <div className="developer body">
+                                <div className="mask">
+                                    <Plx animateWhenNotInViewport={true} parallaxData={this.maskParallaxTopRight} className="bg" />
+                                </div>
+                                <Plx animateWhenNotInViewport={true} parallaxData={this.svgParallax} className="cpu-text">
+                                    <ReactSVG src="../img/newportfolio/skills-svg/TOP-RIGHT.svg" />
+                                </Plx>
+                            </div>
+                            <div className="soft-skills body">
+                                <div className="mask">
+                                    <Plx animateWhenNotInViewport={true} parallaxData={this.maskParallaxBottomRight} className="bg" />
+                                </div>
+                                <Plx animateWhenNotInViewport={true} parallaxData={this.svgParallax} className="cpu-text">
+                                    <ReactSVG src="../img/newportfolio/skills-svg/BOTTOM-RIGHT.svg" />
+                                </Plx>
+                            </div>
+                            <div className="modeling body">
+                            <div className="mask">
+                                    <Plx animateWhenNotInViewport={true} parallaxData={this.maskParallaxBottomLeft} className="bg" />
+                                </div>
+                                <Plx animateWhenNotInViewport={true} parallaxData={this.svgParallax} className="cpu-text">
+                                    <ReactSVG src="../img/newportfolio/skills-svg/BOTTOM-LEFT.svg" />
+                                </Plx>
+                            </div>
+                            <Plx animateWhenNotInViewport={true} parallaxData={this.centerWiderParallax} className="center-wider dots">
+                                SKILLS
+                                {/* {Array.from(Array(256).keys()).map((dot: number) => {
+                                    return <span className="dot"></span>
+                                })} */}
+                            </Plx>
+                            <Plx animateWhenNotInViewport={true} parallaxData={this.centerWideRightParallax} className="center-wide right">
+                                <h6 className="developer-title">Developer</h6>
+                                <h6 className="modeling-title">3D Modeling</h6>
+                            </Plx>
+                            <Plx animateWhenNotInViewport={true} parallaxData={this.centerWideLeftParallax} className="center-wide left">
+                                <h6 className="designer-title">UX/UI Designer</h6>
+                                <h6 className="soft-skills-title">Other Skills</h6>
+                            </Plx>
+                            <Plx className="title" parallaxData={this.titleParallax}>
+                                SKILLS
+                            </Plx>
+                            <Plx animateWhenNotInViewport={true} parallaxData={this.centerWideDotsParallax} className="center-wide dots">
+                                {Array.from(Array(64).keys()).map((dot: number) => {
+                                    return <span className="dot" key={dot}></span>
+                                })}
+                            </Plx>
+                        </div>
                     </Plx>
                 </StyledSkillsContainer>
             </>

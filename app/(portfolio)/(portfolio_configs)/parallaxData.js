@@ -1,4 +1,4 @@
-import {primary, secondary, tertiary} from './colors'
+import { primary, secondary, tertiary } from './colors'
 
 const parallaxBackgroundNavbar = [
     {
@@ -6,34 +6,34 @@ const parallaxBackgroundNavbar = [
         duration: '90vh',
         properties: [
             {
-                startValue: tertiary,
-                endValue: tertiary,
-                property: 'backgroundColor',
-            },
-        ],
+                startValue: 'rgba(255,255,255,0)',
+                endValue: 'rgba(255,255,255,0)',
+                property: 'backgroundColor'
+            }
+        ]
     },
     {
         start: '70vh',
         duration: '20vh',
         properties: [
             {
-                startValue: tertiary,
-                endValue: secondary,
-                property: 'backgroundColor',
-            },
-        ],
+                startValue: 'rgba(255,255,255,0)',
+                endValue: 'rgba(255,255,255,0)',
+                property: 'backgroundColor'
+            }
+        ]
     },
     {
         start: '320vh',
         duration: '20vh',
         properties: [
             {
-                startValue: secondary,
-                endValue: tertiary,
-                property: 'backgroundColor',
-            },
-        ],
-    },
+                startValue: 'rgba(255,255,255,0)',
+                endValue: 'rgba(255,255,255,0)',
+                property: 'backgroundColor'
+            }
+        ]
+    }
 ]
 
 const parallaxColorNavbar = [
@@ -43,28 +43,45 @@ const parallaxColorNavbar = [
         properties: [
             {
                 startValue: secondary,
-                endValue: tertiary,
-                property: 'color',
-            },
-        ],
+                endValue: secondary,
+                property: 'color'
+            }
+        ]
     },
     {
-        start: '320vh',
+        start: '90vh',
+        duration: '20vh',
+        properties: [
+            {
+                startValue: secondary,
+                endValue: tertiary,
+                property: 'color'
+            }
+        ]
+    },
+    {
+        start: '390vh',
         duration: '20vh',
         properties: [
             {
                 startValue: tertiary,
                 endValue: secondary,
-                property: 'color',
-            },
+                property: 'color'
+            }
+        ]
+    },
+    {
+        start: '530vh',
+        duration: '18vh',
+        properties: [
             {
                 startValue: 0,
-                endValue: -115,
+                endValue: 120,
                 unit: '%',
-                property: 'translateX',
-            },
-        ],
-    },
+                property: 'translateX'
+            }
+        ]
+    }
 ]
 
 const parallaxColorNavbarUnderline = [
@@ -74,22 +91,33 @@ const parallaxColorNavbarUnderline = [
         properties: [
             {
                 startValue: secondary,
-                endValue: tertiary,
-                property: 'backgroundColor',
-            },
-        ],
+                endValue: secondary,
+                property: 'backgroundColor'
+            }
+        ]
     },
     {
-        start: '320vh',
-        duration: '20vh',
+        start: '90vh',
+        duration: '110vh',
+        properties: [
+            {
+                startValue: secondary,
+                endValue: tertiary,
+                property: 'backgroundColor'
+            }
+        ]
+    },
+    {
+        start: '390vh',
+        duration: '10vh',
         properties: [
             {
                 startValue: tertiary,
                 endValue: secondary,
-                property: 'backgroundColor',
-            },
-        ],
-    },
+                property: 'backgroundColor'
+            }
+        ]
+    }
 ]
 
 const firstIcon = [
@@ -101,52 +129,52 @@ const firstIcon = [
                 startValue: 3,
                 endValue: 3,
                 unit: 'vw',
-                property: 'translateX',
+                property: 'translateX'
             },
             {
                 startValue: 3,
                 endValue: 4,
                 unit: 'vh',
-                property: 'translateY',
-            },
-        ],
+                property: 'translateY'
+            }
+        ]
     },
     {
-        start: '270vh',
-        duration: '30vh',
+        start: '500vh',
+        duration: '20vh',
         properties: [
             {
                 startValue: 3,
                 endValue: 3,
                 unit: 'vw',
-                property: 'translateX',
+                property: 'translateX'
             },
             {
                 startValue: 4,
                 endValue: 28,
                 unit: 'vh',
-                property: 'translateY',
-            },
-        ],
+                property: 'translateY'
+            }
+        ]
     },
     {
-        start: '300vh',
-        duration: '50vh',
+        start: '520vh',
+        duration: '30vh',
         properties: [
             {
                 startValue: 3,
                 endValue: 50,
                 unit: 'vw',
-                property: 'translateX',
+                property: 'translateX'
             },
             {
                 startValue: 30,
                 endValue: 32,
                 unit: 'vh',
-                property: 'translateY',
-            },
-        ],
-    },
+                property: 'translateY'
+            }
+        ]
+    }
 ]
 
 const secondIcon = [
@@ -158,52 +186,52 @@ const secondIcon = [
                 startValue: 3,
                 endValue: 6,
                 unit: 'vw',
-                property: 'translateX',
+                property: 'translateX'
             },
             {
                 startValue: 9,
                 endValue: 4,
                 unit: 'vh',
-                property: 'translateY',
-            },
-        ],
+                property: 'translateY'
+            }
+        ]
     },
     {
-        start: '270vh',
-        duration: '30vh',
+        start: '500vh',
+        duration: '20vh',
         properties: [
             {
                 startValue: 6,
                 endValue: 6,
                 unit: 'vw',
-                property: 'translateX',
+                property: 'translateX'
             },
             {
                 startValue: 4,
                 endValue: 30,
                 unit: 'vh',
-                property: 'translateY',
-            },
-        ],
+                property: 'translateY'
+            }
+        ]
     },
     {
-        start: '300vh',
-        duration: '50vh',
+        start: '520vh',
+        duration: '30vh',
         properties: [
             {
                 startValue: 6,
                 endValue: 50,
                 unit: 'vw',
-                property: 'translateX',
+                property: 'translateX'
             },
             {
                 startValue: 30,
                 endValue: 40,
                 unit: 'vh',
-                property: 'translateY',
-            },
-        ],
-    },
+                property: 'translateY'
+            }
+        ]
+    }
 ]
 
 const thirdIcon = [
@@ -215,52 +243,52 @@ const thirdIcon = [
                 startValue: 3,
                 endValue: 9,
                 unit: 'vw',
-                property: 'translateX',
+                property: 'translateX'
             },
             {
                 startValue: 15,
                 endValue: 4,
                 unit: 'vh',
-                property: 'translateY',
-            },
-        ],
+                property: 'translateY'
+            }
+        ]
     },
     {
-        start: '270vh',
-        duration: '30vh',
+        start: '500vh',
+        duration: '20vh',
         properties: [
             {
                 startValue: 9,
                 endValue: 9,
                 unit: 'vw',
-                property: 'translateX',
+                property: 'translateX'
             },
             {
                 startValue: 4,
                 endValue: 32,
                 unit: 'vh',
-                property: 'translateY',
-            },
-        ],
+                property: 'translateY'
+            }
+        ]
     },
     {
-        start: '300vh',
-        duration: '50vh',
+        start: '520vh',
+        duration: '30vh',
         properties: [
             {
                 startValue: 9,
                 endValue: 50,
                 unit: 'vw',
-                property: 'translateX',
+                property: 'translateX'
             },
             {
                 startValue: 30,
                 endValue: 48,
                 unit: 'vh',
-                property: 'translateY',
-            },
-        ],
-    },
+                property: 'translateY'
+            }
+        ]
+    }
 ]
 
 const parallaxColorIcons = [
@@ -271,9 +299,9 @@ const parallaxColorIcons = [
             {
                 startValue: secondary,
                 endValue: tertiary,
-                property: 'fill',
-            },
-        ],
+                property: 'fill'
+            }
+        ]
     },
     {
         start: '320vh',
@@ -282,10 +310,10 @@ const parallaxColorIcons = [
             {
                 startValue: tertiary,
                 endValue: secondary,
-                property: 'fill',
-            },
-        ],
-    },
+                property: 'fill'
+            }
+        ]
+    }
 ]
 
 let contactsStyles = [
@@ -293,25 +321,20 @@ let contactsStyles = [
         src: '../img/newportfolio/icons/instagram.svg',
         parallaxPosition: firstIcon,
         parallaxColor: parallaxColorIcons,
-        link: 'https://www.instagram.com/nicolapasqua99/',
+        link: 'https://www.instagram.com/nicolapasqua99/'
     },
     {
         src: '../img/newportfolio/icons/linkedin.svg',
         parallaxPosition: secondIcon,
         parallaxColor: parallaxColorIcons,
-        link: 'https://www.linkedin.com/in/nicola-pasqualini-27988219a',
+        link: 'https://www.linkedin.com/in/nicola-pasqualini-27988219a'
     },
     {
         src: '../img/newportfolio/icons/github.svg',
         parallaxPosition: thirdIcon,
         parallaxColor: parallaxColorIcons,
-        link: 'https://github.com/nicolapasqua99',
-    },
+        link: 'https://github.com/nicolapasqua99'
+    }
 ]
 
-export {
-    parallaxColorNavbar,
-    parallaxColorNavbarUnderline,
-    parallaxBackgroundNavbar,
-    contactsStyles,
-}
+export { parallaxColorNavbar, parallaxColorNavbarUnderline, parallaxBackgroundNavbar, contactsStyles }

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { primary, secondary, tertiary } from './(portfolio_configs)/colors'
 import { ColorProp } from '../(utils)/(models)/styled.props.models'
 
-const TitleList = styled.h2<ColorProp>`
+const TitleList = styled.h2`
     position: relative;
     padding-top: 12vh;
     left: 0vh;
@@ -12,7 +12,7 @@ const TitleList = styled.h2<ColorProp>`
     font-size: 4rem;
     font-weight: 600;
     text-align: center;
-    color: ${props => props.color || 'black'};
+    color: var(--secondary);
 `
 
 const Container = styled.div`
@@ -27,7 +27,7 @@ const Container = styled.div`
     justify-content: center;
 `
 
-const TitleProject = styled.h3<ColorProp>`
+const TitleProject = styled.h3`
     position: relative;
     left: 0vh;
     margin: auto;
@@ -36,10 +36,10 @@ const TitleProject = styled.h3<ColorProp>`
     font-size: 3rem;
     font-weight: 400;
     text-align: center;
-    color: ${props => props.color || 'black'};
+    color: var(--secondary);
 `
 
-const ProjectDesc = styled.p<ColorProp>`
+const ProjectDesc = styled.p`
     position: relative;
     padding-top: 2vh;
     padding-bottom: 3vh;
@@ -50,10 +50,10 @@ const ProjectDesc = styled.p<ColorProp>`
     font-size: 2.5rem;
     font-weight: 400;
     text-align: center;
-    color: ${props => props.color || 'black'};
+    color: var(--secondary);
 `
 
-const TitleUniProject = styled.h4<ColorProp>`
+const TitleUniProject = styled.h4`
     position: relative;
     left: 0vh;
     width: 20vw;
@@ -62,10 +62,10 @@ const TitleUniProject = styled.h4<ColorProp>`
     font-size: 3rem;
     font-weight: 400;
     text-align: center;
-    color: ${props => props.color || 'black'};
+    color: var(--secondary);
 `
 
-const UniProjectDesc = styled.p<ColorProp>`
+const UniProjectDesc = styled.p`
     position: relative;
     left: 0vh;
     padding: 2vh 2vw 3vh 2vw;
@@ -76,10 +76,10 @@ const UniProjectDesc = styled.p<ColorProp>`
     text-align: justify;
     height: auto;
     margin-bottom: 4vh;
-    color: ${props => props.color || 'black'};
+    color: var(--secondary);
     &.middle {
-        border-left: 2px solid #274546;
-        border-right: 2px solid #274546;
+        border-left: 2px solid var(--primary);
+        border-right: 2px solid var(--primary);
     }
     & a {
         position: absolute;
@@ -87,10 +87,10 @@ const UniProjectDesc = styled.p<ColorProp>`
         bottom: -1vh;
         text-align: center;
         width: calc(16vw - 4px);
-        color: ${props => props.color || 'black'};
+        color: var(--secondary);
     }
     & a:visited {
-        color: ${props => props.color || 'black'};
+        color: var(--secondary);
     }
 `
 
@@ -109,54 +109,54 @@ class Projects extends React.Component {
     render() {
         return (
             <>
-                <TitleList color={this.state.primary}>Some project I&apos;ve worked on</TitleList>
+                <TitleList >Some project I&apos;ve worked on</TitleList>
                 <Container>
-                    <TitleProject color={this.state.primary}>My Site</TitleProject>
-                    <ProjectDesc color={this.state.primary}>
+                    <TitleProject>My Site</TitleProject>
+                    <ProjectDesc>
                         That&apos;s the site you are visiting right now, It&apos;s a special project for me because I&apos;ve been working on it for years now, and I think I started it from zero so many times I can&apos;t remember. I always find some
                         things I could have done better. The main purpose of this website was to allow me to test my programming skills (I began my React journey by creating the first version of this), but after a while, it became sufficient to allow
                         me to use it as a portfolio to present myself to others.
                     </ProjectDesc>
-                    <TitleProject color={this.state.primary}>University Projects</TitleProject>
-                    <ProjectDesc color={this.state.primary}>
+                    <TitleProject>University Projects</TitleProject>
+                    <ProjectDesc>
                         During my years of studying at university, I got the chance to be part of some projects. Some of them had nothing to do with informatics and some of them were pure code development.
                     </ProjectDesc>
-                    <TitleUniProject color={this.state.primary}>CodeFrag</TitleUniProject>
-                    <TitleUniProject color={this.state.primary}>Moview</TitleUniProject>
-                    <TitleUniProject color={this.state.primary}>BOOM</TitleUniProject>
-                    <UniProjectDesc color={this.state.primary}>
+                    <TitleUniProject>CodeFrag</TitleUniProject>
+                    <TitleUniProject>Moview</TitleUniProject>
+                    <TitleUniProject>BOOM</TitleUniProject>
+                    <UniProjectDesc>
                         CodeFrag is a platform that developers can use to share snippets of code from various programming languages. The work I&apos;ve done with my group was to interview some target people and look on the internet at our
                         competitors&apos; websites to get an idea of what we needed to stand out from the crowd, and after that, we created a simple wireframe.
                     </UniProjectDesc>
-                    <UniProjectDesc className={'middle'} color={this.state.primary}>
+                    <UniProjectDesc className={'middle'}>
                         Moview is a chatbot that is able to suggest films to the user based on some key parameters. This project started by doing some research about competitors and doing a lot of brainstorming. After that, we started to train
                         Dialogflow. From it, we became able to get the keywords from a natural language request and use them to research The Movie DB API to get the films the user might want to watch. That second part was done by a nodeJS server.
                         <a target={'blank'} href={'https://t.me/moview_chatbot'}>
                             https://t.me/moview_chatbot
                         </a>
                     </UniProjectDesc>
-                    <UniProjectDesc color={this.state.primary}>
+                    <UniProjectDesc>
                         BOOM is the name we gave to a project about finding a solution to the low number of visitors to the museum. We did many different tasks, starting from a general analysis of the museum&apos;s access during the year and then
                         moving to a specific approach using a Value Proposition Canvas. After the research, we created a postcard and a poster to advertise our idea.
                     </UniProjectDesc>
-                    <TitleProject color={this.state.primary}>Some other projects i did</TitleProject>
-                    <ProjectDesc color={this.state.primary}>Those are projects I&apos;ve done because I wanted to help someone or because I got the occasion to start a big project that sadly ended up closing.</ProjectDesc>
-                    <TitleUniProject color={this.state.primary}>Munari Automazioni</TitleUniProject>
-                    <TitleUniProject color={this.state.primary}>Miari Magazine</TitleUniProject>
-                    <TitleUniProject color={this.state.primary}>Miari Admin</TitleUniProject>
-                    <UniProjectDesc color={this.state.primary}>
+                    <TitleProject>Some other projects i did</TitleProject>
+                    <ProjectDesc>Those are projects I&apos;ve done because I wanted to help someone or because I got the occasion to start a big project that sadly ended up closing.</ProjectDesc>
+                    <TitleUniProject>Munari Automazioni</TitleUniProject>
+                    <TitleUniProject>Miari Magazine</TitleUniProject>
+                    <TitleUniProject>Miari Admin</TitleUniProject>
+                    <UniProjectDesc>
                         This is a website for an Italian society that introduces the society and the services it provides, as well as the possibility to request an estimate for a specific work.
                         <a target={'blank'} href={'https://www.munariautomazioni.it/'}>
                             www.munariautomazioni.it
                         </a>
                     </UniProjectDesc>
-                    <UniProjectDesc className={'middle'} color={this.state.primary}>
+                    <UniProjectDesc className={'middle'}>
                         Miari Magazine is a website where photographers can view the work of their colleagues, read interviews, and submit their own work. 
                         <a target={'blank'} href={'https://www.miarimagazine.com/'}>
                             www.miarimagazine.com
                         </a>
                     </UniProjectDesc>
-                    <UniProjectDesc color={this.state.primary}>
+                    <UniProjectDesc>
                         Miari Admin is a simple website with authentication created in Django that lets Miari Magazine admins look at the submission that has been sent.
                         <a target={'blank'} href={'https://miariadmin.herokuapp.com/auth'}>
                             miariadmin.herokuapp.com

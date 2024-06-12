@@ -22,28 +22,27 @@ const Section = styled.div<ColorProp>`
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: ${props => props.color || 'white'};
     scroll-snap-align: start;
     &#HOME {
+        background-color: var(--tertiary);
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background-color: var(--tertiary);
     }
     &#SKILLS {
+        background-color: var(--secondary);
         height: 300vh;
     }
-    // &#BIO, &#PROJECTS {
+    &#PROJECTS {
+        background-color: var(--tertiary);
+        height: calc(164vh - 80px);
+    }
+    &#CONTACT {
+        background-color: var(--primary);
     //     width: calc(100vw - 80px);
     //     margin: 40px;
     //     border: 2px solid black;
-    // }
-    // &#BIO {
-    //     height: calc(100vh - 180px);
-    // }
-    &#PROJECTS {
-        height: calc(164vh - 80px);
     }
 `
 
@@ -67,23 +66,6 @@ const Rect = styled.div`
     left: 0;
     width: 100vw;
     height: 100vh;
-`
-
-const RectErrorResponsiveness = styled.div<ColorProp>`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: ${props => props.color || 'white'};
-    & h1 {
-        position: absolute;
-        width: 80vw;
-        left: 10vw;
-        text-align: center;
-        font-size: 4rem;
-        top: 20vh;
-    }
 `
 
 class Page extends React.Component {
@@ -278,7 +260,6 @@ class Page extends React.Component {
         } else {
             return (
                 <>
-                    {this.state.ratio}
                     <Rect ref={this.rectDim} />
                     <Header>
                         <Plx parallaxData={parallaxBackgroundNavbar}>
