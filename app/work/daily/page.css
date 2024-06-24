@@ -2,14 +2,14 @@ main {
     width: 100vw;
     height: calc(100vh - 56px);
     padding-bottom: 56px;
-    background: linear-gradient(90deg, var(--primary) 0%, var(--tertiary) 100%);
+    background: radial-gradient(var(--secondary) 0%, var(--secondary) 100%);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 header {
     h1 {
-        color: var(--secondary);
+        color: var(--primary);
         text-decoration: underline;
     }
 }
@@ -80,7 +80,7 @@ div.people-container {
         font-size: 20px;
         font-weight: 600;
         color: white;
-        color: var(--secondary);
+        color: var(--primary);
         text-transform: capitalize;
         text-decoration: underline;
         text-align: center;
@@ -92,14 +92,14 @@ div.people-container {
         align-items: center;
         font-size: 16px;
         color: white;
-        color: var(--secondary);
+        color: var(--primary);
         text-transform: capitalize;
     }
 }
 & .divider {
     height: 8rem;
     width: 0;
-    border-left: 4px dotted var(--secondary);
+    border-left: 4px dotted var(--primary);
     transform: translateY(-24px);
     &:last-of-type {
             display: none;
@@ -171,37 +171,37 @@ div.person-container {
         transition: 0.4s ease all;
     }
     &.talked {
-        border: 2px solid var(--secondary-medium-opacity);
+        border: 2px solid var(--primary);
         background-color: var(--secondary-low-opacity);
-        color: var(--secondary-low-opacity);
+        color: var(--tertiary-low-opacity);
         transition: 0.4s ease all 0s;
         & span.dot {
             transition: 0.4s ease all 0s;
-            background-color: var(--secondary-low-opacity);
+            background-color: var(--tertiary-low-opacity);
         }
         & span.tick {
             transition: 0.4s ease all .2s;
-            background-color: var(--secondary);
+            background-color: var(--tertiary);
         }
         &::selection {
-            color: var(--secondary-low-opacity);
+            color: var(--primary-low-opacity);
         }
     }
     &.not-talked {
-        border: 2px solid var(--secondary);
-        background-color: var(--secondary-low-opacity);
-        color: var(--secondary);
+        border: 2px solid var(--primary);
+        background-color: var(--tertiary-low-opacity);
+        color: var(--tertiary);
         transition: 0.4s ease all .2s;
         & span.dot {
             transition: 0.4s ease all .2s;
-            background-color: var(--secondary);
+            background-color: var(--tertiary);
         }
         & span.tick {
             transition: 0.4s ease all 0s;
-            background-color: var(--secondary-no-opacity);
+            background-color: var(--tertiary-no-opacity);
         }
         &::selection {
-            color: var(--secondary);
+            color: var(--tertiary);
         }
     }
 }
