@@ -12,6 +12,7 @@ const StyledSkillsContainer = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     & .sectionContainer {
         width: 80vw;
         height: calc(84vh - 8rem);
