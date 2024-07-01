@@ -16,3 +16,16 @@ exports.getPeopleData = onRequest({ cors: true }, async (req, res) => {
         res.json('Data requested not found')
     }
 })
+
+exports.getNotes = onRequest({ cors: true }, async (req, res) => {
+    const collectionData = await getFirestore().collection('notes').get()
+    if (collectionData) {
+        let data: any = []
+        collectionData.forEach((collectionElement: any) => {
+            data.push(collectionElement.data())
+        })
+        res.json({ result: data })
+    } else {
+        res.json('Data requested not found')
+    }
+})

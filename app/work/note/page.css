@@ -101,9 +101,10 @@ main {
     }
     & .button-container {
         display: flex;
-        flex-flow: row wrap;
+        flex-flow: row nowrap;
         align-items: center;
-        margin-bottom: 2rem;
+        justify-content: space-between;
+        margin: 2rem 2rem 0 2rem;
         & button {
             display: flex;
             align-items: center;
@@ -111,7 +112,6 @@ main {
             width: fit-content;
             padding: 2rem;
             font-size: 2rem;
-            margin: 2rem 0rem 0rem 2rem;
             background-color: transparent;
             outline: none;
             border: none;
@@ -124,11 +124,13 @@ main {
         }
     }
     & > div:last-of-type {
-        height: calc(100% - 78px - 19rem);
-        width: calc(100% - 7rem);
-        margin: 4rem 2rem 2rem 2rem;
-        padding: 1rem;
+        /* & > div:nth-of-type(3) { */
+        height: calc(100% - 12rem - 8px);
+        width: calc(100% - 4rem - 8px);
+        margin: 4rem 2rem;
         overflow-y: overlay;
+        z-index: 2;
+        position: relative;
         &::-webkit-scrollbar {
             margin-right: 4px;
             display: block;
@@ -144,9 +146,9 @@ main {
         }
     }
     & .tiptap-background {
-        height: calc(100% - 78px - 21rem);
+        height: calc(100% - 16rem + 4px);
         width: calc(100% - 8rem);
-        margin: calc(16rem + 4px) 2rem 2rem 2rem;
+        margin: calc(10rem - 4px) 2rem 4rem 2rem;
         box-shadow: rgba(0, 0, 1, 0.2) 0px 7px 29px 0px inset;
         border-radius: 8px;
         position: absolute;
@@ -154,7 +156,7 @@ main {
     & .tiptap {
         width: calc(100% - 8rem);
         height: calc(100% - 8rem);
-        margin: 4rem;
+        margin: 2rem;
         outline: none;
         > * + * {
             margin-top: 0.75em;
@@ -162,6 +164,8 @@ main {
         ul,
         ol {
             padding: 0 1rem;
+            display: flex;
+            flex-flow: column;
         }
         li {
             padding-left: 1rem;

@@ -8,8 +8,8 @@
   },
   "functions": [
     {
-      "source": "functions/people",
-      "codebase": "people",
+      "source": "functions/work",
+      "codebase": "work",
       "ignore": [
         "node_modules",
         ".git",
