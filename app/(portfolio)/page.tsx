@@ -23,27 +23,7 @@ const Section = styled.div<ColorProp>`
     width: 100vw;
     height: 100vh;
     scroll-snap-align: start;
-    &#HOME {
-        background-color: var(--tertiary);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-    &#SKILLS {
-        background-color: var(--secondary);
-        height: 300vh;
-    }
-    &#PROJECTS {
-        background-color: var(--tertiary);
-        height: calc(164vh - 80px);
-    }
-    &#CONTACT {
-        background-color: var(--primary);
-    //     width: calc(100vw - 80px);
-    //     margin: 40px;
-    //     border: 2px solid black;
-    }
+    z-index: 2;
 `
 
 const Header = styled.div`
@@ -273,6 +253,7 @@ class Page extends React.Component {
                     </Section>
                     <Section id="SKILLS" color={this.state.secondary}>
                         <Skills />
+                        <span id="SKILLSREF"></span>
                     </Section>
                     <Section id="PROJECTS" color={this.state.secondary}>
                         <Projects />

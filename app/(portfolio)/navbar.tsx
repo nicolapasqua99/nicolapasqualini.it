@@ -86,7 +86,7 @@ class Navbar extends React.Component {
                             </Plx>
                         </StyledNavItem>
                         <StyledNavItem>
-                            <a href="#SKILLS">SKILLS</a>
+                            <a href="#SKILLSREF">SKILLS</a>
                             <Plx parallaxData={parallaxColorNavbarUnderline}>
                                 <span />
                             </Plx>

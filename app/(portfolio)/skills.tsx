@@ -17,6 +17,10 @@ const StyledSkillsContainer = styled.div`
         width: 80vw;
         height: calc(84vh - 8rem);
         margin: calc(8vh + 8rem) 10vw;
+        transform: translate(10px, 10px);
+        position: fixed;
+        top: 0;
+        left: 0;
     }
     & .content {
         display: flex;
@@ -792,7 +796,8 @@ class Skills extends React.Component {
         return (
             <>
                 <StyledSkillsContainer>
-                    <Plx parallaxData={this.sectionParallax} className="sectionContainer">
+                    {/* <Plx parallaxData={this.sectionParallax} className="sectionContainer"> */}
+                    <div className="sectionContainer">
                         {/* <Plx animateWhenNotInViewport={true} parallaxData={this.lancetHorizontalParallax} className="lancet horizontal" /> */}
                         {/* <Plx animateWhenNotInViewport={true} parallaxData={this.lancetVerticalParallax} className="lancet vertical" /> */}
                         <div className="content">
@@ -821,7 +826,7 @@ class Skills extends React.Component {
                                 </Plx>
                             </div>
                             <div className="modeling body">
-                            <div className="mask">
+                                <div className="mask">
                                     <Plx animateWhenNotInViewport={true} parallaxData={this.maskParallaxBottomLeft} className="bg" />
                                 </div>
                                 <Plx animateWhenNotInViewport={true} parallaxData={this.svgParallax} className="cpu-text">
@@ -851,7 +856,8 @@ class Skills extends React.Component {
                                 })}
                             </Plx>
                         </div>
-                    </Plx>
+                    </div>
+                    {/* </Plx> */}
                 </StyledSkillsContainer>
             </>
         )
