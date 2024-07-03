@@ -172,9 +172,10 @@ div.person-container {
     }
     &.talked {
         border: 2px solid var(--primary);
-        background-color: var(--secondary-low-opacity);
+        background-image: var(--secondary);
         color: var(--tertiary-low-opacity);
-        transition: 0.4s ease all 0s;
+        transition: all .4s 0s;
+        backdrop-filter: brightness(0.6);
         & span.dot {
             transition: 0.4s ease all 0s;
             background-color: var(--tertiary-low-opacity);

@@ -1,0 +1,25 @@
+{
+  "uid": "RhpjtDa2BkRNLDMDsMIFTWHX1g82",
+  "email": "daily@stbroom.it",
+  "emailVerified": false,
+  "isAnonymous": false,
+  "providerData": [
+    {
+      "providerId": "password",
+      "uid": "daily@stbroom.it",
+      "displayName": null,
+      "email": "daily@stbroom.it",
+      "phoneNumber": null,
+      "photoURL": null
+    }
+  ],
+  "stsTokenManager": {
+    "refreshToken": "AMf-vBwru29BNxozt3f6D7cEqNRNRmtAYqZieOahba1OCod8VRAb41O8bJY22K0tb42PZzeDQGpJ3gKJNb23ULh0K6XUNu8B_DNEwr1zlp17nJ0Zwbx1pvPdBLWZ9fqEr4f34A_G1rmQyHS1kdSUALPh4Uec6JDi7-OWPHdNLlOYJsCqQ6SPW5Ub_ifWn3unoHQZw8yRRDb71ySzhm5fxL455oNqHYEGQ-OZvozJfNYy78TiP2RV7Zc",
+    "accessToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijc5M2Y3N2Q0N2ViOTBiZjRiYTA5YjBiNWFkYzk2ODRlZTg1NzJlZTYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbmljb2xhcGFzcXVhbGluaS1wb3J0Zm9saW8iLCJhdWQiOiJuaWNvbGFwYXNxdWFsaW5pLXBvcnRmb2xpbyIsImF1dGhfdGltZSI6MTcxOTk5MzcyNSwidXNlcl9pZCI6IlJocGp0RGEyQmtSTkxETURzTUlGVFdIWDFnODIiLCJzdWIiOiJSaHBqdERhMkJrUk5MRE1Ec01JRlRXSFgxZzgyIiwiaWF0IjoxNzE5OTkzNzI1LCJleHAiOjE3MTk5OTczMjUsImVtYWlsIjoiZGFpbHlAc3Ricm9vbS5pdCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJkYWlseUBzdGJyb29tLml0Il19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.koYZjBX9mAd_dSv7RRmfcOWNCaDb48TFDmVScXJV28uc8nckYJGJpct1H_0eTWW_uJUnMKofC8tMYUgqDIex5yIKmyrNoZbLYJBqAPFb4Jja9Ke-B43URRvEd5xFBmqmpBTf51tnEwwTLIgIJV9JuQUbxQ26d7NTva_mTECjeDeeSKRg_sXX0SifJQXp5BoqWduy6_uSHgKK_r4IyJRPjMitLo-uo-WqogvYAlndUGwUKkbX2_2Z-1lD7PhFMQ6cFd8gEnZ53DJEp2z8sHbF9wR-RjRW46hmk6X_fqcshWLzr2nrWFSwDOJzGLbDFPs3eGJVJhWxzszj8qhmng0w_w",
+    "expirationTime": 1719997325877
+  },
+  "createdAt": "1719993286793",
+  "lastLoginAt": "1719993725914",
+  "apiKey": "AIzaSyDiOYqooARBJLjKGOEJzA395bwsSKL9VGI",
+  "appName": "[DEFAULT]"
+}
