@@ -15,6 +15,9 @@
         "@tiptap/pm": "^2.4.0",
         "@tiptap/react": "^2.4.0",
         "@tiptap/starter-kit": "^2.4.0",
+        "@types/node": "20.3.1",
+        "@types/react": "18.2.14",
+        "@types/react-dom": "18.2.6",
         "eslint": "8.43.0",
         "eslint-config-next": "13.4.7",
         "file-saver": "^2.0.5",
@@ -32,9 +35,6 @@
     },
     "devDependencies": {
         "@types/file-saver": "^2.0.5",
-        "@types/node": "20.3.1",
-        "@types/react": "18.2.14",
-        "@types/react-dom": "18.2.6",
         "encoding": "^0.1.13"
     }
 }
