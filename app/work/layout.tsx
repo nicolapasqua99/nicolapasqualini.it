@@ -2,6 +2,7 @@ import { auth } from 'firebase-admin'
 import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
 import { initFirebaseApp } from '../lib/firebase-admin'
+import { redirect } from 'next/navigation'
 
 initFirebaseApp()
 
@@ -10,14 +11,14 @@ export default async function WorkLayout({ children }: { children: React.ReactNo
 
     //Validate if the cookie exist in the request
     if (!session) {
-        return NextResponse.redirect(new URL('/login/'))
+        redirect("/login");
     }
 
     //Use Firebase Admin to validate the session cookie
     const decodedClaims = await auth().verifySessionCookie(session, true)
 
     if (!decodedClaims) {
-        return NextResponse.redirect(new URL('/login'))
+        redirect("/login");
     }
 
     return <>{ children }</>

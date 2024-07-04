@@ -5,13 +5,10 @@ import './page.css'
 import { UserCredential, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { auth } from '../lib/firebase'
 import { FormEvent, useState } from 'react'
-import { useRouter } from 'next/navigation'
 
 export default function Home() {
-    const router = useRouter()
-
     const [error, setError] = useState<string | null>(null)
-    const [user, setUser] = useState<any>({})
+    const [user, setUser] = useState<any>(null)
 
     async function signOutUser() {
         //Sign out with the Firebase client
@@ -23,7 +20,17 @@ export default function Home() {
         })
 
         if (response.status === 200) {
-            router.push('/login')
+            setUser(null)
+        }
+    }
+
+    async function isLoggedIn() {
+        const response = await fetch('/api/login')
+
+        if (response.status === 200) {
+            setUser(response)
+        } else {
+            setUser(null)
         }
     }
 
@@ -46,37 +53,36 @@ export default function Home() {
                         }
                     }).then(response => {
                         if (response.status === 200) {
-                            console.log('logged in')
                             setUser(response)
-                            router.push('/work/daily')
+                        } else if (response.status === 400) {
+                            setError(response.status.toString() + 'wrong password')
                         } else {
-                            console.log('not logged in')
-                            setError('not logged in')
+                            setError(response.status.toString() + JSON.stringify(response))
                         }
+                    }).catch(error => {
+                        setError('generic error')
                     })
                 })
             }
         } catch (error: any) {
-            setError(error.message)
+            setError(error)
         }
     }
 
     return (
         <main>
-            <h2>Status: {user ? 'logged in' : 'need to login'}</h2>
-            {error && <div style={{ color: 'red' }}>{error}</div>}
             <form onSubmit={onSubmit}>
-                <h1>Insert password to continue</h1>
-                <div className="passwordinputcontainer">
+                {/* <h1>Insert password to continue</h1> */}
+                {!user && <>
                     <input className="passwordinput" type="password" name="psw" />
-                </div>
-                <div className="passwordbuttoncontainer">
-                    <button type="submit">LOGIN</button>
-                </div>
-                <button type="button" onClick={() => signOutUser()}>
+                    <button type="submit">LOGIN</button></>}
+                {user && <button type="button" onClick={() => signOutUser()}>
                     LOGOUT
-                </button>
-                <p>{JSON.stringify(user, null, 2)}</p>
+                </button>}
+                <footer>
+                    {error && <p style={{ marginBottom: '1rem', color: 'var(--primary)' }}>{error}</p>}
+                    <b onClick={() => isLoggedIn()}>refresh status</b>
+                </footer>
             </form>
         </main>
     )

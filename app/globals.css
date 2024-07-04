@@ -6,9 +6,11 @@
     color: rgb(28, 33, 34);
     scroll-behavior: smooth;
 }
+
 body::-webkit-scrollbar {
     display: none;
 }
+
 .viridian {
     --viridian: rgba(107, 144, 128, 1);
     --cambridge-blue: rgba(164, 195, 178, 1);
@@ -16,11 +18,14 @@ body::-webkit-scrollbar {
     --sandy-brown: rgba(252, 176, 126, 1);
     --midnight-green: rgba(8, 76, 97, 1);
 }
+
 :root {
-    --primary: rgba(252, 176, 126, 1); /* #fcb07e */
+    --primary: rgba(252, 176, 126, 1);
+    /* #fcb07e */
     --primary-medium-opacity: rgba(252, 176, 126, .6);
     --primary-low-opacity: rgba(252, 176, 126, .2);
-    --secondary: rgba(8, 76, 97, 1);/* #084c61 */
+    --secondary: rgba(8, 76, 97, 1);
+    /* #084c61 */
     --secondary-no-opacity: rgba(8, 76, 97, 0);
     --secondary-medium-opacity: rgba(8, 76, 97, .6);
     --secondary-low-opacity: rgba(8, 76, 97, .2);
@@ -31,7 +36,10 @@ body::-webkit-scrollbar {
     --dark-background: #000000;
     --gradient: radial-gradient(ellipse at left top, var(--primary) 0%, var(--tertiary) 100%);
     --old-gradient: linear-gradient(90deg, #28827d 0%, rgba(79, 92, 158, 1) 100%);
+    --box-shadow: rgba(0, 0, 1, 0.2) 0px 7px 29px 0px;
+    --box-shadow-neu: 20px 20px 60px #074152, -20px -20px 60px #095770;
 }
+
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -124,6 +132,7 @@ video {
     font: inherit;
     vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -138,17 +147,21 @@ nav,
 section {
     display: block;
 }
+
 body {
     line-height: 1;
 }
+
 ol,
 ul {
     list-style: none;
 }
+
 blockquote,
 q {
     quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -156,6 +169,7 @@ q:after {
     content: '';
     content: none;
 }
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
