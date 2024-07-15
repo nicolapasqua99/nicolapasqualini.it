@@ -1,5 +1,6 @@
 import { initializeApp, getApps, getApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
+import { getFirestore } from 'firebase-admin/firestore'
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_API_KEY,
@@ -11,7 +12,15 @@ const firebaseConfig = {
     databaseURL: process.env.NEXT_PUBLIC_DATABASE_URL
 }
 
-const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig)
-const auth = getAuth(app)
 
-export { auth }
+export function initFirebaseApp() {
+    getApps().length > 0 ? getApp() : initializeApp(firebaseConfig)
+}
+
+export function auth() {
+    return getAuth(getApps().length > 0 ? getApps()[0] : initializeApp(firebaseConfig))
+}
+
+export function firestore() {
+    return getFirestore(getApps().length > 0 ? getApps()[0] : initializeApp(firebaseConfig))
+}

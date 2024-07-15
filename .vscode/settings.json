@@ -20,5 +20,7 @@
         "titleBar.inactiveForeground": "#15202b99"
     },
     "peacock.color": "#d78e00",
-    "peacock.remoteColor": "#9398c0"
+    "peacock.remoteColor": "#9398c0",
+    "IDX.aI.enableInlineCompletion": true,
+    "IDX.aI.enableCodebaseIndexing": true
 }

@@ -1,4 +1,4 @@
-import { adminAuth } from '@/app/lib/firebase-admin'
+import { adminAuth } from '@/app/(lib)/firebase-admin'
 import { cookies, headers } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
 
@@ -15,11 +15,13 @@ export async function POST(request: NextRequest, response: NextResponse) {
                     expiresIn
                 })
                 const options = {
-                    name: 'session',
+                    name: '__session',
                     value: sessionCookie,
                     maxAge: expiresIn,
                     httpOnly: true,
-                    secure: true
+                    secure: true,
+                    expires: new Date(Date.now() + expiresIn),
+                    path: '/'
                 }
                 cookies().set(options)
             }
@@ -32,7 +34,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
 }
 
 export async function GET(request: NextRequest) {
-    const session = cookies().get('session')?.value || ''
+    const session = cookies().get('__session')?.value || ''
     if (!session) {
         return NextResponse.json({ isLogged: false }, { status: 401 })
     }

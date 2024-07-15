@@ -3,7 +3,7 @@
 import './page.css'
 
 import { UserCredential, signInWithEmailAndPassword, signOut } from 'firebase/auth'
-import { auth } from '../lib/firebase'
+import { auth } from '../(lib)/firebase'
 import { FormEvent, useState } from 'react'
 
 export default function Home() {
