@@ -38,7 +38,7 @@ export async function GET(request: NextRequest) {
     if (!session) {
         return NextResponse.json({ isLogged: false }, { status: 401 })
     }
-
+    
     const decodedClaims = await adminAuth().verifySessionCookie(session, true)
     if (!decodedClaims) {
         return NextResponse.json({ isLogged: false }, { status: 401 })

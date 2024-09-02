@@ -1,10 +1,6 @@
-import { auth } from 'firebase-admin'
 import { cookies } from 'next/headers'
-import { NextResponse } from 'next/server'
-import { initFirebaseApp } from '../(lib)/firebase-admin'
 import { redirect } from 'next/navigation'
-
-initFirebaseApp()
+import { adminAuth } from '../(lib)/firebase-admin';
 
 export default async function WorkLayout({ children }: { children: React.ReactNode }) {
     const session = cookies().get('__session')?.value || ''
@@ -15,7 +11,7 @@ export default async function WorkLayout({ children }: { children: React.ReactNo
     }
 
     //Use Firebase Admin to validate the session cookie
-    const decodedClaims = await auth().verifySessionCookie(session, true)
+    const decodedClaims = await adminAuth().verifySessionCookie(session, true)
 
     if (!decodedClaims) {
         redirect("/login");

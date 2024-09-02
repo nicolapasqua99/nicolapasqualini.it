@@ -1,9 +1,9 @@
-import { firestore } from "@/app/(lib)/firebase"
+import { adminFirestore } from "@/app/(lib)/firebase-admin"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function GET(request: NextRequest, response: NextResponse) {
     try {
-        const collectionData = await firestore().collection('people').get()
+        const collectionData = await adminFirestore().collection('people').get()
         if (collectionData) {
             let data: any = []
             collectionData.forEach((collectionElement: any) => {
