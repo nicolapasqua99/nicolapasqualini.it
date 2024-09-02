@@ -17,6 +17,7 @@ interface Skill {
     proficiency: 'Class' | 'Race' | 'Background' | 'none' | 'DoubledClass'
     proficiencyShort: 'C' | 'R' | 'B' | 'N' | 'DC'
     value: number
+    expertise: boolean
 }
 
 function getAbilityModifier(score: AbilityValue): string {
@@ -55,8 +56,8 @@ function getAbilityModifier(score: AbilityValue): string {
 
 function calculateSkillValues(skills: Skill[], abilities: AbilityEntry[]): void {
     skills.forEach((skill: Skill) => {
-        let ability: AbilityEntry | undefined = abilities.find((ability: AbilityEntry) => { 
-            return ability.name === skill.base 
+        let ability: AbilityEntry | undefined = abilities.find((ability: AbilityEntry) => {
+            return ability.name === skill.base
         })
         let abilityScore: AbilityValue = ability?.baseValue || 10
         let modifier: string = getAbilityModifier(abilityScore)
@@ -107,7 +108,8 @@ export default function Home() {
             base: 'DEX',
             proficiency: 'Race',
             proficiencyShort: 'R',
-            value: 0
+            value: 0,
+            expertise: false
         },
         {
 
@@ -115,7 +117,8 @@ export default function Home() {
             base: 'WIS',
             proficiency: 'none',
             proficiencyShort: 'N',
-            value: 0
+            value: 0,
+            expertise: false
         },
         {
 
@@ -123,7 +126,8 @@ export default function Home() {
             base: 'INT',
             proficiency: 'Background',
             proficiencyShort: 'B',
-            value: 0
+            value: 0,
+            expertise: false
         },
         {
 
@@ -131,7 +135,8 @@ export default function Home() {
             base: 'STR',
             proficiency: 'none',
             proficiencyShort: 'N',
-            value: 0
+            value: 0,
+            expertise: false
         },
         {
 
@@ -139,7 +144,8 @@ export default function Home() {
             base: 'CHA',
             proficiency: 'Class',
             proficiencyShort: 'C',
-            value: 0
+            value: 0,
+            expertise: false
         },
         {
 
@@ -147,7 +153,8 @@ export default function Home() {
             base: 'INT',
             proficiency: 'Class',
             proficiencyShort: 'C',
-            value: 0
+            value: 0,
+            expertise: false
         },
         {
 
@@ -155,7 +162,8 @@ export default function Home() {
             base: 'WIS',
             proficiency: 'none',
             proficiencyShort: 'N',
-            value: 0
+            value: 0,
+            expertise: false
         },
         {
 
@@ -163,7 +171,8 @@ export default function Home() {
             base: 'CHA',
             proficiency: 'DoubledClass',
             proficiencyShort: 'DC',
-            value: 0
+            value: 0,
+            expertise: false
         },
         {
 
@@ -171,7 +180,8 @@ export default function Home() {
             base: 'INT',
             proficiency: 'none',
             proficiencyShort: 'N',
-            value: 0
+            value: 0,
+            expertise: false
         },
         {
 
@@ -179,7 +189,8 @@ export default function Home() {
             base: 'WIS',
             proficiency: 'Class',
             proficiencyShort: 'C',
-            value: 0
+            value: 0,
+            expertise: false
         },
         {
 
@@ -187,7 +198,8 @@ export default function Home() {
             base: 'INT',
             proficiency: 'Class',
             proficiencyShort: 'C',
-            value: 0
+            value: 0,
+            expertise: false
         },
         {
 
@@ -195,7 +207,8 @@ export default function Home() {
             base: 'WIS',
             proficiency: 'none',
             proficiencyShort: 'N',
-            value: 0
+            value: 0,
+            expertise: false
         },
         {
 
@@ -203,7 +216,8 @@ export default function Home() {
             base: 'CHA',
             proficiency: 'none',
             proficiencyShort: 'N',
-            value: 0
+            value: 0,
+            expertise: false
         },
         {
 
@@ -211,7 +225,8 @@ export default function Home() {
             base: 'CHA',
             proficiency: 'DoubledClass',
             proficiencyShort: 'DC',
-            value: 0
+            value: 0,
+            expertise: false
         },
         {
 
@@ -219,7 +234,8 @@ export default function Home() {
             base: 'INT',
             proficiency: 'Race',
             proficiencyShort: 'R',
-            value: 0
+            value: 0,
+            expertise: false
         },
         {
 
@@ -227,7 +243,8 @@ export default function Home() {
             base: 'DEX',
             proficiency: 'none',
             proficiencyShort: 'N',
-            value: 0
+            value: 0,
+            expertise: false
         },
         {
 
@@ -235,7 +252,8 @@ export default function Home() {
             base: 'DEX',
             proficiency: 'none',
             proficiencyShort: 'N',
-            value: 0
+            value: 0,
+            expertise: false
         },
         {
 
@@ -243,9 +261,36 @@ export default function Home() {
             base: 'WIS',
             proficiency: 'Background',
             proficiencyShort: 'B',
-            value: 0
+            value: 0,
+            expertise: false
         },
     ]
+
+    const basicStats: any = {
+        "Proficiency": "+3",
+        "CA": "14",
+        "Initiative": "+4",
+        "Speed": "9m",
+        "Darkvision": "18m",
+        "Inspiration": "0",
+        "Temp HP": "0",
+        "Current HP": "29",
+        "Max HP": "39",
+    }
+
+    const spellSlots: number[] = [
+        4,
+        3,
+        2,
+        0,
+        0,
+    ]
+
+    const level: any = {
+        "Bard": 6,
+        "Rogue": 0
+    }
+
 
     calculateSkillValues(skills, abilities)
 
@@ -254,100 +299,63 @@ export default function Home() {
             <div className="basic-info">
                 <h1>Kralumin Askultam | Half Elf Noble</h1>
                 <div className="levels">
-                    <div className="class-levels">
-                        <p>Bard</p>
-                        <p className="arrow">{'->'}</p>
-                        <span className="level gained"></span>
-                        <span className="level gained"></span>
-                        <span className="level gained"></span>
-                        <span className="level gained"></span>
-                        <span className="level"></span>
-                        <span className="level"></span>
-                        <span className="level"></span>
-                        <span className="level"></span>
-                    </div>
-                    <p className='divider'>|</p>
-                    <div className="class-levels">
-                        <p>Rogue</p>
-                        <p className="arrow">{'->'}</p>
-                        <span className="level"></span>
-                        <span className="level"></span>
-                        <span className="level"></span>
-                        <span className="level"></span>
-                        <span className="level"></span>
-                        <span className="level"></span>
-                        <span className="level"></span>
-                        <span className="level"></span>
-                    </div>
+                    {Object.keys(level).map((key: string) => {
+                        return <>
+                            <div className="class-levels" key={key}>
+                                <p>{key}</p>
+                                <p className="arrow">{'->'}</p>
+                                {Array.from(Array(20).keys()).map((value) => {
+                                    if (value < level[key]) return <span className="level gained" key={value}></span>
+                                    else if (value - level[key] < 2) return <span className="level" key={value}></span>
+                                })}
+                            </div>
+                        </>
+                    })}
                 </div>
             </div>
             <div className='basic-stats-and-image'>
-                <Image src="../img/dnd/kralumin.jpg" alt="Kralumin il bardo" width={500} height={500}/>
+                <div className="image-container">
+                    <Image src="/img/dnd/kralumin.jpg" alt="Kralumin il bardo" width={500} height={500} />
+                </div>
                 <div className="stats">
-                    <div className="stat">
-                        <span className="value">
-                            +4
+                    <div className='hp-counter'>
+                        <span className="max">
+                            {basicStats['Max HP']}
                         </span>
-                        <span className="description">
-                            Initiative
+                        <span className="current">
+                            {basicStats['Current HP']}
                         </span>
-                    </div>
-                    <div className="stat">
-                        <span className="value">
-                            14
+                        <span className="temp">
+                            {basicStats['Temp HP']}
                         </span>
-                        <span className="description">
-                            CA
-                        </span>
-                    </div>
-                    <div className="stat">
-                        <span className="value">
-                            25
-                        </span>
-                        <span className="description">
+                        <span>
                             Max HP
                         </span>
-                    </div>
-                    <div className="stat">
-                        <span className="value">
-                            25
-                        </span>
-                        <span className="description">
+                        <span>
                             Current HP
                         </span>
-                    </div>
-                    <div className="stat">
-                        <span className="value">
-                            0
-                        </span>
-                        <span className="description">
+                        <span>
                             Temp HP
                         </span>
                     </div>
-                    <div className="stat">
-                        <span className="value">
-                            9m
-                        </span>
-                        <span className="description">
-                            Speed
-                        </span>
+                    <div className='spell-slots'>
+                        {spellSlots.map((spell: number, index: number) => {
+                            return <div className='spell-level' key={spell + index}>
+                                <span>{index + 1}</span>
+                                {Array.from(Array(spell).keys()).map((slot: any) => {
+                                    return <>
+                                        <span className='slot'></span>
+                                    </>
+                                })}
+                            </div>
+                        })}
                     </div>
-                    <div className="stat">
-                        <span className="value">
-                            30m
-                        </span>
-                        <span className="description">
-                            Darkvision
-                        </span>
-                    </div>
-                    <div className="stat">
-                        <span className="value">
-                            4
-                        </span>
-                        <span className="description">
-                            Bardic Inspiration
-                        </span>
-                    </div>
+                    {/* {Object.keys(basicStats).map((key: string) => {
+                        return <div className="stat" key={key}>
+                            <span className='description'>{key}</span>
+                            <span className='value'>{basicStats[key]}</span>
+                        </div>
+                    })} */}
                 </div>
             </div>
             <div className="abilities">
@@ -359,7 +367,6 @@ export default function Home() {
                 })}
             </div>
             <div className="skills">
-
                 {skills.map((skill: Skill) => {
                     return <div key={skill.name}>
                         <span className='description'>{skill.name}({skill.base})</span>
