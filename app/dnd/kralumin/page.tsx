@@ -9,13 +9,14 @@ interface AbilityEntry {
     name: Ability
     proficiency: boolean
     baseValue: AbilityValue
+    fullName: string
 }
 
 interface Skill {
     name: string
     base: Ability
-    proficiency: 'Class' | 'Race' | 'Background' | 'none' | 'DoubledClass'
-    proficiencyShort: 'C' | 'R' | 'B' | 'N' | 'DC'
+    proficiency: 'Class' | 'Race' | 'Background' | 'none'
+    proficiencyShort: 'C' | 'R' | 'B' | 'N'
     value: number
     expertise: boolean
 }
@@ -62,8 +63,8 @@ function calculateSkillValues(skills: Skill[], abilities: AbilityEntry[]): void 
         let abilityScore: AbilityValue = ability?.baseValue || 10
         let modifier: string = getAbilityModifier(abilityScore)
         let modifierNum: number = +modifier
-        if (skill.proficiencyShort === 'DC') modifierNum += 4
-        else if (skill.proficiencyShort !== 'N') modifierNum += 2
+        if (skill.proficiencyShort !== 'N') modifierNum += 3
+        if (skill.expertise) modifierNum += 3
         skill.value = modifierNum
     })
 }
@@ -71,31 +72,37 @@ export default function Home() {
     let abilities: AbilityEntry[] = [
         {
             name: 'STR',
+            fullName: 'Strenght',
             proficiency: false,
             baseValue: 11
         },
         {
             name: 'DEX',
+            fullName: 'Dexterity',
             proficiency: true,
             baseValue: 17
         },
         {
             name: 'CON',
+            fullName: 'Constitution',
             proficiency: false,
             baseValue: 15
         },
         {
             name: 'INT',
+            fullName: 'Intelligence',
             proficiency: false,
             baseValue: 13
         },
         {
             name: 'WIS',
+            fullName: 'Wisdom',
             proficiency: false,
             baseValue: 14
         },
         {
             name: 'CHA',
+            fullName: 'Charisma',
             proficiency: true,
             baseValue: 19
         },
@@ -169,10 +176,10 @@ export default function Home() {
 
             name: "Intimidation",
             base: 'CHA',
-            proficiency: 'DoubledClass',
-            proficiencyShort: 'DC',
+            proficiency: 'Class',
+            proficiencyShort: 'C',
             value: 0,
-            expertise: false
+            expertise: true
         },
         {
 
@@ -223,10 +230,10 @@ export default function Home() {
 
             name: "Persuasion",
             base: 'CHA',
-            proficiency: 'DoubledClass',
-            proficiencyShort: 'DC',
+            proficiency: 'Class',
+            proficiencyShort: 'C',
             value: 0,
-            expertise: false
+            expertise: true
         },
         {
 
@@ -350,6 +357,9 @@ export default function Home() {
                             </div>
                         })}
                     </div>
+                    <div className='generic-stats'>
+                        stats
+                    </div>
                     {/* {Object.keys(basicStats).map((key: string) => {
                         return <div className="stat" key={key}>
                             <span className='description'>{key}</span>
@@ -361,16 +371,16 @@ export default function Home() {
             <div className="abilities">
                 {abilities.map((ability: AbilityEntry) => {
                     return <div key={ability.name}>
-                        <span className='description'>{ability.name}</span>
-                        <span>{ability.baseValue}/{getAbilityModifier(ability.baseValue)}</span>
+                        <span className={ability.proficiency ? 'description proficient' : 'description'}>{ability.fullName}</span>
+                        <span><i>{ability.baseValue}</i>{getAbilityModifier(ability.baseValue)}</span>
                     </div>
                 })}
             </div>
             <div className="skills">
                 {skills.map((skill: Skill) => {
                     return <div key={skill.name}>
-                        <span className='description'>{skill.name}({skill.base})</span>
-                        <span>{skill.value}({skill.proficiencyShort})</span>
+                        <span className='description'>{skill.name}<i>{skill.base}</i></span>
+                        <span><i>{skill.proficiencyShort}</i>{skill.expertise && <i>x2</i>}{skill.value}</span>
                     </div>
                 })}
             </div>
