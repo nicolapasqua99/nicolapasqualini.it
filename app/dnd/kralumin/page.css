@@ -15,14 +15,14 @@ main {
     justify-content: space-between;
     width: calc(100vw - 32px);
     margin: 16px 16px 0 16px;
-    padding-bottom: 16px;
+    padding-bottom: 0px;
     border-bottom: 1px solid var(--tertiary);
 
     h1 {
         color: var(--tertiary);
-        height: 32px;
-        font-size: 32px;
-        padding: 16px;
+        height: 20px;
+        font-size: 20px;
+        padding: 4px 16px;
     }
 
     .levels {
@@ -35,7 +35,7 @@ main {
         height: 32px;
         padding: 8px;
         margin: 8px;
-        font-size: 32px;
+        font-size: 20px;
         color: var(--tertiary);
         /* border: 1px solid var(--tertiary); */
         border-radius: 4px;
@@ -44,27 +44,28 @@ main {
 
         & p {
             margin-right: 8px;
+            font-size: 20px;
         }
     }
 
     .divider {
         color: var(--tertiary);
-        font-size: 32px;
-        height: 32px;
+        font-size: 20px;
+        height: 20px;
         padding: 16px 0px 8px;
     }
 
     .arrow {
-        font-weight: 100;
+        font-weight: 800;
         font-family: 'Fira Code';
     }
 
     .level {
-        margin: 4px 4px 0;
+        margin: 2px 4px 0;
         display: block;
-        height: 22px;
-        width: 22px;
-        border-radius: 12px;
+        height: 16px;
+        width: 24px;
+        border-radius: 4px;
         border: 1px solid var(--tertiary);
 
         &.gained {
@@ -74,17 +75,17 @@ main {
 }
 
 .basic-stats-and-image {
-    padding: 16px 30px;
+    padding: 16px 38px;
     display: flex;
     flex-flow: row wrap;
     border-bottom: 1px solid var(--tertiary);
-    justify-content: center;
+    justify-content: space-between;
 
     .image-container {
         height: 100%;
         border-radius: 12px;
         border: 1px solid var(--tertiary);
-        margin: 16px;
+        margin: 16px 0px 16px 0px;
 
         img {
             border-radius: 12px;
@@ -98,7 +99,7 @@ main {
         flex-wrap: wrap;
         justify-content: space-between;
         align-content: flex-start;
-        margin: 16px;
+        margin: 16px 0 16px 16px;
 
         .hp-counter {
             display: flex;
@@ -278,8 +279,117 @@ main {
     }
 }
 
+.spells {
+    padding: 16px 30px;
+    display: flex;
+    flex-flow: row wrap;
+    border-bottom: 1px solid var(--tertiary);
 
-@media only screen and (min-width: 1251px) {
+    .spell-level {
+        color: var(--tertiary);
+        font-size: 20px;
+        font-weight: 600;
+        margin: 8px;
+    }
+
+    .spell-details-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100%;
+        border: none;
+    }
+    
+    .spell-element{
+        border: none !important;
+    }
+
+    div:not(.spell-details) {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        border: 1px solid var(--tertiary);
+        padding: 12px;
+        border-radius: 8px;
+        margin: 8px;
+        width: 100%;
+
+        h2 {
+            color: var(--tertiary);
+            font-size: 20px;
+            font-weight: 600;
+            width: 100%;
+            margin-bottom: 8px;
+
+            i {
+                font-size: 16px;
+                opacity: .2;
+            }
+        }
+
+        p {
+            color: var(--tertiary);
+            font-size: 16px;
+            width: 100%;
+
+            &.spell-description {
+                line-height: 22px;
+            }
+
+            b {
+                font-weight: 900;
+            }
+        }
+
+        .spell-details {
+            width: 100%;
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+
+            &:last-of-type {
+                margin-bottom: 8px;
+            }
+
+            p {
+                border: 1px solid var(--tertiary);
+                border-radius: 8px;
+                padding: 8px;
+                margin: 8px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+
+                &:first-of-type {
+                    margin-left: 0;
+                }
+
+                &:last-of-type {
+                    margin-right: 0;
+                }
+
+                span {
+                    &.description {
+                        font-size: 12px;
+                        font-weight: 600;
+                    }
+
+                    &.value {
+                        font-size: 16px;
+                        font-weight: 600;
+                        margin-bottom: 8px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 769px) {
     .abilities {
         div {
             width: calc(16.6vw - 62px);
@@ -297,8 +407,16 @@ main {
     }
 }
 
-@media only screen and (max-width: 1250px) {
+@media (min-width: 481px) and (max-width: 768px) {
     .basic-stats-and-image {
+        flex-flow: row nowrap;
+         .image-container {
+            img {
+                height: 350px;
+                width: 350px;
+            }
+         }
+
 
         .stats {
             flex-wrap: nowrap;
@@ -325,11 +443,9 @@ main {
             }
         }
     }
-
-
 }
 
-@media only screen and (max-width: 500px) {
+@media (max-width: 480px) {
     .basic-info {
         h1 {
             font-size: 20px;

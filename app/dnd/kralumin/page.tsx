@@ -21,6 +21,26 @@ interface Skill {
     expertise: boolean
 }
 
+type Dice = "0" | "1d4" | "1d6" | "1d8" | "1d10" | "1d12" | "1d20" | "1d100" | "2d4" | "2d6" | "2d8" | "2d10" | "2d12" | "2d20" | "2d100" | "3d4" | "3d6" | "3d8" | "3d10" | "3d12" | "3d20" | "3d100" | "4d4" | "4d6" | "4d8" | "4d10" | "4d12" | "4d20" | "4d100" | "5d4" | "5d6" | "5d8" | "5d10" | "5d12" | "5d20" | "5d100" | "6d4" | "6d6" | "6d8" | "6d10" | "6d12" | "6d20" | "6d100" | "7d4" | "7d6" | "7d8" | "7d10" | "7d12" | "7d20" | "7d100" | "8d4" | "8d6" | "8d8" | "8d10" | "8d12" | "8d20" | "8d100" | "9d4" | "9d6" | "9d8" | "9d10" | "9d12" | "9d20" | "9d100" | "10d4" | "10d6" | "10d8" | "10d10" | "10d12" | "10d20" | "10d100" | "11d4" | "11d6" | "11d8" | "11d10" | "11d12" | "11d20" | "11d100" | "12d4" | "12d6" | "12d8" | "12d10" | "12d12" | "12d20" | "12d100"
+
+type SpellLevels = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+
+interface Spell {
+    spellName: string
+    source: string
+    description: string
+    dice: Record<SpellLevels, Dice>
+    duration: "istantaneous"
+    components: {
+        v: boolean,
+        s: boolean
+        c: boolean | string
+    },
+    range: number
+    castingTime: "1 Action"
+    minLevel: number
+}
+
 function getAbilityModifier(score: AbilityValue): string {
     if (score === 1) return '−5'
     if (score === 2) return '−4'
@@ -68,6 +88,21 @@ function calculateSkillValues(skills: Skill[], abilities: AbilityEntry[]): void 
         skill.value = modifierNum
     })
 }
+
+function handleSpellDescriptionText(text: string): { __html: string } {
+    let tmpString: string = ''
+    let tmpSubstring: string = ''
+    text.split('{').forEach((part: string, index: number) => {
+        if (index !== 0) {
+            tmpSubstring = (parseInt(part.split('}')[0]) * 0.30).toFixed(1)
+            tmpSubstring = parseInt(tmpSubstring.split('.')[1]) > 0 ? tmpSubstring += 'mt ' : tmpSubstring.split('.')[0] += 'mt'
+            tmpString += tmpSubstring + part.split('}')[1]
+        }
+        else tmpString += part
+    })
+    return { __html: tmpString }
+}
+
 export default function Home() {
     let abilities: AbilityEntry[] = [
         {
@@ -283,6 +318,7 @@ export default function Home() {
         "Temp HP": "0",
         "Current HP": "29",
         "Max HP": "39",
+        "Max Spell Slot Level": "3"
     }
 
     const spellSlots: number[] = [
@@ -298,6 +334,35 @@ export default function Home() {
         "Rogue": 0
     }
 
+    const spells: Spell[][] = [
+        [
+            {
+                "spellName": "Thunder Step",
+                "source": "Xanathar's Guide to Everything",
+                "description": "You <b>teleport</b> yourself to an unoccupied space you can see within range. Immediately after you disappear, a thunderous boom sounds, and each creature within <b>{10}</b> of the space you left must make a <b>constitution</b> saving throw, taking <b>3d10 thunder damage</b> on a failed save, or half as much damage on a successful one. The thunder can be heard from up to<b> {300} </b>away. <br>You can bring along objects as long as their weight doesn’t exceed what you can carry. You can also teleport one willing creature of your size or smaller who is carrying gear up to its carrying capacity. The creature must be within {5} of you when you cast this spell, and there must be an unoccupied space within {5} of your destination space for the creature to appear in; otherwise, the creature is left behind.",
+                "dice": {
+                    "1": "0",
+                    "2": "0",
+                    "3": "3d10",
+                    "4": "4d10",
+                    "5": "5d10",
+                    "6": "6d10",
+                    "7": "7d10",
+                    "8": "8d10",
+                    "9": "9d10",
+                },
+                "duration": "istantaneous",
+                "components": {
+                    "v": true,
+                    "s": false,
+                    "c": false,
+                },
+                "range": 90,
+                "castingTime": "1 Action",
+                "minLevel": 3
+            }
+        ]
+    ]
 
     calculateSkillValues(skills, abilities)
 
@@ -310,7 +375,7 @@ export default function Home() {
                         return <>
                             <div className="class-levels" key={key}>
                                 <p>{key}</p>
-                                <p className="arrow">{'->'}</p>
+                                <p className="arrow">{'>'}</p>
                                 {Array.from(Array(20).keys()).map((value) => {
                                     if (value < level[key]) return <span className="level gained" key={value}></span>
                                     else if (value - level[key] < 2) return <span className="level" key={value}></span>
@@ -357,9 +422,6 @@ export default function Home() {
                             </div>
                         })}
                     </div>
-                    <div className='generic-stats'>
-                        stats
-                    </div>
                     {/* {Object.keys(basicStats).map((key: string) => {
                         return <div className="stat" key={key}>
                             <span className='description'>{key}</span>
@@ -367,6 +429,9 @@ export default function Home() {
                         </div>
                     })} */}
                 </div>
+                {/* <div className='generic-stats'>
+                    stats
+                </div> */}
             </div>
             <div className="abilities">
                 {abilities.map((ability: AbilityEntry) => {
@@ -384,6 +449,55 @@ export default function Home() {
                     </div>
                 })}
             </div>
+            <div className="spells">
+                {spells.map((spellList: Spell[], index: number) => {
+                    return <>
+                        <h2 className='spell-level'>
+                            {index === 0 && 'Cantrips'}
+                            {index > 0 && 'Level ' + index}
+                        </h2>
+                        <div className='spell-details-container'>
+                            {spellList.map((spell: Spell) => {
+                                return <div key={spell.spellName} className='spell-element'>
+                                    <h2>{spell.spellName}<i>{spell.source}</i></h2>
+                                    <div className="spell-details">
+                                        <p>
+                                            <span className='value'>{spell.components.v ? 'V' : ''}{spell.components.s ? 'S' : ''}{spell.components.c ? spell.components.c : ''}</span>
+                                            <span className="description">COMPONENTS</span>
+                                        </p>
+                                        <p>
+                                            <span className='value'>{spell.castingTime}</span>
+                                            <span className="description">CASTING TIME</span>
+                                        </p>
+                                        <p>
+                                            <span className='value'>{spell.duration}</span>
+                                            <span className="description">DURATION</span>
+                                        </p>
+                                        <p>
+                                            <span className='value'>{spell.range}</span>
+                                            <span className="description">RANGE</span>
+                                        </p>
+
+                                    </div>
+                                    <div className="spell-details">
+                                        <p>
+                                            <span className='value'>{
+                                                Object.keys(spell.dice).map((key: string) => {
+                                                    if (spell.dice[key as SpellLevels] === '0') return
+                                                    else if (parseInt(basicStats['Max Spell Slot Level']) < parseInt(key)) return
+                                                    else return 'lv' + key + ': ' + spell.dice[key as SpellLevels]
+                                                }).filter((value: string | undefined) => value !== undefined).join(' | ')}</span>
+                                            <span className="description">DICE</span>
+                                        </p>
+                                    </div>
+                                    <p className='spell-description' dangerouslySetInnerHTML={handleSpellDescriptionText(spell.description)}></p>
+                                </div>
+                            })}
+                        </div>
+                    </>
+                })}
+            </div>
         </main>
     )
 }
+
