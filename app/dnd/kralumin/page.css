@@ -1,7 +1,7 @@
 main {
     --primary: #F5F3F5;
-    --secondary: #201E1F;
-    --tertiary: #F4442E;
+    --secondary: #F4442E;
+    --tertiary: #201E1F;
     width: 100vw;
     padding-bottom: 24px;
     display: flex;
@@ -13,8 +13,9 @@ main {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    align-items: center;
     width: calc(100vw - 32px);
-    margin: 16px 16px 0 16px;
+    margin: 0px 16px 0 16px;
     padding-bottom: 0px;
     border-bottom: 1px solid var(--tertiary);
 
@@ -32,7 +33,7 @@ main {
     }
 
     .class-levels {
-        height: 32px;
+        /* height: 32px; */
         padding: 8px;
         margin: 8px;
         font-size: 20px;
@@ -123,6 +124,7 @@ main {
                 font-size: 32px;
                 opacity: .6;
                 transform: translateY(8px);
+
             }
 
             .current {
@@ -237,6 +239,7 @@ main {
         span {
             color: var(--tertiary);
             font-size: 20px;
+            font-weight: 600;
 
             &.description {
                 font-weight: 600;
@@ -271,6 +274,7 @@ main {
         span {
             color: var(--tertiary);
             font-size: 20px;
+            font-weight: 600;
 
             &.description {
                 font-weight: 600;
@@ -301,16 +305,17 @@ main {
         width: 100%;
         border: none;
     }
-    
-    .spell-element{
-        border: none !important;
+
+    .spell-element {
+        border: 1px solid var(--tertiary);
+        /* border: none !important; */
     }
 
     div:not(.spell-details) {
         display: flex;
         flex-flow: row wrap;
         justify-content: space-between;
-        border: 1px solid var(--tertiary);
+        /* border: 1px solid var(--tertiary); */
         padding: 12px;
         border-radius: 8px;
         margin: 8px;
@@ -336,6 +341,10 @@ main {
 
             &.spell-description {
                 line-height: 22px;
+
+                p {
+                    margin: 0 0 8px 0;
+                }
             }
 
             b {
@@ -343,44 +352,52 @@ main {
             }
         }
 
-        .spell-details {
-            width: 100%;
-            display: flex;
-            flex-flow: row;
-            justify-content: space-between;
+    }
 
-            &:last-of-type {
-                margin-bottom: 8px;
+    div.spell-details {
+        width: 100%;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+
+        &:last-of-type {
+            margin-bottom: 8px;
+        }
+
+        p {
+            border: 1px solid var(--tertiary);
+            border-radius: 8px;
+            padding: 8px;
+            margin: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            &:first-of-type {
+                margin-left: 0;
             }
 
-            p {
-                border: 1px solid var(--tertiary);
-                border-radius: 8px;
-                padding: 8px;
-                margin: 8px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
+            &:last-of-type {
+                margin-right: 0;
+            }
 
-                &:first-of-type {
-                    margin-left: 0;
+            span {
+                &.description {
+                    font-size: 12px;
+                    font-weight: 600;
                 }
 
-                &:last-of-type {
-                    margin-right: 0;
-                }
+                &.value {
+                    font-size: 16px;
+                    font-weight: 600;
+                    margin-bottom: 8px;
 
-                span {
-                    &.description {
-                        font-size: 12px;
-                        font-weight: 600;
-                    }
-
-                    &.value {
-                        font-size: 16px;
-                        font-weight: 600;
-                        margin-bottom: 8px;
+                    & svg {
+                        width: 1.3em;
+                        height: 1.3em;
+                        margin-right: 4px;
+                        fill: var(--tertiary);
                     }
                 }
             }
@@ -392,13 +409,13 @@ main {
 @media (min-width: 769px) {
     .abilities {
         div {
-            width: calc(16.6vw - 62px);
+            width: calc(33.3vw - 62px);
         }
     }
 
     .skills {
         div {
-            width: calc(20vw - 116px);
+            width: calc(50vw - 72px);
 
             i {
                 font-size: 16px;
@@ -408,14 +425,19 @@ main {
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
+    .basic-info {
+        margin: 16px 16px 0 16px;
+    }
+
     .basic-stats-and-image {
         flex-flow: row nowrap;
-         .image-container {
+
+        .image-container {
             img {
                 height: 350px;
                 width: 350px;
             }
-         }
+        }
 
 
         .stats {
@@ -446,10 +468,12 @@ main {
 }
 
 @media (max-width: 480px) {
+
     .basic-info {
+
         h1 {
             font-size: 20px;
-            padding: 16px 16px 0 16px;
+            padding: 16px 16px 8px 16px;
         }
 
         .levels {
@@ -469,7 +493,8 @@ main {
     }
 
     .basic-stats-and-image {
-        padding: 0;
+        padding: 0 0 16px 0;
+        justify-content: center;
 
         .image-container {
             height: auto;
@@ -487,6 +512,7 @@ main {
 
             .hp-counter {
                 width: calc(100% - 16px);
+                margin-bottom: 16px;
             }
 
             .spell-slots {
@@ -501,17 +527,38 @@ main {
     }
 
     .abilities {
+        padding: 16px;
+
         div {
             width: 100%;
         }
     }
 
     .skills {
+        padding: 16px;
+
         div {
             width: 100%;
 
             i {
                 font-size: 16px;
+            }
+        }
+    }
+
+    .spells {
+        padding: 16px;
+
+        .spell-details-container {
+            .spell-element {
+                .spell-details {
+                    flex-flow: column;
+
+                    p {
+                        margin: 8px 0;
+                        padding: 8px 0;
+                    }
+                }
             }
         }
     }
