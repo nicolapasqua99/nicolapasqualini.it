@@ -19,26 +19,24 @@ main {
     padding-bottom: 0px;
     border-bottom: 1px solid var(--tertiary);
 
-    h1 {
+    & h1 {
         color: var(--tertiary);
         height: 20px;
         font-size: 20px;
         padding: 4px 16px;
     }
 
-    .levels {
+    & .levels {
         display: flex;
         flex-flow: row nowrap;
 
     }
 
-    .class-levels {
-        /* height: 32px; */
+    & .class-levels {
         padding: 8px;
         margin: 8px;
         font-size: 20px;
         color: var(--tertiary);
-        /* border: 1px solid var(--tertiary); */
         border-radius: 4px;
         display: flex;
         flex-flow: row nowrap;
@@ -49,19 +47,19 @@ main {
         }
     }
 
-    .divider {
+    & .divider {
         color: var(--tertiary);
         font-size: 20px;
         height: 20px;
         padding: 16px 0px 8px;
     }
 
-    .arrow {
+    & .arrow {
         font-weight: 800;
         font-family: 'Fira Code';
     }
 
-    .level {
+    & .level {
         margin: 2px 4px 0;
         display: block;
         height: 16px;
@@ -75,26 +73,26 @@ main {
     }
 }
 
-.basic-stats-and-image {
+& .basic-stats-and-image {
     padding: 16px 38px;
     display: flex;
     flex-flow: row wrap;
     border-bottom: 1px solid var(--tertiary);
     justify-content: space-between;
 
-    .image-container {
+    & .image-container {
         height: 100%;
         border-radius: 12px;
         border: 1px solid var(--tertiary);
         margin: 16px 0px 16px 0px;
 
-        img {
+        & img {
             border-radius: 12px;
             margin: 16px;
         }
     }
 
-    .stats {
+    & .stats {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -102,7 +100,7 @@ main {
         align-content: flex-start;
         margin: 16px 0 16px 16px;
 
-        .hp-counter {
+        & .hp-counter {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
@@ -114,25 +112,25 @@ main {
             padding: 8px 8px 16px;
             border-radius: 12px;
 
-            span {
+            & span {
                 color: var(--tertiary);
                 font-size: 16px;
                 width: 33.3%;
             }
 
-            .max {
+            & .max {
                 font-size: 32px;
                 opacity: .6;
                 transform: translateY(8px);
 
             }
 
-            .current {
+            & .current {
                 font-size: 48px;
                 opacity: 1;
             }
 
-            .temp {
+            & .temp {
                 font-size: 32px;
                 opacity: .6;
                 transform: translateY(8px);
@@ -140,7 +138,7 @@ main {
             }
         }
 
-        .spell-slots {
+        & .spell-slots {
             width: calc(80px * 3);
             border: 1px solid var(--tertiary);
             padding: 8px 8px 16px;
@@ -150,20 +148,20 @@ main {
             justify-content: space-around;
             height: calc(100% - 148px);
 
-            span {
+            & span {
                 text-align: center;
                 width: 20px;
                 margin-bottom: 8px;
             }
 
-            .spell-level {
+            & .spell-level {
                 display: flex;
                 flex-flow: column;
                 font-size: 24px;
                 color: var(--tertiary);
             }
 
-            .slot {
+            & .slot {
                 margin: 4px 0px;
                 width: 16px;
                 height: 16px;
@@ -172,12 +170,12 @@ main {
 
             }
 
-            .used {
+            & .used {
                 background-color: var(--tertiary);
             }
         }
 
-        .generic-stats {
+        & .generic-stats {
             width: calc(80px * 3);
             border: 1px solid var(--tertiary);
             padding: 8px 8px 16px;
@@ -186,7 +184,7 @@ main {
             flex-flow: row nowrap;
             justify-content: space-around;
 
-            .stat {
+            & .stat {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
@@ -196,14 +194,14 @@ main {
                 border-radius: 12px;
                 margin: 12px;
 
-                .value {
+                & .value {
                     font-size: 48px;
                     padding: 8px 16px;
                     color: var(--tertiary);
 
                 }
 
-                .description {
+                & .description {
                     font-size: 24px;
                     padding: 8px 16px;
                     color: var(--tertiary);
@@ -223,7 +221,7 @@ main {
     justify-content: space-between;
     border-bottom: 1px solid var(--tertiary);
 
-    div {
+    & div {
         display: flex;
         flex-flow: row;
         justify-content: space-between;
@@ -232,11 +230,11 @@ main {
         border-radius: 8px;
         margin: 8px;
 
-        i {
+        & i {
             opacity: .2;
         }
 
-        span {
+        & span {
             color: var(--tertiary);
             font-size: 20px;
             font-weight: 600;
@@ -258,7 +256,7 @@ main {
     flex-flow: row wrap;
     border-bottom: 1px solid var(--tertiary);
 
-    div {
+    & div {
         display: flex;
         flex-flow: row;
         justify-content: space-between;
@@ -267,11 +265,11 @@ main {
         border-radius: 8px;
         margin: 8px;
 
-        i {
+        & i {
             opacity: .2;
         }
 
-        span {
+        & span {
             color: var(--tertiary);
             font-size: 20px;
             font-weight: 600;
@@ -289,14 +287,14 @@ main {
     flex-flow: row wrap;
     border-bottom: 1px solid var(--tertiary);
 
-    .spell-level {
+    & .spell-level {
         color: var(--tertiary);
         font-size: 20px;
         font-weight: 600;
         margin: 8px;
     }
 
-    .spell-details-container {
+    & .spell-details-container {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -306,12 +304,12 @@ main {
         border: none;
     }
 
-    .spell-element {
+    & .spell-element {
         border: 1px solid var(--tertiary);
         /* border: none !important; */
     }
 
-    div:not(.spell-details) {
+    & div:not(.spell-details) {
         display: flex;
         flex-flow: row wrap;
         justify-content: space-between;
@@ -321,20 +319,20 @@ main {
         margin: 8px;
         width: 100%;
 
-        h2 {
+        & h2 {
             color: var(--tertiary);
             font-size: 20px;
             font-weight: 600;
             width: 100%;
             margin-bottom: 8px;
 
-            i {
+            & i {
                 font-size: 16px;
                 opacity: .2;
             }
         }
 
-        p {
+        & p {
             color: var(--tertiary);
             font-size: 16px;
             width: 100%;
@@ -347,14 +345,14 @@ main {
                 }
             }
 
-            b {
+            & b {
                 font-weight: 900;
             }
         }
 
     }
 
-    div.spell-details {
+    & div.spell-details {
         width: 100%;
         display: flex;
         flex-flow: row;
@@ -364,7 +362,7 @@ main {
             margin-bottom: 8px;
         }
 
-        p {
+        & p {
             border: 1px solid var(--tertiary);
             border-radius: 8px;
             padding: 8px;
@@ -382,7 +380,7 @@ main {
                 margin-right: 0;
             }
 
-            span {
+            & span {
                 &.description {
                     font-size: 12px;
                     font-weight: 600;
@@ -406,61 +404,115 @@ main {
 }
 
 
-@media (min-width: 769px) {
+@media (min-width: 891px) {
+    .basic-info {
+        /* &::before {
+            content: "large";
+        } */
+        margin: 8px 16px 0;
+        padding-bottom: 8px;
+
+        & .levels {
+            display: flex;
+
+            & .class-levels {
+                padding: 0;
+                margin: 8px 16px;
+                display: flex;
+            }
+        }
+    }
+
+    .basic-stats-and-image {
+        & .stats {
+            & .hp-counter {
+                display: flex;
+            }
+
+            & .spell-slots {
+                display: flex;
+
+                & .spell-level {
+                    display: flex;
+                }
+            }
+        }
+    }
+
     .abilities {
-        div {
+        & div {
             width: calc(33.3vw - 62px);
         }
     }
 
     .skills {
-        div {
+        & div {
             width: calc(50vw - 72px);
 
-            i {
+            & i {
                 font-size: 16px;
             }
         }
     }
 }
 
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 890px) {
     .basic-info {
+        /* &::before {
+            content: "medium";
+        } */
         margin: 16px 16px 0 16px;
+
+        & .levels {
+            display: flex;
+
+            & .class-levels {
+                display: flex;
+            }
+        }
     }
 
     .basic-stats-and-image {
         flex-flow: row nowrap;
 
-        .image-container {
-            img {
+        & .image-container {
+            & img {
                 height: 350px;
                 width: 350px;
             }
         }
 
 
-        .stats {
+        & .stats {
             flex-wrap: nowrap;
 
-            .spell-slots {
+            & .hp-counter {
+                display: flex;
+            }
+
+            & .spell-slots {
                 margin-top: 16px;
-                height: 100%;
+                display: flex;
+
+            }
+
+            & .spell-slots .spell-level {
+                display: flex;
             }
         }
     }
 
     .abilities {
-        div {
+        & div {
             width: calc(33.3vw - 62px);
         }
     }
 
     .skills {
-        div {
+        & div {
             width: calc(50vw - 72px);
 
-            i {
+            & i {
                 font-size: 16px;
             }
         }
@@ -471,22 +523,34 @@ main {
 
     .basic-info {
 
-        h1 {
+        /* &::before {
+            content: "small";
+        } */
+        & h1 {
             font-size: 20px;
             padding: 16px 16px 8px 16px;
         }
 
-        .levels {
+        & .levels {
             flex-flow: column;
+            padding-bottom: 8px;
 
-            .class-levels {
+            & .level {
+                height: 3vw;
+                width: 6vw;
+                border-radius: 1vw;
+            }
+
+            & .class-levels {
+                display: flex;
                 align-items: center;
                 font-size: 20px;
                 padding: 0px 8px;
                 margin: 4px 8px;
+                width: 100%;
             }
 
-            .arrow {
+            & .arrow {
                 display: none;
             }
         }
@@ -496,31 +560,46 @@ main {
         padding: 0 0 16px 0;
         justify-content: center;
 
-        .image-container {
+        & .image-container {
             height: auto;
 
-            img {
+            & img {
                 width: 80vw;
                 height: auto;
             }
         }
 
-        .stats {
+        & .stats {
             margin: 0px 24px;
             width: 100%;
             flex-wrap: nowrap;
 
-            .hp-counter {
+            & .hp-counter {
                 width: calc(100% - 16px);
                 margin-bottom: 16px;
+                display: flex;
+
+                & span {
+                    width: 28vw;
+                }
             }
 
-            .spell-slots {
-                height: 100%;
+            & .spell-slots {
                 width: calc(100% - 16px);
+                display: flex;
+                height: auto;
+
+                & .spell-level {
+                    display: flex;
+
+                    & .slot {
+                        width: 4vw;
+                        height: 4vw;
+                    }
+                }
             }
 
-            .generic-stats {
+            & .generic-stats {
                 width: calc(100% - 16px);
             }
         }
@@ -529,7 +608,7 @@ main {
     .abilities {
         padding: 16px;
 
-        div {
+        & div {
             width: 100%;
         }
     }
@@ -537,10 +616,10 @@ main {
     .skills {
         padding: 16px;
 
-        div {
+        & div {
             width: 100%;
 
-            i {
+            & i {
                 font-size: 16px;
             }
         }
@@ -549,12 +628,12 @@ main {
     .spells {
         padding: 16px;
 
-        .spell-details-container {
-            .spell-element {
-                .spell-details {
+        & .spell-details-container {
+            & .spell-element {
+                & .spell-details {
                     flex-flow: column;
 
-                    p {
+                    & p {
                         margin: 8px 0;
                         padding: 8px 0;
                     }
