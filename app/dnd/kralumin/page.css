@@ -1,7 +1,16 @@
 main {
-    --primary: #F5F3F5;
+    /* --primary: #201E1F; */
+    /* --secondary: #F5F3F5; */
+    /* --tertiary: #F4442E; */
+    --primary: #201E1F;
     --secondary: #F4442E;
-    --tertiary: #201E1F;
+    --tertiary: rgba(245, 243, 245, .9);
+    /* --primary: #F5F3F5; */
+    /* --secondary: #201E1F; */
+    /* --tertiary: #F4442E; */
+    /* --primary: #F5F3F5; */
+    /* --secondary: #F4442E; */
+    /* --tertiary: #201E1F; */
     width: 100vw;
     padding-bottom: 24px;
     display: flex;
@@ -29,7 +38,6 @@ main {
     & .levels {
         display: flex;
         flex-flow: row nowrap;
-
     }
 
     & .class-levels {
@@ -144,9 +152,21 @@ main {
             padding: 8px 8px 16px;
             border-radius: 12px;
             display: flex;
-            flex-flow: row nowrap;
-            justify-content: space-around;
-            height: calc(100% - 148px);
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+
+            &:first-of-type {
+                margin-bottom: 16px;
+            }
+
+            & p {
+                width: 100%;
+                color: var(--tertiary);
+                font-size: 24px;
+                text-align: center;
+                margin-bottom: 12px;
+            }
 
             & span {
                 text-align: center;
@@ -175,41 +195,47 @@ main {
             }
         }
 
-        & .generic-stats {
-            width: calc(80px * 3);
-            border: 1px solid var(--tertiary);
-            padding: 8px 8px 16px;
-            border-radius: 12px;
+
+    }
+
+    & .generic-stats {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        margin: 0;
+
+        & .stat {
             display: flex;
-            flex-flow: row nowrap;
-            justify-content: space-around;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid var(--tertiary);
+            border-radius: 12px;
+            margin: 8px 0;
+            padding: 12px;
+            width: calc(50% - 36px);
 
-            & .stat {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-                border: 1px solid var(--tertiary);
-                width: 30%;
-                border-radius: 12px;
-                margin: 12px;
+            &.inspired {
+                background-color: var(--secondary);
+            }
 
-                & .value {
-                    font-size: 48px;
-                    padding: 8px 16px;
-                    color: var(--tertiary);
+            & i {
+                opacity: .2;
+            }
 
+            & span {
+                color: var(--tertiary);
+                font-size: 20px;
+                font-weight: 600;
+
+                &.description {
+                    margin-bottom: 8px;
+                    font-weight: 600;
                 }
 
-                & .description {
-                    font-size: 24px;
-                    padding: 8px 16px;
-                    color: var(--tertiary);
-                    text-decoration: underline;
-                }
             }
         }
-
     }
 
 }
@@ -285,7 +311,6 @@ main {
     padding: 16px 30px;
     display: flex;
     flex-flow: row wrap;
-    border-bottom: 1px solid var(--tertiary);
 
     & .spell-level {
         color: var(--tertiary);
@@ -409,6 +434,7 @@ main {
         /* &::before {
             content: "large";
         } */
+
         margin: 8px 16px 0;
         padding-bottom: 8px;
 
@@ -425,6 +451,8 @@ main {
 
     .basic-stats-and-image {
         & .stats {
+            height: 532px;
+
             & .hp-counter {
                 display: flex;
             }
@@ -436,6 +464,10 @@ main {
                     display: flex;
                 }
             }
+        }
+
+        & .generic-stats {
+            margin: 0;
         }
     }
 
@@ -461,6 +493,7 @@ main {
         /* &::before {
             content: "medium";
         } */
+
         margin: 16px 16px 0 16px;
 
         & .levels {
@@ -473,8 +506,6 @@ main {
     }
 
     .basic-stats-and-image {
-        flex-flow: row nowrap;
-
         & .image-container {
             & img {
                 height: 350px;
@@ -526,6 +557,7 @@ main {
         /* &::before {
             content: "small";
         } */
+
         & h1 {
             font-size: 20px;
             padding: 16px 16px 8px 16px;
@@ -557,20 +589,22 @@ main {
     }
 
     .basic-stats-and-image {
-        padding: 0 0 16px 0;
+        padding: 0 0 8px 0;
         justify-content: center;
+        margin: 0 24px;
 
         & .image-container {
             height: auto;
+            width: 100%;
 
             & img {
-                width: 80vw;
+                width: -webkit-fill-available;
                 height: auto;
             }
         }
 
         & .stats {
-            margin: 0px 24px;
+            margin: 0px;
             width: 100%;
             flex-wrap: nowrap;
 
@@ -589,6 +623,10 @@ main {
                 display: flex;
                 height: auto;
 
+                &:last-of-type {
+                    margin-top: 16px;
+                }
+
                 & .spell-level {
                     display: flex;
 
@@ -598,26 +636,30 @@ main {
                     }
                 }
             }
+        }
 
-            & .generic-stats {
-                width: calc(100% - 16px);
-            }
+        & .generic-stats {
+            margin: 8px 0 0;
         }
     }
 
     .abilities {
-        padding: 16px;
+        padding: 0 0 8px;
+        margin: 8px 24px;
 
         & div {
             width: 100%;
+            margin: 8px 0
         }
     }
 
     .skills {
-        padding: 16px;
+        padding: 0 0 8px;
+        margin: 0 24px;
 
         & div {
             width: 100%;
+            margin: 8px 0;
 
             & i {
                 font-size: 16px;
@@ -626,10 +668,13 @@ main {
     }
 
     .spells {
-        padding: 16px;
+        padding: 0;
+        margin: 8px 24px;
 
         & .spell-details-container {
             & .spell-element {
+                margin: 8px 0;
+
                 & .spell-details {
                     flex-flow: column;
 

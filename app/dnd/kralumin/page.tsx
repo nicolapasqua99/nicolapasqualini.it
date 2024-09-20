@@ -3,6 +3,7 @@ import './page.css'
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver'
 import SwipeVerticalIcon from '@mui/icons-material/SwipeVertical'
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag'
+import Slots from './slots'
 
 type Ability = 'STR' | 'DEX' | 'CON' | 'INT' | 'WIS' | 'CHA'
 
@@ -328,14 +329,6 @@ export default function Home() {
         "Max Spell Slot Level": "3"
     }
 
-    const spellSlots: number[] = [
-        4,
-        3,
-        2,
-        0,
-        0,
-    ]
-
     const level: any = {
         "Bard": 6,
         "Rogue": 0
@@ -635,12 +628,12 @@ export default function Home() {
                 <div className="levels">
                     {Object.keys(level).map((key: string) => {
                         return <>
-                            <div className="class-levels" key={key}>
+                            <div className="class-levels" key={'level' + key}>
                                 <p>{key}</p>
                                 <p className="arrow">{'>'}</p>
                                 {Array.from(Array(20).keys()).map((value) => {
-                                    if (value < level[key]) return <span className="level gained" key={value}></span>
-                                    else if (value - level[key] < 2) return <span className="level" key={value}></span>
+                                    if (value < level[key]) return <span className="level gained" key={'level_slot_' + value}></span>
+                                    else if (value - level[key] < 2) return <span className="level" key={'level_slot_' + value}></span>
                                 })}
                             </div>
                         </>
@@ -672,28 +665,49 @@ export default function Home() {
                             Temp HP
                         </span>
                     </div>
+                   <Slots />
                     <div className='spell-slots'>
-                        {spellSlots.map((spell: number, index: number) => {
-                            return <div className='spell-level' key={spell + index}>
-                                <span>{index + 1}</span>
-                                {Array.from(Array(spell).keys()).map((slot: any) => {
-                                    return <>
-                                        <span className='slot'></span>
-                                    </>
-                                })}
-                            </div>
+                        <p>Bardic Inspiration</p>
+                        {Array.from(Array(parseInt(getAbilityModifier(abilities[1].baseValue).split('+')[1]) + 1).keys()).map((slot: any) => {
+                            return <span className='slot' key={'inspiration_' + slot}></span>
                         })}
                     </div>
-                    {/* {Object.keys(basicStats).map((key: string) => {
-                        return <div className="stat" key={key}>
-                            <span className='description'>{key}</span>
-                            <span className='value'>{basicStats[key]}</span>
-                        </div>
-                    })} */}
                 </div>
-                {/* <div className='generic-stats'>
-                    stats
-                </div> */}
+                <div className='generic-stats'>
+                    <div className="stat">
+                        <span className='description'>Proficiency</span>
+                        <span>{basicStats["Proficiency"]}</span>
+                    </div>
+                    <div className="stat">
+                        <span className='description'>CA</span>
+                        <span>{basicStats["CA"]}</span>
+                    </div>
+                    <div className="stat">
+                        <span className='description'>Initiative</span>
+                        <span>{parseInt(getAbilityModifier(abilities[1].baseValue).split('+')[1]) + 1}</span>
+                    </div>
+                    <div className="stat">
+                        <span className='description'>Speed</span>
+                        <span>{basicStats["Speed"]}</span>
+                    </div>
+                    <div className="stat">
+                        <span className='description'>Darkvision</span>
+                        <span>{basicStats["Darkvision"]}</span>
+                    </div>
+                    {basicStats["Inspiration"] === '1' && <div className="stat inspired">
+                        <span className='description'>Inspiration</span>
+                        <span className='inspired'>Yessa</span>
+                    </div>}
+                    {basicStats["Inspiration"] === '0' && <div className="stat">
+                        <span className='description'>Inspiration</span>
+                        <span className='inspired'>Nothing Bro</span>
+                    </div>}
+                    <div className="stat">
+                        <span className='description'>Temp HP</span>
+                        <span>{basicStats["Temp HP"]}</span>
+                    </div>
+
+                </div>
             </div>
             <div className="abilities">
                 {abilities.map((ability: AbilityEntry) => {
@@ -752,7 +766,7 @@ export default function Home() {
                                             <span className="description">DICE</span>
                                         </p>}
                                     </div>
-                                    <p className='spell-description' dangerouslySetInnerHTML={handleSpellDescriptionText(spell.description)}></p>
+                                    {/* <p className='spell-description' dangerouslySetInnerHTML={handleSpellDescriptionText(spell.description)}></p> */}
                                 </div>
                             })}
                         </div>
