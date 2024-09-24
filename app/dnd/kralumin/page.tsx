@@ -4,6 +4,9 @@ import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver'
 import SwipeVerticalIcon from '@mui/icons-material/SwipeVertical'
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag'
 import Slots from './slots'
+import HPCounter from './hp'
+import BardicInspiration from './bardicInpiration'
+import GenericStats from './genericStats'
 
 type Ability = 'STR' | 'DEX' | 'CON' | 'INT' | 'WIS' | 'CHA'
 
@@ -645,68 +648,12 @@ export default function Home() {
                     <Image src="/img/dnd/kralumin.jpg" alt="Kralumin il bardo" width={500} height={500} />
                 </div>
                 <div className="stats">
-                    <div className='hp-counter'>
-                        <span className="max">
-                            {basicStats['Max HP']}
-                        </span>
-                        <span className="current">
-                            {basicStats['Current HP']}
-                        </span>
-                        <span className="temp">
-                            {basicStats['Temp HP']}
-                        </span>
-                        <span>
-                            Max HP
-                        </span>
-                        <span>
-                            Current HP
-                        </span>
-                        <span>
-                            Temp HP
-                        </span>
-                    </div>
-                   <Slots />
-                    <div className='spell-slots'>
-                        <p>Bardic Inspiration</p>
-                        {Array.from(Array(parseInt(getAbilityModifier(abilities[1].baseValue).split('+')[1]) + 1).keys()).map((slot: any) => {
-                            return <span className='slot' key={'inspiration_' + slot}></span>
-                        })}
-                    </div>
+                    <HPCounter />
+                    <Slots />
+                    <BardicInspiration />
                 </div>
                 <div className='generic-stats'>
-                    <div className="stat">
-                        <span className='description'>Proficiency</span>
-                        <span>{basicStats["Proficiency"]}</span>
-                    </div>
-                    <div className="stat">
-                        <span className='description'>CA</span>
-                        <span>{basicStats["CA"]}</span>
-                    </div>
-                    <div className="stat">
-                        <span className='description'>Initiative</span>
-                        <span>{parseInt(getAbilityModifier(abilities[1].baseValue).split('+')[1]) + 1}</span>
-                    </div>
-                    <div className="stat">
-                        <span className='description'>Speed</span>
-                        <span>{basicStats["Speed"]}</span>
-                    </div>
-                    <div className="stat">
-                        <span className='description'>Darkvision</span>
-                        <span>{basicStats["Darkvision"]}</span>
-                    </div>
-                    {basicStats["Inspiration"] === '1' && <div className="stat inspired">
-                        <span className='description'>Inspiration</span>
-                        <span className='inspired'>Yessa</span>
-                    </div>}
-                    {basicStats["Inspiration"] === '0' && <div className="stat">
-                        <span className='description'>Inspiration</span>
-                        <span className='inspired'>Nothing Bro</span>
-                    </div>}
-                    <div className="stat">
-                        <span className='description'>Temp HP</span>
-                        <span>{basicStats["Temp HP"]}</span>
-                    </div>
-
+                    <GenericStats />
                 </div>
             </div>
             <div className="abilities">
