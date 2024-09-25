@@ -67,6 +67,8 @@ export default class GenericStats extends React.Component {
             this.setState({
                 basicStats: data
             })
+        }, error => {
+            console.error(error)
         })
 
         const dbRefDexterity = ref(realtimeDatabase, 'dnd/kralumin/abilities/dex/value')
