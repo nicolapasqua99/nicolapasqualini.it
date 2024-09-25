@@ -2,9 +2,12 @@ main {
     /* --primary: #201E1F; */
     /* --secondary: #F5F3F5; */
     /* --tertiary: #F4442E; */
-    --primary: #201E1F;
-    --secondary: #F4442E;
+    --primary: rgba(32, 30, 31, 1);
+    --primary-low-opacity: rgba(32, 30, 31, .4);
+    --secondary: rgba(244, 68, 46, 1);
+    --secondary-low-opacity: rgba(244, 68, 46, .4);
     --tertiary: rgba(245, 243, 245, .9);
+    --tertiary-low-opacity: rgba(245, 243, 245, .4);
     /* --primary: #F5F3F5; */
     /* --secondary: #201E1F; */
     /* --tertiary: #F4442E; */
@@ -424,6 +427,84 @@ main {
                     }
                 }
             }
+        }
+    }
+}
+
+.dnd-button {
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 8px 0;
+    background-color: var(--tertiary);
+    color: var(--primary);
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    &.disabled {
+        background-color: var(--tertiary-low-opacity);
+        color: var(--primary-low-opacity);
+        cursor: default;
+    }
+}
+
+dialog.select-level {
+    display: flex;
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: var(--primary);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    z-index: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & h2 {
+        text-align: center;
+    }
+    & svg {
+        color: var(--tertiary);
+        font-size: 40px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 12px;
+        margin: 12px;
+        cursor: pointer;
+    }
+    & button {
+        border: none;
+        outline: none;
+        padding: 24px;
+        margin: 0 8px;
+        background-color: transparent;
+        color: var(--tertiary);
+        font-size: 32px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        font-family: Roboto, Helvetica, Arial, sans-serif;
+        border-bottom: 2px solid var(--tertiary);
+        &:last-of-type {
+            border-bottom: none;
+        }
+        &.disabled {
+            color: var(--tertiary-low-opacity);
+            cursor: default;
         }
     }
 }
