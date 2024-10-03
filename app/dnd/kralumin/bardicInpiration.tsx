@@ -3,14 +3,12 @@
 import { realtimeDatabase } from "@/app/(lib)/firebase"
 import { onValue, ref, set } from "firebase/database";
 import React from "react";
+import { IBardicInspiration } from "./models";
 
 export default class BardicInspiration extends React.Component {
     public state: {
         domLoaded: boolean,
-        bardicInspiration: {
-            used: number,
-            max: number
-        }
+        bardicInspiration: IBardicInspiration
     }
 
     constructor(props: any) {

@@ -3,11 +3,7 @@
 import { realtimeDatabase } from "@/app/(lib)/firebase"
 import { onValue, ref, set } from "firebase/database";
 import React from "react";
-
-interface ISpellSlot {
-    max: number
-    used: number,
-}
+import { ISpellSlot } from "./models";
 
 export default class Slots extends React.Component {
     public state: {

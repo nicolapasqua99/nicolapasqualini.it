@@ -5,11 +5,7 @@ import { get, onValue, ref, set } from "firebase/database";
 import React from "react";
 
 import CloseIcon from '@mui/icons-material/Close';
-
-interface IDNDButtonProps {
-    maxLevel: number
-    spellLevel: number
-}
+import { IDNDButtonProps } from "./models";
 
 export default class DNDButton extends React.Component<IDNDButtonProps> {
     public state: {

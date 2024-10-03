@@ -3,29 +3,10 @@
 import { realtimeDatabase } from "@/app/(lib)/firebase"
 import { onValue, ref, set } from "firebase/database";
 import React from "react";
-
-interface IState {
-    domLoaded: boolean
-    initiative: number
-    proficiency: number
-    armorClass: number
-    speed: number
-    levels: ILevels
-}
-
-interface ILevels {
-    bard: number
-    cleric: number
-    druid: number
-    fighter: number
-    monk: number
-    paladin: number
-    ranger: number
-    rogue: number
-}
+import { IGenericStats, ILevels } from "./models";
 
 export default class GenericStats extends React.Component {
-    public state: IState
+    public state: IGenericStats
 
     constructor(props: any) {
         super(props)

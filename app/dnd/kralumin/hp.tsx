@@ -3,12 +3,7 @@
 import { realtimeDatabase } from "@/app/(lib)/firebase"
 import { onValue, ref, set } from "firebase/database";
 import React from "react";
-
-interface IHPCounter {
-    max: number
-    temp: number
-    current: number
-}
+import { IHPCounter } from "./models";
 
 export default class HPCounter extends React.Component {
     public state: {

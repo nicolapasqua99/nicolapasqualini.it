@@ -5,27 +5,7 @@ import HPCounter from './hp'
 import BardicInspiration from './bardicInpiration'
 import GenericStats from './genericStats'
 import SpellList from './spell_list'
-
-type Ability = 'STR' | 'DEX' | 'CON' | 'INT' | 'WIS' | 'CHA'
-
-type AbilityValue = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30
-interface AbilityEntry {
-    name: Ability
-    proficiency: boolean
-    baseValue: AbilityValue
-    fullName: string
-}
-interface Skill {
-    name: string
-    base: Ability
-    proficiency: 'Class' | 'Race' | 'Background' | 'none'
-    proficiencyShort: 'C' | 'R' | 'B' | 'N'
-    value: number
-    expertise: boolean
-}
-
-
-
+import { AbilityEntry, AbilityValue, Skill } from './models'
 
 function getAbilityModifier(score: AbilityValue): string {
     if (score === 1) return '−5'
@@ -176,7 +156,7 @@ export default function Home() {
             proficiency: 'Class',
             proficiencyShort: 'C',
             value: 0,
-            expertise: false
+            expertise: true
         },
         {
 
@@ -272,10 +252,10 @@ export default function Home() {
 
             name: "Sleight of Hand",
             base: 'DEX',
-            proficiency: 'none',
-            proficiencyShort: 'N',
+            proficiency: 'Class',
+            proficiencyShort: 'C',
             value: 0,
-            expertise: false
+            expertise: true
         },
         {
 
