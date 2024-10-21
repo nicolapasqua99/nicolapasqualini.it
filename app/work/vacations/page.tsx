@@ -8,7 +8,7 @@ Mese;Gennaio;Febbraio;Marzo;Aprile;Maggio;Giugno;Luglio;Agosto;Settembre;Ottobre
 Ferie maturate;0,00;0,00;0,00;0,00;0,00;13,20;13,20;13,60;13,20;13,20;13,60;13,20;13,20;13,60;13,20;13,20;13,60;13,20;13,20;13,60;13,20;13,20;13,60;13,20;13,20;13,60;13,20;13,20;13,60;13,20;13,20;13,60;13,20;13,20;13,60;13,20;
 Permessi maturati;0,00;0,00;0,00;0,00;0,00;8,40;8,80;8,80;8,40;8,80;8,80;8,40;8,80;8,80;8,40;8,80;8,80;8,40;8,80;8,80;8,40;8,80;8,80;8,40;8,80;8,80;8,40;8,80;8,80;8,40;8,80;8,80;8,40;8,80;8,80;8,40;
 Ferie godute;0,00;0,00;0,00;0,00;0,00;0,00;0,00;32,00;0,00;16,00;0,00;24,00;16,00;16,00;0,00;24,00;0,00;32,00;0,00;48,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;
-Permessi goduti;0,00;0,00;0,00;0,00;1,00;0,00;0,00;0,00;0,00;24,00;0,00;0,00;16,00;0,00;0,00;0,00;0,00;2,00;0,00;2,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;`
+Permessi goduti;0,00;0,00;0,00;0,00;1,00;0,00;0,00;0,00;0,00;24,00;0,00;0,00;16,00;0,00;0,00;0,00;0,00;2,00;0,00;2,00;0,00;32,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;0,00;`
 
 type IMonthName = 'Gennaio' | 'Febbraio' | 'Marzo' | 'Aprile' | 'Maggio' | 'Giugno' | 'Luglio' | 'Agosto' | 'Settembre' | 'Ottobre' | 'Novembre' | 'Dicembre'
 
@@ -78,7 +78,7 @@ export default class Home extends React.Component {
                     currentYear = yearCell as unknown as IYearName
                 }
                 currentMonth = csvDataTable[1][indexYearCell] as unknown as IMonthName
-                if (!vacationData![currentYear]) vacationData[currentYear] = {} as unknown as Record<IMonthName, IMonthInfo>
+                if (vacationData && !vacationData![currentYear]) vacationData[currentYear] = {} as unknown as Record<IMonthName, IMonthInfo>
                 totalPermitsAvailable = totalPermitsAvailable + Number(csvDataTable[3][indexYearCell].replace(',', '.')) - Number(csvDataTable[5][indexYearCell].replace(',', '.'))
                 totalVacationsAvailable = totalVacationsAvailable + Number(csvDataTable[2][indexYearCell].replace(',', '.')) - Number(csvDataTable[4][indexYearCell].replace(',', '.'))
                 vacationData![currentYear]![currentMonth] = {
