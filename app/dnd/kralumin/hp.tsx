@@ -58,15 +58,28 @@ export default class HPCounter extends React.Component {
                 <span className="temp">
                     {this.state.hpCounter.temp}
                 </span>
-                <span onClick={() => this.changeHP(1, 'max', 'add')}>
+                <span>
                     Max HP
                 </span>
-                <span onClick={() => this.changeHP(2, 'current', 'remove')}>
+                <span>
                     Current HP
                 </span>
-                <span onClick={() => this.changeHP(4, 'temp', 'add')}>
+                <span>
                     Temp HP
                 </span>
+                <div className="changer-container">
+                    <span className="background-left"></span>
+                    <span className="background-right"></span>
+                    <div className="changer-scroll-container">
+                        <div className="changer">
+                            {
+                                Array.from(Array(20).keys()).map((value: any) => {
+                                    return <span>{value}</span>
+                                })
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

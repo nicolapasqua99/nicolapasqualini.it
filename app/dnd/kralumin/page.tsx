@@ -292,7 +292,7 @@ export default function Home() {
 
     const level: any = {
         "Bard": 6,
-        "Rogue": 0
+        "Rogue": 1
     }
 
     
@@ -305,6 +305,7 @@ export default function Home() {
                 <h1>Kralumin Askultam | Half Elf Noble</h1>
                 <div className="levels">
                     {Object.keys(level).map((key: string) => {
+                        console.log(level)
                         return <>
                             <div className="class-levels" key={'level' + key}>
                                 <p>{key}</p>

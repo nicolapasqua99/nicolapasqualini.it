@@ -4,6 +4,7 @@ main {
     /* --tertiary: #F4442E; */
     --primary: rgba(32, 30, 31, 1);
     --primary-low-opacity: rgba(32, 30, 31, .4);
+    --primary-no-opacity: rgba(32, 30, 31, 0);
     --secondary: rgba(244, 68, 46, 1);
     --secondary-low-opacity: rgba(244, 68, 46, .4);
     --tertiary: rgba(245, 243, 245, .9);
@@ -122,6 +123,58 @@ main {
             border: 1px solid var(--tertiary);
             padding: 8px 8px 16px;
             border-radius: 12px;
+
+            & .changer-container {
+                margin-top: 12px;
+                transform: translate(0, 0);
+                width: 100%;
+
+                & .background-left {
+                    content: '';
+                    position: absolute;
+                    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-no-opacity)40%);
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    z-index: 0;
+                }
+                & .background-right {
+                    content: '';
+                    position: absolute;
+                    background: linear-gradient(270deg, var(--primary) 0%, var(--primary-no-opacity)40%);
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    right: 0;
+                    z-index: 0;
+                }
+
+                & .changer-scroll-container {
+                    width: 100%;
+                    overflow-x: scroll;
+                    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-no-opacity) 30%, var(--primary) 70%, var(--primary-no-opacity) 100%);
+
+
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+
+                    & .changer {
+                        display: flex;
+                        width: fit-content;
+
+                        & span {
+                            width: 50px;
+                            height: 50px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            font-size: 32px;
+                        }
+                    }
+                }
+            }
 
             & span {
                 color: var(--tertiary);
@@ -448,6 +501,7 @@ main {
     justify-content: center;
     width: 100%;
     font-family: Roboto, Helvetica, Arial, sans-serif;
+
     &.disabled {
         background-color: var(--tertiary-low-opacity);
         color: var(--primary-low-opacity);
@@ -470,9 +524,11 @@ dialog.select-level {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     & h2 {
         text-align: center;
     }
+
     & svg {
         color: var(--tertiary);
         font-size: 40px;
@@ -483,6 +539,7 @@ dialog.select-level {
         margin: 12px;
         cursor: pointer;
     }
+
     & button {
         border: none;
         outline: none;
@@ -499,9 +556,11 @@ dialog.select-level {
         width: auto;
         font-family: Roboto, Helvetica, Arial, sans-serif;
         border-bottom: 2px solid var(--tertiary);
+
         &:last-of-type {
             border-bottom: none;
         }
+
         &.disabled {
             color: var(--tertiary-low-opacity);
             cursor: default;
