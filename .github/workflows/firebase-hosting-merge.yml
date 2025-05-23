@@ -11,7 +11,7 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                node-version: [22, 20, 18]
+                node-version: [22]
         steps:
             - uses: 'actions/checkout@v4'
             - uses: 'pnpm/action-setup@v2'
@@ -30,3 +30,6 @@ jobs:
                   firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_NICOLAPASQUALINI_PORTFOLIO }}
                   channelId: live
                   projectId: nicolapasqualini-portfolio
+              env:
+                  FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+                  FIREBASE_CLI_EXPERIMENTS: webframeworks
