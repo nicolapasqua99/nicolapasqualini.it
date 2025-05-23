@@ -122,6 +122,17 @@ const parallaxSocialIconsColor = [
                 property: 'fill'
             }
         ]
+    },
+    {
+        start: '110vh',
+        duration: '10vh',
+        properties: [
+            {
+                startValue: getColors()['on-secondary'],
+                endValue: getColors()['on-tertiary'],
+                property: 'fill'
+            }
+        ]
     }
 ]
 
@@ -133,7 +144,7 @@ export const parallaxSocialMessageColor = [
             {
                 startValue: getColors()['on-primary'],
                 endValue: getColors()['on-primary'],
-                property: 'color'
+                property: 'fill'
             }
         ]
     },
@@ -144,6 +155,17 @@ export const parallaxSocialMessageColor = [
             {
                 startValue: getColors()['on-primary'],
                 endValue: getColors()['on-secondary'],
+                property: 'color'
+            }
+        ]
+    },
+    {
+        start: '110vh',
+        duration: '10vh',
+        properties: [
+            {
+                startValue: getColors()['on-secondary'],
+                endValue: getColors()['on-tertiary'],
                 property: 'color'
             }
         ]

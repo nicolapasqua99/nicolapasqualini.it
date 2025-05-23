@@ -7,6 +7,7 @@ import { SocialIcon } from '../../models/social.icons.model'
 
 const Message = styled.p`
     font-family: var(--title-font);
+    color: var(--on-primary);
     font-size: 3rem;
     font-weight: 600;
     white-space: nowrap;

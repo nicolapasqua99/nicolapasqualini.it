@@ -14,6 +14,8 @@ const StyledExperiencesContainer = styled.div`
         margin-top: 2rem;
     }
     & svg {
+        width: 75vw;
+        height: 32vh;
         & circle {
             fill: var(--on-secondary);
         }
