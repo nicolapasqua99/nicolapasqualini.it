@@ -4,7 +4,13 @@
     color: rgb(28, 33, 34);
     scroll-behavior: smooth;
     --title-font: 'Quicksand', sans-serif;
-    --body-font: 'Quicksand', sans-serif;
+    /* --title-font: 'Rubik Glitch', sans-serif; */
+    /* --title-font: 'Press Start 2P', sans-serif; */
+    /* --title-font: 'Pixelify Sans', sans-serif; */
+    --content-font: 'Quicksand', sans-serif;
+    /* --content-font: 'Press Start 2P', sans-serif; */
+    /* --content-font: 'Pixelify Sans', sans-serif; */
+
 }
 
 body::-webkit-scrollbar {

@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 const StyledTitleContainer = styled.div`
     background-color: var(--primary);
-    font-family: var(--title-font);
     height: 100vh;
     width: 100vw;
     position: relative;
@@ -23,6 +22,7 @@ const StyledTitle = styled.h1`
 
 const StyledSubTitle = styled.p`
     color: var(--on-primary);
+    font-family: var(--content-font);
     font-size: 4rem;
     line-height: 4rem;
     margin-top: 2rem;
