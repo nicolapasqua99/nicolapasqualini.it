@@ -2,7 +2,7 @@ import { adminAuth } from '@/src/lib/firebase-admin'
 import { cookies, headers } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
 
-export async function POST(request: NextRequest, response: NextResponse) {
+export async function POST(request: NextRequest): Promise<NextResponse<{} | { error: string }>> {
     const authorization = (await headers()).get('Authorization')
     try {
         if (authorization?.startsWith('Bearer ')) {
@@ -27,8 +27,8 @@ export async function POST(request: NextRequest, response: NextResponse) {
             }
         }
         return NextResponse.json({}, { status: 200 })
-    } catch (error) {
-        console.error(error)
-        return NextResponse.json({ error }, { status: 500 })
+    } catch (error: any) {
+        let message = 'An error occurred while setting the session cookie.'
+        return NextResponse.json({ error: message }, { status: 500 })
     }
 }
