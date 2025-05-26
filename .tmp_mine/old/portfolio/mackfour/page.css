@@ -1,0 +1,1418 @@
+:root {
+  /*-- Hero colors --*/
+  --stars-color: white;
+  --bg-color: #e0e4cc;
+  --hero-bg-color: #4fb1a1;
+  --bg-gradient: linear-gradient(180deg, #326199 0%, #4fb1a1 85%)
+    /*linear-gradient(180deg, #360033 0%, #0b8793 12.5%, #b92b27 25%, #ffd452 37.5%, #16a085 50%, #ffd452 62.5%, #b92b27 75%, #0b8793 87.5%, #360033 100%);*/;
+  --title-color: white;
+  /*-- Navbar colors --*/
+  --nav-btn: #326199;
+  --nav-bg-color: white;
+  --nav-a-color: white;
+  --nav-border-low: rgba(255, 255, 255, 0.5);
+  --nav-border-high: rgba(255, 255, 255, 1);
+  --nav-a-changed-color: rgb(45, 93, 124);
+  --nav-changed-border-low: rgba(45, 93, 124, 0.5);
+  --nav-changed-border-high: rgba(45, 93, 124, 1);
+  /*-- Section colors --*/
+  --separator: transparent;
+  --title-bio: white;
+  --title-sections: #326199;
+  /*-- Card colors --*/
+  --card-color: white;
+}
+.footer {
+  width: 90%;
+  height: 4%;
+  position: absolute;
+  left: 5%;
+  top: 791%;
+  background-color: white;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 15px;
+}
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 800%;
+  z-index: -2;
+  background-color: var(--bg-color);
+  background-repeat: no-repeat;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  z-index: 2;
+  transition: left 1s ease;
+}
+ul.not-fixed {
+  position: absolute;
+  top: 300px;
+  left: 5%;
+}
+ul.fixed {
+  position: fixed;
+  top: 0%;
+  left: 5%;
+}
+ul.under {
+  position: absolute;
+  top: 530px;
+}
+ul.open {
+  left: 0%;
+}
+ul.close {
+  left: 100%;
+}
+ul.nav-lat {
+  background-color: var(--nav-bg-color);
+  height: 100%;
+  padding: 0 0 2%;
+  border-radius: 0px;
+  width: 100%;
+}
+ul.nav-top {
+  background-color: transparent;
+  height: 5%;
+  padding: 0;
+  width: 90%;
+  margin-top: 48px;
+}
+ul.nav-lat li {
+  position: absolute;
+  margin: auto;
+  height: 10%;
+  width: 20%;
+  margin-left: 40%;
+}
+ul.nav-lat li:nth-of-type(1) {
+  top: 15%;
+}
+ul.nav-lat li:nth-of-type(2) {
+  top: 25%;
+}
+ul.nav-lat li:nth-of-type(3) {
+  top: 35%;
+}
+ul.nav-lat li:nth-of-type(4) {
+  top: 45%;
+}
+ul.nav-lat li:nth-of-type(5) {
+  top: 55%;
+}
+ul.nav-lat li:nth-of-type(6) {
+  top: 65%;
+}
+ul.nav-lat li:nth-of-type(7) {
+  top: 75%;
+}
+ul.nav-top li {
+  float: right;
+  height: 100%;
+  width: 12%;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+ul.nav-lat a {
+  color: var(--nav-a-changed-color);
+  border-bottom: 1px solid var(--nav-changed-border-low);
+  border-top: 1px solid var(--nav-changed-border-low);
+}
+ul.nav-lat a:hover,
+ul.nav-lat a.currentsection {
+  padding-bottom: 15px;
+  margin-top: 9px;
+  padding-top: 15px;
+  border-bottom: solid 2px var(--nav-changed-border-high);
+  border-top: solid 2px var(--nav-changed-border-high);
+  font-size: 18px;
+}
+ul.nav-top a {
+  color: var(--nav-a-color);
+  border-bottom: 3px solid var(--nav-border-low);
+  border-top: 3px solid var(--nav-border-low);
+}
+ul.nav-top a:hover {
+  padding-bottom: 15px;
+  margin-top: 9px;
+  padding-top: 15px;
+  border-bottom: solid 3px var(--nav-border-high);
+  border-top: solid 3px var(--nav-border-high);
+}
+a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  transition: all 0.2s ease;
+}
+.navmove {
+  position: fixed;
+  top: 70px;
+  left: -65px;
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  transition: left 1s ease;
+  z-index: 2;
+  background-color: var(--bg-color);
+}
+.ham {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 400ms;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.hamRotate.active {
+  transform: rotate(45deg);
+}
+.hamRotate180.active {
+  transform: rotate(180deg);
+}
+.line {
+  fill: none;
+  transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+  stroke: var(--nav-btn);
+  stroke-width: 4.5;
+  stroke-linecap: round;
+}
+.ham1 .top {
+  stroke-dasharray: 40 139;
+}
+.ham1 .bottom {
+  stroke-dasharray: 40 180;
+}
+.ham1.active .top {
+  stroke-dashoffset: -98px;
+}
+.ham1.active .bottom {
+  stroke-dashoffset: -138px;
+}
+.hero {
+  display: inline-block;
+  width: 100%;
+  height: 125%;
+  position: absolute;
+}
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-gradient);
+  clip-path: polygon(0 0, 0 100%, 100% 80%, 100% 0);
+}
+.stars {
+  z-index: -1;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150%;
+  transition: opacity 1s ease-in-out;
+}
+@keyframes starsAnimation {
+  from {
+    transform: translateY(-4000px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+.title {
+  height: 10%;
+  display: block;
+  position: absolute;
+  top: 190px;
+  width: 100%;
+  margin: auto;
+  color: var(--title-color);
+  text-align: center;
+}
+.title > h1 {
+  font-size: 40px;
+  font-weight: 500;
+  margin: auto;
+  margin-top: 2%;
+}
+.title > h3 {
+  margin-top: 1%;
+  width: 100%;
+}
+.load {
+  position: absolute;
+  left: 0%;
+  width: 100%;
+  height: 9%;
+  background-color: var(--separator);
+}
+#bio {
+  top: 90%;
+}
+#skills {
+  top: 191%;
+}
+#projects {
+  top: 291%;
+}
+#tools {
+  top: 391%;
+}
+#experiences {
+  top: 491%;
+}
+#contact {
+  top: 591%;
+}
+#other {
+  top: 691%;
+}
+.content {
+  position: absolute;
+  left: 7%;
+  width: 90%;
+  height: 93%;
+  margin-bottom: 5%;
+  perspective: 600;
+}
+.content:nth-of-type(3) {
+  top: 94%;
+}
+.content:nth-of-type(4) {
+  top: 195%;
+}
+.content:nth-of-type(5) {
+  top: 295%;
+}
+.content:nth-of-type(6) {
+  top: 395%;
+}
+.content:nth-of-type(7) {
+  top: 495%;
+}
+.content:nth-of-type(8) {
+  top: 595%;
+}
+.content:nth-of-type(9) {
+  top: 695%;
+}
+.content .card {
+  position: relative;
+  float: left;
+  border-radius: 20px;
+  -webkit-box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.5);
+  background-color: var(--card-color);
+  border-bottom: 30px solid var(--hero-bg-color);
+  width: 19%;
+  height: 60%;
+  margin-left: 1%;
+  transform-style: preserve-3d;
+  transition: all 0.7s ease-in-out;
+}
+.content .card:hover {
+  transform: rotateY(180deg);
+  margin-top: 10%;
+  margin-bottom: 2%;
+}
+.cardlineauno {
+  margin-top: 12%;
+}
+.cardlineadue {
+  margin-top: 12%;
+}
+.card .side {
+  backface-visibility: hidden;
+}
+.card .back {
+  transform: rotateY(180deg);
+}
+.content .card img {
+  margin-left: 20%;
+  margin-top: 20%;
+  width: 60%;
+  height: auto;
+}
+.content h2 {
+  display: block;
+  position: absolute;
+  top: 40px;
+  left: 5%;
+  color: var(--title-sections);
+  font-weight: 600;
+  font-size: 60px;
+  width: auto;
+  height: 10%;
+  padding: 0.5%;
+  border-radius: 20px;
+  background-color: var(--bg-color);
+}
+.content .card p {
+  text-align: center;
+  font-size: 25px;
+  margin: auto;
+  margin-top: 20%;
+  height: 30%;
+  width: 100%;
+  vertical-align: middle;
+}
+.stars > .small {
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: 538px 1115px var(--stars-color), 1561px 1129px var(--stars-color),
+    1700px 1428px var(--stars-color), 916px 1415px var(--stars-color),
+    410px 155px var(--stars-color), 1750px 995px var(--stars-color),
+    342px 1974px var(--stars-color), 66px 1441px var(--stars-color),
+    1774px 1530px var(--stars-color), 1348px 815px var(--stars-color),
+    948px 1035px var(--stars-color), 1441px 1394px var(--stars-color),
+    196px 528px var(--stars-color), 41px 543px var(--stars-color),
+    1558px 985px var(--stars-color), 481px 1907px var(--stars-color),
+    291px 1813px var(--stars-color), 942px 353px var(--stars-color),
+    813px 742px var(--stars-color), 605px 289px var(--stars-color),
+    1343px 1000px var(--stars-color), 330px 812px var(--stars-color),
+    321px 1023px var(--stars-color), 1966px 1868px var(--stars-color),
+    1656px 648px var(--stars-color), 1164px 38px var(--stars-color),
+    415px 1854px var(--stars-color), 768px 513px var(--stars-color),
+    296px 1883px var(--stars-color), 1704px 1292px var(--stars-color),
+    1112px 662px var(--stars-color), 318px 1765px var(--stars-color),
+    373px 168px var(--stars-color), 162px 1684px var(--stars-color),
+    697px 181px var(--stars-color), 132px 1386px var(--stars-color),
+    1337px 769px var(--stars-color), 1276px 1090px var(--stars-color),
+    153px 199px var(--stars-color), 1432px 1054px var(--stars-color),
+    980px 1521px var(--stars-color), 336px 1209px var(--stars-color),
+    1222px 1290px var(--stars-color), 225px 202px var(--stars-color),
+    1778px 1228px var(--stars-color), 1041px 552px var(--stars-color),
+    1489px 525px var(--stars-color), 1166px 1563px var(--stars-color),
+    206px 1715px var(--stars-color), 1754px 423px var(--stars-color),
+    1467px 660px var(--stars-color), 1210px 19px var(--stars-color),
+    736px 210px var(--stars-color), 1423px 1989px var(--stars-color),
+    373px 1687px var(--stars-color), 1172px 1131px var(--stars-color),
+    1603px 532px var(--stars-color), 199px 481px var(--stars-color),
+    865px 465px var(--stars-color), 1082px 600px var(--stars-color),
+    45px 154px var(--stars-color), 321px 398px var(--stars-color),
+    180px 1200px var(--stars-color), 1190px 1171px var(--stars-color),
+    908px 1264px var(--stars-color), 548px 1513px var(--stars-color),
+    1609px 1270px var(--stars-color), 1727px 198px var(--stars-color),
+    1245px 1473px var(--stars-color), 405px 234px var(--stars-color),
+    180px 1027px var(--stars-color), 759px 1398px var(--stars-color),
+    898px 115px var(--stars-color), 827px 262px var(--stars-color),
+    1044px 364px var(--stars-color), 1725px 1408px var(--stars-color),
+    1726px 596px var(--stars-color), 149px 683px var(--stars-color),
+    1890px 1581px var(--stars-color), 810px 1915px var(--stars-color),
+    769px 1786px var(--stars-color), 1904px 759px var(--stars-color),
+    1882px 99px var(--stars-color), 339px 306px var(--stars-color),
+    1888px 1207px var(--stars-color), 1565px 302px var(--stars-color),
+    266px 259px var(--stars-color), 881px 1312px var(--stars-color),
+    1724px 1496px var(--stars-color), 846px 607px var(--stars-color),
+    1351px 1505px var(--stars-color), 1342px 1578px var(--stars-color),
+    553px 115px var(--stars-color), 1880px 251px var(--stars-color),
+    1885px 238px var(--stars-color), 1071px 637px var(--stars-color),
+    563px 448px var(--stars-color), 1935px 992px var(--stars-color),
+    1173px 1892px var(--stars-color), 1276px 34px var(--stars-color),
+    1021px 1225px var(--stars-color), 752px 704px var(--stars-color),
+    1381px 486px var(--stars-color), 1487px 807px var(--stars-color),
+    151px 1801px var(--stars-color), 1289px 683px var(--stars-color),
+    1622px 461px var(--stars-color), 2px 309px var(--stars-color),
+    384px 1351px var(--stars-color), 180px 934px var(--stars-color),
+    1216px 1761px var(--stars-color), 1846px 245px var(--stars-color),
+    1419px 221px var(--stars-color), 233px 346px var(--stars-color),
+    247px 1192px var(--stars-color), 415px 299px var(--stars-color),
+    201px 773px var(--stars-color), 849px 268px var(--stars-color),
+    108px 1559px var(--stars-color), 570px 2px var(--stars-color),
+    1965px 45px var(--stars-color), 533px 1888px var(--stars-color),
+    216px 424px var(--stars-color), 194px 210px var(--stars-color),
+    11px 1819px var(--stars-color), 256px 1486px var(--stars-color),
+    1270px 187px var(--stars-color), 1540px 801px var(--stars-color),
+    457px 514px var(--stars-color), 1105px 1870px var(--stars-color),
+    303px 339px var(--stars-color), 1986px 666px var(--stars-color),
+    1539px 1541px var(--stars-color), 203px 807px var(--stars-color),
+    849px 1465px var(--stars-color), 109px 1215px var(--stars-color),
+    1259px 667px var(--stars-color), 1047px 1790px var(--stars-color),
+    1424px 799px var(--stars-color), 1076px 4px var(--stars-color),
+    423px 883px var(--stars-color), 228px 1444px var(--stars-color),
+    553px 1751px var(--stars-color), 1948px 233px var(--stars-color),
+    873px 1133px var(--stars-color), 559px 84px var(--stars-color),
+    329px 1251px var(--stars-color), 1918px 1056px var(--stars-color),
+    480px 539px var(--stars-color), 694px 90px var(--stars-color),
+    197px 516px var(--stars-color), 552px 320px var(--stars-color),
+    749px 1883px var(--stars-color), 1712px 1661px var(--stars-color),
+    1728px 705px var(--stars-color), 475px 1372px var(--stars-color),
+    1070px 1473px var(--stars-color), 1188px 1097px var(--stars-color),
+    726px 931px var(--stars-color), 225px 262px var(--stars-color),
+    1763px 1033px var(--stars-color), 317px 1207px var(--stars-color),
+    113px 894px var(--stars-color), 131px 924px var(--stars-color),
+    1187px 1697px var(--stars-color), 1895px 863px var(--stars-color),
+    1474px 1985px var(--stars-color), 593px 1684px var(--stars-color),
+    839px 1268px var(--stars-color), 782px 158px var(--stars-color),
+    296px 687px var(--stars-color), 743px 866px var(--stars-color),
+    672px 9px var(--stars-color), 393px 1321px var(--stars-color),
+    298px 173px var(--stars-color), 1112px 1362px var(--stars-color),
+    1355px 1065px var(--stars-color), 947px 1741px var(--stars-color),
+    583px 1164px var(--stars-color), 1959px 1407px var(--stars-color),
+    1097px 584px var(--stars-color), 1637px 71px var(--stars-color),
+    910px 37px var(--stars-color), 576px 730px var(--stars-color),
+    946px 363px var(--stars-color), 411px 424px var(--stars-color),
+    384px 1461px var(--stars-color), 1898px 1436px var(--stars-color),
+    1220px 1521px var(--stars-color), 900px 1702px var(--stars-color),
+    1748px 459px var(--stars-color), 1314px 955px var(--stars-color),
+    883px 1912px var(--stars-color), 27px 804px var(--stars-color),
+    178px 1560px var(--stars-color), 888px 274px var(--stars-color),
+    1236px 1542px var(--stars-color), 1074px 1441px var(--stars-color),
+    331px 933px var(--stars-color), 1057px 1194px var(--stars-color),
+    245px 181px var(--stars-color), 1688px 898px var(--stars-color),
+    780px 1325px var(--stars-color), 355px 729px var(--stars-color),
+    160px 175px var(--stars-color), 1606px 332px var(--stars-color),
+    349px 970px var(--stars-color), 1576px 283px var(--stars-color),
+    1209px 1602px var(--stars-color), 1439px 1983px var(--stars-color),
+    864px 765px var(--stars-color), 1114px 1610px var(--stars-color),
+    1470px 702px var(--stars-color), 837px 1957px var(--stars-color),
+    627px 391px var(--stars-color), 1959px 1920px var(--stars-color),
+    1455px 733px var(--stars-color), 1152px 371px var(--stars-color),
+    1517px 1526px var(--stars-color), 833px 1710px var(--stars-color),
+    1524px 1588px var(--stars-color), 1008px 1852px var(--stars-color),
+    1674px 482px var(--stars-color), 1764px 843px var(--stars-color),
+    1699px 1779px var(--stars-color), 1070px 1148px var(--stars-color),
+    608px 385px var(--stars-color), 1327px 1322px var(--stars-color),
+    769px 114px var(--stars-color), 1338px 1746px var(--stars-color),
+    1840px 902px var(--stars-color), 1772px 435px var(--stars-color),
+    1069px 420px var(--stars-color), 1605px 1051px var(--stars-color),
+    657px 1106px var(--stars-color), 1638px 267px var(--stars-color),
+    1684px 1140px var(--stars-color), 496px 863px var(--stars-color),
+    1899px 1018px var(--stars-color), 1877px 1138px var(--stars-color),
+    1927px 1860px var(--stars-color), 668px 1886px var(--stars-color),
+    1106px 1349px var(--stars-color), 1797px 1576px var(--stars-color),
+    299px 498px var(--stars-color), 1312px 1446px var(--stars-color),
+    1391px 511px var(--stars-color), 655px 1351px var(--stars-color),
+    636px 1532px var(--stars-color), 1878px 1549px var(--stars-color),
+    916px 827px var(--stars-color), 749px 1410px var(--stars-color),
+    48px 568px var(--stars-color), 297px 343px var(--stars-color),
+    1500px 1213px var(--stars-color), 1503px 236px var(--stars-color),
+    1112px 1153px var(--stars-color), 1679px 223px var(--stars-color),
+    1237px 1356px var(--stars-color), 766px 725px var(--stars-color),
+    1882px 434px var(--stars-color), 398px 1996px var(--stars-color),
+    1420px 1462px var(--stars-color), 234px 1485px var(--stars-color),
+    1359px 1551px var(--stars-color), 778px 617px var(--stars-color),
+    513px 1988px var(--stars-color), 748px 14px var(--stars-color),
+    1150px 1115px var(--stars-color), 332px 632px var(--stars-color),
+    1550px 379px var(--stars-color), 936px 201px var(--stars-color),
+    1757px 1127px var(--stars-color), 1578px 130px var(--stars-color),
+    887px 1285px var(--stars-color), 1019px 1457px var(--stars-color),
+    444px 1665px var(--stars-color), 122px 362px var(--stars-color),
+    1031px 1589px var(--stars-color), 1157px 1325px var(--stars-color),
+    1183px 1463px var(--stars-color), 845px 284px var(--stars-color),
+    871px 193px var(--stars-color), 440px 247px var(--stars-color),
+    1771px 546px var(--stars-color), 1127px 213px var(--stars-color),
+    1517px 920px var(--stars-color), 732px 735px var(--stars-color),
+    1013px 1682px var(--stars-color), 513px 1435px var(--stars-color),
+    622px 1514px var(--stars-color), 1990px 714px var(--stars-color),
+    486px 493px var(--stars-color), 1814px 455px var(--stars-color),
+    1379px 1730px var(--stars-color), 922px 1103px var(--stars-color),
+    96px 1287px var(--stars-color), 1074px 943px var(--stars-color),
+    558px 480px var(--stars-color), 1610px 1486px var(--stars-color),
+    1219px 1262px var(--stars-color), 106px 1868px var(--stars-color),
+    1322px 280px var(--stars-color), 19px 1302px var(--stars-color),
+    447px 1509px var(--stars-color), 1777px 569px var(--stars-color),
+    365px 1257px var(--stars-color), 1514px 256px var(--stars-color),
+    1547px 730px var(--stars-color), 1899px 646px var(--stars-color),
+    619px 544px var(--stars-color), 324px 1685px var(--stars-color),
+    842px 1126px var(--stars-color), 170px 223px var(--stars-color),
+    1405px 1785px var(--stars-color), 1632px 815px var(--stars-color),
+    1215px 1512px var(--stars-color), 1609px 1232px var(--stars-color),
+    924px 1402px var(--stars-color), 1426px 1979px var(--stars-color),
+    1770px 106px var(--stars-color), 924px 290px var(--stars-color),
+    411px 383px var(--stars-color), 1811px 1573px var(--stars-color),
+    1864px 1908px var(--stars-color), 111px 1479px var(--stars-color),
+    16px 738px var(--stars-color), 1180px 1448px var(--stars-color),
+    974px 936px var(--stars-color), 457px 159px var(--stars-color),
+    1550px 685px var(--stars-color), 428px 665px var(--stars-color),
+    138px 52px var(--stars-color), 1017px 513px var(--stars-color),
+    1399px 627px var(--stars-color), 1190px 1648px var(--stars-color),
+    164px 936px var(--stars-color), 296px 1288px var(--stars-color),
+    1792px 471px var(--stars-color), 1787px 1181px var(--stars-color),
+    1786px 338px var(--stars-color), 1344px 1789px var(--stars-color),
+    523px 1710px var(--stars-color), 160px 508px var(--stars-color),
+    72px 887px var(--stars-color), 994px 755px var(--stars-color),
+    1886px 1287px var(--stars-color), 1850px 1878px var(--stars-color),
+    361px 1808px var(--stars-color), 1999px 717px var(--stars-color),
+    580px 719px var(--stars-color), 1953px 810px var(--stars-color),
+    1805px 1890px var(--stars-color), 1005px 600px var(--stars-color),
+    247px 1769px var(--stars-color), 1410px 1636px var(--stars-color),
+    1248px 1448px var(--stars-color), 1884px 905px var(--stars-color),
+    320px 1673px var(--stars-color), 1957px 1672px var(--stars-color),
+    737px 1384px var(--stars-color), 143px 1451px var(--stars-color),
+    107px 432px var(--stars-color), 299px 1695px var(--stars-color),
+    780px 818px var(--stars-color), 1508px 312px var(--stars-color),
+    1468px 409px var(--stars-color), 828px 1278px var(--stars-color),
+    1134px 43px var(--stars-color), 987px 1084px var(--stars-color),
+    724px 1892px var(--stars-color), 927px 1178px var(--stars-color),
+    1830px 395px var(--stars-color), 388px 384px var(--stars-color),
+    258px 1268px var(--stars-color), 1235px 1391px var(--stars-color),
+    455px 1706px var(--stars-color), 1874px 630px var(--stars-color),
+    1904px 395px var(--stars-color), 1642px 1442px var(--stars-color),
+    566px 679px var(--stars-color), 588px 1191px var(--stars-color),
+    1115px 616px var(--stars-color), 1633px 1496px var(--stars-color),
+    612px 741px var(--stars-color), 375px 1157px var(--stars-color),
+    613px 1454px var(--stars-color), 918px 1130px var(--stars-color),
+    496px 1144px var(--stars-color), 208px 584px var(--stars-color),
+    1413px 1654px var(--stars-color), 503px 1903px var(--stars-color),
+    607px 190px var(--stars-color), 913px 1120px var(--stars-color),
+    1649px 184px var(--stars-color), 123px 1413px var(--stars-color),
+    152px 890px var(--stars-color), 307px 378px var(--stars-color),
+    450px 1810px var(--stars-color), 1475px 1383px var(--stars-color),
+    1024px 1891px var(--stars-color), 358px 1377px var(--stars-color),
+    1153px 413px var(--stars-color), 209px 638px var(--stars-color),
+    134px 674px var(--stars-color), 1960px 359px var(--stars-color),
+    1691px 1354px var(--stars-color), 1093px 1039px var(--stars-color),
+    804px 1165px var(--stars-color), 1457px 1079px var(--stars-color),
+    209px 1595px var(--stars-color), 1732px 1613px var(--stars-color),
+    1257px 1498px var(--stars-color), 1950px 911px var(--stars-color),
+    166px 1219px var(--stars-color), 973px 1029px var(--stars-color),
+    1186px 1348px var(--stars-color), 1290px 1498px var(--stars-color),
+    620px 220px var(--stars-color), 1417px 648px var(--stars-color),
+    1983px 1688px var(--stars-color), 634px 845px var(--stars-color),
+    1986px 241px var(--stars-color), 44px 1012px var(--stars-color),
+    1944px 1492px var(--stars-color), 1744px 1549px var(--stars-color),
+    402px 1615px var(--stars-color), 1604px 468px var(--stars-color),
+    1979px 620px var(--stars-color), 1670px 1020px var(--stars-color),
+    497px 1940px var(--stars-color), 392px 710px var(--stars-color),
+    1575px 1290px var(--stars-color), 1397px 34px var(--stars-color),
+    928px 187px var(--stars-color), 169px 769px var(--stars-color),
+    739px 465px var(--stars-color), 1281px 1832px var(--stars-color),
+    1321px 596px var(--stars-color), 1506px 791px var(--stars-color),
+    688px 1056px var(--stars-color), 714px 892px var(--stars-color),
+    1667px 816px var(--stars-color), 1645px 405px var(--stars-color),
+    788px 807px var(--stars-color), 579px 1352px var(--stars-color),
+    494px 116px var(--stars-color), 1663px 359px var(--stars-color),
+    1845px 1779px var(--stars-color), 683px 1262px var(--stars-color),
+    296px 936px var(--stars-color), 1647px 1756px var(--stars-color),
+    316px 409px var(--stars-color), 485px 961px var(--stars-color),
+    836px 1993px var(--stars-color), 95px 1238px var(--stars-color),
+    1875px 1468px var(--stars-color), 1631px 1229px var(--stars-color),
+    378px 428px var(--stars-color), 1290px 1817px var(--stars-color),
+    72px 1594px var(--stars-color), 1881px 920px var(--stars-color),
+    1400px 1147px var(--stars-color), 1382px 1895px var(--stars-color),
+    1302px 167px var(--stars-color), 7px 1590px var(--stars-color),
+    1292px 1470px var(--stars-color), 454px 974px var(--stars-color),
+    123px 1176px var(--stars-color), 1354px 1278px var(--stars-color),
+    752px 894px var(--stars-color), 140px 731px var(--stars-color),
+    271px 1937px var(--stars-color), 1986px 1488px var(--stars-color),
+    1112px 756px var(--stars-color), 1585px 662px var(--stars-color),
+    967px 1558px var(--stars-color), 1461px 1949px var(--stars-color),
+    328px 27px var(--stars-color), 394px 107px var(--stars-color),
+    276px 784px var(--stars-color), 1368px 893px var(--stars-color),
+    1157px 1114px var(--stars-color), 253px 167px var(--stars-color),
+    1550px 896px var(--stars-color), 123px 1502px var(--stars-color),
+    870px 255px var(--stars-color), 869px 280px var(--stars-color),
+    1559px 1981px var(--stars-color), 1590px 661px var(--stars-color),
+    1301px 378px var(--stars-color), 1129px 870px var(--stars-color),
+    1968px 1195px var(--stars-color), 430px 1486px var(--stars-color),
+    243px 706px var(--stars-color), 1769px 1441px var(--stars-color),
+    1213px 355px var(--stars-color), 232px 1636px var(--stars-color),
+    365px 142px var(--stars-color), 17px 1072px var(--stars-color),
+    281px 521px var(--stars-color), 1447px 871px var(--stars-color),
+    708px 880px var(--stars-color), 755px 1806px var(--stars-color),
+    1050px 170px var(--stars-color), 1889px 1330px var(--stars-color),
+    1767px 1278px var(--stars-color), 359px 1252px var(--stars-color),
+    1597px 1218px var(--stars-color), 1877px 142px var(--stars-color),
+    1487px 1861px var(--stars-color), 1931px 1257px var(--stars-color),
+    88px 1378px var(--stars-color), 139px 1403px var(--stars-color),
+    800px 1710px var(--stars-color), 757px 122px var(--stars-color),
+    1713px 1820px var(--stars-color), 526px 286px var(--stars-color),
+    135px 107px var(--stars-color), 1787px 214px var(--stars-color),
+    362px 1051px var(--stars-color), 432px 20px var(--stars-color),
+    977px 957px var(--stars-color), 1689px 1740px var(--stars-color),
+    303px 255px var(--stars-color), 1337px 754px var(--stars-color),
+    1277px 918px var(--stars-color), 421px 196px var(--stars-color),
+    1204px 1073px var(--stars-color), 1508px 1794px var(--stars-color),
+    1218px 1975px var(--stars-color), 305px 324px var(--stars-color),
+    414px 317px var(--stars-color), 1778px 740px var(--stars-color),
+    881px 1322px var(--stars-color), 1137px 604px var(--stars-color),
+    1457px 413px var(--stars-color), 307px 1436px var(--stars-color),
+    203px 1114px var(--stars-color), 350px 595px var(--stars-color),
+    74px 117px var(--stars-color), 1820px 225px var(--stars-color),
+    657px 1078px var(--stars-color), 1382px 515px var(--stars-color),
+    1086px 1577px var(--stars-color), 1793px 377px var(--stars-color),
+    748px 1691px var(--stars-color), 564px 1495px var(--stars-color),
+    766px 422px var(--stars-color), 1443px 1572px var(--stars-color),
+    1865px 1770px var(--stars-color), 502px 37px var(--stars-color),
+    1595px 505px var(--stars-color), 955px 1127px var(--stars-color),
+    622px 931px var(--stars-color), 601px 1207px var(--stars-color),
+    1412px 148px var(--stars-color), 1557px 1572px var(--stars-color),
+    939px 1051px var(--stars-color), 841px 1039px var(--stars-color),
+    1041px 1727px var(--stars-color), 703px 365px var(--stars-color),
+    349px 1477px var(--stars-color), 761px 1812px var(--stars-color),
+    686px 363px var(--stars-color), 1633px 1375px var(--stars-color),
+    206px 1517px var(--stars-color), 1736px 1949px var(--stars-color),
+    543px 186px var(--stars-color), 1523px 408px var(--stars-color),
+    1447px 1968px var(--stars-color), 976px 1916px var(--stars-color),
+    796px 668px var(--stars-color), 469px 406px var(--stars-color),
+    659px 1132px var(--stars-color), 1349px 381px var(--stars-color),
+    1931px 857px var(--stars-color), 1499px 1704px var(--stars-color),
+    868px 443px var(--stars-color), 903px 451px var(--stars-color),
+    1538px 666px var(--stars-color), 1890px 1486px var(--stars-color),
+    1844px 395px var(--stars-color), 1031px 239px var(--stars-color),
+    114px 1715px var(--stars-color), 773px 1886px var(--stars-color),
+    1411px 368px var(--stars-color), 448px 409px var(--stars-color),
+    1018px 728px var(--stars-color), 934px 727px var(--stars-color),
+    1402px 1643px var(--stars-color), 264px 858px var(--stars-color),
+    422px 83px var(--stars-color), 161px 1662px var(--stars-color),
+    21px 1142px var(--stars-color), 264px 831px var(--stars-color),
+    849px 173px var(--stars-color), 1827px 1994px var(--stars-color),
+    715px 448px var(--stars-color), 1709px 122px var(--stars-color),
+    158px 294px var(--stars-color), 1026px 213px var(--stars-color),
+    1021px 1948px var(--stars-color), 1175px 1250px var(--stars-color),
+    715px 854px var(--stars-color), 577px 851px var(--stars-color),
+    634px 844px var(--stars-color), 792px 1319px var(--stars-color),
+    1606px 336px var(--stars-color), 955px 845px var(--stars-color),
+    766px 1158px var(--stars-color), 815px 1497px var(--stars-color),
+    775px 642px var(--stars-color), 946px 642px var(--stars-color),
+    1001px 315px var(--stars-color), 414px 803px var(--stars-color),
+    1014px 583px var(--stars-color), 1017px 259px var(--stars-color),
+    1388px 648px var(--stars-color), 1161px 132px var(--stars-color),
+    225px 192px var(--stars-color), 1229px 410px var(--stars-color),
+    373px 755px var(--stars-color), 1615px 1388px var(--stars-color),
+    31px 1875px var(--stars-color), 455px 1730px var(--stars-color),
+    529px 51px var(--stars-color), 184px 1321px var(--stars-color),
+    1769px 994px var(--stars-color), 1097px 1554px var(--stars-color),
+    1968px 857px var(--stars-color), 183px 742px var(--stars-color),
+    440px 1260px var(--stars-color), 1229px 1606px var(--stars-color),
+    13px 464px var(--stars-color), 64px 1165px var(--stars-color),
+    1644px 224px var(--stars-color), 1127px 1696px var(--stars-color),
+    956px 1632px var(--stars-color), 1160px 903px var(--stars-color),
+    1714px 1331px var(--stars-color), 1837px 5px var(--stars-color),
+    1143px 1647px var(--stars-color), 883px 395px var(--stars-color),
+    1602px 635px var(--stars-color), 132px 1593px var(--stars-color),
+    430px 867px var(--stars-color), 1156px 41px var(--stars-color),
+    1168px 1639px var(--stars-color), 1766px 22px var(--stars-color),
+    600px 751px var(--stars-color), 1542px 871px var(--stars-color),
+    683px 1559px var(--stars-color), 948px 1709px var(--stars-color),
+    1631px 787px var(--stars-color), 600px 388px var(--stars-color),
+    548px 974px var(--stars-color), 879px 394px var(--stars-color),
+    1795px 489px var(--stars-color), 1742px 415px var(--stars-color),
+    1704px 1446px var(--stars-color), 1201px 1165px var(--stars-color),
+    1214px 641px var(--stars-color), 826px 872px var(--stars-color),
+    1545px 74px var(--stars-color), 1823px 908px var(--stars-color),
+    1177px 1479px var(--stars-color), 320px 1339px var(--stars-color),
+    1476px 1580px var(--stars-color), 130px 642px var(--stars-color),
+    1131px 1668px var(--stars-color), 155px 629px var(--stars-color),
+    10px 37px var(--stars-color), 860px 271px var(--stars-color),
+    409px 334px var(--stars-color), 270px 750px var(--stars-color),
+    572px 1766px var(--stars-color), 368px 1121px var(--stars-color),
+    348px 1480px var(--stars-color), 859px 1018px var(--stars-color),
+    1707px 1601px var(--stars-color), 570px 556px var(--stars-color),
+    1510px 1624px var(--stars-color), 1304px 1607px var(--stars-color),
+    1390px 496px var(--stars-color), 1318px 1885px var(--stars-color),
+    969px 1972px var(--stars-color), 701px 1324px var(--stars-color),
+    1214px 1778px var(--stars-color), 1491px 1283px var(--stars-color),
+    1455px 1950px var(--stars-color), 10px 106px var(--stars-color),
+    1013px 1046px var(--stars-color), 1795px 1606px var(--stars-color),
+    100px 1135px var(--stars-color), 1014px 1080px var(--stars-color),
+    1834px 1971px var(--stars-color), 561px 1608px var(--stars-color),
+    1843px 1541px var(--stars-color), 520px 1897px var(--stars-color);
+  animation: starsAnimation 50s linear infinite;
+}
+.stars > .small:after {
+  content: ' ';
+  position: absolute;
+  top: 2000px;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: 538px 1115px var(--stars-color), 1561px 1129px var(--stars-color),
+    1700px 1428px var(--stars-color), 916px 1415px var(--stars-color),
+    410px 155px var(--stars-color), 1750px 995px var(--stars-color),
+    342px 1974px var(--stars-color), 66px 1441px var(--stars-color),
+    1774px 1530px var(--stars-color), 1348px 815px var(--stars-color),
+    948px 1035px var(--stars-color), 1441px 1394px var(--stars-color),
+    196px 528px var(--stars-color), 41px 543px var(--stars-color),
+    1558px 985px var(--stars-color), 481px 1907px var(--stars-color),
+    291px 1813px var(--stars-color), 942px 353px var(--stars-color),
+    813px 742px var(--stars-color), 605px 289px var(--stars-color),
+    1343px 1000px var(--stars-color), 330px 812px var(--stars-color),
+    321px 1023px var(--stars-color), 1966px 1868px var(--stars-color),
+    1656px 648px var(--stars-color), 1164px 38px var(--stars-color),
+    415px 1854px var(--stars-color), 768px 513px var(--stars-color),
+    296px 1883px var(--stars-color), 1704px 1292px var(--stars-color),
+    1112px 662px var(--stars-color), 318px 1765px var(--stars-color),
+    373px 168px var(--stars-color), 162px 1684px var(--stars-color),
+    697px 181px var(--stars-color), 132px 1386px var(--stars-color),
+    1337px 769px var(--stars-color), 1276px 1090px var(--stars-color),
+    153px 199px var(--stars-color), 1432px 1054px var(--stars-color),
+    980px 1521px var(--stars-color), 336px 1209px var(--stars-color),
+    1222px 1290px var(--stars-color), 225px 202px var(--stars-color),
+    1778px 1228px var(--stars-color), 1041px 552px var(--stars-color),
+    1489px 525px var(--stars-color), 1166px 1563px var(--stars-color),
+    206px 1715px var(--stars-color), 1754px 423px var(--stars-color),
+    1467px 660px var(--stars-color), 1210px 19px var(--stars-color),
+    736px 210px var(--stars-color), 1423px 1989px var(--stars-color),
+    373px 1687px var(--stars-color), 1172px 1131px var(--stars-color),
+    1603px 532px var(--stars-color), 199px 481px var(--stars-color),
+    865px 465px var(--stars-color), 1082px 600px var(--stars-color),
+    45px 154px var(--stars-color), 321px 398px var(--stars-color),
+    180px 1200px var(--stars-color), 1190px 1171px var(--stars-color),
+    908px 1264px var(--stars-color), 548px 1513px var(--stars-color),
+    1609px 1270px var(--stars-color), 1727px 198px var(--stars-color),
+    1245px 1473px var(--stars-color), 405px 234px var(--stars-color),
+    180px 1027px var(--stars-color), 759px 1398px var(--stars-color),
+    898px 115px var(--stars-color), 827px 262px var(--stars-color),
+    1044px 364px var(--stars-color), 1725px 1408px var(--stars-color),
+    1726px 596px var(--stars-color), 149px 683px var(--stars-color),
+    1890px 1581px var(--stars-color), 810px 1915px var(--stars-color),
+    769px 1786px var(--stars-color), 1904px 759px var(--stars-color),
+    1882px 99px var(--stars-color), 339px 306px var(--stars-color),
+    1888px 1207px var(--stars-color), 1565px 302px var(--stars-color),
+    266px 259px var(--stars-color), 881px 1312px var(--stars-color),
+    1724px 1496px var(--stars-color), 846px 607px var(--stars-color),
+    1351px 1505px var(--stars-color), 1342px 1578px var(--stars-color),
+    553px 115px var(--stars-color), 1880px 251px var(--stars-color),
+    1885px 238px var(--stars-color), 1071px 637px var(--stars-color),
+    563px 448px var(--stars-color), 1935px 992px var(--stars-color),
+    1173px 1892px var(--stars-color), 1276px 34px var(--stars-color),
+    1021px 1225px var(--stars-color), 752px 704px var(--stars-color),
+    1381px 486px var(--stars-color), 1487px 807px var(--stars-color),
+    151px 1801px var(--stars-color), 1289px 683px var(--stars-color),
+    1622px 461px var(--stars-color), 2px 309px var(--stars-color),
+    384px 1351px var(--stars-color), 180px 934px var(--stars-color),
+    1216px 1761px var(--stars-color), 1846px 245px var(--stars-color),
+    1419px 221px var(--stars-color), 233px 346px var(--stars-color),
+    247px 1192px var(--stars-color), 415px 299px var(--stars-color),
+    201px 773px var(--stars-color), 849px 268px var(--stars-color),
+    108px 1559px var(--stars-color), 570px 2px var(--stars-color),
+    1965px 45px var(--stars-color), 533px 1888px var(--stars-color),
+    216px 424px var(--stars-color), 194px 210px var(--stars-color),
+    11px 1819px var(--stars-color), 256px 1486px var(--stars-color),
+    1270px 187px var(--stars-color), 1540px 801px var(--stars-color),
+    457px 514px var(--stars-color), 1105px 1870px var(--stars-color),
+    303px 339px var(--stars-color), 1986px 666px var(--stars-color),
+    1539px 1541px var(--stars-color), 203px 807px var(--stars-color),
+    849px 1465px var(--stars-color), 109px 1215px var(--stars-color),
+    1259px 667px var(--stars-color), 1047px 1790px var(--stars-color),
+    1424px 799px var(--stars-color), 1076px 4px var(--stars-color),
+    423px 883px var(--stars-color), 228px 1444px var(--stars-color),
+    553px 1751px var(--stars-color), 1948px 233px var(--stars-color),
+    873px 1133px var(--stars-color), 559px 84px var(--stars-color),
+    329px 1251px var(--stars-color), 1918px 1056px var(--stars-color),
+    480px 539px var(--stars-color), 694px 90px var(--stars-color),
+    197px 516px var(--stars-color), 552px 320px var(--stars-color),
+    749px 1883px var(--stars-color), 1712px 1661px var(--stars-color),
+    1728px 705px var(--stars-color), 475px 1372px var(--stars-color),
+    1070px 1473px var(--stars-color), 1188px 1097px var(--stars-color),
+    726px 931px var(--stars-color), 225px 262px var(--stars-color),
+    1763px 1033px var(--stars-color), 317px 1207px var(--stars-color),
+    113px 894px var(--stars-color), 131px 924px var(--stars-color),
+    1187px 1697px var(--stars-color), 1895px 863px var(--stars-color),
+    1474px 1985px var(--stars-color), 593px 1684px var(--stars-color),
+    839px 1268px var(--stars-color), 782px 158px var(--stars-color),
+    296px 687px var(--stars-color), 743px 866px var(--stars-color),
+    672px 9px var(--stars-color), 393px 1321px var(--stars-color),
+    298px 173px var(--stars-color), 1112px 1362px var(--stars-color),
+    1355px 1065px var(--stars-color), 947px 1741px var(--stars-color),
+    583px 1164px var(--stars-color), 1959px 1407px var(--stars-color),
+    1097px 584px var(--stars-color), 1637px 71px var(--stars-color),
+    910px 37px var(--stars-color), 576px 730px var(--stars-color),
+    946px 363px var(--stars-color), 411px 424px var(--stars-color),
+    384px 1461px var(--stars-color), 1898px 1436px var(--stars-color),
+    1220px 1521px var(--stars-color), 900px 1702px var(--stars-color),
+    1748px 459px var(--stars-color), 1314px 955px var(--stars-color),
+    883px 1912px var(--stars-color), 27px 804px var(--stars-color),
+    178px 1560px var(--stars-color), 888px 274px var(--stars-color),
+    1236px 1542px var(--stars-color), 1074px 1441px var(--stars-color),
+    331px 933px var(--stars-color), 1057px 1194px var(--stars-color),
+    245px 181px var(--stars-color), 1688px 898px var(--stars-color),
+    780px 1325px var(--stars-color), 355px 729px var(--stars-color),
+    160px 175px var(--stars-color), 1606px 332px var(--stars-color),
+    349px 970px var(--stars-color), 1576px 283px var(--stars-color),
+    1209px 1602px var(--stars-color), 1439px 1983px var(--stars-color),
+    864px 765px var(--stars-color), 1114px 1610px var(--stars-color),
+    1470px 702px var(--stars-color), 837px 1957px var(--stars-color),
+    627px 391px var(--stars-color), 1959px 1920px var(--stars-color),
+    1455px 733px var(--stars-color), 1152px 371px var(--stars-color),
+    1517px 1526px var(--stars-color), 833px 1710px var(--stars-color),
+    1524px 1588px var(--stars-color), 1008px 1852px var(--stars-color),
+    1674px 482px var(--stars-color), 1764px 843px var(--stars-color),
+    1699px 1779px var(--stars-color), 1070px 1148px var(--stars-color),
+    608px 385px var(--stars-color), 1327px 1322px var(--stars-color),
+    769px 114px var(--stars-color), 1338px 1746px var(--stars-color),
+    1840px 902px var(--stars-color), 1772px 435px var(--stars-color),
+    1069px 420px var(--stars-color), 1605px 1051px var(--stars-color),
+    657px 1106px var(--stars-color), 1638px 267px var(--stars-color),
+    1684px 1140px var(--stars-color), 496px 863px var(--stars-color),
+    1899px 1018px var(--stars-color), 1877px 1138px var(--stars-color),
+    1927px 1860px var(--stars-color), 668px 1886px var(--stars-color),
+    1106px 1349px var(--stars-color), 1797px 1576px var(--stars-color),
+    299px 498px var(--stars-color), 1312px 1446px var(--stars-color),
+    1391px 511px var(--stars-color), 655px 1351px var(--stars-color),
+    636px 1532px var(--stars-color), 1878px 1549px var(--stars-color),
+    916px 827px var(--stars-color), 749px 1410px var(--stars-color),
+    48px 568px var(--stars-color), 297px 343px var(--stars-color),
+    1500px 1213px var(--stars-color), 1503px 236px var(--stars-color),
+    1112px 1153px var(--stars-color), 1679px 223px var(--stars-color),
+    1237px 1356px var(--stars-color), 766px 725px var(--stars-color),
+    1882px 434px var(--stars-color), 398px 1996px var(--stars-color),
+    1420px 1462px var(--stars-color), 234px 1485px var(--stars-color),
+    1359px 1551px var(--stars-color), 778px 617px var(--stars-color),
+    513px 1988px var(--stars-color), 748px 14px var(--stars-color),
+    1150px 1115px var(--stars-color), 332px 632px var(--stars-color),
+    1550px 379px var(--stars-color), 936px 201px var(--stars-color),
+    1757px 1127px var(--stars-color), 1578px 130px var(--stars-color),
+    887px 1285px var(--stars-color), 1019px 1457px var(--stars-color),
+    444px 1665px var(--stars-color), 122px 362px var(--stars-color),
+    1031px 1589px var(--stars-color), 1157px 1325px var(--stars-color),
+    1183px 1463px var(--stars-color), 845px 284px var(--stars-color),
+    871px 193px var(--stars-color), 440px 247px var(--stars-color),
+    1771px 546px var(--stars-color), 1127px 213px var(--stars-color),
+    1517px 920px var(--stars-color), 732px 735px var(--stars-color),
+    1013px 1682px var(--stars-color), 513px 1435px var(--stars-color),
+    622px 1514px var(--stars-color), 1990px 714px var(--stars-color),
+    486px 493px var(--stars-color), 1814px 455px var(--stars-color),
+    1379px 1730px var(--stars-color), 922px 1103px var(--stars-color),
+    96px 1287px var(--stars-color), 1074px 943px var(--stars-color),
+    558px 480px var(--stars-color), 1610px 1486px var(--stars-color),
+    1219px 1262px var(--stars-color), 106px 1868px var(--stars-color),
+    1322px 280px var(--stars-color), 19px 1302px var(--stars-color),
+    447px 1509px var(--stars-color), 1777px 569px var(--stars-color),
+    365px 1257px var(--stars-color), 1514px 256px var(--stars-color),
+    1547px 730px var(--stars-color), 1899px 646px var(--stars-color),
+    619px 544px var(--stars-color), 324px 1685px var(--stars-color),
+    842px 1126px var(--stars-color), 170px 223px var(--stars-color),
+    1405px 1785px var(--stars-color), 1632px 815px var(--stars-color),
+    1215px 1512px var(--stars-color), 1609px 1232px var(--stars-color),
+    924px 1402px var(--stars-color), 1426px 1979px var(--stars-color),
+    1770px 106px var(--stars-color), 924px 290px var(--stars-color),
+    411px 383px var(--stars-color), 1811px 1573px var(--stars-color),
+    1864px 1908px var(--stars-color), 111px 1479px var(--stars-color),
+    16px 738px var(--stars-color), 1180px 1448px var(--stars-color),
+    974px 936px var(--stars-color), 457px 159px var(--stars-color),
+    1550px 685px var(--stars-color), 428px 665px var(--stars-color),
+    138px 52px var(--stars-color), 1017px 513px var(--stars-color),
+    1399px 627px var(--stars-color), 1190px 1648px var(--stars-color),
+    164px 936px var(--stars-color), 296px 1288px var(--stars-color),
+    1792px 471px var(--stars-color), 1787px 1181px var(--stars-color),
+    1786px 338px var(--stars-color), 1344px 1789px var(--stars-color),
+    523px 1710px var(--stars-color), 160px 508px var(--stars-color),
+    72px 887px var(--stars-color), 994px 755px var(--stars-color),
+    1886px 1287px var(--stars-color), 1850px 1878px var(--stars-color),
+    361px 1808px var(--stars-color), 1999px 717px var(--stars-color),
+    580px 719px var(--stars-color), 1953px 810px var(--stars-color),
+    1805px 1890px var(--stars-color), 1005px 600px var(--stars-color),
+    247px 1769px var(--stars-color), 1410px 1636px var(--stars-color),
+    1248px 1448px var(--stars-color), 1884px 905px var(--stars-color),
+    320px 1673px var(--stars-color), 1957px 1672px var(--stars-color),
+    737px 1384px var(--stars-color), 143px 1451px var(--stars-color),
+    107px 432px var(--stars-color), 299px 1695px var(--stars-color),
+    780px 818px var(--stars-color), 1508px 312px var(--stars-color),
+    1468px 409px var(--stars-color), 828px 1278px var(--stars-color),
+    1134px 43px var(--stars-color), 987px 1084px var(--stars-color),
+    724px 1892px var(--stars-color), 927px 1178px var(--stars-color),
+    1830px 395px var(--stars-color), 388px 384px var(--stars-color),
+    258px 1268px var(--stars-color), 1235px 1391px var(--stars-color),
+    455px 1706px var(--stars-color), 1874px 630px var(--stars-color),
+    1904px 395px var(--stars-color), 1642px 1442px var(--stars-color),
+    566px 679px var(--stars-color), 588px 1191px var(--stars-color),
+    1115px 616px var(--stars-color), 1633px 1496px var(--stars-color),
+    612px 741px var(--stars-color), 375px 1157px var(--stars-color),
+    613px 1454px var(--stars-color), 918px 1130px var(--stars-color),
+    496px 1144px var(--stars-color), 208px 584px var(--stars-color),
+    1413px 1654px var(--stars-color), 503px 1903px var(--stars-color),
+    607px 190px var(--stars-color), 913px 1120px var(--stars-color),
+    1649px 184px var(--stars-color), 123px 1413px var(--stars-color),
+    152px 890px var(--stars-color), 307px 378px var(--stars-color),
+    450px 1810px var(--stars-color), 1475px 1383px var(--stars-color),
+    1024px 1891px var(--stars-color), 358px 1377px var(--stars-color),
+    1153px 413px var(--stars-color), 209px 638px var(--stars-color),
+    134px 674px var(--stars-color), 1960px 359px var(--stars-color),
+    1691px 1354px var(--stars-color), 1093px 1039px var(--stars-color),
+    804px 1165px var(--stars-color), 1457px 1079px var(--stars-color),
+    209px 1595px var(--stars-color), 1732px 1613px var(--stars-color),
+    1257px 1498px var(--stars-color), 1950px 911px var(--stars-color),
+    166px 1219px var(--stars-color), 973px 1029px var(--stars-color),
+    1186px 1348px var(--stars-color), 1290px 1498px var(--stars-color),
+    620px 220px var(--stars-color), 1417px 648px var(--stars-color),
+    1983px 1688px var(--stars-color), 634px 845px var(--stars-color),
+    1986px 241px var(--stars-color), 44px 1012px var(--stars-color),
+    1944px 1492px var(--stars-color), 1744px 1549px var(--stars-color),
+    402px 1615px var(--stars-color), 1604px 468px var(--stars-color),
+    1979px 620px var(--stars-color), 1670px 1020px var(--stars-color),
+    497px 1940px var(--stars-color), 392px 710px var(--stars-color),
+    1575px 1290px var(--stars-color), 1397px 34px var(--stars-color),
+    928px 187px var(--stars-color), 169px 769px var(--stars-color),
+    739px 465px var(--stars-color), 1281px 1832px var(--stars-color),
+    1321px 596px var(--stars-color), 1506px 791px var(--stars-color),
+    688px 1056px var(--stars-color), 714px 892px var(--stars-color),
+    1667px 816px var(--stars-color), 1645px 405px var(--stars-color),
+    788px 807px var(--stars-color), 579px 1352px var(--stars-color),
+    494px 116px var(--stars-color), 1663px 359px var(--stars-color),
+    1845px 1779px var(--stars-color), 683px 1262px var(--stars-color),
+    296px 936px var(--stars-color), 1647px 1756px var(--stars-color),
+    316px 409px var(--stars-color), 485px 961px var(--stars-color),
+    836px 1993px var(--stars-color), 95px 1238px var(--stars-color),
+    1875px 1468px var(--stars-color), 1631px 1229px var(--stars-color),
+    378px 428px var(--stars-color), 1290px 1817px var(--stars-color),
+    72px 1594px var(--stars-color), 1881px 920px var(--stars-color),
+    1400px 1147px var(--stars-color), 1382px 1895px var(--stars-color),
+    1302px 167px var(--stars-color), 7px 1590px var(--stars-color),
+    1292px 1470px var(--stars-color), 454px 974px var(--stars-color),
+    123px 1176px var(--stars-color), 1354px 1278px var(--stars-color),
+    752px 894px var(--stars-color), 140px 731px var(--stars-color),
+    271px 1937px var(--stars-color), 1986px 1488px var(--stars-color),
+    1112px 756px var(--stars-color), 1585px 662px var(--stars-color),
+    967px 1558px var(--stars-color), 1461px 1949px var(--stars-color),
+    328px 27px var(--stars-color), 394px 107px var(--stars-color),
+    276px 784px var(--stars-color), 1368px 893px var(--stars-color),
+    1157px 1114px var(--stars-color), 253px 167px var(--stars-color),
+    1550px 896px var(--stars-color), 123px 1502px var(--stars-color),
+    870px 255px var(--stars-color), 869px 280px var(--stars-color),
+    1559px 1981px var(--stars-color), 1590px 661px var(--stars-color),
+    1301px 378px var(--stars-color), 1129px 870px var(--stars-color),
+    1968px 1195px var(--stars-color), 430px 1486px var(--stars-color),
+    243px 706px var(--stars-color), 1769px 1441px var(--stars-color),
+    1213px 355px var(--stars-color), 232px 1636px var(--stars-color),
+    365px 142px var(--stars-color), 17px 1072px var(--stars-color),
+    281px 521px var(--stars-color), 1447px 871px var(--stars-color),
+    708px 880px var(--stars-color), 755px 1806px var(--stars-color),
+    1050px 170px var(--stars-color), 1889px 1330px var(--stars-color),
+    1767px 1278px var(--stars-color), 359px 1252px var(--stars-color),
+    1597px 1218px var(--stars-color), 1877px 142px var(--stars-color),
+    1487px 1861px var(--stars-color), 1931px 1257px var(--stars-color),
+    88px 1378px var(--stars-color), 139px 1403px var(--stars-color),
+    800px 1710px var(--stars-color), 757px 122px var(--stars-color),
+    1713px 1820px var(--stars-color), 526px 286px var(--stars-color),
+    135px 107px var(--stars-color), 1787px 214px var(--stars-color),
+    362px 1051px var(--stars-color), 432px 20px var(--stars-color),
+    977px 957px var(--stars-color), 1689px 1740px var(--stars-color),
+    303px 255px var(--stars-color), 1337px 754px var(--stars-color),
+    1277px 918px var(--stars-color), 421px 196px var(--stars-color),
+    1204px 1073px var(--stars-color), 1508px 1794px var(--stars-color),
+    1218px 1975px var(--stars-color), 305px 324px var(--stars-color),
+    414px 317px var(--stars-color), 1778px 740px var(--stars-color),
+    881px 1322px var(--stars-color), 1137px 604px var(--stars-color),
+    1457px 413px var(--stars-color), 307px 1436px var(--stars-color),
+    203px 1114px var(--stars-color), 350px 595px var(--stars-color),
+    74px 117px var(--stars-color), 1820px 225px var(--stars-color),
+    657px 1078px var(--stars-color), 1382px 515px var(--stars-color),
+    1086px 1577px var(--stars-color), 1793px 377px var(--stars-color),
+    748px 1691px var(--stars-color), 564px 1495px var(--stars-color),
+    766px 422px var(--stars-color), 1443px 1572px var(--stars-color),
+    1865px 1770px var(--stars-color), 502px 37px var(--stars-color),
+    1595px 505px var(--stars-color), 955px 1127px var(--stars-color),
+    622px 931px var(--stars-color), 601px 1207px var(--stars-color),
+    1412px 148px var(--stars-color), 1557px 1572px var(--stars-color),
+    939px 1051px var(--stars-color), 841px 1039px var(--stars-color),
+    1041px 1727px var(--stars-color), 703px 365px var(--stars-color),
+    349px 1477px var(--stars-color), 761px 1812px var(--stars-color),
+    686px 363px var(--stars-color), 1633px 1375px var(--stars-color),
+    206px 1517px var(--stars-color), 1736px 1949px var(--stars-color),
+    543px 186px var(--stars-color), 1523px 408px var(--stars-color),
+    1447px 1968px var(--stars-color), 976px 1916px var(--stars-color),
+    796px 668px var(--stars-color), 469px 406px var(--stars-color),
+    659px 1132px var(--stars-color), 1349px 381px var(--stars-color),
+    1931px 857px var(--stars-color), 1499px 1704px var(--stars-color),
+    868px 443px var(--stars-color), 903px 451px var(--stars-color),
+    1538px 666px var(--stars-color), 1890px 1486px var(--stars-color),
+    1844px 395px var(--stars-color), 1031px 239px var(--stars-color),
+    114px 1715px var(--stars-color), 773px 1886px var(--stars-color),
+    1411px 368px var(--stars-color), 448px 409px var(--stars-color),
+    1018px 728px var(--stars-color), 934px 727px var(--stars-color),
+    1402px 1643px var(--stars-color), 264px 858px var(--stars-color),
+    422px 83px var(--stars-color), 161px 1662px var(--stars-color),
+    21px 1142px var(--stars-color), 264px 831px var(--stars-color),
+    849px 173px var(--stars-color), 1827px 1994px var(--stars-color),
+    715px 448px var(--stars-color), 1709px 122px var(--stars-color),
+    158px 294px var(--stars-color), 1026px 213px var(--stars-color),
+    1021px 1948px var(--stars-color), 1175px 1250px var(--stars-color),
+    715px 854px var(--stars-color), 577px 851px var(--stars-color),
+    634px 844px var(--stars-color), 792px 1319px var(--stars-color),
+    1606px 336px var(--stars-color), 955px 845px var(--stars-color),
+    766px 1158px var(--stars-color), 815px 1497px var(--stars-color),
+    775px 642px var(--stars-color), 946px 642px var(--stars-color),
+    1001px 315px var(--stars-color), 414px 803px var(--stars-color),
+    1014px 583px var(--stars-color), 1017px 259px var(--stars-color),
+    1388px 648px var(--stars-color), 1161px 132px var(--stars-color),
+    225px 192px var(--stars-color), 1229px 410px var(--stars-color),
+    373px 755px var(--stars-color), 1615px 1388px var(--stars-color),
+    31px 1875px var(--stars-color), 455px 1730px var(--stars-color),
+    529px 51px var(--stars-color), 184px 1321px var(--stars-color),
+    1769px 994px var(--stars-color), 1097px 1554px var(--stars-color),
+    1968px 857px var(--stars-color), 183px 742px var(--stars-color),
+    440px 1260px var(--stars-color), 1229px 1606px var(--stars-color),
+    13px 464px var(--stars-color), 64px 1165px var(--stars-color),
+    1644px 224px var(--stars-color), 1127px 1696px var(--stars-color),
+    956px 1632px var(--stars-color), 1160px 903px var(--stars-color),
+    1714px 1331px var(--stars-color), 1837px 5px var(--stars-color),
+    1143px 1647px var(--stars-color), 883px 395px var(--stars-color),
+    1602px 635px var(--stars-color), 132px 1593px var(--stars-color),
+    430px 867px var(--stars-color), 1156px 41px var(--stars-color),
+    1168px 1639px var(--stars-color), 1766px 22px var(--stars-color),
+    600px 751px var(--stars-color), 1542px 871px var(--stars-color),
+    683px 1559px var(--stars-color), 948px 1709px var(--stars-color),
+    1631px 787px var(--stars-color), 600px 388px var(--stars-color),
+    548px 974px var(--stars-color), 879px 394px var(--stars-color),
+    1795px 489px var(--stars-color), 1742px 415px var(--stars-color),
+    1704px 1446px var(--stars-color), 1201px 1165px var(--stars-color),
+    1214px 641px var(--stars-color), 826px 872px var(--stars-color),
+    1545px 74px var(--stars-color), 1823px 908px var(--stars-color),
+    1177px 1479px var(--stars-color), 320px 1339px var(--stars-color),
+    1476px 1580px var(--stars-color), 130px 642px var(--stars-color),
+    1131px 1668px var(--stars-color), 155px 629px var(--stars-color),
+    10px 37px var(--stars-color), 860px 271px var(--stars-color),
+    409px 334px var(--stars-color), 270px 750px var(--stars-color),
+    572px 1766px var(--stars-color), 368px 1121px var(--stars-color),
+    348px 1480px var(--stars-color), 859px 1018px var(--stars-color),
+    1707px 1601px var(--stars-color), 570px 556px var(--stars-color),
+    1510px 1624px var(--stars-color), 1304px 1607px var(--stars-color),
+    1390px 496px var(--stars-color), 1318px 1885px var(--stars-color),
+    969px 1972px var(--stars-color), 701px 1324px var(--stars-color),
+    1214px 1778px var(--stars-color), 1491px 1283px var(--stars-color),
+    1455px 1950px var(--stars-color), 10px 106px var(--stars-color),
+    1013px 1046px var(--stars-color), 1795px 1606px var(--stars-color),
+    100px 1135px var(--stars-color), 1014px 1080px var(--stars-color),
+    1834px 1971px var(--stars-color), 561px 1608px var(--stars-color),
+    1843px 1541px var(--stars-color), 520px 1897px var(--stars-color);
+}
+.stars > .medium {
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: 351px 1034px var(--stars-color), 1765px 812px var(--stars-color),
+    703px 263px var(--stars-color), 618px 1711px var(--stars-color),
+    1361px 518px var(--stars-color), 1606px 872px var(--stars-color),
+    1616px 382px var(--stars-color), 1246px 1213px var(--stars-color),
+    1002px 107px var(--stars-color), 1383px 809px var(--stars-color),
+    1752px 988px var(--stars-color), 1151px 1330px var(--stars-color),
+    1696px 1454px var(--stars-color), 199px 1464px var(--stars-color),
+    1158px 454px var(--stars-color), 916px 501px var(--stars-color),
+    879px 1795px var(--stars-color), 1313px 680px var(--stars-color),
+    1989px 1635px var(--stars-color), 924px 366px var(--stars-color),
+    1885px 818px var(--stars-color), 211px 1056px var(--stars-color),
+    83px 1462px var(--stars-color), 1384px 1315px var(--stars-color),
+    817px 387px var(--stars-color), 956px 359px var(--stars-color),
+    1177px 56px var(--stars-color), 1625px 170px var(--stars-color),
+    1256px 718px var(--stars-color), 251px 1904px var(--stars-color),
+    331px 718px var(--stars-color), 1067px 390px var(--stars-color),
+    1443px 487px var(--stars-color), 505px 1722px var(--stars-color),
+    907px 867px var(--stars-color), 251px 2px var(--stars-color),
+    1879px 265px var(--stars-color), 1825px 1075px var(--stars-color),
+    1516px 679px var(--stars-color), 296px 982px var(--stars-color),
+    1182px 1257px var(--stars-color), 1965px 945px var(--stars-color),
+    97px 1630px var(--stars-color), 908px 1687px var(--stars-color),
+    130px 455px var(--stars-color), 213px 997px var(--stars-color),
+    1101px 1042px var(--stars-color), 1314px 658px var(--stars-color),
+    447px 587px var(--stars-color), 926px 1489px var(--stars-color),
+    1117px 1037px var(--stars-color), 560px 1157px var(--stars-color),
+    1705px 1002px var(--stars-color), 1472px 374px var(--stars-color),
+    319px 1675px var(--stars-color), 1794px 297px var(--stars-color),
+    886px 113px var(--stars-color), 1374px 868px var(--stars-color),
+    35px 936px var(--stars-color), 797px 109px var(--stars-color),
+    1863px 831px var(--stars-color), 800px 784px var(--stars-color),
+    164px 669px var(--stars-color), 911px 456px var(--stars-color),
+    1827px 997px var(--stars-color), 1275px 1454px var(--stars-color),
+    1314px 195px var(--stars-color), 1154px 841px var(--stars-color),
+    1285px 995px var(--stars-color), 1365px 1754px var(--stars-color),
+    845px 841px var(--stars-color), 948px 1886px var(--stars-color),
+    140px 1704px var(--stars-color), 1320px 1890px var(--stars-color),
+    3px 1714px var(--stars-color), 1141px 497px var(--stars-color),
+    1128px 893px var(--stars-color), 592px 354px var(--stars-color),
+    1958px 25px var(--stars-color), 1698px 616px var(--stars-color),
+    1484px 699px var(--stars-color), 577px 1605px var(--stars-color),
+    1134px 1445px var(--stars-color), 232px 255px var(--stars-color),
+    1868px 953px var(--stars-color), 843px 174px var(--stars-color),
+    1917px 1243px var(--stars-color), 517px 105px var(--stars-color),
+    1644px 999px var(--stars-color), 407px 561px var(--stars-color),
+    297px 1950px var(--stars-color), 961px 915px var(--stars-color),
+    1279px 480px var(--stars-color), 1391px 978px var(--stars-color),
+    1700px 1594px var(--stars-color), 1359px 434px var(--stars-color),
+    1416px 1731px var(--stars-color), 218px 155px var(--stars-color),
+    382px 890px var(--stars-color), 1238px 947px var(--stars-color),
+    1395px 1990px var(--stars-color), 1748px 1920px var(--stars-color),
+    1038px 204px var(--stars-color), 1796px 256px var(--stars-color),
+    892px 508px var(--stars-color), 192px 262px var(--stars-color),
+    805px 727px var(--stars-color), 759px 1864px var(--stars-color),
+    1118px 1535px var(--stars-color), 1911px 615px var(--stars-color),
+    995px 1277px var(--stars-color), 1817px 188px var(--stars-color),
+    1951px 1720px var(--stars-color), 812px 442px var(--stars-color),
+    1157px 776px var(--stars-color), 1222px 1517px var(--stars-color),
+    1444px 875px var(--stars-color), 1301px 1738px var(--stars-color),
+    692px 915px var(--stars-color), 1092px 98px var(--stars-color),
+    1591px 1924px var(--stars-color), 103px 390px var(--stars-color),
+    1821px 1407px var(--stars-color), 101px 1666px var(--stars-color),
+    1360px 1463px var(--stars-color), 514px 626px var(--stars-color),
+    1874px 1134px var(--stars-color), 857px 1069px var(--stars-color),
+    1589px 835px var(--stars-color), 1160px 1639px var(--stars-color),
+    1148px 1032px var(--stars-color), 1458px 483px var(--stars-color),
+    159px 283px var(--stars-color), 1246px 20px var(--stars-color),
+    1280px 274px var(--stars-color), 1801px 1047px var(--stars-color),
+    1823px 1167px var(--stars-color), 772px 413px var(--stars-color),
+    1802px 92px var(--stars-color), 516px 582px var(--stars-color),
+    423px 1340px var(--stars-color), 929px 868px var(--stars-color),
+    1130px 574px var(--stars-color), 707px 409px var(--stars-color),
+    1644px 486px var(--stars-color), 1283px 1961px var(--stars-color),
+    1332px 1708px var(--stars-color), 433px 630px var(--stars-color),
+    1228px 1772px var(--stars-color), 521px 1102px var(--stars-color),
+    498px 75px var(--stars-color), 1018px 322px var(--stars-color),
+    1608px 1438px var(--stars-color), 818px 1052px var(--stars-color),
+    1135px 1011px var(--stars-color), 765px 1534px var(--stars-color),
+    1414px 611px var(--stars-color), 1888px 1155px var(--stars-color),
+    946px 1651px var(--stars-color), 1606px 1666px var(--stars-color),
+    1807px 1454px var(--stars-color), 1267px 1625px var(--stars-color),
+    1172px 1461px var(--stars-color), 305px 111px var(--stars-color),
+    725px 482px var(--stars-color), 143px 653px var(--stars-color),
+    1434px 1061px var(--stars-color), 1047px 1740px var(--stars-color),
+    501px 559px var(--stars-color), 1353px 418px var(--stars-color),
+    226px 319px var(--stars-color), 1237px 1310px var(--stars-color),
+    1953px 1788px var(--stars-color), 429px 1471px var(--stars-color),
+    404px 1173px var(--stars-color), 1941px 681px var(--stars-color),
+    368px 1463px var(--stars-color), 1166px 859px var(--stars-color),
+    1592px 184px var(--stars-color), 474px 212px var(--stars-color),
+    1160px 387px var(--stars-color), 1021px 1480px var(--stars-color),
+    1311px 1105px var(--stars-color), 1181px 1135px var(--stars-color),
+    1936px 1414px var(--stars-color), 1370px 545px var(--stars-color),
+    430px 1577px var(--stars-color), 1133px 1326px var(--stars-color),
+    1868px 1981px var(--stars-color), 554px 1781px var(--stars-color),
+    326px 1797px var(--stars-color), 341px 1839px var(--stars-color),
+    1631px 1452px var(--stars-color), 1793px 1698px var(--stars-color),
+    1360px 1629px var(--stars-color), 398px 138px var(--stars-color),
+    1715px 917px var(--stars-color), 242px 829px var(--stars-color),
+    1798px 1094px var(--stars-color), 1153px 249px var(--stars-color);
+  animation: starsAnimation 100s linear infinite;
+}
+.stars > .medium:after {
+  content: ' ';
+  position: absolute;
+  top: 2000px;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: 351px 1034px var(--stars-color), 1765px 812px var(--stars-color),
+    703px 263px var(--stars-color), 618px 1711px var(--stars-color),
+    1361px 518px var(--stars-color), 1606px 872px var(--stars-color),
+    1616px 382px var(--stars-color), 1246px 1213px var(--stars-color),
+    1002px 107px var(--stars-color), 1383px 809px var(--stars-color),
+    1752px 988px var(--stars-color), 1151px 1330px var(--stars-color),
+    1696px 1454px var(--stars-color), 199px 1464px var(--stars-color),
+    1158px 454px var(--stars-color), 916px 501px var(--stars-color),
+    879px 1795px var(--stars-color), 1313px 680px var(--stars-color),
+    1989px 1635px var(--stars-color), 924px 366px var(--stars-color),
+    1885px 818px var(--stars-color), 211px 1056px var(--stars-color),
+    83px 1462px var(--stars-color), 1384px 1315px var(--stars-color),
+    817px 387px var(--stars-color), 956px 359px var(--stars-color),
+    1177px 56px var(--stars-color), 1625px 170px var(--stars-color),
+    1256px 718px var(--stars-color), 251px 1904px var(--stars-color),
+    331px 718px var(--stars-color), 1067px 390px var(--stars-color),
+    1443px 487px var(--stars-color), 505px 1722px var(--stars-color),
+    907px 867px var(--stars-color), 251px 2px var(--stars-color),
+    1879px 265px var(--stars-color), 1825px 1075px var(--stars-color),
+    1516px 679px var(--stars-color), 296px 982px var(--stars-color),
+    1182px 1257px var(--stars-color), 1965px 945px var(--stars-color),
+    97px 1630px var(--stars-color), 908px 1687px var(--stars-color),
+    130px 455px var(--stars-color), 213px 997px var(--stars-color),
+    1101px 1042px var(--stars-color), 1314px 658px var(--stars-color),
+    447px 587px var(--stars-color), 926px 1489px var(--stars-color),
+    1117px 1037px var(--stars-color), 560px 1157px var(--stars-color),
+    1705px 1002px var(--stars-color), 1472px 374px var(--stars-color),
+    319px 1675px var(--stars-color), 1794px 297px var(--stars-color),
+    886px 113px var(--stars-color), 1374px 868px var(--stars-color),
+    35px 936px var(--stars-color), 797px 109px var(--stars-color),
+    1863px 831px var(--stars-color), 800px 784px var(--stars-color),
+    164px 669px var(--stars-color), 911px 456px var(--stars-color),
+    1827px 997px var(--stars-color), 1275px 1454px var(--stars-color),
+    1314px 195px var(--stars-color), 1154px 841px var(--stars-color),
+    1285px 995px var(--stars-color), 1365px 1754px var(--stars-color),
+    845px 841px var(--stars-color), 948px 1886px var(--stars-color),
+    140px 1704px var(--stars-color), 1320px 1890px var(--stars-color),
+    3px 1714px var(--stars-color), 1141px 497px var(--stars-color),
+    1128px 893px var(--stars-color), 592px 354px var(--stars-color),
+    1958px 25px var(--stars-color), 1698px 616px var(--stars-color),
+    1484px 699px var(--stars-color), 577px 1605px var(--stars-color),
+    1134px 1445px var(--stars-color), 232px 255px var(--stars-color),
+    1868px 953px var(--stars-color), 843px 174px var(--stars-color),
+    1917px 1243px var(--stars-color), 517px 105px var(--stars-color),
+    1644px 999px var(--stars-color), 407px 561px var(--stars-color),
+    297px 1950px var(--stars-color), 961px 915px var(--stars-color),
+    1279px 480px var(--stars-color), 1391px 978px var(--stars-color),
+    1700px 1594px var(--stars-color), 1359px 434px var(--stars-color),
+    1416px 1731px var(--stars-color), 218px 155px var(--stars-color),
+    382px 890px var(--stars-color), 1238px 947px var(--stars-color),
+    1395px 1990px var(--stars-color), 1748px 1920px var(--stars-color),
+    1038px 204px var(--stars-color), 1796px 256px var(--stars-color),
+    892px 508px var(--stars-color), 192px 262px var(--stars-color),
+    805px 727px var(--stars-color), 759px 1864px var(--stars-color),
+    1118px 1535px var(--stars-color), 1911px 615px var(--stars-color),
+    995px 1277px var(--stars-color), 1817px 188px var(--stars-color),
+    1951px 1720px var(--stars-color), 812px 442px var(--stars-color),
+    1157px 776px var(--stars-color), 1222px 1517px var(--stars-color),
+    1444px 875px var(--stars-color), 1301px 1738px var(--stars-color),
+    692px 915px var(--stars-color), 1092px 98px var(--stars-color),
+    1591px 1924px var(--stars-color), 103px 390px var(--stars-color),
+    1821px 1407px var(--stars-color), 101px 1666px var(--stars-color),
+    1360px 1463px var(--stars-color), 514px 626px var(--stars-color),
+    1874px 1134px var(--stars-color), 857px 1069px var(--stars-color),
+    1589px 835px var(--stars-color), 1160px 1639px var(--stars-color),
+    1148px 1032px var(--stars-color), 1458px 483px var(--stars-color),
+    159px 283px var(--stars-color), 1246px 20px var(--stars-color),
+    1280px 274px var(--stars-color), 1801px 1047px var(--stars-color),
+    1823px 1167px var(--stars-color), 772px 413px var(--stars-color),
+    1802px 92px var(--stars-color), 516px 582px var(--stars-color),
+    423px 1340px var(--stars-color), 929px 868px var(--stars-color),
+    1130px 574px var(--stars-color), 707px 409px var(--stars-color),
+    1644px 486px var(--stars-color), 1283px 1961px var(--stars-color),
+    1332px 1708px var(--stars-color), 433px 630px var(--stars-color),
+    1228px 1772px var(--stars-color), 521px 1102px var(--stars-color),
+    498px 75px var(--stars-color), 1018px 322px var(--stars-color),
+    1608px 1438px var(--stars-color), 818px 1052px var(--stars-color),
+    1135px 1011px var(--stars-color), 765px 1534px var(--stars-color),
+    1414px 611px var(--stars-color), 1888px 1155px var(--stars-color),
+    946px 1651px var(--stars-color), 1606px 1666px var(--stars-color),
+    1807px 1454px var(--stars-color), 1267px 1625px var(--stars-color),
+    1172px 1461px var(--stars-color), 305px 111px var(--stars-color),
+    725px 482px var(--stars-color), 143px 653px var(--stars-color),
+    1434px 1061px var(--stars-color), 1047px 1740px var(--stars-color),
+    501px 559px var(--stars-color), 1353px 418px var(--stars-color),
+    226px 319px var(--stars-color), 1237px 1310px var(--stars-color),
+    1953px 1788px var(--stars-color), 429px 1471px var(--stars-color),
+    404px 1173px var(--stars-color), 1941px 681px var(--stars-color),
+    368px 1463px var(--stars-color), 1166px 859px var(--stars-color),
+    1592px 184px var(--stars-color), 474px 212px var(--stars-color),
+    1160px 387px var(--stars-color), 1021px 1480px var(--stars-color),
+    1311px 1105px var(--stars-color), 1181px 1135px var(--stars-color),
+    1936px 1414px var(--stars-color), 1370px 545px var(--stars-color),
+    430px 1577px var(--stars-color), 1133px 1326px var(--stars-color),
+    1868px 1981px var(--stars-color), 554px 1781px var(--stars-color),
+    326px 1797px var(--stars-color), 341px 1839px var(--stars-color),
+    1631px 1452px var(--stars-color), 1793px 1698px var(--stars-color),
+    1360px 1629px var(--stars-color), 398px 138px var(--stars-color),
+    1715px 917px var(--stars-color), 242px 829px var(--stars-color),
+    1798px 1094px var(--stars-color), 1153px 249px var(--stars-color);
+}
+.stars > .big {
+  width: 3px;
+  height: 3px;
+  border-radius: 100%;
+  background: transparent;
+  box-shadow: 631px 1949px var(--stars-color), 211px 621px var(--stars-color),
+    372px 1414px var(--stars-color), 886px 1487px var(--stars-color),
+    1421px 771px var(--stars-color), 1003px 492px var(--stars-color),
+    1653px 1179px var(--stars-color), 1365px 201px var(--stars-color),
+    985px 1594px var(--stars-color), 919px 453px var(--stars-color),
+    654px 1256px var(--stars-color), 811px 292px var(--stars-color),
+    294px 1721px var(--stars-color), 1028px 1272px var(--stars-color),
+    979px 1164px var(--stars-color), 474px 817px var(--stars-color),
+    474px 1477px var(--stars-color), 127px 1486px var(--stars-color),
+    955px 173px var(--stars-color), 950px 997px var(--stars-color),
+    969px 1474px var(--stars-color), 60px 1579px var(--stars-color),
+    1481px 722px var(--stars-color), 744px 1960px var(--stars-color),
+    385px 1053px var(--stars-color), 254px 913px var(--stars-color),
+    87px 1328px var(--stars-color), 393px 1735px var(--stars-color),
+    191px 1382px var(--stars-color), 675px 630px var(--stars-color),
+    107px 807px var(--stars-color), 1391px 316px var(--stars-color),
+    96px 296px var(--stars-color), 1108px 1643px var(--stars-color),
+    1293px 995px var(--stars-color), 1762px 946px var(--stars-color),
+    63px 311px var(--stars-color), 1029px 1598px var(--stars-color),
+    425px 712px var(--stars-color), 44px 413px var(--stars-color),
+    1832px 1686px var(--stars-color), 289px 1111px var(--stars-color),
+    285px 51px var(--stars-color), 976px 1118px var(--stars-color),
+    1845px 1113px var(--stars-color), 477px 517px var(--stars-color),
+    1753px 1191px var(--stars-color), 975px 1710px var(--stars-color),
+    1208px 532px var(--stars-color), 968px 1369px var(--stars-color),
+    1571px 1047px var(--stars-color), 908px 1283px var(--stars-color),
+    611px 1058px var(--stars-color), 1423px 805px var(--stars-color),
+    1020px 1601px var(--stars-color), 1472px 88px var(--stars-color),
+    173px 1633px var(--stars-color), 1972px 1608px var(--stars-color),
+    508px 1119px var(--stars-color), 1596px 457px var(--stars-color),
+    1282px 107px var(--stars-color), 1846px 121px var(--stars-color),
+    496px 1362px var(--stars-color), 722px 1107px var(--stars-color),
+    100px 1388px var(--stars-color), 1090px 1177px var(--stars-color),
+    1819px 1736px var(--stars-color), 1107px 1015px var(--stars-color),
+    1144px 1070px var(--stars-color), 1872px 1679px var(--stars-color),
+    762px 1781px var(--stars-color), 520px 1288px var(--stars-color),
+    866px 839px var(--stars-color), 1047px 1800px var(--stars-color),
+    1441px 723px var(--stars-color), 390px 375px var(--stars-color),
+    702px 1296px var(--stars-color), 526px 464px var(--stars-color),
+    366px 220px var(--stars-color), 1208px 831px var(--stars-color),
+    1696px 1612px var(--stars-color), 540px 874px var(--stars-color),
+    119px 1402px var(--stars-color), 860px 1011px var(--stars-color),
+    1578px 1141px var(--stars-color), 534px 1759px var(--stars-color),
+    517px 175px var(--stars-color), 1687px 1131px var(--stars-color),
+    1960px 481px var(--stars-color), 543px 14px var(--stars-color),
+    257px 701px var(--stars-color), 1800px 1110px var(--stars-color),
+    770px 81px var(--stars-color), 1181px 1670px var(--stars-color),
+    544px 1752px var(--stars-color), 1436px 1787px var(--stars-color),
+    811px 1971px var(--stars-color), 1439px 13px var(--stars-color),
+    1859px 1610px var(--stars-color), 118px 1717px var(--stars-color);
+  border-radius: 100%;
+  animation: starsAnimation 150s linear infinite;
+}
+.stars > .big:after {
+  content: ' ';
+  position: absolute;
+  top: 2000px;
+  width: 5px;
+  height: 5px;
+  background: transparent;
+  box-shadow: 631px 1949px var(--stars-color), 211px 621px var(--stars-color),
+    372px 1414px var(--stars-color), 886px 1487px var(--stars-color),
+    1421px 771px var(--stars-color), 1003px 492px var(--stars-color),
+    1653px 1179px var(--stars-color), 1365px 201px var(--stars-color),
+    985px 1594px var(--stars-color), 919px 453px var(--stars-color),
+    654px 1256px var(--stars-color), 811px 292px var(--stars-color),
+    294px 1721px var(--stars-color), 1028px 1272px var(--stars-color),
+    979px 1164px var(--stars-color), 474px 817px var(--stars-color),
+    474px 1477px var(--stars-color), 127px 1486px var(--stars-color),
+    955px 173px var(--stars-color), 950px 997px var(--stars-color),
+    969px 1474px var(--stars-color), 60px 1579px var(--stars-color),
+    1481px 722px var(--stars-color), 744px 1960px var(--stars-color),
+    385px 1053px var(--stars-color), 254px 913px var(--stars-color),
+    87px 1328px var(--stars-color), 393px 1735px var(--stars-color),
+    191px 1382px var(--stars-color), 675px 630px var(--stars-color),
+    107px 807px var(--stars-color), 1391px 316px var(--stars-color),
+    96px 296px var(--stars-color), 1108px 1643px var(--stars-color),
+    1293px 995px var(--stars-color), 1762px 946px var(--stars-color),
+    63px 311px var(--stars-color), 1029px 1598px var(--stars-color),
+    425px 712px var(--stars-color), 44px 413px var(--stars-color),
+    1832px 1686px var(--stars-color), 289px 1111px var(--stars-color),
+    285px 51px var(--stars-color), 976px 1118px var(--stars-color),
+    1845px 1113px var(--stars-color), 477px 517px var(--stars-color),
+    1753px 1191px var(--stars-color), 975px 1710px var(--stars-color),
+    1208px 532px var(--stars-color), 968px 1369px var(--stars-color),
+    1571px 1047px var(--stars-color), 908px 1283px var(--stars-color),
+    611px 1058px var(--stars-color), 1423px 805px var(--stars-color),
+    1020px 1601px var(--stars-color), 1472px 88px var(--stars-color),
+    173px 1633px var(--stars-color), 1972px 1608px var(--stars-color),
+    508px 1119px var(--stars-color), 1596px 457px var(--stars-color),
+    1282px 107px var(--stars-color), 1846px 121px var(--stars-color),
+    496px 1362px var(--stars-color), 722px 1107px var(--stars-color),
+    100px 1388px var(--stars-color), 1090px 1177px var(--stars-color),
+    1819px 1736px var(--stars-color), 1107px 1015px var(--stars-color),
+    1144px 1070px var(--stars-color), 1872px 1679px var(--stars-color),
+    762px 1781px var(--stars-color), 520px 1288px var(--stars-color),
+    866px 839px var(--stars-color), 1047px 1800px var(--stars-color),
+    1441px 723px var(--stars-color), 390px 375px var(--stars-color),
+    702px 1296px var(--stars-color), 526px 464px var(--stars-color),
+    366px 220px var(--stars-color), 1208px 831px var(--stars-color),
+    1696px 1612px var(--stars-color), 540px 874px var(--stars-color),
+    119px 1402px var(--stars-color), 860px 1011px var(--stars-color),
+    1578px 1141px var(--stars-color), 534px 1759px var(--stars-color),
+    517px 175px var(--stars-color), 1687px 1131px var(--stars-color),
+    1960px 481px var(--stars-color), 543px 14px var(--stars-color),
+    257px 701px var(--stars-color), 1800px 1110px var(--stars-color),
+    770px 81px var(--stars-color), 1181px 1670px var(--stars-color),
+    544px 1752px var(--stars-color), 1436px 1787px var(--stars-color),
+    811px 1971px var(--stars-color), 1439px 13px var(--stars-color),
+    1859px 1610px var(--stars-color), 118px 1717px var(--stars-color);
+  border-radius: 100%;
+}
