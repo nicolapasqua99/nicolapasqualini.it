@@ -1,0 +1,10 @@
+{
+    "name": "DELETE_OLDER_FUNCTION",
+    "action": {
+        "type": "Delete"
+    },
+    "condition": {
+        "tagState": "UNTAGGED",
+        "olderThan": "5d"
+    }
+}
