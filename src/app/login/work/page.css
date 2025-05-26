@@ -20,10 +20,10 @@ form {
 }
 
 h1 {
-    width: auto;
+    width: 100%;
     text-align: center;
-    padding-bottom: 8px;
-    font-size: 20px;
+    padding: 1rem 0rem;
+    font-size: 2.5rem;
 }
 
 input {

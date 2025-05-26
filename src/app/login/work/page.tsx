@@ -4,11 +4,15 @@ import { auth } from '@/src/lib/firebase'
 import './page.css'
 
 import { UserCredential, signInWithEmailAndPassword, signOut } from 'firebase/auth'
-import { FormEvent, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 
 export default function Home() {
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null)
     const [error, setError] = useState<string | null>(null)
-    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+
+    useEffect(() => {
+        checkIfIsLoggedIn()
+    }, [])
 
     async function signOutUser() {
         setError(null)
@@ -21,7 +25,7 @@ export default function Home() {
                     setIsLoggedIn(false)
                 }
             })
-            .catch(error => {
+            .catch(_ => {
                 setError('An error occurred while logging you out.')
             })
     }
@@ -34,7 +38,7 @@ export default function Home() {
                 let response_data = await response.json()
                 setIsLoggedIn(response_data.isLogged)
             })
-            .catch(error => {
+            .catch(_ => {
                 setIsLoggedIn(false)
                 setError('An error occurred while checking login status. Please try again later.')
             })
@@ -65,6 +69,8 @@ export default function Home() {
                         } else {
                             setError('An error occurred during login. Please try again later.')
                         }
+                    }).catch(_ => {
+                        setError('An error occurred during login. Please try again later.')
                     })
                 })
                 .catch(error => {
@@ -77,26 +83,25 @@ export default function Home() {
         }
     }
 
-    if (!isLoggedIn) {
-        checkIfIsLoggedIn()
-    }
-
     return (
         <main>
             <form onSubmit={onSubmit}>
-                {/* <h1>Insert password to continue</h1> */}
-                {!isLoggedIn && (
-                    <>
-                        <input className="passwordinput" type="password" name="psw" />
-                        <button type="submit">LOGIN</button>
-                    </>
-                )}
-                {isLoggedIn && (
-                    <button type="button" onClick={() => signOutUser()}>
-                        LOGOUT
-                    </button>
-                )}
-                <footer>{error && <p style={{ marginBottom: '1rem', color: 'var(--error)' }}>{error}</p>}</footer>
+                {isLoggedIn === null && <h1>Loading...</h1>}
+                {isLoggedIn !== null && <>
+                    <h1>Insert password to login</h1>
+                    {!isLoggedIn && (
+                        <>
+                            <input className="passwordinput" type="password" name="psw" />
+                            <button type="submit">LOGIN</button>
+                        </>
+                    )}
+                    {isLoggedIn && (
+                        <button type="button" onClick={() => signOutUser()}>
+                            LOGOUT
+                        </button>
+                    )}
+                    <footer>{error && <p style={{ marginBottom: '1rem', color: 'var(--error)' }}>{error}</p>}</footer>
+                </>}
             </form>
         </main>
     )
