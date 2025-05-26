@@ -78,7 +78,7 @@ export default class Home extends React.Component {
                     currentYear = yearCell as unknown as IYearName
                 }
                 currentMonth = csvDataTable[1][indexYearCell] as unknown as IMonthName
-                if (!vacationData![currentYear]) vacationData[currentYear] = {} as unknown as Record<IMonthName, IMonthInfo>
+                if (!vacationData![currentYear]) vacationData![currentYear] = {} as unknown as Record<IMonthName, IMonthInfo>
                 totalPermitsAvailable = totalPermitsAvailable + Number(csvDataTable[3][indexYearCell].replace(',', '.')) - Number(csvDataTable[5][indexYearCell].replace(',', '.'))
                 totalVacationsAvailable = totalVacationsAvailable + Number(csvDataTable[2][indexYearCell].replace(',', '.')) - Number(csvDataTable[4][indexYearCell].replace(',', '.'))
                 vacationData![currentYear]![currentMonth] = {
