@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
-import { adminAuth } from '@/src/lib/firebase-admin'
+import { getAdminAuth } from '@/src/lib/firebase-client'
 
 export default async function WorkLayout({ children }: { children: React.ReactNode }) {
     const session = (await cookies()).get('__session')?.value || ''
@@ -9,7 +9,7 @@ export default async function WorkLayout({ children }: { children: React.ReactNo
         redirect('/login/work')
     }
 
-    const decodedClaims = await adminAuth().verifySessionCookie(session, true)
+    const decodedClaims = await getAdminAuth().verifySessionCookie(session, true)
 
     if (!decodedClaims) {
         redirect('/login/work')

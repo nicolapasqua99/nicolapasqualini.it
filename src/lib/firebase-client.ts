@@ -14,10 +14,10 @@ export function initFirebaseApp() {
     getApps().length > 0 ? getApps()[0] : initializeApp(firebaseConfig)
 }
 
-export function adminAuth() {
+export function getAdminAuth() {
     return getAuth(getApps().length > 0 ? getApps()[0] : initializeApp(firebaseConfig))
 }
 
-export function adminFirestore() {
+export function getFirestoreHandler() {
     return getFirestore(getApps().length > 0 ? getApps()[0] : initializeApp(firebaseConfig))
 }

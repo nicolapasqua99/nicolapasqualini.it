@@ -1,4 +1,4 @@
-import { adminAuth } from '@/src/lib/firebase-admin'
+import { getAdminAuth } from '@/src/lib/firebase-client'
 import { cookies, headers } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
 
@@ -7,11 +7,11 @@ export async function POST(request: NextRequest): Promise<NextResponse<{} | { er
     try {
         if (authorization?.startsWith('Bearer ')) {
             const idToken = authorization.split('Bearer ')[1]
-            const decodedToken = await adminAuth().verifyIdToken(idToken)
+            const decodedToken = await getAdminAuth().verifyIdToken(idToken)
             if (decodedToken) {
                 //Generate session cookie
                 const expiresIn = 60 * 60 * 24 * 5 * 1000
-                const sessionCookie = await adminAuth().createSessionCookie(idToken, {
+                const sessionCookie = await getAdminAuth().createSessionCookie(idToken, {
                     expiresIn
                 })
                 const options = {

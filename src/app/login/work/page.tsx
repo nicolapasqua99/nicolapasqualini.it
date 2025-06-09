@@ -1,9 +1,7 @@
 'use client'
 
-import { auth } from '@/src/lib/firebase'
 import './page.css'
 
-import { UserCredential, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { FormEvent, useEffect, useState } from 'react'
 
 export default function Home() {
@@ -14,10 +12,8 @@ export default function Home() {
         checkIfIsLoggedIn()
     }, [])
 
-    async function signOutUser() {
+    async function logout() {
         setError(null)
-
-        await signOut(auth)
 
         await fetch('api/logout')
             .then(response => {
@@ -44,37 +40,24 @@ export default function Home() {
             })
     }
 
-    async function onSubmit(event: FormEvent<HTMLFormElement>) {
-        event.preventDefault()
+    async function login(formEvent: FormEvent<HTMLFormElement>) {
         setError(null)
 
-        const formData = new FormData(event.currentTarget)
+        const formData = new FormData(formEvent.currentTarget)
         if (formData.get('psw')) {
             const psw: string = formData.get('psw') as string
-            signInWithEmailAndPassword(auth, 'daily@stbroom.it', psw)
-                .then(async (userCredentialResponse: UserCredential) => {
-                    console.log('User signed in:', userCredentialResponse.user)
-                    if (!userCredentialResponse) {
-                        return
-                    }
-                    let token = await userCredentialResponse.user.getIdToken()
-                    fetch('api/set-token', {
-                        method: 'POST',
-                        headers: {
-                            Authorization: `Bearer ${token}`
-                        }
-                    }).then(response => {
-                        if (response.status === 200) {
-                            setIsLoggedIn(true)
-                        } else {
-                            setError('An error occurred during login. Please try again later.')
-                        }
-                    }).catch(_ => {
-                        setError('An error occurred during login. Please try again later.')
-                    })
+            await fetch('api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ password: psw })
+            })
+                .then(async response => {
+                    setIsLoggedIn(true)
                 })
                 .catch(error => {
-                    if (error.message.includes('auth/invalid-login-credentials')) {
+                    if (error.status === 401) {
                         setError('Invalid login credentials. Please try again.')
                     } else {
                         setError('An error occurred during login. Please try again later.')
@@ -85,23 +68,25 @@ export default function Home() {
 
     return (
         <main>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={login}>
                 {isLoggedIn === null && <h1>Loading...</h1>}
-                {isLoggedIn !== null && <>
-                    <h1>Insert password to login</h1>
-                    {!isLoggedIn && (
-                        <>
-                            <input className="passwordinput" type="password" name="psw" />
-                            <button type="submit">LOGIN</button>
-                        </>
-                    )}
-                    {isLoggedIn && (
-                        <button type="button" onClick={() => signOutUser()}>
-                            LOGOUT
-                        </button>
-                    )}
-                    <footer>{error && <p style={{ marginBottom: '1rem', color: 'var(--error)' }}>{error}</p>}</footer>
-                </>}
+                {isLoggedIn !== null && (
+                    <>
+                        {!isLoggedIn && (
+                            <>
+                                <h1>Insert password to login</h1>
+                                <input className="passwordinput" type="password" name="psw" />
+                                <button type="submit">LOGIN</button>
+                            </>
+                        )}
+                        {isLoggedIn && (
+                            <button type="button" onClick={() => logout()}>
+                                LOGOUT
+                            </button>
+                        )}
+                        <footer>{error && <p style={{ marginBottom: '1rem', color: 'var(--error)' }}>{error}</p>}</footer>
+                    </>
+                )}
             </form>
         </main>
     )
