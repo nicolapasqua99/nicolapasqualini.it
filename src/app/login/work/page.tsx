@@ -4,8 +4,7 @@ import { FormEvent, useEffect, useState } from 'react'
 import Link from 'next/link'
 
 import styled from 'styled-components'
-import { IGenericApiResponse } from '../../model'
-import { onAuthStateChanged, onIdTokenChanged, signInWithEmailAndPassword, signOut, User } from 'firebase/auth'
+import { onIdTokenChanged, signInWithEmailAndPassword, signOut, User } from 'firebase/auth'
 import { getClientAuth } from '@/src/lib/firebase-client'
 
 const MainStyledComponent = styled.main`
@@ -159,7 +158,7 @@ export default function Home() {
             }
             if (status === 'unloaded') setStatus('loaded')
         })
-    }, [])
+    }, [currentUser, status])
 
     async function setToken(token: string) {
         setError(null)

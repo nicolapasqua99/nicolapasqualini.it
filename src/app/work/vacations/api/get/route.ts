@@ -1,4 +1,4 @@
-import { firestore } from '@/src/lib/firebase-server'
+import { getServerFirestore } from '@/src/lib/firebase-server'
 import { IMonthInfo, IMonthName, IVacationData, IYearName } from '@/src/app/work/vacations/model'
 import { DocumentData, QuerySnapshot } from 'firebase-admin/firestore'
 import { collection, documentId, getDocs } from 'firebase/firestore'
@@ -24,8 +24,9 @@ function getMonthIndex(monthName: IMonthName): number {
 }
 
 async function getSortedDocs(year: IYearName) {
-    let docs = await getDocs(collection(firestore, `vacations/${year}/months`))
-    let mappedDocs = docs.docs.map(doc => {
+    const firestoreRef = getServerFirestore()
+    const snapshot = await firestoreRef.collection(`vacations/${year}/months`).get()
+    const mappedDocs = snapshot.docs.map(doc => {
         return {
             documentId: doc.id as IMonthName,
             documentData: doc.data()

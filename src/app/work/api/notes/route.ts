@@ -1,17 +1,19 @@
-import { getClientFirestore } from "@/src/lib/firebase-client"
-import { NextRequest, NextResponse } from "next/server"
+import { getServerFirestore } from '@/src/lib/firebase-server'
+import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(request: NextRequest) {
     try {
-        const collectionData = await getClientFirestore().collection('notes').get()
-        if (collectionData) {
+        const firestoreRef = getServerFirestore()
+        const snapshot = await firestoreRef.collection(`notes`).get()
+
+        if (snapshot) {
             let data: any = []
-            collectionData.forEach((collectionElement: any) => {
+            snapshot.forEach((collectionElement: any) => {
                 data.push(collectionElement.data())
             })
             return NextResponse.json({ result: data }, { status: 200 })
         } else {
-            return NextResponse.json({ result: 'Data requested not found'}, { status: 500 })
+            return NextResponse.json({ result: 'Data requested not found' }, { status: 500 })
         }
     } catch (error) {
         return NextResponse.json({ error }, { status: 500 })

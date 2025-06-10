@@ -1,5 +1,5 @@
-import { firestore } from '@/src/lib/firebase-server'
-import { addDoc, collection, doc, setDoc } from 'firebase/firestore'
+import { getServerFirestore } from '@/src/lib/firebase-server'
+import { doc, setDoc } from 'firebase/firestore'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
@@ -336,14 +336,19 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         }
     ]
 
-    await Promise.all(initData2023.map(month => setDoc(doc(firestore, `vacations/2023/months/${month.monthIndex}`), month.monthData))).catch(error => {
+    try {
+        let firestoreRef = getServerFirestore()
+        await Promise.all(initData2023.map(month =>
+            firestoreRef.doc(`vacations/2023/months/${month.monthIndex}`).set(month.monthData)
+        ))
+        await Promise.all(initData2024.map(month =>
+            firestoreRef.doc(`vacations/2024/months/${month.monthIndex}`).set(month.monthData)
+        ))
+        await Promise.all(initData2025.map(month =>
+            firestoreRef.doc(`vacations/2025/months/${month.monthIndex}`).set(month.monthData)
+        ))
+        return NextResponse.json({}, { status: 200 })
+    } catch (error) {
         return NextResponse.json({ error }, { status: 500 })
-    })
-    await Promise.all(initData2024.map(month => setDoc(doc(firestore, `vacations/2024/months/${month.monthIndex}`), month.monthData))).catch(error => {
-        return NextResponse.json({ error }, { status: 500 })
-    })
-    await Promise.all(initData2025.map(month => setDoc(doc(firestore, `vacations/2025/months/${month.monthIndex}`), month.monthData))).catch(error => {
-        return NextResponse.json({ error }, { status: 500 })
-    })
-    return NextResponse.json({}, { status: 200 })
+    }
 }
