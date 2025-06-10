@@ -7,10 +7,12 @@ import Experiences from './_components/experiences'
 import Projects from './_components/projects'
 
 export default function Portfolio() {
-    return <main>
-        <Title />
-        <Social />
-        <Experiences />
-        <Projects />
-    </main>
+    return (
+        <main>
+            <Title />
+            <Social />
+            <Experiences />
+            <Projects />
+        </main>
+    )
 }

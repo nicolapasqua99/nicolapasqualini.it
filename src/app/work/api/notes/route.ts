@@ -1,9 +1,9 @@
-import { getFirestoreHandler } from "@/src/lib/firebase-client"
+import { getClientFirestore } from "@/src/lib/firebase-client"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function GET(request: NextRequest) {
     try {
-        const collectionData = await getFirestoreHandler().collection('notes').get()
+        const collectionData = await getClientFirestore().collection('notes').get()
         if (collectionData) {
             let data: any = []
             collectionData.forEach((collectionElement: any) => {

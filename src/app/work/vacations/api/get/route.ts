@@ -1,5 +1,5 @@
 import { firestore } from '@/src/lib/firebase-server'
-import { IMonthInfo, IMonthName, IVacationData, IYearName } from '@/src/models/vacations.model'
+import { IMonthInfo, IMonthName, IVacationData, IYearName } from '@/src/app/work/vacations/model'
 import { DocumentData, QuerySnapshot } from 'firebase-admin/firestore'
 import { collection, documentId, getDocs } from 'firebase/firestore'
 import { NextRequest, NextResponse } from 'next/server'

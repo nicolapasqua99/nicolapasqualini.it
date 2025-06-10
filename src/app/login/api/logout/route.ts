@@ -1,20 +1,18 @@
-import { auth } from '@/src/lib/firebase-server';
-import { signOut } from 'firebase/auth';
+import { IGenericApiResponse } from '@/src/app/model'
 import { cookies } from 'next/headers'
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
-export async function POST(request: NextRequest): Promise<NextResponse<{}>> {
-    //Remove the value and expire the cookie
-    const options = {
-        name: '__session',
-        value: '',
-        maxAge: -1
+export async function GET(): Promise<NextResponse<IGenericApiResponse>> {
+    try {
+        const options = {
+            name: '__session',
+            value: '',
+            maxAge: -1
+        }
+
+        ;(await cookies()).set(options)
+        return NextResponse.json({ errorMsg: null, data: null, code: 0 }, { status: 200 })
+    } catch (error: any) {
+        return NextResponse.json({ errorMsg: error.message, data: null, code: 100 }, { status: 200 })
     }
-
-    ;(await cookies()).set(options)
-
-    await signOut(auth)
-    
-
-    return NextResponse.json({}, { status: 200 })
 }

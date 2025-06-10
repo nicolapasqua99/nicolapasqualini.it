@@ -1,8 +1,10 @@
 'use client'
 
-import { IMonthFullName, IMonthName, IVacationData, IYearName } from '@/src/models/vacations.model'
-import './page.css'
 import { useEffect, useState } from 'react'
+
+import styled from 'styled-components'
+
+import { IMonthFullName, IMonthName, IVacationData, IYearName } from '@/src/app/work/vacations/model'
 
 function getMonthName(monthIndex: number): IMonthName {
     let monthNames: IMonthName[] = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
@@ -32,6 +34,112 @@ function getMonthIndex(monthName: IMonthName): number {
         }[monthName] || -1
     )
 }
+
+const MainStyledComponent = styled.main`
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background);
+    display: block;
+`
+
+const HeaderStyledComponent = styled.main`
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 4rem;
+    & h1 {
+        font-size: 3rem;
+        font-weight: 600;
+    }
+    & div {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        & button {
+            display: flex;
+            align-items: center;
+            height: 5rem;
+            padding: 0rem 2rem;
+            margin: 0rem 1rem;
+            border: none;
+            outline: none;
+            box-shadow: none;
+            font-size: 2rem;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            border-radius: 2rem;
+            background-color: var(--surface-container);
+            color: var(--on-surface-variant);
+            &.selected {
+                border-radius: 1rem;
+                background-color: var(--primary);
+                color: var(--on-primary);
+            }
+            &:disabled {
+                opacity: 0.3;
+            }
+        }
+    }
+`
+
+const TableContainerStyledComponent = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 4rem;
+    table {
+        transform: translate(0, 0);
+        padding: 6rem;
+        margin: 2rem auto;
+        background-color: var(--surface-container);
+        border-radius: 2rem;
+        width: fit-content;
+        /* .year-title {
+        display: block;
+        position: absolute;
+        font-size: 54px;
+        width: 156px;
+        text-align: center;
+        padding: 0 12px;
+        transform: translateY(-48px);
+        font-family: 'Oxanium', sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 800;
+        font-style: normal;
+    } */
+        & thead {
+            & th {
+                text-align: center;
+                font-size: 2rem;
+                padding: 1.5rem;
+            }
+            border-bottom: 2px solid var(--on-surface-variant);
+        }
+        & tbody {
+            & td {
+                text-align: center;
+                font-size: 16px;
+                padding: 12px;
+                width: 100px;
+                font-weight: 600;
+                white-space: nowrap;
+                &.past-month {
+                    opacity: 0.2;
+                }
+                &:first-of-type {
+                    width: 22rem;
+                    display: block;
+                    font-weight: 100;
+                    text-align: right;
+                }
+                &:nth-child(even) {
+                    background-color: var(--surface-bright);
+                }
+            }
+        }
+    }
+`
 
 export default function Vacations() {
     const [loaded, setLoaded] = useState<boolean>(false)
@@ -71,6 +179,7 @@ export default function Vacations() {
                     const data: IVacationData = await response.json()
                     if (data) {
                         setVacations(data)
+                        console.log(data[2025])
                     } else {
                         console.error('No vacation data found.')
                     }
@@ -89,8 +198,8 @@ export default function Vacations() {
     }, [])
 
     return (
-        <main>
-            <header>
+        <MainStyledComponent>
+            <HeaderStyledComponent>
                 <h1>Vacations</h1>
                 <div>
                     <button className={showVacations ? 'selected' : ''} onClick={() => setShowVacations(!showVacations)}>
@@ -103,8 +212,8 @@ export default function Vacations() {
                         Reset Vacations Data
                     </button>
                 </div>
-            </header>
-            <div className="table-container">
+            </HeaderStyledComponent>
+            <TableContainerStyledComponent>
                 {vacations !== undefined &&
                     (['2023', '2024', '2025'] as IYearName[]).map(year => {
                         return (
@@ -113,8 +222,8 @@ export default function Vacations() {
                                 <thead>
                                     <tr>
                                         <th></th>
-                                        {Object.keys(vacations[year]).map(month => {
-                                            return <th key={year + '_' + month + '_header'}>{getMonthFullName(getMonthIndex(month as IMonthName))}</th>
+                                        {Object.keys(vacations[year]).map((month: string, monthIndex: number) => {
+                                            return <th key={year + '_' + month + '_header_' + getMonthName(monthIndex)}>{getMonthFullName(monthIndex)}</th>
                                         })}
                                     </tr>
                                 </thead>
@@ -245,14 +354,11 @@ export default function Vacations() {
                                             })}
                                         </tr>
                                     )}
-
-
-                                    
                                 </tbody>
                             </table>
                         )
                     })}
-            </div>
-        </main>
+            </TableContainerStyledComponent>
+        </MainStyledComponent>
     )
 }
