@@ -67,97 +67,103 @@ const PeopleContainerStyledComponent = styled.div`
     align-items: center;
     justify-content: center;
     height: 100%;
+    align-content: center;
 `
 
 const PersonContainerStyledComponents = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 16rem;
     height: 16rem;
     border-radius: 4rem;
     margin: 2rem;
-    background-color: var(--surface);
-    color: var(--on-surface-variant);
     transition: 0.4s ease all;
-    &.talked {
-        background-image: var(--primary);
-        color: var(--on-primary);
-        & span.dot {
-            transition: 0.4s ease all 0s;
-            background-color: var(--tertiary-low-opacity);
-        }
-        & span.tick {
-            transition: 0.4s ease all 0.2s;
-            background-color: var(--tertiary);
-        }
-        &::selection {
-            color: var(--primary-low-opacity);
-        }
-    }
-
+    background-color: var(--primary-container);
     & span.dot {
+        position: absolute;
+        width: 1rem;
+        height: 1rem;
+        margin-top: 4rem;
+        border-radius: .5rem;
         transition: 0.4s ease all 0.2s;
-        background-color: var(--tertiary);
+        background-color: var(--on-primary-container);
     }
     & span.tick {
-        transition: 0.4s ease all 0s;
-        background-color: var(--tertiary-no-opacity);
-    }
-    &::selection {
-        color: var(--tertiary);
-    }
-    & span.tick {
+        opacity: 0;
         position: absolute;
         width: 30px;
         height: 30px;
         clip-path: polygon(0% 70%, 30% 100%, 100% 30%, 85% 15%, 30% 70%, 15% 55%);
-    }
-    & span.dot {
-        width: 40px;
-        height: 4px;
-        margin: 8px;
-        border-radius: 3px;
-        transition: 0.4s ease all;
+        transition: 0.4s ease all 0s;
+        background-color: var(--on-primary-container);
     }
     & p {
-        width: 100%;
+        width: 16rem;
         font-size: 16px;
         text-align: center;
         text-transform: capitalize;
+        color: var(--on-primary-container);
+        opacity: 1;
+        &:first-of-type {
+            margin-top: -2rem;
+        }
     }
-    ::selection {
-        transition: 0.4s ease all;
+    &.talked {
+        background-color: rgba(var(--primary-container), 0.2);
+        & span.dot {
+            margin-top: 0rem;
+            opacity: .2;
+            width: 16rem;
+            height: 16rem;
+            border-radius: 4rem;
+            transition: 0.4s ease all 0s;
+        }
+        & span.tick {
+            opacity: 1;
+            transition: 0.4s ease all 0.2s;
+            background-color: var(--primary);
+        }
+        & p {
+            opacity: .2;    
+        }
     }
+    
 `
 
 export default function Home() {
     const [loaded, setLoaded] = useState<boolean>(false)
     const [people, setPeople] = useState<RoomPerson[]>([])
 
-    function changeTalkedStatus(people: string, newStatus: boolean) {
-        const dbRef = ref(getClientRealtimeDatabase(), 'work/daily/people/' + people)
+    function changeTalkedStatus(person: RoomPerson) {
+        const dbRef = ref(getClientRealtimeDatabase(), 'work/daily/people/' + person.name)
+        console.log(person)
         set(dbRef, {
-            talked: newStatus
+            talked: !person.talked,
+            desc: person.desc
         })
     }
 
-    // useEffect(() => {
-    //     const dbRefLevels = ref(getClientRealtimeDatabase(), 'work/daily/people')
+    useEffect(() => {
+        const dbRefLevels = ref(getClientRealtimeDatabase(), 'work/daily/people')
 
-    //     onValue(dbRefLevels, snapshot => {
-    //         let data = snapshot.val()
-    //         console.log(data)
+        onValue(dbRefLevels, snapshot => {
+            let data = snapshot.val()
+            console.log(data)
 
-    //         setPeople(
-    //             Object.keys(data).map(personName => {
-    //                 return {
-    //                     name: personName,
-    //                     desc: data[personName].desc,
-    //                     talked: data[personName].desc
-    //                 }
-    //             })
-    //         )
-    //         if (!loaded) setLoaded(true)
-    //     })
-    // }, [])
+            setPeople(
+                Object.keys(data).map(personName => {
+                    return {
+                        name: personName,
+                        desc: data[personName].desc,
+                        talked: data[personName].talked
+                    }
+                })
+            )
+            if (!loaded) setLoaded(true)
+        })
+    }, [])
 
     return (
         <MainStyledComponent>
@@ -168,7 +174,7 @@ export default function Home() {
                 {loaded &&
                     people.length > 0 &&
                     people.map(person => (
-                        <PersonContainerStyledComponents key={person.name} className={person.talked ? 'talked' : ''} onClick={() => changeTalkedStatus(person.name, !person.talked)}>
+                        <PersonContainerStyledComponents key={person.name} className={person.talked ? 'talked' : ''} onClick={() => changeTalkedStatus(person)}>
                             <span className="tick" />
                             <p>{person.name}</p>
                             <p>{person.desc}</p>
