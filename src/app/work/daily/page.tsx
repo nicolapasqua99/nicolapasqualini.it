@@ -77,7 +77,7 @@ const PersonContainerStyledComponents = styled.div`
     align-items: center;
     width: 16rem;
     height: 16rem;
-    border-radius: 4rem;
+    border-radius: 6rem;
     margin: 2rem;
     transition: 0.4s ease all;
     background-color: var(--primary-container);
@@ -93,6 +93,7 @@ const PersonContainerStyledComponents = styled.div`
     & span.tick {
         opacity: 0;
         position: absolute;
+        margin-top: 6rem;
         width: 30px;
         height: 30px;
         clip-path: polygon(0% 70%, 30% 100%, 100% 30%, 85% 15%, 30% 70%, 15% 55%);
@@ -106,18 +107,21 @@ const PersonContainerStyledComponents = styled.div`
         text-transform: capitalize;
         color: var(--on-primary-container);
         opacity: 1;
+        transition: 0.4s ease all 0.2s;
         &:first-of-type {
             margin-top: -2rem;
         }
     }
     &.talked {
         background-color: rgba(var(--primary-container), 0.2);
+        border-radius: 2rem;
+
         & span.dot {
             margin-top: 0rem;
             opacity: .2;
             width: 16rem;
             height: 16rem;
-            border-radius: 4rem;
+            border-radius: 2rem;
             transition: 0.4s ease all 0s;
         }
         & span.tick {
@@ -126,6 +130,7 @@ const PersonContainerStyledComponents = styled.div`
             background-color: var(--primary);
         }
         & p {
+            transition: 0.4s ease all 0s;
             opacity: .2;    
         }
     }
