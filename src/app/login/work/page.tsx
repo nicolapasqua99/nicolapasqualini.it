@@ -10,7 +10,7 @@ import { getClientAuth } from '@/src/lib/firebase-client'
 const MainStyledComponent = styled.main`
     width: 100vw;
     height: 100vh;
-    background-color: var(--background);
+    background-color: var(--surface);
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -51,15 +51,15 @@ const ContainerStyledComponent = styled.div`
         width: calc(100% - 2rem);
         padding: 0rem 2rem;
         margin: 1rem 1rem;
-        border: none;
+        border: 2px solid var(--primary);
         outline: none;
         box-shadow: none;
         font-size: 2rem;
         font-weight: 600;
         transition: all 0.4s ease;
         border-radius: 2rem;
-        background-color: var(--surface-variant);
-        color: var(--on-surface-variant);
+        background-color: var(--primary-container);
+        color: var(--on-primary-container);
         cursor: pointer;
         &:hover {
             border-radius: 1rem;

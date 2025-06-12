@@ -335,6 +335,116 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
             }
         }
     ]
+    const initData2026 = [
+        {
+            monthIndex: 'jan',
+            monthData: {
+                gained_permits: 8.8,
+                gained_vacations: 13.2,
+                used_permits: 0,
+                used_vacations: 0
+            }
+        },
+        {
+            monthIndex: 'feb',
+            monthData: {
+                gained_permits: 8.8,
+                gained_vacations: 13.6,
+                used_permits: 0,
+                used_vacations: 0
+            }
+        },
+        {
+            monthIndex: 'mar',
+            monthData: {
+                gained_permits: 8.4,
+                gained_vacations: 13.2,
+                used_permits: 0,
+                used_vacations: 0
+            }
+        },
+        {
+            monthIndex: 'apr',
+            monthData: {
+                gained_permits: 8.8,
+                gained_vacations: 13.2,
+                used_permits: 0,
+                used_vacations: 0
+            }
+        },
+        {
+            monthIndex: 'may',
+            monthData: {
+                gained_permits: 8.8,
+                gained_vacations: 13.6,
+                used_permits: 0,
+                used_vacations: 0
+            }
+        },
+        {
+            monthIndex: 'jun',
+            monthData: {
+                gained_permits: 8.4,
+                gained_vacations: 13.2,
+                used_permits: 0,
+                used_vacations: 0
+            }
+        },
+        {
+            monthIndex: 'jul',
+            monthData: {
+                gained_permits: 8.8,
+                gained_vacations: 13.2,
+                used_permits: 0,
+                used_vacations: 0
+            }
+        },
+        {
+            monthIndex: 'aug',
+            monthData: {
+                gained_permits: 8.8,
+                gained_vacations: 13.6,
+                used_permits: 0,
+                used_vacations: 0
+            }
+        },
+        {
+            monthIndex: 'sep',
+            monthData: {
+                gained_permits: 8.4,
+                gained_vacations: 13.2,
+                used_permits: 0,
+                used_vacations: 0
+            }
+        },
+        {
+            monthIndex: 'oct',
+            monthData: {
+                gained_permits: 8.8,
+                gained_vacations: 13.2,
+                used_permits: 0,
+                used_vacations: 0
+            }
+        },
+        {
+            monthIndex: 'nov',
+            monthData: {
+                gained_permits: 8.8,
+                gained_vacations: 13.6,
+                used_permits: 0,
+                used_vacations: 0
+            }
+        },
+        {
+            monthIndex: 'dec',
+            monthData: {
+                gained_permits: 8.4,
+                gained_vacations: 13.2,
+                used_permits: 0,
+                used_vacations: 0
+            }
+        }
+    ]
 
     try {
         let firestoreRef = getServerFirestore()
@@ -346,6 +456,9 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         ))
         await Promise.all(initData2025.map(month =>
             firestoreRef.doc(`vacations/2025/months/${month.monthIndex}`).set(month.monthData)
+        ))
+        await Promise.all(initData2026.map(month =>
+            firestoreRef.doc(`vacations/2026/months/${month.monthIndex}`).set(month.monthData)
         ))
         return NextResponse.json({}, { status: 200 })
     } catch (error) {

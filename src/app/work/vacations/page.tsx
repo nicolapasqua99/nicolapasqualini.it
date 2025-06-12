@@ -52,6 +52,7 @@ const HeaderStyledComponent = styled.main`
     & h1 {
         font-size: 3rem;
         font-weight: 600;
+        color: var(--primary);
     }
     & div {
         display: flex;
@@ -72,10 +73,16 @@ const HeaderStyledComponent = styled.main`
             border-radius: 2rem;
             background-color: var(--surface-container);
             color: var(--on-surface-variant);
+            &:not(:disabled) {
+                cursor: pointer;
+            }
             &.selected {
                 border-radius: 1rem;
                 background-color: var(--primary);
                 color: var(--on-primary);
+            }
+            &:hover:not(:disabled) {
+                border-radius: 1rem;
             }
             &:disabled {
                 opacity: 0.3;
@@ -95,24 +102,31 @@ const TableContainerStyledComponent = styled.div`
         background-color: var(--surface-container);
         border-radius: 2rem;
         width: fit-content;
-        /* .year-title {
-        display: block;
-        position: absolute;
-        font-size: 54px;
-        width: 156px;
-        text-align: center;
-        padding: 0 12px;
-        transform: translateY(-48px);
-        font-family: 'Oxanium', sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 800;
-        font-style: normal;
-    } */
+        &::before {
+            content: attr(id);
+            position: absolute;
+            font-size: 8rem;
+            transform: translate(-12.2rem, 15rem) rotate(-90deg);
+            font-weight: 800;
+            color: var(--primary);
+        }
+        &.past-year {
+            &::before {
+                opacity: 0.2;
+            }
+        }
+        &.current-year,
+        &.next-year {
+            &::before {
+                opacity: 0.8;
+            }
+        }
         & thead {
             & th {
                 text-align: center;
                 font-size: 2rem;
                 padding: 1.5rem;
+                color: var(--primary);
             }
             border-bottom: 2px solid var(--on-surface-variant);
         }
@@ -124,6 +138,7 @@ const TableContainerStyledComponent = styled.div`
                 width: 100px;
                 font-weight: 600;
                 white-space: nowrap;
+                color: var(--primary);
                 &.past-month {
                     opacity: 0.2;
                 }
@@ -208,30 +223,30 @@ export default function Vacations() {
                     <button className={showPermits ? 'selected' : ''} onClick={() => setShowPermits(!showPermits)}>
                         Permessi
                     </button>
-                    <button disabled={vacations !== undefined && loaded} onClick={resetVacationData}>
+                    <button disabled={vacations === undefined && loaded} onClick={resetVacationData}>
                         Reset Vacations Data
                     </button>
                 </div>
             </HeaderStyledComponent>
             <TableContainerStyledComponent>
                 {vacations !== undefined &&
-                    (['2023', '2024', '2025'] as IYearName[]).map(year => {
+                    (['2026', '2025', '2024', '2023'] as IYearName[]).map(year => {
                         return (
-                            <table key={year + '_table'}>
-                                {/* <span className='year-title'>{year}</span> */}
+                            <table key={year + '_table'} id={year} className={year === today.year ? 'current-year' : year < today.year ? 'past-year' : 'next-year'}>
                                 <thead>
                                     <tr>
                                         <th></th>
-                                        {Object.keys(vacations[year]).map((month: string, monthIndex: number) => {
+                                        {Object.keys(vacations[year].monthsData).map((month: string, monthIndex: number) => {
                                             return <th key={year + '_' + month + '_header_' + getMonthName(monthIndex)}>{getMonthFullName(monthIndex)}</th>
                                         })}
+                                        <th>Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {showVacations && (
                                         <tr>
                                             <td>Ferie guadagnate</td>
-                                            {Object.keys(vacations[year]).map((month: string, monthIndex: number) => {
+                                            {Object.keys(vacations[year].monthsData).map((month: string, monthIndex: number) => {
                                                 return (
                                                     <td
                                                         className={
@@ -242,17 +257,17 @@ export default function Vacations() {
                                                                 : 'next-month'
                                                         }
                                                         key={year + '_' + month + '_gainedVacationHours'}>
-                                                        {vacations[year][month as IMonthName].gainedVacationHours}
+                                                        {vacations[year].monthsData[month as IMonthName].gainedVacationHours}
                                                     </td>
                                                 )
-                                                // return <td key={year + '_' + month + '_empty_cell'}></td>
                                             })}
+                                            <td className={year === today.year ? 'current-month' : year < today.year ? 'past-month' : 'next-month'}>{vacations[year].totalGainedVacationHours}</td>
                                         </tr>
                                     )}
                                     {showPermits && (
                                         <tr>
                                             <td>Permessi guadagnati</td>
-                                            {Object.keys(vacations[year]).map((month: string, monthIndex: number) => {
+                                            {Object.keys(vacations[year].monthsData).map((month: string, monthIndex: number) => {
                                                 return (
                                                     <td
                                                         className={
@@ -263,17 +278,17 @@ export default function Vacations() {
                                                                 : 'next-month'
                                                         }
                                                         key={year + '_' + month + '_gainedPermitHours'}>
-                                                        {vacations[year][month as IMonthName].gainedPermitHours}
+                                                        {vacations[year].monthsData[month as IMonthName].gainedPermitHours}
                                                     </td>
                                                 )
-                                                // return <td key={year + '_' + month + '_empty_cell'}></td>
                                             })}
+                                            <td className={year === today.year ? 'current-month' : year < today.year ? 'past-month' : 'next-month'}>{vacations[year].totalGainedPermitHours}</td>
                                         </tr>
                                     )}
                                     {showVacations && (
                                         <tr>
                                             <td>Ferie utilizzate</td>
-                                            {Object.keys(vacations[year]).map((month: string, monthIndex: number) => {
+                                            {Object.keys(vacations[year].monthsData).map((month: string, monthIndex: number) => {
                                                 return (
                                                     <td
                                                         className={
@@ -284,17 +299,17 @@ export default function Vacations() {
                                                                 : 'next-month'
                                                         }
                                                         key={year + '_' + month + '_usedVacationHours'}>
-                                                        {vacations[year][month as IMonthName].usedVacationHours}
+                                                        {vacations[year].monthsData[month as IMonthName].usedVacationHours}
                                                     </td>
                                                 )
-                                                // return <td key={year + '_' + month + '_empty_cell'}></td>
                                             })}
+                                            <td className={year === today.year ? 'current-month' : year < today.year ? 'past-month' : 'next-month'}>{vacations[year].totalUsedVacationHours}</td>
                                         </tr>
                                     )}
                                     {showPermits && (
                                         <tr>
                                             <td>Permessi utilizzati</td>
-                                            {Object.keys(vacations[year]).map((month: string, monthIndex: number) => {
+                                            {Object.keys(vacations[year].monthsData).map((month: string, monthIndex: number) => {
                                                 return (
                                                     <td
                                                         className={
@@ -305,17 +320,17 @@ export default function Vacations() {
                                                                 : 'next-month'
                                                         }
                                                         key={year + '_' + month + '_usedPermitHours'}>
-                                                        {vacations[year][month as IMonthName].usedPermitHours}
+                                                        {vacations[year].monthsData[month as IMonthName].usedPermitHours}
                                                     </td>
                                                 )
-                                                // return <td key={year + '_' + month + '_empty_cell'}></td>
                                             })}
+                                            <td className={year === today.year ? 'current-month' : year < today.year ? 'past-month' : 'next-month'}>{vacations[year].totalUsedPermitHours}</td>
                                         </tr>
                                     )}
                                     {showVacations && (
                                         <tr>
                                             <td>Ferie disponibili</td>
-                                            {Object.keys(vacations[year]).map((month: string, monthIndex: number) => {
+                                            {Object.keys(vacations[year].monthsData).map((month: string, monthIndex: number) => {
                                                 return (
                                                     <td
                                                         className={
@@ -326,17 +341,17 @@ export default function Vacations() {
                                                                 : 'next-month'
                                                         }
                                                         key={year + '_' + month + '_remainingVacationHours'}>
-                                                        {vacations[year][month as IMonthName].remainingVacationHours}
+                                                        {vacations[year].monthsData[month as IMonthName].remainingVacationHours}
                                                     </td>
                                                 )
-                                                // return <td key={year + '_' + month + '_empty_cell'}></td>
                                             })}
+                                            <td className={year === today.year ? 'current-month' : year < today.year ? 'past-month' : 'next-month'}>---</td>
                                         </tr>
                                     )}
                                     {showPermits && (
                                         <tr>
                                             <td>Permessi disponibili</td>
-                                            {Object.keys(vacations[year]).map((month: string, monthIndex: number) => {
+                                            {Object.keys(vacations[year].monthsData).map((month: string, monthIndex: number) => {
                                                 return (
                                                     <td
                                                         className={
@@ -347,11 +362,11 @@ export default function Vacations() {
                                                                 : 'next-month'
                                                         }
                                                         key={year + '_' + month + '_ramainingPermitHours'}>
-                                                        {vacations[year][month as IMonthName].remainingPermitHours}
+                                                        {vacations[year].monthsData[month as IMonthName].remainingPermitHours}
                                                     </td>
                                                 )
-                                                // return <td key={year + '_' + month + '_empty_cell'}></td>
                                             })}
+                                            <td className={year === today.year ? 'current-month' : year < today.year ? 'past-month' : 'next-month'}>---</td>
                                         </tr>
                                     )}
                                 </tbody>

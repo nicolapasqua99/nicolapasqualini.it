@@ -12,52 +12,50 @@ import { RoomPerson } from '@/src/app/work/daily/model'
 const MainStyledComponent = styled.main`
     width: 100vw;
     height: 100vh;
-    background: radial-gradient(var(--background) 0%, var(--background) 100%);
+    background: radial-gradient(var(--surface) 0%, var(--surface) 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 6rem;
+        width: auto;
+        padding: 0rem 2rem;
+        margin: 1rem 1rem 4rem;
+        border: 2px solid var(--primary);
+        outline: none;
+        box-shadow: none;
+        font-size: 2rem;
+        font-weight: 600;
+        transition: all 0.4s ease;
+        border-radius: 2rem;
+        background-color: var(--primary-container);
+        color: var(--on-primary-container);
+        cursor: pointer;
+        &:hover {
+            border-radius: 1rem;
+            background-color: var(--primary);
+            color: var(--on-primary);
+        }
+        &:disabled {
+            opacity: 0.3;
+        }
+    }
 `
 
 const HeaderStyledComponent = styled.header`
     width: 100%;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 2rem 4rem;
+    padding: 4rem 4rem 0rem;
     & h1 {
         font-size: 3rem;
         font-weight: 600;
-    }
-    & div {
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: center;
-        & button {
-            display: flex;
-            align-items: center;
-            height: 5rem;
-            padding: 0rem 2rem;
-            margin: 0rem 1rem;
-            border: none;
-            outline: none;
-            box-shadow: none;
-            font-size: 2rem;
-            font-weight: 600;
-            transition: all 0.4s ease;
-            border-radius: 2rem;
-            background-color: var(--surface-container);
-            color: var(--on-surface-variant);
-            &.selected {
-                border-radius: 1rem;
-                background-color: var(--primary);
-                color: var(--on-primary);
-            }
-            &:disabled {
-                opacity: 0.3;
-            }
-        }
     }
 `
 
@@ -67,6 +65,7 @@ const PeopleContainerStyledComponent = styled.div`
     align-items: center;
     justify-content: center;
     height: 100%;
+    max-width: 120rem;
     align-content: center;
 `
 
@@ -79,26 +78,29 @@ const PersonContainerStyledComponents = styled.div`
     height: 16rem;
     border-radius: 6rem;
     margin: 2rem;
-    transition: 0.4s ease all;
+    transition: 0.6s ease all 0s;
+    border: 2px solid var(--primary);
     background-color: var(--primary-container);
+    cursor: pointer;
     & span.dot {
         position: absolute;
-        width: 1rem;
-        height: 1rem;
-        margin-top: 4rem;
-        border-radius: .5rem;
+        width: 4rem;
+        height: .5rem;
+        margin-top: 6.5rem;
+        border-radius: 0.5rem;
         transition: 0.4s ease all 0.2s;
         background-color: var(--on-primary-container);
+        opacity: 1;
     }
     & span.tick {
         opacity: 0;
         position: absolute;
-        margin-top: 6rem;
+        margin-top: 0rem;
         width: 30px;
         height: 30px;
         clip-path: polygon(0% 70%, 30% 100%, 100% 30%, 85% 15%, 30% 70%, 15% 55%);
         transition: 0.4s ease all 0s;
-        background-color: var(--on-primary-container);
+        background-color: var(--primary);
     }
     & p {
         width: 16rem;
@@ -108,45 +110,72 @@ const PersonContainerStyledComponents = styled.div`
         color: var(--on-primary-container);
         opacity: 1;
         transition: 0.4s ease all 0.2s;
+        position: relative;
         &:first-of-type {
-            margin-top: -2rem;
+            margin-top: 0rem;
         }
     }
+    &:hover,
     &.talked {
-        background-color: rgba(var(--primary-container), 0.2);
         border-radius: 2rem;
+        transition: 0.4s ease all 0s;
 
         & span.dot {
             margin-top: 0rem;
-            opacity: .2;
             width: 16rem;
             height: 16rem;
             border-radius: 2rem;
             transition: 0.4s ease all 0s;
         }
-        & span.tick {
-            opacity: 1;
-            transition: 0.4s ease all 0.2s;
+        & p {
+            transition: 0.4s ease all 0s;
+        }
+    }
+    &:not(.talked):hover {
+        & span.dot {
             background-color: var(--primary);
         }
         & p {
-            transition: 0.4s ease all 0s;
-            opacity: .2;    
+            color: var(--on-primary);
         }
     }
-    
+    &.talked {
+        & span.dot {
+            background-color: var(--surface);
+            opacity: 0.8;
+        }
+        & span.tick {
+            opacity: 1;
+            transition: 0.4s ease all 0.2s;
+        }
+        & p {
+            opacity: 0.2;
+        }
+    }
 `
 
 export default function Home() {
     const [loaded, setLoaded] = useState<boolean>(false)
     const [people, setPeople] = useState<RoomPerson[]>([])
+    const [canReset, setCanReset] = useState<boolean>(false)
 
-    function changeTalkedStatus(person: RoomPerson) {
+    function toggleTalkedStatus(person: RoomPerson) {
+        changeTalkedStatus(person, !person.talked)
+    }
+
+    function changeTalkedStatus(person: RoomPerson, newStatus: boolean) {
         const dbRef = ref(getClientRealtimeDatabase(), 'work/daily/people/' + person.name)
-        console.log(person)
         set(dbRef, {
-            talked: !person.talked,
+            talked: newStatus,
             desc: person.desc
+        })
+    }
+
+    function resetPeopleTalked() {
+        people.forEach(person => {
+            if (person.talked) {
+                changeTalkedStatus(person, false)
+            }
         })
     }
 
@@ -154,8 +183,7 @@ export default function Home() {
         const dbRefLevels = ref(getClientRealtimeDatabase(), 'work/daily/people')
 
         onValue(dbRefLevels, snapshot => {
-            let data = snapshot.val()
-            console.log(data)
+            let data: Record<string, { desc: string; talked: boolean }> = snapshot.val()
 
             setPeople(
                 Object.keys(data).map(personName => {
@@ -166,6 +194,13 @@ export default function Home() {
                     }
                 })
             )
+
+            if (Object.values(data).some(person => person.talked)) {
+                setCanReset(true)
+            } else {
+                setCanReset(false)
+            }
+            console.log(Object.values(data), canReset)
             if (!loaded) setLoaded(true)
         })
     }, [])
@@ -179,14 +214,17 @@ export default function Home() {
                 {loaded &&
                     people.length > 0 &&
                     people.map(person => (
-                        <PersonContainerStyledComponents key={person.name} className={person.talked ? 'talked' : ''} onClick={() => changeTalkedStatus(person)}>
-                            <span className="tick" />
+                        <PersonContainerStyledComponents key={person.name} className={person.talked ? 'talked' : ''} onClick={() => toggleTalkedStatus(person)}>
+                            <span className="dot" />
                             <p>{person.name}</p>
                             <p>{person.desc}</p>
-                            <span className="dot" />
+                            <span className="tick" />
                         </PersonContainerStyledComponents>
                     ))}
             </PeopleContainerStyledComponent>
+            <button disabled={!canReset} onClick={resetPeopleTalked}>
+                Reset talked
+            </button>
         </MainStyledComponent>
     )
 }
