@@ -2,7 +2,7 @@ import { getServerAuth } from '@/src/lib/firebase-server'
 import { cookies, headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-export default async function WorkLayout({ children }: { children: React.ReactNode }) {
+export default async function PokemonTradesLayout({ children }: { children: React.ReactNode }) {
     try {
         const headerList = await headers()
         const currentPath = headerList.get('x-current-path')
@@ -17,8 +17,8 @@ export default async function WorkLayout({ children }: { children: React.ReactNo
         if (!decodedClaims) {
             throw new Error('Missing or invalid claims')
         }
-        if (decodedClaims.locals?.role === 'user' && decodedClaims.locals?.section !== 'work') {
-            throw new Error('Unauthorized access to work section')
+        if (decodedClaims.locals?.role === 'user' && decodedClaims.locals?.section !== 'pokemontrades') {
+            throw new Error('Unauthorized access to pokemontrades section')
         }
     } catch (error) {
         redirect('/login')

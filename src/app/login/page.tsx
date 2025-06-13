@@ -6,6 +6,8 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import { onIdTokenChanged, signInWithEmailAndPassword, signOut, User } from 'firebase/auth'
 import { getClientAuth } from '@/src/lib/firebase-client'
+import { ButtonStyledComponent } from '../_components/_styled/button'
+import { INinoverseClaims } from './model'
 
 const MainStyledComponent = styled.main`
     width: 100vw;
@@ -42,33 +44,8 @@ const ContainerStyledComponent = styled.div`
         font-size: 2.5rem;
         line-height: 3rem;
     }
-    a,
-    button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 6rem;
+    & ${ButtonStyledComponent} {
         width: calc(100% - 2rem);
-        padding: 0rem 2rem;
-        margin: 1rem 1rem;
-        border: 2px solid var(--primary);
-        outline: none;
-        box-shadow: none;
-        font-size: 2rem;
-        font-weight: 600;
-        transition: all 0.4s ease;
-        border-radius: 2rem;
-        background-color: var(--primary-container);
-        color: var(--on-primary-container);
-        cursor: pointer;
-        &:hover {
-            border-radius: 1rem;
-            background-color: var(--primary);
-            color: var(--on-primary);
-        }
-        &:disabled {
-            opacity: 0.3;
-        }
     }
 `
 
@@ -141,20 +118,31 @@ export default function Home() {
     const [error, setError] = useState<string | null>(null)
     const [currentUser, setCurrentUser] = useState<User | null>(null)
     const [status, setStatus] = useState<'unloaded' | 'loaded'>('unloaded')
+    const [hasAccess, setHasAccess] = useState<boolean>(false)
+    const [claims, setClaims] = useState<INinoverseClaims | null>(null)
 
     useEffect(() => {
         onIdTokenChanged(getClientAuth(), async user => {
             if (user) {
-                if (!currentUser || user.uid == currentUser.uid) {
-                    const idToken = await user.getIdToken()
-                    await setToken(idToken)
-                    setCurrentUser(user)
+                if (!currentUser || user.uid != currentUser.uid) {
+                    const token = await user.getIdTokenResult()
+                    if (token.claims.locals?.role) {
+                        await setToken(token.token)
+                        setCurrentUser(user)
+                        setClaims({
+                            role: token.claims.locals.role,
+                            section: token.claims.locals.section || 'all'
+                        })
+                        setHasAccess(true)
+                    }
                 }
             } else {
-                if (currentUser) {
-                    await deleteToken()
-                    setCurrentUser(null)
-                }
+                setHasAccess(false)
+            }
+            if (!hasAccess && currentUser) {
+                await deleteToken()
+                setCurrentUser(null)
+                setClaims(null)
             }
             if (status === 'unloaded') setStatus('loaded')
         })
@@ -163,7 +151,7 @@ export default function Home() {
     async function setToken(token: string) {
         setError(null)
 
-        await fetch('api/login', {
+        await fetch('/login/api/login', {
             method: 'POST',
             headers: [
                 ['Content-Type', 'application/json'],
@@ -182,7 +170,7 @@ export default function Home() {
     }
 
     async function deleteToken() {
-        await fetch('api/logout', {
+        await fetch('/login/api/logout', {
             method: 'GET'
         }).then(async response => {
             if (response.ok) {
@@ -201,10 +189,11 @@ export default function Home() {
         formEvent.preventDefault()
 
         const formData = new FormData(formEvent.currentTarget)
-        if (formData.get('psw')) {
+        const password: string = formData.get('psw') as string
+        const username: string = formData.get('username') as string
+        if (password && username) {
             try {
-                const password: string = formData.get('psw') as string
-                let userCredentialResponse = await signInWithEmailAndPassword(getClientAuth(), 'daily@stbroom.it', password)
+                let userCredentialResponse = await signInWithEmailAndPassword(getClientAuth(), username, password)
                 let token = await userCredentialResponse.user.getIdToken()
                 setToken(token)
                 setCurrentUser(userCredentialResponse.user)
@@ -225,6 +214,7 @@ export default function Home() {
             await signOut(getClientAuth())
             deleteToken()
             setCurrentUser(null)
+            setHasAccess(false)
         } catch (error: any) {
             if (error.message) {
                 setError(error.message)
@@ -234,6 +224,25 @@ export default function Home() {
         }
     }
 
+    async function initUsers() {
+        await fetch('/login/api/init-users', {
+            method: 'POST',
+            headers: [
+                ['Content-Type', 'application/json'],
+                ['Authorization', `Bearer ${await getClientAuth().currentUser?.getIdToken()}`]
+            ]
+        }).then(async response => {
+            if (response.ok) {
+                let responseData = await response.json()
+                if (responseData.code !== 0) {
+                    throw new Error(`Initialization error: ${responseData.code} - ${responseData.errorMsg}.`)
+                }
+            } else {
+                throw new Error(`Network error during initialization: ${response.status}.`)
+            }
+        })
+    }
+
     return (
         <MainStyledComponent>
             <ContainerStyledComponent>
@@ -241,22 +250,49 @@ export default function Home() {
                     {status === 'unloaded' && <h1>Loading...</h1>}
                     {status === 'loaded' && (
                         <>
-                            {!currentUser && (
+                            {!hasAccess && (
                                 <FormStyledComponent onSubmit={login}>
-                                    <label htmlFor="psw">Insert password to login.</label>
-                                    <input className="passwordinput" type="password" name="psw" placeholder="" />
+                                    <label htmlFor="username">Insert username.</label>
+                                    <input type="username" name="username" />
                                     <span></span>
-                                    <button type="submit">LOGIN</button>
+                                    <label htmlFor="psw">Insert password.</label>
+                                    <input type="password" name="psw" />
+                                    <span></span>
+                                    <ButtonStyledComponent type="submit">LOGIN</ButtonStyledComponent>
                                 </FormStyledComponent>
                             )}
-                            {currentUser && (
+                            {hasAccess && (
                                 <>
-                                    <h2>Credenziali valide.</h2>
-                                    <Link href="/work/daily">Daily tracker</Link>
-                                    <Link href="/work/vacations">Vacation tracker</Link>
-                                    <button type="button" onClick={() => logout()}>
+                                    <h2>
+                                        Autenticato come: {currentUser?.email}
+                                    </h2>
+                                    {(claims?.role === 'admin' || (claims?.role === 'user' && claims.section === 'work')) && (
+                                        <>
+                                            <ButtonStyledComponent>
+                                                <Link href="/work/daily">Daily tracker</Link>
+                                            </ButtonStyledComponent>
+                                            <ButtonStyledComponent>
+                                                <Link href="/work/vacations">Vacation tracker</Link>
+                                            </ButtonStyledComponent>
+                                        </>
+                                    )}
+                                    {(claims?.role === 'admin' || (claims?.role === 'user' && claims.section === 'pokemontrades')) && (
+                                        <>
+                                            <ButtonStyledComponent>
+                                                <Link href="/pokemontrades">Pokemon Trades</Link>
+                                            </ButtonStyledComponent>
+                                        </>
+                                    )}
+                                    {claims?.role === 'admin' && (
+                                        <>
+                                            <ButtonStyledComponent type="button" onClick={() => initUsers()}>
+                                                Initialize Users
+                                            </ButtonStyledComponent>
+                                        </>
+                                    )}
+                                    <ButtonStyledComponent type="button" onClick={() => logout()}>
                                         Logout
-                                    </button>
+                                    </ButtonStyledComponent>
                                 </>
                             )}
                             {error && <ErrorStyledComponent>{error}</ErrorStyledComponent>}

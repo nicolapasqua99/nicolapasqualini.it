@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import { IMonthFullName, IMonthName, IVacationData, IYearName } from '@/src/app/work/vacations/model'
+import { ButtonStyledComponent } from '../../_components/_styled/button'
+import Link from 'next/link'
 
 function getMonthName(monthIndex: number): IMonthName {
     let monthNames: IMonthName[] = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
@@ -42,14 +44,15 @@ const MainStyledComponent = styled.main`
     display: block;
 `
 
-const HeaderStyledComponent = styled.main`
+const HeaderStyledComponent = styled.header`
     width: 100%;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 4rem;
+    padding: 2rem 8rem 6rem;
     & h1 {
+        margin-left: 1rem;
         font-size: 3rem;
         font-weight: 600;
         color: var(--primary);
@@ -58,36 +61,6 @@ const HeaderStyledComponent = styled.main`
         display: flex;
         flex-flow: row nowrap;
         align-items: center;
-        & button {
-            display: flex;
-            align-items: center;
-            height: 5rem;
-            padding: 0rem 2rem;
-            margin: 0rem 1rem;
-            border: none;
-            outline: none;
-            box-shadow: none;
-            font-size: 2rem;
-            font-weight: 600;
-            transition: all 0.4s ease;
-            border-radius: 2rem;
-            background-color: var(--surface-container);
-            color: var(--on-surface-variant);
-            &:not(:disabled) {
-                cursor: pointer;
-            }
-            &.selected {
-                border-radius: 1rem;
-                background-color: var(--primary);
-                color: var(--on-primary);
-            }
-            &:hover:not(:disabled) {
-                border-radius: 1rem;
-            }
-            &:disabled {
-                opacity: 0.3;
-            }
-        }
     }
 `
 
@@ -102,13 +75,22 @@ const TableContainerStyledComponent = styled.div`
         background-color: var(--surface-container);
         border-radius: 2rem;
         width: fit-content;
-        &::before {
+        /* &::before {
             content: attr(id);
             position: absolute;
             font-size: 8rem;
-            transform: translate(-12.2rem, 15rem) rotate(-90deg);
+            transform: translate(-12.2rem, 1.8rem) rotate(-90deg);
             font-weight: 800;
             color: var(--primary);
+        } */
+        &::before {
+            content: attr(id);
+            position: absolute;
+            font-size: 12rem;
+            transform: translate(-5.5rem, -9.5rem);
+            font-weight: 800;
+            color: var(--primary);
+            opacity: .2 !important;
         }
         &.past-year {
             &::before {
@@ -128,7 +110,7 @@ const TableContainerStyledComponent = styled.div`
                 padding: 1.5rem;
                 color: var(--primary);
             }
-            border-bottom: 2px solid var(--on-surface-variant);
+            border-bottom: 2px solid var(--primary);
         }
         & tbody {
             & td {
@@ -194,7 +176,6 @@ export default function Vacations() {
                     const data: IVacationData = await response.json()
                     if (data) {
                         setVacations(data)
-                        console.log(data[2025])
                     } else {
                         console.error('No vacation data found.')
                     }
@@ -208,27 +189,48 @@ export default function Vacations() {
             })
     }
 
+    function toggleShowVacations() {
+        if (!showPermits && showVacations) {
+            alert('You must select at least one of the two options: Vacations or Permits.')
+        } else {
+            setShowVacations(!showVacations)
+        }
+    }
+
+    function toggleShowPermits() {
+        if (!showVacations && showPermits) {
+            alert('You must select at least one of the two options: Vacations or Permits.')
+        } else {
+            setShowPermits(!showPermits)
+        }
+    }
+
     useEffect(() => {
         initVacationData()
     }, [])
 
     return (
         <MainStyledComponent>
-            <HeaderStyledComponent>
-                <h1>Vacations</h1>
-                <div>
-                    <button className={showVacations ? 'selected' : ''} onClick={() => setShowVacations(!showVacations)}>
-                        Ferie
-                    </button>
-                    <button className={showPermits ? 'selected' : ''} onClick={() => setShowPermits(!showPermits)}>
-                        Permessi
-                    </button>
-                    <button disabled={vacations === undefined && loaded} onClick={resetVacationData}>
-                        Reset Vacations Data
-                    </button>
-                </div>
-            </HeaderStyledComponent>
             <TableContainerStyledComponent>
+                <HeaderStyledComponent>
+                    <div>
+                        <h1>Vacations</h1>
+                        <ButtonStyledComponent className={showVacations ? 'selected' : ''} onClick={toggleShowVacations}>
+                            Ferie
+                        </ButtonStyledComponent>
+                        <ButtonStyledComponent className={showPermits ? 'selected' : ''} onClick={toggleShowPermits}>
+                            Permessi
+                        </ButtonStyledComponent>
+                    </div>
+                    <div>
+                        <ButtonStyledComponent disabled={vacations === undefined && loaded} onClick={resetVacationData}>
+                            Reset Vacations Data
+                        </ButtonStyledComponent>
+                        <ButtonStyledComponent>
+                            <Link href="/login">Homepage</Link>
+                        </ButtonStyledComponent>
+                    </div>
+                </HeaderStyledComponent>
                 {vacations !== undefined &&
                     (['2026', '2025', '2024', '2023'] as IYearName[]).map(year => {
                         return (

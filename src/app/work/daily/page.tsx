@@ -8,6 +8,8 @@ import styled from 'styled-components'
 import { getClientRealtimeDatabase } from '@/src/lib/firebase-client'
 
 import { RoomPerson } from '@/src/app/work/daily/model'
+import { ButtonStyledComponent } from '../../_components/_styled/button'
+import Link from 'next/link'
 
 const MainStyledComponent = styled.main`
     width: 100vw;
@@ -17,45 +19,24 @@ const MainStyledComponent = styled.main`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 6rem;
-        width: auto;
-        padding: 0rem 2rem;
-        margin: 1rem 1rem 4rem;
-        border: 2px solid var(--primary);
-        outline: none;
-        box-shadow: none;
-        font-size: 2rem;
-        font-weight: 600;
-        transition: all 0.4s ease;
-        border-radius: 2rem;
-        background-color: var(--primary-container);
-        color: var(--on-primary-container);
-        cursor: pointer;
-        &:hover {
-            border-radius: 1rem;
-            background-color: var(--primary);
-            color: var(--on-primary);
-        }
-        &:disabled {
-            opacity: 0.3;
-        }
-    }
 `
 
 const HeaderStyledComponent = styled.header`
     width: 100%;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 4rem 4rem 0rem;
+    padding: 2rem 4rem;
     & h1 {
         font-size: 3rem;
         font-weight: 600;
+        color: var(--primary);
+    }
+    & div {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
     }
 `
 
@@ -85,7 +66,7 @@ const PersonContainerStyledComponents = styled.div`
     & span.dot {
         position: absolute;
         width: 4rem;
-        height: .5rem;
+        height: 0.5rem;
         margin-top: 6.5rem;
         border-radius: 0.5rem;
         transition: 0.4s ease all 0.2s;
@@ -200,7 +181,6 @@ export default function Home() {
             } else {
                 setCanReset(false)
             }
-            console.log(Object.values(data), canReset)
             if (!loaded) setLoaded(true)
         })
     }, [])
@@ -208,7 +188,12 @@ export default function Home() {
     return (
         <MainStyledComponent>
             <HeaderStyledComponent>
-                <h1>Sprint Daily</h1>
+                <h1>Daily</h1>
+                <div>
+                    <ButtonStyledComponent>
+                        <Link href="/login">Homepage</Link>
+                    </ButtonStyledComponent>
+                </div>
             </HeaderStyledComponent>
             <PeopleContainerStyledComponent>
                 {loaded &&
@@ -222,9 +207,9 @@ export default function Home() {
                         </PersonContainerStyledComponents>
                     ))}
             </PeopleContainerStyledComponent>
-            <button disabled={!canReset} onClick={resetPeopleTalked}>
+            <ButtonStyledComponent disabled={!canReset} onClick={resetPeopleTalked}>
                 Reset talked
-            </button>
+            </ButtonStyledComponent>
         </MainStyledComponent>
     )
 }
