@@ -10,7 +10,7 @@ export async function POST(): Promise<NextResponse<IGenericApiResponse | null>> 
             const idToken = authorization.split('Bearer ')[1]
             const decodedToken = await getServerAuth().verifyIdToken(idToken)
             if (decodedToken) {
-                const expiresIn = 60 * 60 * 24 * 5 * 1000
+                const expiresIn = 60 * 60 * 24 * 1 * 1000
                 const sessionCookie = await getServerAuth().createSessionCookie(idToken, {
                     expiresIn
                 })
