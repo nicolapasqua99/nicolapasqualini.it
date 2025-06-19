@@ -1,0 +1,7 @@
+query GetRarities @auth(level: PUBLIC, insecureReason: "Rarities are public data") {
+    rarities {
+        code
+        displayName
+        description
+    }
+}

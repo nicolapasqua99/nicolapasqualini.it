@@ -1,0 +1,1306 @@
+extend type Card {
+  """
+  ✨ List `CardPack` objects in a one-to-many relationship (where `CardPack`.`card` is this object).
+  """
+  cardPacks_on_card(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: CardPack_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [CardPack_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: CardPack_Having
+  ): [CardPack!]! @fdc_generated(from: "CardPack.card", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `Offer` objects in a one-to-many relationship (where `Offer`.`card` is this object).
+  """
+  offers_on_card(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Offer_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Offer_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Offer_Having
+  ): [Offer!]! @fdc_generated(from: "Offer.card", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `RelatedCard` objects in a one-to-many relationship (where `RelatedCard`.`card` is this object).
+  """
+  relatedCards_on_card(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: RelatedCard_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [RelatedCard_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: RelatedCard_Having
+  ): [RelatedCard!]! @fdc_generated(from: "RelatedCard.card", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `RelatedCard` objects in a one-to-many relationship (where `RelatedCard`.`relatedCard` is this object).
+  """
+  relatedCards_on_relatedCard(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: RelatedCard_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [RelatedCard_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: RelatedCard_Having
+  ): [RelatedCard!]! @fdc_generated(from: "RelatedCard.relatedCard", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `Request` objects in a one-to-many relationship (where `Request`.`card` is this object).
+  """
+  requests_on_card(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Request_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Request_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Request_Having
+  ): [Request!]! @fdc_generated(from: "Request.card", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `UserCard` objects in a one-to-many relationship (where `UserCard`.`card` is this object).
+  """
+  userCards_on_card(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: UserCard_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [UserCard_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: UserCard_Having
+  ): [UserCard!]! @fdc_generated(from: "UserCard.card", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `Card` objects using `RelatedCard` as the join table (a `RelatedCard` object exists where its `relatedCard` is this and its `card` is that).
+  """
+  cards_via_RelatedCard_on_card(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: RelatedCard_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [RelatedCard_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: RelatedCard_Having
+  ): [Card!]! @fdc_generated(from: "RelatedCard", purpose: QUERY_MULTIPLE_MANY_TO_MANY)
+  """
+  ✨ List `Card` objects using `RelatedCard` as the join table (a `RelatedCard` object exists where its `card` is this and its `relatedCard` is that).
+  """
+  cards_via_RelatedCard_on_relatedCard(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: RelatedCard_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [RelatedCard_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: RelatedCard_Having
+  ): [Card!]! @fdc_generated(from: "RelatedCard", purpose: QUERY_MULTIPLE_MANY_TO_MANY)
+  """
+  ✨ List `Pack` objects using `CardPack` as the join table (a `CardPack` object exists where its `card` is this and its `pack` is that).
+  """
+  packs_via_CardPack(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: CardPack_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [CardPack_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: CardPack_Having
+  ): [Pack!]! @fdc_generated(from: "CardPack", purpose: QUERY_MULTIPLE_MANY_TO_MANY)
+  """
+  ✨ List `User` objects using `Offer` as the join table (a `Offer` object exists where its `card` is this and its `user` is that).
+  """
+  users_via_Offer(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Offer_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Offer_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Offer_Having
+  ): [User!]! @fdc_generated(from: "Offer", purpose: QUERY_MULTIPLE_MANY_TO_MANY)
+  """
+  ✨ List `User` objects using `Request` as the join table (a `Request` object exists where its `card` is this and its `user` is that).
+  """
+  users_via_Request(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Request_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Request_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Request_Having
+  ): [User!]! @fdc_generated(from: "Request", purpose: QUERY_MULTIPLE_MANY_TO_MANY)
+  """
+  ✨ List `User` objects using `UserCard` as the join table (a `UserCard` object exists where its `card` is this and its `user` is that).
+  """
+  users_via_UserCard(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: UserCard_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [UserCard_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: UserCard_Having
+  ): [User!]! @fdc_generated(from: "UserCard", purpose: QUERY_MULTIPLE_MANY_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "Card", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `Card` table.
+  """
+  _count: Int! @fdc_generated(from: "Card", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Card` table where the `cardNumber` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  cardNumber_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Card.cardNumber", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Card` table where the `description` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  description_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Card.description", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Card` table where the `displayName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  displayName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Card.displayName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Card` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Card.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Card` table where the `rarityId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  rarityId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Card.rarityId", purpose: QUERY_COUNT)
+}
+extend type CardPack {
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "CardPack", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `CardPack` table.
+  """
+  _count: Int! @fdc_generated(from: "CardPack", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `CardPack` table where the `cardId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  cardId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "CardPack.cardId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `CardPack` table where the `packId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  packId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "CardPack.packId", purpose: QUERY_COUNT)
+}
+extend type Offer {
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "Offer", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `Offer` table.
+  """
+  _count: Int! @fdc_generated(from: "Offer", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Offer` table where the `cardId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  cardId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Offer.cardId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Offer` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Offer.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Offer` table where the `userUid` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  userUid_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Offer.userUid", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `createdAt` field in the `Offer` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "Offer.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `Offer` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "Offer.createdAt", purpose: QUERY_MAX)
+}
+extend type Pack {
+  """
+  ✨ List `CardPack` objects in a one-to-many relationship (where `CardPack`.`pack` is this object).
+  """
+  cardPacks_on_pack(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: CardPack_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [CardPack_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: CardPack_Having
+  ): [CardPack!]! @fdc_generated(from: "CardPack.pack", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `Card` objects using `CardPack` as the join table (a `CardPack` object exists where its `pack` is this and its `card` is that).
+  """
+  cards_via_CardPack(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: CardPack_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [CardPack_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: CardPack_Having
+  ): [Card!]! @fdc_generated(from: "CardPack", purpose: QUERY_MULTIPLE_MANY_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "Pack", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `Pack` table.
+  """
+  _count: Int! @fdc_generated(from: "Pack", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Pack` table where the `displayName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  displayName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Pack.displayName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Pack` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Pack.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Pack` table where the `setId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  setId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Pack.setId", purpose: QUERY_COUNT)
+}
+extend type Rarity {
+  """
+  ✨ List `Card` objects in a one-to-many relationship (where `Card`.`rarity` is this object).
+  """
+  cards_on_rarity(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Card_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Card_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Card_Having
+  ): [Card!]! @fdc_generated(from: "Card.rarity", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "Rarity", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `Rarity` table.
+  """
+  _count: Int! @fdc_generated(from: "Rarity", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Rarity` table where the `chanceMultiplier` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  chanceMultiplier_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Rarity.chanceMultiplier", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Rarity` table where the `code` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  code_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Rarity.code", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Rarity` table where the `description` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  description_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Rarity.description", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Rarity` table where the `displayName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  displayName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Rarity.displayName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Rarity` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Rarity.id", purpose: QUERY_COUNT)
+  """
+  ✨ Sum the `chanceMultiplier` field in the `Rarity` table.
+  """
+  chanceMultiplier_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "Rarity.chanceMultiplier", purpose: QUERY_SUM)
+  """
+  ✨ Average the `chanceMultiplier` field in the `Rarity` table.
+  """
+  chanceMultiplier_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "Rarity.chanceMultiplier", purpose: QUERY_AVG)
+  """
+  ✨ Minimum of the `chanceMultiplier` field in the `Rarity` table.
+  """
+  chanceMultiplier_min: Float @fdc_generated(from: "Rarity.chanceMultiplier", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `chanceMultiplier` field in the `Rarity` table.
+  """
+  chanceMultiplier_max: Float @fdc_generated(from: "Rarity.chanceMultiplier", purpose: QUERY_MAX)
+}
+extend type RelatedCard {
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "RelatedCard", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `RelatedCard` table.
+  """
+  _count: Int! @fdc_generated(from: "RelatedCard", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `RelatedCard` table where the `cardId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  cardId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "RelatedCard.cardId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `RelatedCard` table where the `relatedCardId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  relatedCardId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "RelatedCard.relatedCardId", purpose: QUERY_COUNT)
+}
+extend type Request {
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "Request", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `Request` table.
+  """
+  _count: Int! @fdc_generated(from: "Request", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Request` table where the `cardId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  cardId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Request.cardId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Request` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Request.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Request` table where the `userUid` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  userUid_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Request.userUid", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `createdAt` field in the `Request` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "Request.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `Request` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "Request.createdAt", purpose: QUERY_MAX)
+}
+extend type Set {
+  """
+  ✨ List `Pack` objects in a one-to-many relationship (where `Pack`.`set` is this object).
+  """
+  packs_on_set(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Pack_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Pack_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Pack_Having
+  ): [Pack!]! @fdc_generated(from: "Pack.set", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "Set", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `Set` table.
+  """
+  _count: Int! @fdc_generated(from: "Set", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Set` table where the `code` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  code_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Set.code", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Set` table where the `displayName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  displayName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Set.displayName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Set` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Set.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Set` table where the `releaseDate` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  releaseDate_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Set.releaseDate", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `releaseDate` field in the `Set` table.
+  """
+  releaseDate_min: Date @fdc_generated(from: "Set.releaseDate", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `releaseDate` field in the `Set` table.
+  """
+  releaseDate_max: Date @fdc_generated(from: "Set.releaseDate", purpose: QUERY_MAX)
+}
+extend type User {
+  """
+  ✨ List `Offer` objects in a one-to-many relationship (where `Offer`.`user` is this object).
+  """
+  offers_on_user(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Offer_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Offer_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Offer_Having
+  ): [Offer!]! @fdc_generated(from: "Offer.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `Request` objects in a one-to-many relationship (where `Request`.`user` is this object).
+  """
+  requests_on_user(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Request_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Request_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Request_Having
+  ): [Request!]! @fdc_generated(from: "Request.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `UserCard` objects in a one-to-many relationship (where `UserCard`.`user` is this object).
+  """
+  userCards_on_user(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: UserCard_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [UserCard_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: UserCard_Having
+  ): [UserCard!]! @fdc_generated(from: "UserCard.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `Card` objects using `Offer` as the join table (a `Offer` object exists where its `user` is this and its `card` is that).
+  """
+  cards_via_Offer(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Offer_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Offer_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Offer_Having
+  ): [Card!]! @fdc_generated(from: "Offer", purpose: QUERY_MULTIPLE_MANY_TO_MANY)
+  """
+  ✨ List `Card` objects using `Request` as the join table (a `Request` object exists where its `user` is this and its `card` is that).
+  """
+  cards_via_Request(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Request_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Request_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Request_Having
+  ): [Card!]! @fdc_generated(from: "Request", purpose: QUERY_MULTIPLE_MANY_TO_MANY)
+  """
+  ✨ List `Card` objects using `UserCard` as the join table (a `UserCard` object exists where its `user` is this and its `card` is that).
+  """
+  cards_via_UserCard(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: UserCard_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [UserCard_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: UserCard_Having
+  ): [Card!]! @fdc_generated(from: "UserCard", purpose: QUERY_MULTIPLE_MANY_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "User", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `User` table.
+  """
+  _count: Int! @fdc_generated(from: "User", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `displayName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  displayName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.displayName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `email` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  email_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.email", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `lastLogin` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  lastLogin_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.lastLogin", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `lastUpdate` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  lastUpdate_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.lastUpdate", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `uid` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  uid_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.uid", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `createdAt` field in the `User` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "User.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `lastLogin` field in the `User` table.
+  """
+  lastLogin_min: Timestamp @fdc_generated(from: "User.lastLogin", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `lastUpdate` field in the `User` table.
+  """
+  lastUpdate_min: Timestamp @fdc_generated(from: "User.lastUpdate", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `User` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "User.createdAt", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `lastLogin` field in the `User` table.
+  """
+  lastLogin_max: Timestamp @fdc_generated(from: "User.lastLogin", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `lastUpdate` field in the `User` table.
+  """
+  lastUpdate_max: Timestamp @fdc_generated(from: "User.lastUpdate", purpose: QUERY_MAX)
+}
+extend type UserCard {
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "UserCard", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `UserCard` table.
+  """
+  _count: Int! @fdc_generated(from: "UserCard", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `UserCard` table where the `cardId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  cardId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "UserCard.cardId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `UserCard` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "UserCard.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `UserCard` table where the `lastUpdate` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  lastUpdate_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "UserCard.lastUpdate", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `UserCard` table where the `quantity` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  quantity_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "UserCard.quantity", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `UserCard` table where the `userUid` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  userUid_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "UserCard.userUid", purpose: QUERY_COUNT)
+  """
+  ✨ Sum the `quantity` field in the `UserCard` table.
+  """
+  quantity_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Int @fdc_generated(from: "UserCard.quantity", purpose: QUERY_SUM)
+  """
+  ✨ Average the `quantity` field in the `UserCard` table.
+  """
+  quantity_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "UserCard.quantity", purpose: QUERY_AVG)
+  """
+  ✨ Minimum of the `createdAt` field in the `UserCard` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "UserCard.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `lastUpdate` field in the `UserCard` table.
+  """
+  lastUpdate_min: Timestamp @fdc_generated(from: "UserCard.lastUpdate", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `quantity` field in the `UserCard` table.
+  """
+  quantity_min: Int @fdc_generated(from: "UserCard.quantity", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `UserCard` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "UserCard.createdAt", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `lastUpdate` field in the `UserCard` table.
+  """
+  lastUpdate_max: Timestamp @fdc_generated(from: "UserCard.lastUpdate", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `quantity` field in the `UserCard` table.
+  """
+  quantity_max: Int @fdc_generated(from: "UserCard.quantity", purpose: QUERY_MAX)
+}

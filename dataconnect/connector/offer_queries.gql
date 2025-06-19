@@ -1,0 +1,20 @@
+query GetOfferedCards @auth(level: USER) {
+    offers(where: { userUid: { eq_expr: "auth.uid" } }) {
+        card {
+            id
+            cardNumber
+            displayName
+            rarity {
+                code
+            }
+            packs_via_CardPack {
+                set {
+                    code
+                    displayName
+                    releaseDate
+                }
+            }
+        }
+        createdAt
+    }
+}

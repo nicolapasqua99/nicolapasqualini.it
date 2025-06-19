@@ -1,0 +1,19 @@
+query CardsPossessedByUser @auth(level: USER) {
+    userCards(where: { userUid: { eq_expr: "auth.uid" } }) {
+        quantity
+        card {
+            id
+            cardNumber
+            description
+            displayName
+            rarity {
+                displayName
+            }
+            packs_via_CardPack {
+                set {
+                    code
+                }
+            }
+        }
+    }
+}

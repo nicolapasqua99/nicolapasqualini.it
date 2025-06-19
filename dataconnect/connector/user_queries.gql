@@ -1,0 +1,10 @@
+query GetUser @auth(level: USER) {
+    user(key: { uid_expr: "auth.uid" }) {
+        uid
+        createdAt
+        displayName
+        email
+        lastLogin
+        lastUpdate
+    }
+}

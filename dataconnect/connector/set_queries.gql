@@ -1,0 +1,9 @@
+query GetSets @auth(level: PUBLIC, insecureReason: "Sets are public data") {
+    sets {
+        id
+        displayName
+        code
+        releaseDate
+        
+    }
+}

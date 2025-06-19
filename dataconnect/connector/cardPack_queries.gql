@@ -1,0 +1,19 @@
+query GetCardsBySetCode($setCode: String!) @auth(level: PUBLIC, insecureReason: "Cards are public data") {
+    cardPacks(where: { pack: { set: { code: { eq: $setCode } } } }) {
+        card {
+            id
+            cardNumber
+            displayName
+            rarity {
+                code
+            }
+        }
+        pack {
+            set {
+                code
+                displayName
+                releaseDate
+            }
+        }
+    }
+}

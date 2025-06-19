@@ -1,0 +1,7 @@
+mutation AddCardToRequest($cardId: UUID!) @auth(level: USER) {
+    request_insert(data: { userUid_expr: "auth.uid", cardId: $cardId, createdAt_expr: "request.time" })
+}
+
+mutation RemoveCardFromRequest($cardId: UUID!) @auth(level: USER) {
+    request_delete(key: { userUid_expr: "auth.uid", cardId: $cardId })
+}

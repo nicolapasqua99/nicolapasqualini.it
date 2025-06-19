@@ -1,0 +1,1062 @@
+extend type Mutation {
+  """
+  ✨ Insert a single `Card` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  card_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Card_Data!
+  ): Card_KeyOutput! @fdc_generated(from: "Card", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `CardPack` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  cardPack_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: CardPack_Data!
+  ): CardPack_KeyOutput! @fdc_generated(from: "CardPack", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Offer` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  offer_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Offer_Data!
+  ): Offer_KeyOutput! @fdc_generated(from: "Offer", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Pack` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  pack_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Pack_Data!
+  ): Pack_KeyOutput! @fdc_generated(from: "Pack", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Rarity` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  rarity_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Rarity_Data!
+  ): Rarity_KeyOutput! @fdc_generated(from: "Rarity", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `RelatedCard` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  relatedCard_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: RelatedCard_Data!
+  ): RelatedCard_KeyOutput! @fdc_generated(from: "RelatedCard", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Request` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  request_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Request_Data!
+  ): Request_KeyOutput! @fdc_generated(from: "Request", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Set` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  set_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Set_Data!
+  ): Set_KeyOutput! @fdc_generated(from: "Set", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `User` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  user_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: User_Data!
+  ): User_KeyOutput! @fdc_generated(from: "User", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `UserCard` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  userCard_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: UserCard_Data!
+  ): UserCard_KeyOutput! @fdc_generated(from: "UserCard", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert `Card` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  card_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Card_Data!]!
+  ): [Card_KeyOutput!]! @fdc_generated(from: "Card", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `CardPack` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  cardPack_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [CardPack_Data!]!
+  ): [CardPack_KeyOutput!]! @fdc_generated(from: "CardPack", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Offer` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  offer_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Offer_Data!]!
+  ): [Offer_KeyOutput!]! @fdc_generated(from: "Offer", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Pack` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  pack_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Pack_Data!]!
+  ): [Pack_KeyOutput!]! @fdc_generated(from: "Pack", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Rarity` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  rarity_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Rarity_Data!]!
+  ): [Rarity_KeyOutput!]! @fdc_generated(from: "Rarity", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `RelatedCard` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  relatedCard_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [RelatedCard_Data!]!
+  ): [RelatedCard_KeyOutput!]! @fdc_generated(from: "RelatedCard", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Request` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  request_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Request_Data!]!
+  ): [Request_KeyOutput!]! @fdc_generated(from: "Request", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Set` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  set_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Set_Data!]!
+  ): [Set_KeyOutput!]! @fdc_generated(from: "Set", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `User` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  user_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [User_Data!]!
+  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `UserCard` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  userCard_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [UserCard_Data!]!
+  ): [UserCard_KeyOutput!]! @fdc_generated(from: "UserCard", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert or update a single `Card` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Card`.
+  """
+  card_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Card_Data!
+  ): Card_KeyOutput! @fdc_generated(from: "Card", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `CardPack` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `CardPack`.
+  """
+  cardPack_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: CardPack_Data!
+  ): CardPack_KeyOutput! @fdc_generated(from: "CardPack", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Offer` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Offer`.
+  """
+  offer_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Offer_Data!
+  ): Offer_KeyOutput! @fdc_generated(from: "Offer", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Pack` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Pack`.
+  """
+  pack_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Pack_Data!
+  ): Pack_KeyOutput! @fdc_generated(from: "Pack", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Rarity` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Rarity`.
+  """
+  rarity_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Rarity_Data!
+  ): Rarity_KeyOutput! @fdc_generated(from: "Rarity", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `RelatedCard` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `RelatedCard`.
+  """
+  relatedCard_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: RelatedCard_Data!
+  ): RelatedCard_KeyOutput! @fdc_generated(from: "RelatedCard", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Request` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Request`.
+  """
+  request_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Request_Data!
+  ): Request_KeyOutput! @fdc_generated(from: "Request", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Set` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Set`.
+  """
+  set_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Set_Data!
+  ): Set_KeyOutput! @fdc_generated(from: "Set", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `User` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  """
+  user_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: User_Data!
+  ): User_KeyOutput! @fdc_generated(from: "User", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `UserCard` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `UserCard`.
+  """
+  userCard_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: UserCard_Data!
+  ): UserCard_KeyOutput! @fdc_generated(from: "UserCard", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update `Card` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Card`.
+  """
+  card_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Card_Data!]!
+  ): [Card_KeyOutput!]! @fdc_generated(from: "Card", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `CardPack` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `CardPack`.
+  """
+  cardPack_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [CardPack_Data!]!
+  ): [CardPack_KeyOutput!]! @fdc_generated(from: "CardPack", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Offer` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Offer`.
+  """
+  offer_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Offer_Data!]!
+  ): [Offer_KeyOutput!]! @fdc_generated(from: "Offer", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Pack` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Pack`.
+  """
+  pack_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Pack_Data!]!
+  ): [Pack_KeyOutput!]! @fdc_generated(from: "Pack", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Rarity` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Rarity`.
+  """
+  rarity_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Rarity_Data!]!
+  ): [Rarity_KeyOutput!]! @fdc_generated(from: "Rarity", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `RelatedCard` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `RelatedCard`.
+  """
+  relatedCard_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [RelatedCard_Data!]!
+  ): [RelatedCard_KeyOutput!]! @fdc_generated(from: "RelatedCard", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Request` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Request`.
+  """
+  request_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Request_Data!]!
+  ): [Request_KeyOutput!]! @fdc_generated(from: "Request", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Set` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Set`.
+  """
+  set_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Set_Data!]!
+  ): [Set_KeyOutput!]! @fdc_generated(from: "Set", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `User` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  """
+  user_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [User_Data!]!
+  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `UserCard` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `UserCard`.
+  """
+  userCard_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [UserCard_Data!]!
+  ): [UserCard_KeyOutput!]! @fdc_generated(from: "UserCard", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Update a single `Card` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Card` or `null` if not found.
+  """
+  card_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Card_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Card_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Card_Data!
+  ): Card_KeyOutput @fdc_generated(from: "Card", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `CardPack` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `CardPack` or `null` if not found.
+  """
+  cardPack_update(
+    """
+    The key used to identify the object.
+    """
+    key: CardPack_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: CardPack_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: CardPack_Data!
+  ): CardPack_KeyOutput @fdc_generated(from: "CardPack", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Offer` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Offer` or `null` if not found.
+  """
+  offer_update(
+    """
+    The key used to identify the object.
+    """
+    key: Offer_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Offer_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Offer_Data!
+  ): Offer_KeyOutput @fdc_generated(from: "Offer", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Pack` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Pack` or `null` if not found.
+  """
+  pack_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Pack_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Pack_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Pack_Data!
+  ): Pack_KeyOutput @fdc_generated(from: "Pack", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Rarity` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Rarity` or `null` if not found.
+  """
+  rarity_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Rarity_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Rarity_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Rarity_Data!
+  ): Rarity_KeyOutput @fdc_generated(from: "Rarity", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `RelatedCard` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `RelatedCard` or `null` if not found.
+  """
+  relatedCard_update(
+    """
+    The key used to identify the object.
+    """
+    key: RelatedCard_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: RelatedCard_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: RelatedCard_Data!
+  ): RelatedCard_KeyOutput @fdc_generated(from: "RelatedCard", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Request` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Request` or `null` if not found.
+  """
+  request_update(
+    """
+    The key used to identify the object.
+    """
+    key: Request_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Request_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Request_Data!
+  ): Request_KeyOutput @fdc_generated(from: "Request", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Set` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Set` or `null` if not found.
+  """
+  set_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Set_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Set_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Set_Data!
+  ): Set_KeyOutput @fdc_generated(from: "Set", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `User` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `User` or `null` if not found.
+  """
+  user_update(
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: User_Data!
+  ): User_KeyOutput @fdc_generated(from: "User", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `UserCard` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `UserCard` or `null` if not found.
+  """
+  userCard_update(
+    """
+    The key used to identify the object.
+    """
+    key: UserCard_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: UserCard_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: UserCard_Data!
+  ): UserCard_KeyOutput @fdc_generated(from: "UserCard", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update `Card` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  card_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Card_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Card_Data!
+  ): Int! @fdc_generated(from: "Card", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `CardPack` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  cardPack_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: CardPack_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: CardPack_Data!
+  ): Int! @fdc_generated(from: "CardPack", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Offer` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  offer_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Offer_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Offer_Data!
+  ): Int! @fdc_generated(from: "Offer", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Pack` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  pack_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Pack_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Pack_Data!
+  ): Int! @fdc_generated(from: "Pack", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Rarity` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  rarity_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Rarity_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Rarity_Data!
+  ): Int! @fdc_generated(from: "Rarity", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `RelatedCard` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  relatedCard_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: RelatedCard_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: RelatedCard_Data!
+  ): Int! @fdc_generated(from: "RelatedCard", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Request` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  request_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Request_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Request_Data!
+  ): Int! @fdc_generated(from: "Request", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Set` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  set_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Set_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Set_Data!
+  ): Int! @fdc_generated(from: "Set", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `User` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  user_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: User_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: User_Data!
+  ): Int! @fdc_generated(from: "User", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `UserCard` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  userCard_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: UserCard_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: UserCard_Data!
+  ): Int! @fdc_generated(from: "UserCard", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Delete a single `Card` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  card_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Card_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Card_FirstRow
+  ): Card_KeyOutput @fdc_generated(from: "Card", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `CardPack` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  cardPack_delete(
+    """
+    The key used to identify the object.
+    """
+    key: CardPack_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: CardPack_FirstRow
+  ): CardPack_KeyOutput @fdc_generated(from: "CardPack", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Offer` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  offer_delete(
+    """
+    The key used to identify the object.
+    """
+    key: Offer_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Offer_FirstRow
+  ): Offer_KeyOutput @fdc_generated(from: "Offer", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Pack` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  pack_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Pack_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Pack_FirstRow
+  ): Pack_KeyOutput @fdc_generated(from: "Pack", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Rarity` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  rarity_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Rarity_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Rarity_FirstRow
+  ): Rarity_KeyOutput @fdc_generated(from: "Rarity", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `RelatedCard` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  relatedCard_delete(
+    """
+    The key used to identify the object.
+    """
+    key: RelatedCard_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: RelatedCard_FirstRow
+  ): RelatedCard_KeyOutput @fdc_generated(from: "RelatedCard", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Request` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  request_delete(
+    """
+    The key used to identify the object.
+    """
+    key: Request_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Request_FirstRow
+  ): Request_KeyOutput @fdc_generated(from: "Request", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Set` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  set_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Set_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Set_FirstRow
+  ): Set_KeyOutput @fdc_generated(from: "Set", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `User` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  user_delete(
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+  ): User_KeyOutput @fdc_generated(from: "User", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `UserCard` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  userCard_delete(
+    """
+    The key used to identify the object.
+    """
+    key: UserCard_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: UserCard_FirstRow
+  ): UserCard_KeyOutput @fdc_generated(from: "UserCard", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete `Card` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  card_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Card_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Card", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `CardPack` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  cardPack_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: CardPack_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "CardPack", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Offer` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  offer_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Offer_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Offer", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Pack` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  pack_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Pack_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Pack", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Rarity` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  rarity_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Rarity_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Rarity", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `RelatedCard` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  relatedCard_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: RelatedCard_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "RelatedCard", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Request` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  request_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Request_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Request", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Set` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  set_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Set_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Set", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `User` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  user_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: User_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "User", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `UserCard` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  userCard_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: UserCard_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "UserCard", purpose: DELETE_MULTIPLE)
+}

@@ -1,0 +1,12 @@
+specVersion: "v1"
+serviceId: "np-portfolio-service"
+location: "europe-west8"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "np-portfolio-database"
+      cloudSql:
+        instanceId: "np-portfolio-instance"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]

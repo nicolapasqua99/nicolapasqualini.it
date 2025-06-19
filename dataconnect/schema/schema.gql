@@ -1,0 +1,63 @@
+type User @table(key: "uid") {
+  uid: String! @unique
+  displayName: String
+  email: String
+  lastLogin: Timestamp
+  lastUpdate: Timestamp
+  createdAt: Timestamp!
+}
+
+type Set @table {
+  displayName: String!
+  code: String!
+  releaseDate: Date!
+}
+
+type Rarity @table {
+  displayName: String!
+  code: String!
+  chanceMultiplier: Float!
+  description: String
+}
+
+type Card @table {
+  displayName: String!
+  cardNumber: String!
+  rarity: Rarity!
+  description: String
+}
+
+type UserCard @table(key: ["user", "card"]) {
+  user: User!
+  card: Card!
+  quantity: Int!
+  createdAt: Timestamp!
+  lastUpdate: Timestamp
+}
+
+type Offer @table(key: ["user", "card"]) {
+  user: User!
+  card: Card!
+  createdAt: Timestamp!
+}
+
+type Request @table(key: ["user", "card"]) {
+  user: User!
+  card: Card!
+  createdAt: Timestamp!
+}
+
+type Pack @table {
+  displayName: String!
+  set: Set!
+}
+
+type CardPack @table(key: ["card", "pack"]) {
+  card: Card!
+  pack: Pack!
+}
+
+type RelatedCard @table(key: ["card", "relatedCard"]) {
+  card: Card!
+  relatedCard: Card!
+}

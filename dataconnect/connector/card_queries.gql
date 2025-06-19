@@ -1,0 +1,35 @@
+query GetCards @auth(level: PUBLIC, insecureReason: "Cards are public data") {
+    cards {
+        id
+        cardNumber
+        displayName
+        rarity {
+            code
+        }
+        packs_via_CardPack {
+            set {
+                code
+            }
+        }
+    }
+}
+
+query GetCardById($id: UUID!) @auth(level: PUBLIC, insecureReason: "Cards are public data") {
+    card(id: $id) {
+        id
+        cardNumber
+        description
+        displayName
+        rarity {
+            displayName
+        }
+        packs_via_CardPack {
+            displayName
+            set {
+                code
+                displayName
+                releaseDate
+            }
+        }
+    }
+}

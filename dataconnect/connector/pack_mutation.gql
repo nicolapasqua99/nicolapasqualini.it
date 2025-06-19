@@ -1,0 +1,3 @@
+mutation AddPack($displayName: String, $set: Set_Key) @auth(level: NO_ACCESS) {
+    pack_insert(data: { displayName: $displayName, set: $set })
+}

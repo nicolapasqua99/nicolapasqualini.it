@@ -1,0 +1,82 @@
+extend type Card {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Card", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Card`.`rarity`. It must match the value of `Rarity`.`id`. See `@ref` for how to customize it.
+  """
+  rarityId: UUID! @fdc_generated(from: "Card.rarity", purpose: IMPLICIT_REF_FIELD)
+}
+extend type CardPack {
+  """
+  ✨ Implicit foreign key field based on `CardPack`.`card`. It must match the value of `Card`.`id`. See `@ref` for how to customize it.
+  """
+  cardId: UUID! @fdc_generated(from: "CardPack.card", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `CardPack`.`pack`. It must match the value of `Pack`.`id`. See `@ref` for how to customize it.
+  """
+  packId: UUID! @fdc_generated(from: "CardPack.pack", purpose: IMPLICIT_REF_FIELD)
+}
+extend type Offer {
+  """
+  ✨ Implicit foreign key field based on `Offer`.`user`. It must match the value of `User`.`uid`. See `@ref` for how to customize it.
+  """
+  userUid: String! @fdc_generated(from: "Offer.user", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Offer`.`card`. It must match the value of `Card`.`id`. See `@ref` for how to customize it.
+  """
+  cardId: UUID! @fdc_generated(from: "Offer.card", purpose: IMPLICIT_REF_FIELD)
+}
+extend type Pack {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Pack", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Pack`.`set`. It must match the value of `Set`.`id`. See `@ref` for how to customize it.
+  """
+  setId: UUID! @fdc_generated(from: "Pack.set", purpose: IMPLICIT_REF_FIELD)
+}
+extend type Rarity {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Rarity", purpose: IMPLICIT_KEY_FIELD)
+}
+extend type RelatedCard {
+  """
+  ✨ Implicit foreign key field based on `RelatedCard`.`card`. It must match the value of `Card`.`id`. See `@ref` for how to customize it.
+  """
+  cardId: UUID! @fdc_generated(from: "RelatedCard.card", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `RelatedCard`.`relatedCard`. It must match the value of `Card`.`id`. See `@ref` for how to customize it.
+  """
+  relatedCardId: UUID! @fdc_generated(from: "RelatedCard.relatedCard", purpose: IMPLICIT_REF_FIELD)
+}
+extend type Request {
+  """
+  ✨ Implicit foreign key field based on `Request`.`user`. It must match the value of `User`.`uid`. See `@ref` for how to customize it.
+  """
+  userUid: String! @fdc_generated(from: "Request.user", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Request`.`card`. It must match the value of `Card`.`id`. See `@ref` for how to customize it.
+  """
+  cardId: UUID! @fdc_generated(from: "Request.card", purpose: IMPLICIT_REF_FIELD)
+}
+extend type Set {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Set", purpose: IMPLICIT_KEY_FIELD)
+}
+extend type UserCard {
+  """
+  ✨ Implicit foreign key field based on `UserCard`.`user`. It must match the value of `User`.`uid`. See `@ref` for how to customize it.
+  """
+  userUid: String! @fdc_generated(from: "UserCard.user", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `UserCard`.`card`. It must match the value of `Card`.`id`. See `@ref` for how to customize it.
+  """
+  cardId: UUID! @fdc_generated(from: "UserCard.card", purpose: IMPLICIT_REF_FIELD)
+}

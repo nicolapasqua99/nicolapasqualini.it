@@ -1,0 +1,7 @@
+mutation AddCardToOffer($cardId: UUID!) @auth(level: USER) {
+    offer_insert(data: { userUid_expr: "auth.uid", cardId: $cardId, createdAt_expr: "request.time" })
+}
+
+mutation RemoveCardFromOffer($cardId: UUID!) @auth(level: USER) {
+    offer_delete(key: { userUid_expr: "auth.uid", cardId: $cardId })
+}

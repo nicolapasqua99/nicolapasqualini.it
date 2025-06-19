@@ -1,0 +1,15 @@
+mutation CreateUser @auth(level: PUBLIC, insecureReason: "User creation is public") {
+    user_insert(data: { uid_expr: "uuidV4()", createdAt_expr: "request.time" })
+}
+
+mutation ChangeUserDisplayName($displayName: String!) @auth(level: USER) {
+    user_update(key: { uid_expr: "auth.uid" }, data: { displayName: $displayName, lastUpdate_expr: "request.time" })
+}
+
+mutation ChangeUserEmail($email: String!) @auth(level: USER) {
+    user_update(key: { uid_expr: "auth.uid" }, data: { email: $email, lastUpdate_expr: "request.time" })
+}
+
+mutation ChangeUserLastLogin @auth(level: USER) {
+    user_update(key: { uid_expr: "auth.uid" }, data: { lastLogin_expr: "request.time" })
+}

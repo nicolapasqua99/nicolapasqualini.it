@@ -1,0 +1,20 @@
+query GetRequestedCards @auth(level: USER) {
+    requests(where: { userUid: { eq_expr: "auth.uid" } }) {
+        card {
+            id
+            cardNumber
+            displayName
+            rarity {
+                code
+            }
+            packs_via_CardPack {
+                set {
+                    code
+                    displayName
+                    releaseDate
+                }
+            }
+        }
+        createdAt
+    }
+}

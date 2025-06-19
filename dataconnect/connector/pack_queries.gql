@@ -1,0 +1,18 @@
+query GetPacks @auth(level: PUBLIC, insecureReason: "Packs are public data") {
+    packs {
+        id
+        set {
+            code
+            displayName
+            releaseDate
+        }
+        cards_via_CardPack {
+            id
+            cardNumber
+            displayName
+            rarity {
+                code
+            }
+        }
+    }
+}

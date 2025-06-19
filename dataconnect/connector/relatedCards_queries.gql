@@ -1,0 +1,19 @@
+query GetRelatedCards($cardId: UUID!) @auth(level: PUBLIC, insecureReason: "Related cards are public data") {
+    relatedCards(where: { cardId: { eq: $cardId } }) {
+        relatedCard {
+            id
+            cardNumber
+            displayName
+            rarity {
+                code
+            }
+            packs_via_CardPack {
+                set {
+                    code
+                    displayName
+                    releaseDate
+                }
+            }
+        }
+    }
+}
