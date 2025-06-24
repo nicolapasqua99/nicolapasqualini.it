@@ -1,2 +1,2 @@
 overrides:
-  '@firebasegen/default-connector': link:dataconnect/dataconnect-generated
+  '@firebasegen/default-connector': ./dataconnect/dataconnect-generated
