@@ -126,12 +126,14 @@ export default function Home() {
             if (user) {
                 if (!currentUser || user.uid != currentUser.uid) {
                     const token = await user.getIdTokenResult()
-                    if (token.claims.locals?.role) {
+                    const tokenClaims: INinoverseClaims = token.claims.locals as INinoverseClaims
+                    if (tokenClaims.role) {
                         await setToken(token.token)
                         setCurrentUser(user)
                         setClaims({
-                            role: token.claims.locals.role,
-                            section: token.claims.locals.section || 'all'
+                            role: tokenClaims.role,
+                            section: tokenClaims.section || 'all',
+                            token: token.token
                         })
                         setHasAccess(true)
                     }
@@ -263,10 +265,8 @@ export default function Home() {
                             )}
                             {hasAccess && (
                                 <>
-                                    <h2>
-                                        Autenticato come: {currentUser?.email}
-                                    </h2>
-                                    {(claims?.role === 'admin' || (claims?.role === 'user' && claims.section === 'work')) && (
+                                    <h2>Autenticato come: {currentUser?.email}</h2>
+                                    {(claims?.section === 'work' || claims?.role === 'admin') && (
                                         <>
                                             <ButtonStyledComponent>
                                                 <Link href="/work/daily">Daily tracker</Link>
@@ -276,7 +276,7 @@ export default function Home() {
                                             </ButtonStyledComponent>
                                         </>
                                     )}
-                                    {(claims?.role === 'admin' || (claims?.role === 'user' && claims.section === 'pokemontrades')) && (
+                                    {(claims?.section === 'pokemontrades' || claims?.role === 'admin') && (
                                         <>
                                             <ButtonStyledComponent>
                                                 <Link href="/pokemontrades">Pokemon Trades</Link>
@@ -285,6 +285,9 @@ export default function Home() {
                                     )}
                                     {claims?.role === 'admin' && (
                                         <>
+                                            <ButtonStyledComponent>
+                                                <Link href="/pokemontrades/admin">Pokemon Trades Admin</Link>
+                                            </ButtonStyledComponent>
                                             <ButtonStyledComponent type="button" onClick={() => initUsers()}>
                                                 Initialize Users
                                             </ButtonStyledComponent>

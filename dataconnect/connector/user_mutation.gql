@@ -1,4 +1,4 @@
-mutation CreateUser @auth(level: PUBLIC, insecureReason: "User creation is public") {
+mutation AddUser @auth(level: PUBLIC, insecureReason: "User creation is public") {
     user_insert(data: { uid_expr: "uuidV4()", createdAt_expr: "request.time" })
 }
 

@@ -6,6 +6,6 @@ mutation RemoveCardFromUser($cardId: UUID!) @auth(level: USER) {
     userCard_delete(key: { userUid_expr: "auth.uid", cardId: $cardId })
 }
 
-mutation ChangeCardQuantity($cardId: UUID!, $quantity: Int!) @auth(level: USER) {
+mutation UpdateCardQuantity($cardId: UUID!, $quantity: Int!) @auth(level: USER) {
     userCard_update(key: { userUid_expr: "auth.uid", cardId: $cardId }, data: { quantity: $quantity, lastUpdate_expr: "request.time" })
 }

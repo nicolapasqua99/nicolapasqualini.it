@@ -1,4 +1,4 @@
-query CardsPossessedByUser @auth(level: USER) {
+query GetCardsPossessedByUser @auth(level: USER) {
     userCards(where: { userUid: { eq_expr: "auth.uid" } }) {
         quantity
         card {

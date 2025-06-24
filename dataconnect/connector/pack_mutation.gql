@@ -1,3 +1,8 @@
-mutation AddPack($displayName: String, $set: Set_Key) @auth(level: NO_ACCESS) {
-    pack_insert(data: { displayName: $displayName, set: $set })
+mutation AddPack($displayName: String, $setCode: String) @auth(level: NO_ACCESS) {
+    query {
+        sets(where: { code: { eq: $setCode  } }) {
+            id
+        }
+    }
+    pack_insert(data: { displayName: $displayName, setId_expr: "uuidV4()" })
 }

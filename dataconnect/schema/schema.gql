@@ -15,7 +15,7 @@ type Set @table {
 
 type Rarity @table {
   displayName: String!
-  code: String!
+  code: String! @unique
   chanceMultiplier: Float!
   description: String
 }

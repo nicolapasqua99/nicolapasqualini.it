@@ -13,6 +13,6 @@ export async function GET(): Promise<NextResponse<IGenericApiResponse>> {
         ;(await cookies()).set(options)
         return NextResponse.json({ errorMsg: null, data: null, code: 0 }, { status: 200 })
     } catch (error: any) {
-        return NextResponse.json({ errorMsg: error.message, data: null, code: 100 }, { status: 200 })
+        return NextResponse.json({ errorMsg: error.message, data: null, code: 999 }, { status: 200 })
     }
 }

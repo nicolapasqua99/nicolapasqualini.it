@@ -1,6 +1,15 @@
 query GetPacks @auth(level: PUBLIC, insecureReason: "Packs are public data") {
     packs {
-        id
+        displayName       
+        set {
+            code
+        }
+    }
+}
+
+query GetPacksAndCards @auth(level: PUBLIC, insecureReason: "Packs are public data") {
+    packs {
+        displayName
         set {
             code
             displayName
