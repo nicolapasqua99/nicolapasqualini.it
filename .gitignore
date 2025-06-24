@@ -40,6 +40,4 @@ pubsub-debug.log*
 next-env.d.ts
 .firebase
 
-# generated files
-dataconnect-generated/
 .dataconnect/
