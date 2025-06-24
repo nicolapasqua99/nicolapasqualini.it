@@ -31,5 +31,16 @@ jobs:
                   channelId: live
                   projectId: nicolapasqualini-portfolio
               env:
+                  NEXT_PUBLIC_API_KEY: ${{ vars.NEXT_PUBLIC_API_KEY }}
+                  NEXT_PUBLIC_AUTH_DOMAIN: ${{vars.NEXT_PUBLIC_AUTH_DOMAIN}}
+                  NEXT_PUBLIC_DATABASE_URL: ${{vars.NEXT_PUBLIC_DATABASE_URL}}
+                  NEXT_PUBLIC_PROJECT_ID: ${{vars.NEXT_PUBLIC_PROJECT_ID}}
+                  NEXT_PUBLIC_STORAGE_BUCKET: ${{vars.NEXT_PUBLIC_STORAGE_BUCKET}}
+                  NEXT_PUBLIC_MESSAGING_SENDER_ID: ${{vars.NEXT_PUBLIC_MESSAGING_SENDER_ID}}
+                  NEXT_PUBLIC_APP_ID: ${{vars.NEXT_PUBLIC_APP_ID}}
+                  FIREBASE_PRIVATE_KEY: ${{secrets.FIREBASE_PRIVATE_KEY}}
                   FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+                  ADMIN_UID: ${{secrets.ADMIN_UID}}
+                  WORK_USER_UID: ${{secrets.WORK_USER_UID}}
+                  POKEMON_TRADES_USER_UID: ${{secrets.POKEMON_TRADES_USER_UID}}
                   FIREBASE_CLI_EXPERIMENTS: webframeworks
