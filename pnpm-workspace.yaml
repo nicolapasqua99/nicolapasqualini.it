@@ -1,2 +1,0 @@
-overrides:
-  '@firebasegen/default-connector': ./dataconnect/dataconnect-generated
