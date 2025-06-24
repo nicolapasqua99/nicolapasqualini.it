@@ -10,4 +10,12 @@
     "jsxBracketSameLine": true,
     "bracketSameLine": true,
     "arrowParens": "avoid",
+    "overrides": [
+        {
+            "files": "*.gql",
+            "options": {
+                "printWidth": 120
+            }
+        }
+    ] 
 }
