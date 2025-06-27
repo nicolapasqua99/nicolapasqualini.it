@@ -6,7 +6,7 @@ import { getDatabase } from 'firebase-admin/database'
 const firebaseConfig = {
     credential: cert({
         projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
-        privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+        privateKey: process.env.ADMIN_FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
         clientEmail: process.env.CLIENT_EMAIL
     })
 }
