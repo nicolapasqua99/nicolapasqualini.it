@@ -41,3 +41,6 @@ gcloud artifacts repositories set-cleanup-policies nicolapasqualini-portfolio \
     --project=gcf-artifacts \
     --location=europe-west1 \
     --policy=function-policy.json
+
+## NEEDED PACKAGES
+- "file-saver": "^2.0.5" //or similar

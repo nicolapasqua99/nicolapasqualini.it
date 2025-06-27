@@ -11,19 +11,16 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                node-version: [22]
+                node-version: [20]
         steps:
             - uses: 'actions/checkout@v4'
-            - uses: 'pnpm/action-setup@v2'
-              with:
-                  version: 8
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
-                  cache: 'pnpm'
+                  cache: 'npm'
             - name: Install dependencies
-              run: pnpm install
+              run: npm install
             - uses: FirebaseExtended/action-hosting-deploy@v0
               with:
                   repoToken: ${{ secrets.GITHUB_TOKEN }}
