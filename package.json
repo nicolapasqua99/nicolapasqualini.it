@@ -29,6 +29,7 @@
     "@types/react-dom": "^19",
     "encoding": "^0.1.13",
     "esbuild": "^0.19.2",
+    "firebase-tools": "^14.9.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
     "typescript": "^5"
