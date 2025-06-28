@@ -57,4 +57,4 @@ jobs:
                   GOOGLE_APPLICATION_CREDENTIALS: ./firebase-service-account.json
                   FIREBASE_PROJECT_ID: ${{vars.NEXT_PUBLIC_PROJECT_ID}}
             - name: Check Environment Variables
-              run: printenv
+              run: printenv && echo "ENV FILE" && cat .env
