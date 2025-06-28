@@ -3,13 +3,7 @@ import { getAuth } from 'firebase-admin/auth'
 import { getFirestore } from 'firebase-admin/firestore'
 import { getDatabase } from 'firebase-admin/database'
 
-const firebaseConfig = {
-    credential: cert({
-        projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
-        privateKey: process.env.ADMIN_FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-        clientEmail: process.env.CLIENT_EMAIL
-    })
-}
+const firebaseConfig = {}
 
 function getAppInstance(): App {
     return getApps().length > 0 ? getApp() : initializeApp(firebaseConfig)
