@@ -1,3 +1,14 @@
+# Generated React README
+This README will guide you through the process of using the generated React SDK package for the connector `default`. It will also provide examples on how to use your generated SDK to call your Data Connect queries and mutations.
+
+**If you're looking for the `JavaScript README`, you can find it at [`dataconnect-generated/README.md`](../README.md)**
+
+***NOTE:** This README is generated alongside the generated SDK. If you make changes to this file, they will be overwritten when the SDK is regenerated.*
+
+You can use this generated SDK by importing from the package `@firebasegen/default-connector/react` as shown below. Both CommonJS and ESM imports are supported.
+
+You can also follow the instructions from the [Data Connect documentation](https://firebase.google.com/docs/data-connect/web-sdk#react).
+
 # Table of Contents
 - [**Overview**](#generated-react-readme)
 - [**TanStack Query Firebase & TanStack React Query**](#tanstack-query-firebase-tanstack-react-query)
@@ -6,45 +17,36 @@
 - [**Accessing the connector**](#accessing-the-connector)
   - [*Connecting to the local Emulator*](#connecting-to-the-local-emulator)
 - [**Queries**](#queries)
-  - [*GetOfferedCards*](#getofferedcards)
-  - [*GetRelatedCards*](#getrelatedcards)
-  - [*GetCardsBySetCode*](#getcardsbysetcode)
-  - [*GetPacks*](#getpacks)
-  - [*GetPacksAndCards*](#getpacksandcards)
-  - [*GetRarities*](#getrarities)
-  - [*GetRequestedCards*](#getrequestedcards)
-  - [*GetSets*](#getsets)
-  - [*GetCardsPossessedByUser*](#getcardspossessedbyuser)
   - [*GetUser*](#getuser)
   - [*GetCards*](#getcards)
   - [*GetCardById*](#getcardbyid)
+  - [*GetRarities*](#getrarities)
+  - [*GetRelatedCards*](#getrelatedcards)
+  - [*GetSets*](#getsets)
+  - [*GetCardsPossessedByUser*](#getcardspossessedbyuser)
+  - [*GetCardsBySetCode*](#getcardsbysetcode)
+  - [*GetOfferedCards*](#getofferedcards)
+  - [*GetPacks*](#getpacks)
+  - [*GetPacksAndCards*](#getpacksandcards)
+  - [*GetRequestedCards*](#getrequestedcards)
 - [**Mutations**](#mutations)
-  - [*AddRelatedCard*](#addrelatedcard)
+  - [*AddSet*](#addset)
   - [*AddUser*](#adduser)
   - [*ChangeUserDisplayName*](#changeuserdisplayname)
   - [*ChangeUserEmail*](#changeuseremail)
   - [*ChangeUserLastLogin*](#changeuserlastlogin)
-  - [*AddCardsPack*](#addcardspack)
-  - [*AddPack*](#addpack)
-  - [*AddSet*](#addset)
   - [*AddCardToUser*](#addcardtouser)
   - [*RemoveCardFromUser*](#removecardfromuser)
   - [*UpdateCardQuantity*](#updatecardquantity)
   - [*AddCard*](#addcard)
-  - [*AddCardToOffer*](#addcardtooffer)
-  - [*RemoveCardFromOffer*](#removecardfromoffer)
   - [*AddRarity*](#addrarity)
+  - [*AddPack*](#addpack)
+  - [*AddRelatedCard*](#addrelatedcard)
   - [*AddCardToRequest*](#addcardtorequest)
   - [*RemoveCardFromRequest*](#removecardfromrequest)
-
-# Generated React README
-This README will guide you through the process of using the generated React SDK package for the connector `default`. It will also provide examples on how to use your generated SDK to call your Data Connect queries and mutations.
-
-***NOTE:** This README is generated alongside the generated SDK. If you make changes to this file, they will be overwritten when the SDK is regenerated.*
-
-You can use this generated SDK by importing from the package `@firebasegen/default-connector/react` as shown below. Both CommonJS and ESM imports are supported.
-
-You can also follow the instructions from the [Data Connect documentation](https://firebase.google.com/docs/data-connect/web-sdk#react).
+  - [*AddCardsPack*](#addcardspack)
+  - [*AddCardToOffer*](#addcardtooffer)
+  - [*RemoveCardFromOffer*](#removecardfromoffer)
 
 # TanStack Query Firebase & TanStack React Query
 This SDK provides [React](https://react.dev/) hooks generated specific to your application, for the operations found in the connector `default`. These hooks are generated using [TanStack Query Firebase](https://react-query-firebase.invertase.dev/) by our partners at Invertase, a library built on top of [TanStack React Query v5](https://tanstack.com/query/v5/docs/framework/react/overview).
@@ -135,764 +137,6 @@ Here's a general overview of how to use the generated Query hooks in your code:
   - ***Special case:***  If the Query has all optional variables and you would like to provide an `options` argument to the Query hook function without providing any variables, you must pass `undefined` where you would normally pass the Query's variables, and then may provide the `options` argument.
 
 Below are examples of how to use the `default` connector's generated Query hook functions to execute each Query. You can also follow the examples from the [Data Connect documentation](https://firebase.google.com/docs/data-connect/web-sdk#operations-react-angular).
-
-## GetOfferedCards
-You can execute the `GetOfferedCards` Query using the following Query hook function, which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts):
-
-```javascript
-useGetOfferedCards(dc: DataConnect, options?: useDataConnectQueryOptions<GetOfferedCardsData>): UseDataConnectQueryResult<GetOfferedCardsData, undefined>;
-```
-You can also pass in a `DataConnect` instance to the Query hook function.
-```javascript
-useGetOfferedCards(options?: useDataConnectQueryOptions<GetOfferedCardsData>): UseDataConnectQueryResult<GetOfferedCardsData, undefined>;
-```
-
-### Variables
-The `GetOfferedCards` Query has no variables.
-### Return Type
-Recall that calling the `GetOfferedCards` Query hook function returns a `UseQueryResult` object. This object holds the state of your Query, including whether the Query is loading, has completed, or has succeeded/failed, and any data returned by the Query, among other things.
-
-To check the status of a Query, use the `UseQueryResult.status` field. You can also check for pending / success / error status using the `UseQueryResult.isPending`, `UseQueryResult.isSuccess`, and `UseQueryResult.isError` fields.
-
-To access the data returned by a Query, use the `UseQueryResult.data` field. The data for the `GetOfferedCards` Query is of type `GetOfferedCardsData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
-```javascript
-export interface GetOfferedCardsData {
-  offers: ({
-    card: {
-      id: UUIDString;
-      cardNumber: string;
-      displayName: string;
-      rarity: {
-        code: string;
-      };
-        packs_via_CardPack: ({
-          set: {
-            code: string;
-            displayName: string;
-            releaseDate: DateString;
-          };
-        })[];
-    } & Card_Key;
-      createdAt: TimestampString;
-  })[];
-}
-```
-
-To learn more about the `UseQueryResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery).
-
-### Using `GetOfferedCards`'s Query hook function
-
-```javascript
-import { getDataConnect } from 'firebase/data-connect';
-import { connectorConfig } from '@firebasegen/default-connector';
-import { useGetOfferedCards } from '@firebasegen/default-connector/react'
-
-export default function GetOfferedCardsComponent() {
-  // You don't have to do anything to "execute" the Query.
-  // Call the Query hook function to get a `UseQueryResult` object which holds the state of your Query.
-  const query = useGetOfferedCards();
-
-  // You can also pass in a `DataConnect` instance to the Query hook function.
-  const dataConnect = getDataConnect(connectorConfig);
-  const query = useGetOfferedCards(dataConnect);
-
-  // You can also pass in a `useDataConnectQueryOptions` object to the Query hook function.
-  const options = { staleTime: 5 * 1000 };
-  const query = useGetOfferedCards(options);
-
-  // You can also pass both a `DataConnect` instance and a `useDataConnectQueryOptions` object.
-  const dataConnect = getDataConnect(connectorConfig);
-  const options = { staleTime: 5 * 1000 };
-  const query = useGetOfferedCards(dataConnect, options);
-
-  // Then, you can render your component dynamically based on the status of the Query.
-  if (query.isPending) {
-    return <div>Loading...</div>;
-  }
-
-  if (query.isError) {
-    return <div>Error: {query.error.message}</div>;
-  }
-
-  // If the Query is successful, you can access the data returned using the `UseQueryResult.data` field.
-  if (query.isSuccess) {
-    console.log(query.data.offers);
-  }
-  return <div>Query execution {query.isSuccess ? 'successful' : 'failed'}!</div>;
-}
-```
-
-## GetRelatedCards
-You can execute the `GetRelatedCards` Query using the following Query hook function, which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts):
-
-```javascript
-useGetRelatedCards(dc: DataConnect, vars: GetRelatedCardsVariables, options?: useDataConnectQueryOptions<GetRelatedCardsData>): UseDataConnectQueryResult<GetRelatedCardsData, GetRelatedCardsVariables>;
-```
-You can also pass in a `DataConnect` instance to the Query hook function.
-```javascript
-useGetRelatedCards(vars: GetRelatedCardsVariables, options?: useDataConnectQueryOptions<GetRelatedCardsData>): UseDataConnectQueryResult<GetRelatedCardsData, GetRelatedCardsVariables>;
-```
-
-### Variables
-The `GetRelatedCards` Query requires an argument of type `GetRelatedCardsVariables`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
-
-```javascript
-export interface GetRelatedCardsVariables {
-  cardId: UUIDString;
-}
-```
-### Return Type
-Recall that calling the `GetRelatedCards` Query hook function returns a `UseQueryResult` object. This object holds the state of your Query, including whether the Query is loading, has completed, or has succeeded/failed, and any data returned by the Query, among other things.
-
-To check the status of a Query, use the `UseQueryResult.status` field. You can also check for pending / success / error status using the `UseQueryResult.isPending`, `UseQueryResult.isSuccess`, and `UseQueryResult.isError` fields.
-
-To access the data returned by a Query, use the `UseQueryResult.data` field. The data for the `GetRelatedCards` Query is of type `GetRelatedCardsData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
-```javascript
-export interface GetRelatedCardsData {
-  relatedCards: ({
-    relatedCard: {
-      id: UUIDString;
-      cardNumber: string;
-      displayName: string;
-      rarity: {
-        code: string;
-      };
-        packs_via_CardPack: ({
-          set: {
-            code: string;
-            displayName: string;
-            releaseDate: DateString;
-          };
-        })[];
-    } & Card_Key;
-  })[];
-}
-```
-
-To learn more about the `UseQueryResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery).
-
-### Using `GetRelatedCards`'s Query hook function
-
-```javascript
-import { getDataConnect } from 'firebase/data-connect';
-import { connectorConfig, GetRelatedCardsVariables } from '@firebasegen/default-connector';
-import { useGetRelatedCards } from '@firebasegen/default-connector/react'
-
-export default function GetRelatedCardsComponent() {
-  // The `useGetRelatedCards` Query hook requires an argument of type `GetRelatedCardsVariables`:
-  const getRelatedCardsVars: GetRelatedCardsVariables = {
-    cardId: ..., 
-  };
-
-  // You don't have to do anything to "execute" the Query.
-  // Call the Query hook function to get a `UseQueryResult` object which holds the state of your Query.
-  const query = useGetRelatedCards(getRelatedCardsVars);
-  // Variables can be defined inline as well.
-  const query = useGetRelatedCards({ cardId: ..., });
-
-  // You can also pass in a `DataConnect` instance to the Query hook function.
-  const dataConnect = getDataConnect(connectorConfig);
-  const query = useGetRelatedCards(dataConnect, getRelatedCardsVars);
-
-  // You can also pass in a `useDataConnectQueryOptions` object to the Query hook function.
-  const options = { staleTime: 5 * 1000 };
-  const query = useGetRelatedCards(getRelatedCardsVars, options);
-
-  // You can also pass both a `DataConnect` instance and a `useDataConnectQueryOptions` object.
-  const dataConnect = getDataConnect(connectorConfig);
-  const options = { staleTime: 5 * 1000 };
-  const query = useGetRelatedCards(dataConnect, getRelatedCardsVars, options);
-
-  // Then, you can render your component dynamically based on the status of the Query.
-  if (query.isPending) {
-    return <div>Loading...</div>;
-  }
-
-  if (query.isError) {
-    return <div>Error: {query.error.message}</div>;
-  }
-
-  // If the Query is successful, you can access the data returned using the `UseQueryResult.data` field.
-  if (query.isSuccess) {
-    console.log(query.data.relatedCards);
-  }
-  return <div>Query execution {query.isSuccess ? 'successful' : 'failed'}!</div>;
-}
-```
-
-## GetCardsBySetCode
-You can execute the `GetCardsBySetCode` Query using the following Query hook function, which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts):
-
-```javascript
-useGetCardsBySetCode(dc: DataConnect, vars: GetCardsBySetCodeVariables, options?: useDataConnectQueryOptions<GetCardsBySetCodeData>): UseDataConnectQueryResult<GetCardsBySetCodeData, GetCardsBySetCodeVariables>;
-```
-You can also pass in a `DataConnect` instance to the Query hook function.
-```javascript
-useGetCardsBySetCode(vars: GetCardsBySetCodeVariables, options?: useDataConnectQueryOptions<GetCardsBySetCodeData>): UseDataConnectQueryResult<GetCardsBySetCodeData, GetCardsBySetCodeVariables>;
-```
-
-### Variables
-The `GetCardsBySetCode` Query requires an argument of type `GetCardsBySetCodeVariables`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
-
-```javascript
-export interface GetCardsBySetCodeVariables {
-  setCode: string;
-}
-```
-### Return Type
-Recall that calling the `GetCardsBySetCode` Query hook function returns a `UseQueryResult` object. This object holds the state of your Query, including whether the Query is loading, has completed, or has succeeded/failed, and any data returned by the Query, among other things.
-
-To check the status of a Query, use the `UseQueryResult.status` field. You can also check for pending / success / error status using the `UseQueryResult.isPending`, `UseQueryResult.isSuccess`, and `UseQueryResult.isError` fields.
-
-To access the data returned by a Query, use the `UseQueryResult.data` field. The data for the `GetCardsBySetCode` Query is of type `GetCardsBySetCodeData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
-```javascript
-export interface GetCardsBySetCodeData {
-  cardPacks: ({
-    card: {
-      id: UUIDString;
-      cardNumber: string;
-      displayName: string;
-      rarity: {
-        code: string;
-      };
-    } & Card_Key;
-      pack: {
-        set: {
-          code: string;
-          displayName: string;
-          releaseDate: DateString;
-        };
-      };
-  })[];
-}
-```
-
-To learn more about the `UseQueryResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery).
-
-### Using `GetCardsBySetCode`'s Query hook function
-
-```javascript
-import { getDataConnect } from 'firebase/data-connect';
-import { connectorConfig, GetCardsBySetCodeVariables } from '@firebasegen/default-connector';
-import { useGetCardsBySetCode } from '@firebasegen/default-connector/react'
-
-export default function GetCardsBySetCodeComponent() {
-  // The `useGetCardsBySetCode` Query hook requires an argument of type `GetCardsBySetCodeVariables`:
-  const getCardsBySetCodeVars: GetCardsBySetCodeVariables = {
-    setCode: ..., 
-  };
-
-  // You don't have to do anything to "execute" the Query.
-  // Call the Query hook function to get a `UseQueryResult` object which holds the state of your Query.
-  const query = useGetCardsBySetCode(getCardsBySetCodeVars);
-  // Variables can be defined inline as well.
-  const query = useGetCardsBySetCode({ setCode: ..., });
-
-  // You can also pass in a `DataConnect` instance to the Query hook function.
-  const dataConnect = getDataConnect(connectorConfig);
-  const query = useGetCardsBySetCode(dataConnect, getCardsBySetCodeVars);
-
-  // You can also pass in a `useDataConnectQueryOptions` object to the Query hook function.
-  const options = { staleTime: 5 * 1000 };
-  const query = useGetCardsBySetCode(getCardsBySetCodeVars, options);
-
-  // You can also pass both a `DataConnect` instance and a `useDataConnectQueryOptions` object.
-  const dataConnect = getDataConnect(connectorConfig);
-  const options = { staleTime: 5 * 1000 };
-  const query = useGetCardsBySetCode(dataConnect, getCardsBySetCodeVars, options);
-
-  // Then, you can render your component dynamically based on the status of the Query.
-  if (query.isPending) {
-    return <div>Loading...</div>;
-  }
-
-  if (query.isError) {
-    return <div>Error: {query.error.message}</div>;
-  }
-
-  // If the Query is successful, you can access the data returned using the `UseQueryResult.data` field.
-  if (query.isSuccess) {
-    console.log(query.data.cardPacks);
-  }
-  return <div>Query execution {query.isSuccess ? 'successful' : 'failed'}!</div>;
-}
-```
-
-## GetPacks
-You can execute the `GetPacks` Query using the following Query hook function, which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts):
-
-```javascript
-useGetPacks(dc: DataConnect, options?: useDataConnectQueryOptions<GetPacksData>): UseDataConnectQueryResult<GetPacksData, undefined>;
-```
-You can also pass in a `DataConnect` instance to the Query hook function.
-```javascript
-useGetPacks(options?: useDataConnectQueryOptions<GetPacksData>): UseDataConnectQueryResult<GetPacksData, undefined>;
-```
-
-### Variables
-The `GetPacks` Query has no variables.
-### Return Type
-Recall that calling the `GetPacks` Query hook function returns a `UseQueryResult` object. This object holds the state of your Query, including whether the Query is loading, has completed, or has succeeded/failed, and any data returned by the Query, among other things.
-
-To check the status of a Query, use the `UseQueryResult.status` field. You can also check for pending / success / error status using the `UseQueryResult.isPending`, `UseQueryResult.isSuccess`, and `UseQueryResult.isError` fields.
-
-To access the data returned by a Query, use the `UseQueryResult.data` field. The data for the `GetPacks` Query is of type `GetPacksData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
-```javascript
-export interface GetPacksData {
-  packs: ({
-    displayName: string;
-    set: {
-      code: string;
-    };
-  })[];
-}
-```
-
-To learn more about the `UseQueryResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery).
-
-### Using `GetPacks`'s Query hook function
-
-```javascript
-import { getDataConnect } from 'firebase/data-connect';
-import { connectorConfig } from '@firebasegen/default-connector';
-import { useGetPacks } from '@firebasegen/default-connector/react'
-
-export default function GetPacksComponent() {
-  // You don't have to do anything to "execute" the Query.
-  // Call the Query hook function to get a `UseQueryResult` object which holds the state of your Query.
-  const query = useGetPacks();
-
-  // You can also pass in a `DataConnect` instance to the Query hook function.
-  const dataConnect = getDataConnect(connectorConfig);
-  const query = useGetPacks(dataConnect);
-
-  // You can also pass in a `useDataConnectQueryOptions` object to the Query hook function.
-  const options = { staleTime: 5 * 1000 };
-  const query = useGetPacks(options);
-
-  // You can also pass both a `DataConnect` instance and a `useDataConnectQueryOptions` object.
-  const dataConnect = getDataConnect(connectorConfig);
-  const options = { staleTime: 5 * 1000 };
-  const query = useGetPacks(dataConnect, options);
-
-  // Then, you can render your component dynamically based on the status of the Query.
-  if (query.isPending) {
-    return <div>Loading...</div>;
-  }
-
-  if (query.isError) {
-    return <div>Error: {query.error.message}</div>;
-  }
-
-  // If the Query is successful, you can access the data returned using the `UseQueryResult.data` field.
-  if (query.isSuccess) {
-    console.log(query.data.packs);
-  }
-  return <div>Query execution {query.isSuccess ? 'successful' : 'failed'}!</div>;
-}
-```
-
-## GetPacksAndCards
-You can execute the `GetPacksAndCards` Query using the following Query hook function, which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts):
-
-```javascript
-useGetPacksAndCards(dc: DataConnect, options?: useDataConnectQueryOptions<GetPacksAndCardsData>): UseDataConnectQueryResult<GetPacksAndCardsData, undefined>;
-```
-You can also pass in a `DataConnect` instance to the Query hook function.
-```javascript
-useGetPacksAndCards(options?: useDataConnectQueryOptions<GetPacksAndCardsData>): UseDataConnectQueryResult<GetPacksAndCardsData, undefined>;
-```
-
-### Variables
-The `GetPacksAndCards` Query has no variables.
-### Return Type
-Recall that calling the `GetPacksAndCards` Query hook function returns a `UseQueryResult` object. This object holds the state of your Query, including whether the Query is loading, has completed, or has succeeded/failed, and any data returned by the Query, among other things.
-
-To check the status of a Query, use the `UseQueryResult.status` field. You can also check for pending / success / error status using the `UseQueryResult.isPending`, `UseQueryResult.isSuccess`, and `UseQueryResult.isError` fields.
-
-To access the data returned by a Query, use the `UseQueryResult.data` field. The data for the `GetPacksAndCards` Query is of type `GetPacksAndCardsData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
-```javascript
-export interface GetPacksAndCardsData {
-  packs: ({
-    displayName: string;
-    set: {
-      code: string;
-      displayName: string;
-      releaseDate: DateString;
-    };
-      cards_via_CardPack: ({
-        id: UUIDString;
-        cardNumber: string;
-        displayName: string;
-        rarity: {
-          code: string;
-        };
-      } & Card_Key)[];
-  })[];
-}
-```
-
-To learn more about the `UseQueryResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery).
-
-### Using `GetPacksAndCards`'s Query hook function
-
-```javascript
-import { getDataConnect } from 'firebase/data-connect';
-import { connectorConfig } from '@firebasegen/default-connector';
-import { useGetPacksAndCards } from '@firebasegen/default-connector/react'
-
-export default function GetPacksAndCardsComponent() {
-  // You don't have to do anything to "execute" the Query.
-  // Call the Query hook function to get a `UseQueryResult` object which holds the state of your Query.
-  const query = useGetPacksAndCards();
-
-  // You can also pass in a `DataConnect` instance to the Query hook function.
-  const dataConnect = getDataConnect(connectorConfig);
-  const query = useGetPacksAndCards(dataConnect);
-
-  // You can also pass in a `useDataConnectQueryOptions` object to the Query hook function.
-  const options = { staleTime: 5 * 1000 };
-  const query = useGetPacksAndCards(options);
-
-  // You can also pass both a `DataConnect` instance and a `useDataConnectQueryOptions` object.
-  const dataConnect = getDataConnect(connectorConfig);
-  const options = { staleTime: 5 * 1000 };
-  const query = useGetPacksAndCards(dataConnect, options);
-
-  // Then, you can render your component dynamically based on the status of the Query.
-  if (query.isPending) {
-    return <div>Loading...</div>;
-  }
-
-  if (query.isError) {
-    return <div>Error: {query.error.message}</div>;
-  }
-
-  // If the Query is successful, you can access the data returned using the `UseQueryResult.data` field.
-  if (query.isSuccess) {
-    console.log(query.data.packs);
-  }
-  return <div>Query execution {query.isSuccess ? 'successful' : 'failed'}!</div>;
-}
-```
-
-## GetRarities
-You can execute the `GetRarities` Query using the following Query hook function, which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts):
-
-```javascript
-useGetRarities(dc: DataConnect, options?: useDataConnectQueryOptions<GetRaritiesData>): UseDataConnectQueryResult<GetRaritiesData, undefined>;
-```
-You can also pass in a `DataConnect` instance to the Query hook function.
-```javascript
-useGetRarities(options?: useDataConnectQueryOptions<GetRaritiesData>): UseDataConnectQueryResult<GetRaritiesData, undefined>;
-```
-
-### Variables
-The `GetRarities` Query has no variables.
-### Return Type
-Recall that calling the `GetRarities` Query hook function returns a `UseQueryResult` object. This object holds the state of your Query, including whether the Query is loading, has completed, or has succeeded/failed, and any data returned by the Query, among other things.
-
-To check the status of a Query, use the `UseQueryResult.status` field. You can also check for pending / success / error status using the `UseQueryResult.isPending`, `UseQueryResult.isSuccess`, and `UseQueryResult.isError` fields.
-
-To access the data returned by a Query, use the `UseQueryResult.data` field. The data for the `GetRarities` Query is of type `GetRaritiesData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
-```javascript
-export interface GetRaritiesData {
-  rarities: ({
-    code: string;
-    displayName: string;
-    description?: string | null;
-  })[];
-}
-```
-
-To learn more about the `UseQueryResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery).
-
-### Using `GetRarities`'s Query hook function
-
-```javascript
-import { getDataConnect } from 'firebase/data-connect';
-import { connectorConfig } from '@firebasegen/default-connector';
-import { useGetRarities } from '@firebasegen/default-connector/react'
-
-export default function GetRaritiesComponent() {
-  // You don't have to do anything to "execute" the Query.
-  // Call the Query hook function to get a `UseQueryResult` object which holds the state of your Query.
-  const query = useGetRarities();
-
-  // You can also pass in a `DataConnect` instance to the Query hook function.
-  const dataConnect = getDataConnect(connectorConfig);
-  const query = useGetRarities(dataConnect);
-
-  // You can also pass in a `useDataConnectQueryOptions` object to the Query hook function.
-  const options = { staleTime: 5 * 1000 };
-  const query = useGetRarities(options);
-
-  // You can also pass both a `DataConnect` instance and a `useDataConnectQueryOptions` object.
-  const dataConnect = getDataConnect(connectorConfig);
-  const options = { staleTime: 5 * 1000 };
-  const query = useGetRarities(dataConnect, options);
-
-  // Then, you can render your component dynamically based on the status of the Query.
-  if (query.isPending) {
-    return <div>Loading...</div>;
-  }
-
-  if (query.isError) {
-    return <div>Error: {query.error.message}</div>;
-  }
-
-  // If the Query is successful, you can access the data returned using the `UseQueryResult.data` field.
-  if (query.isSuccess) {
-    console.log(query.data.rarities);
-  }
-  return <div>Query execution {query.isSuccess ? 'successful' : 'failed'}!</div>;
-}
-```
-
-## GetRequestedCards
-You can execute the `GetRequestedCards` Query using the following Query hook function, which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts):
-
-```javascript
-useGetRequestedCards(dc: DataConnect, options?: useDataConnectQueryOptions<GetRequestedCardsData>): UseDataConnectQueryResult<GetRequestedCardsData, undefined>;
-```
-You can also pass in a `DataConnect` instance to the Query hook function.
-```javascript
-useGetRequestedCards(options?: useDataConnectQueryOptions<GetRequestedCardsData>): UseDataConnectQueryResult<GetRequestedCardsData, undefined>;
-```
-
-### Variables
-The `GetRequestedCards` Query has no variables.
-### Return Type
-Recall that calling the `GetRequestedCards` Query hook function returns a `UseQueryResult` object. This object holds the state of your Query, including whether the Query is loading, has completed, or has succeeded/failed, and any data returned by the Query, among other things.
-
-To check the status of a Query, use the `UseQueryResult.status` field. You can also check for pending / success / error status using the `UseQueryResult.isPending`, `UseQueryResult.isSuccess`, and `UseQueryResult.isError` fields.
-
-To access the data returned by a Query, use the `UseQueryResult.data` field. The data for the `GetRequestedCards` Query is of type `GetRequestedCardsData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
-```javascript
-export interface GetRequestedCardsData {
-  requests: ({
-    card: {
-      id: UUIDString;
-      cardNumber: string;
-      displayName: string;
-      rarity: {
-        code: string;
-      };
-        packs_via_CardPack: ({
-          set: {
-            code: string;
-            displayName: string;
-            releaseDate: DateString;
-          };
-        })[];
-    } & Card_Key;
-      createdAt: TimestampString;
-  })[];
-}
-```
-
-To learn more about the `UseQueryResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery).
-
-### Using `GetRequestedCards`'s Query hook function
-
-```javascript
-import { getDataConnect } from 'firebase/data-connect';
-import { connectorConfig } from '@firebasegen/default-connector';
-import { useGetRequestedCards } from '@firebasegen/default-connector/react'
-
-export default function GetRequestedCardsComponent() {
-  // You don't have to do anything to "execute" the Query.
-  // Call the Query hook function to get a `UseQueryResult` object which holds the state of your Query.
-  const query = useGetRequestedCards();
-
-  // You can also pass in a `DataConnect` instance to the Query hook function.
-  const dataConnect = getDataConnect(connectorConfig);
-  const query = useGetRequestedCards(dataConnect);
-
-  // You can also pass in a `useDataConnectQueryOptions` object to the Query hook function.
-  const options = { staleTime: 5 * 1000 };
-  const query = useGetRequestedCards(options);
-
-  // You can also pass both a `DataConnect` instance and a `useDataConnectQueryOptions` object.
-  const dataConnect = getDataConnect(connectorConfig);
-  const options = { staleTime: 5 * 1000 };
-  const query = useGetRequestedCards(dataConnect, options);
-
-  // Then, you can render your component dynamically based on the status of the Query.
-  if (query.isPending) {
-    return <div>Loading...</div>;
-  }
-
-  if (query.isError) {
-    return <div>Error: {query.error.message}</div>;
-  }
-
-  // If the Query is successful, you can access the data returned using the `UseQueryResult.data` field.
-  if (query.isSuccess) {
-    console.log(query.data.requests);
-  }
-  return <div>Query execution {query.isSuccess ? 'successful' : 'failed'}!</div>;
-}
-```
-
-## GetSets
-You can execute the `GetSets` Query using the following Query hook function, which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts):
-
-```javascript
-useGetSets(dc: DataConnect, options?: useDataConnectQueryOptions<GetSetsData>): UseDataConnectQueryResult<GetSetsData, undefined>;
-```
-You can also pass in a `DataConnect` instance to the Query hook function.
-```javascript
-useGetSets(options?: useDataConnectQueryOptions<GetSetsData>): UseDataConnectQueryResult<GetSetsData, undefined>;
-```
-
-### Variables
-The `GetSets` Query has no variables.
-### Return Type
-Recall that calling the `GetSets` Query hook function returns a `UseQueryResult` object. This object holds the state of your Query, including whether the Query is loading, has completed, or has succeeded/failed, and any data returned by the Query, among other things.
-
-To check the status of a Query, use the `UseQueryResult.status` field. You can also check for pending / success / error status using the `UseQueryResult.isPending`, `UseQueryResult.isSuccess`, and `UseQueryResult.isError` fields.
-
-To access the data returned by a Query, use the `UseQueryResult.data` field. The data for the `GetSets` Query is of type `GetSetsData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
-```javascript
-export interface GetSetsData {
-  sets: ({
-    id: UUIDString;
-    displayName: string;
-    code: string;
-    releaseDate: DateString;
-  } & Set_Key)[];
-}
-```
-
-To learn more about the `UseQueryResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery).
-
-### Using `GetSets`'s Query hook function
-
-```javascript
-import { getDataConnect } from 'firebase/data-connect';
-import { connectorConfig } from '@firebasegen/default-connector';
-import { useGetSets } from '@firebasegen/default-connector/react'
-
-export default function GetSetsComponent() {
-  // You don't have to do anything to "execute" the Query.
-  // Call the Query hook function to get a `UseQueryResult` object which holds the state of your Query.
-  const query = useGetSets();
-
-  // You can also pass in a `DataConnect` instance to the Query hook function.
-  const dataConnect = getDataConnect(connectorConfig);
-  const query = useGetSets(dataConnect);
-
-  // You can also pass in a `useDataConnectQueryOptions` object to the Query hook function.
-  const options = { staleTime: 5 * 1000 };
-  const query = useGetSets(options);
-
-  // You can also pass both a `DataConnect` instance and a `useDataConnectQueryOptions` object.
-  const dataConnect = getDataConnect(connectorConfig);
-  const options = { staleTime: 5 * 1000 };
-  const query = useGetSets(dataConnect, options);
-
-  // Then, you can render your component dynamically based on the status of the Query.
-  if (query.isPending) {
-    return <div>Loading...</div>;
-  }
-
-  if (query.isError) {
-    return <div>Error: {query.error.message}</div>;
-  }
-
-  // If the Query is successful, you can access the data returned using the `UseQueryResult.data` field.
-  if (query.isSuccess) {
-    console.log(query.data.sets);
-  }
-  return <div>Query execution {query.isSuccess ? 'successful' : 'failed'}!</div>;
-}
-```
-
-## GetCardsPossessedByUser
-You can execute the `GetCardsPossessedByUser` Query using the following Query hook function, which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts):
-
-```javascript
-useGetCardsPossessedByUser(dc: DataConnect, options?: useDataConnectQueryOptions<GetCardsPossessedByUserData>): UseDataConnectQueryResult<GetCardsPossessedByUserData, undefined>;
-```
-You can also pass in a `DataConnect` instance to the Query hook function.
-```javascript
-useGetCardsPossessedByUser(options?: useDataConnectQueryOptions<GetCardsPossessedByUserData>): UseDataConnectQueryResult<GetCardsPossessedByUserData, undefined>;
-```
-
-### Variables
-The `GetCardsPossessedByUser` Query has no variables.
-### Return Type
-Recall that calling the `GetCardsPossessedByUser` Query hook function returns a `UseQueryResult` object. This object holds the state of your Query, including whether the Query is loading, has completed, or has succeeded/failed, and any data returned by the Query, among other things.
-
-To check the status of a Query, use the `UseQueryResult.status` field. You can also check for pending / success / error status using the `UseQueryResult.isPending`, `UseQueryResult.isSuccess`, and `UseQueryResult.isError` fields.
-
-To access the data returned by a Query, use the `UseQueryResult.data` field. The data for the `GetCardsPossessedByUser` Query is of type `GetCardsPossessedByUserData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
-```javascript
-export interface GetCardsPossessedByUserData {
-  userCards: ({
-    quantity: number;
-    card: {
-      id: UUIDString;
-      cardNumber: string;
-      description?: string | null;
-      displayName: string;
-      rarity: {
-        displayName: string;
-      };
-        packs_via_CardPack: ({
-          set: {
-            code: string;
-          };
-        })[];
-    } & Card_Key;
-  })[];
-}
-```
-
-To learn more about the `UseQueryResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery).
-
-### Using `GetCardsPossessedByUser`'s Query hook function
-
-```javascript
-import { getDataConnect } from 'firebase/data-connect';
-import { connectorConfig } from '@firebasegen/default-connector';
-import { useGetCardsPossessedByUser } from '@firebasegen/default-connector/react'
-
-export default function GetCardsPossessedByUserComponent() {
-  // You don't have to do anything to "execute" the Query.
-  // Call the Query hook function to get a `UseQueryResult` object which holds the state of your Query.
-  const query = useGetCardsPossessedByUser();
-
-  // You can also pass in a `DataConnect` instance to the Query hook function.
-  const dataConnect = getDataConnect(connectorConfig);
-  const query = useGetCardsPossessedByUser(dataConnect);
-
-  // You can also pass in a `useDataConnectQueryOptions` object to the Query hook function.
-  const options = { staleTime: 5 * 1000 };
-  const query = useGetCardsPossessedByUser(options);
-
-  // You can also pass both a `DataConnect` instance and a `useDataConnectQueryOptions` object.
-  const dataConnect = getDataConnect(connectorConfig);
-  const options = { staleTime: 5 * 1000 };
-  const query = useGetCardsPossessedByUser(dataConnect, options);
-
-  // Then, you can render your component dynamically based on the status of the Query.
-  if (query.isPending) {
-    return <div>Loading...</div>;
-  }
-
-  if (query.isError) {
-    return <div>Error: {query.error.message}</div>;
-  }
-
-  // If the Query is successful, you can access the data returned using the `UseQueryResult.data` field.
-  if (query.isSuccess) {
-    console.log(query.data.userCards);
-  }
-  return <div>Query execution {query.isSuccess ? 'successful' : 'failed'}!</div>;
-}
-```
 
 ## GetUser
 You can execute the `GetUser` Query using the following Query hook function, which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts):
@@ -1149,6 +393,764 @@ export default function GetCardByIdComponent() {
 }
 ```
 
+## GetRarities
+You can execute the `GetRarities` Query using the following Query hook function, which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts):
+
+```javascript
+useGetRarities(dc: DataConnect, options?: useDataConnectQueryOptions<GetRaritiesData>): UseDataConnectQueryResult<GetRaritiesData, undefined>;
+```
+You can also pass in a `DataConnect` instance to the Query hook function.
+```javascript
+useGetRarities(options?: useDataConnectQueryOptions<GetRaritiesData>): UseDataConnectQueryResult<GetRaritiesData, undefined>;
+```
+
+### Variables
+The `GetRarities` Query has no variables.
+### Return Type
+Recall that calling the `GetRarities` Query hook function returns a `UseQueryResult` object. This object holds the state of your Query, including whether the Query is loading, has completed, or has succeeded/failed, and any data returned by the Query, among other things.
+
+To check the status of a Query, use the `UseQueryResult.status` field. You can also check for pending / success / error status using the `UseQueryResult.isPending`, `UseQueryResult.isSuccess`, and `UseQueryResult.isError` fields.
+
+To access the data returned by a Query, use the `UseQueryResult.data` field. The data for the `GetRarities` Query is of type `GetRaritiesData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+```javascript
+export interface GetRaritiesData {
+  rarities: ({
+    code: string;
+    displayName: string;
+    description?: string | null;
+  })[];
+}
+```
+
+To learn more about the `UseQueryResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery).
+
+### Using `GetRarities`'s Query hook function
+
+```javascript
+import { getDataConnect } from 'firebase/data-connect';
+import { connectorConfig } from '@firebasegen/default-connector';
+import { useGetRarities } from '@firebasegen/default-connector/react'
+
+export default function GetRaritiesComponent() {
+  // You don't have to do anything to "execute" the Query.
+  // Call the Query hook function to get a `UseQueryResult` object which holds the state of your Query.
+  const query = useGetRarities();
+
+  // You can also pass in a `DataConnect` instance to the Query hook function.
+  const dataConnect = getDataConnect(connectorConfig);
+  const query = useGetRarities(dataConnect);
+
+  // You can also pass in a `useDataConnectQueryOptions` object to the Query hook function.
+  const options = { staleTime: 5 * 1000 };
+  const query = useGetRarities(options);
+
+  // You can also pass both a `DataConnect` instance and a `useDataConnectQueryOptions` object.
+  const dataConnect = getDataConnect(connectorConfig);
+  const options = { staleTime: 5 * 1000 };
+  const query = useGetRarities(dataConnect, options);
+
+  // Then, you can render your component dynamically based on the status of the Query.
+  if (query.isPending) {
+    return <div>Loading...</div>;
+  }
+
+  if (query.isError) {
+    return <div>Error: {query.error.message}</div>;
+  }
+
+  // If the Query is successful, you can access the data returned using the `UseQueryResult.data` field.
+  if (query.isSuccess) {
+    console.log(query.data.rarities);
+  }
+  return <div>Query execution {query.isSuccess ? 'successful' : 'failed'}!</div>;
+}
+```
+
+## GetRelatedCards
+You can execute the `GetRelatedCards` Query using the following Query hook function, which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts):
+
+```javascript
+useGetRelatedCards(dc: DataConnect, vars: GetRelatedCardsVariables, options?: useDataConnectQueryOptions<GetRelatedCardsData>): UseDataConnectQueryResult<GetRelatedCardsData, GetRelatedCardsVariables>;
+```
+You can also pass in a `DataConnect` instance to the Query hook function.
+```javascript
+useGetRelatedCards(vars: GetRelatedCardsVariables, options?: useDataConnectQueryOptions<GetRelatedCardsData>): UseDataConnectQueryResult<GetRelatedCardsData, GetRelatedCardsVariables>;
+```
+
+### Variables
+The `GetRelatedCards` Query requires an argument of type `GetRelatedCardsVariables`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+
+```javascript
+export interface GetRelatedCardsVariables {
+  cardId: UUIDString;
+}
+```
+### Return Type
+Recall that calling the `GetRelatedCards` Query hook function returns a `UseQueryResult` object. This object holds the state of your Query, including whether the Query is loading, has completed, or has succeeded/failed, and any data returned by the Query, among other things.
+
+To check the status of a Query, use the `UseQueryResult.status` field. You can also check for pending / success / error status using the `UseQueryResult.isPending`, `UseQueryResult.isSuccess`, and `UseQueryResult.isError` fields.
+
+To access the data returned by a Query, use the `UseQueryResult.data` field. The data for the `GetRelatedCards` Query is of type `GetRelatedCardsData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+```javascript
+export interface GetRelatedCardsData {
+  relatedCards: ({
+    relatedCard: {
+      id: UUIDString;
+      cardNumber: string;
+      displayName: string;
+      rarity: {
+        code: string;
+      };
+        packs_via_CardPack: ({
+          set: {
+            code: string;
+            displayName: string;
+            releaseDate: DateString;
+          };
+        })[];
+    } & Card_Key;
+  })[];
+}
+```
+
+To learn more about the `UseQueryResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery).
+
+### Using `GetRelatedCards`'s Query hook function
+
+```javascript
+import { getDataConnect } from 'firebase/data-connect';
+import { connectorConfig, GetRelatedCardsVariables } from '@firebasegen/default-connector';
+import { useGetRelatedCards } from '@firebasegen/default-connector/react'
+
+export default function GetRelatedCardsComponent() {
+  // The `useGetRelatedCards` Query hook requires an argument of type `GetRelatedCardsVariables`:
+  const getRelatedCardsVars: GetRelatedCardsVariables = {
+    cardId: ..., 
+  };
+
+  // You don't have to do anything to "execute" the Query.
+  // Call the Query hook function to get a `UseQueryResult` object which holds the state of your Query.
+  const query = useGetRelatedCards(getRelatedCardsVars);
+  // Variables can be defined inline as well.
+  const query = useGetRelatedCards({ cardId: ..., });
+
+  // You can also pass in a `DataConnect` instance to the Query hook function.
+  const dataConnect = getDataConnect(connectorConfig);
+  const query = useGetRelatedCards(dataConnect, getRelatedCardsVars);
+
+  // You can also pass in a `useDataConnectQueryOptions` object to the Query hook function.
+  const options = { staleTime: 5 * 1000 };
+  const query = useGetRelatedCards(getRelatedCardsVars, options);
+
+  // You can also pass both a `DataConnect` instance and a `useDataConnectQueryOptions` object.
+  const dataConnect = getDataConnect(connectorConfig);
+  const options = { staleTime: 5 * 1000 };
+  const query = useGetRelatedCards(dataConnect, getRelatedCardsVars, options);
+
+  // Then, you can render your component dynamically based on the status of the Query.
+  if (query.isPending) {
+    return <div>Loading...</div>;
+  }
+
+  if (query.isError) {
+    return <div>Error: {query.error.message}</div>;
+  }
+
+  // If the Query is successful, you can access the data returned using the `UseQueryResult.data` field.
+  if (query.isSuccess) {
+    console.log(query.data.relatedCards);
+  }
+  return <div>Query execution {query.isSuccess ? 'successful' : 'failed'}!</div>;
+}
+```
+
+## GetSets
+You can execute the `GetSets` Query using the following Query hook function, which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts):
+
+```javascript
+useGetSets(dc: DataConnect, options?: useDataConnectQueryOptions<GetSetsData>): UseDataConnectQueryResult<GetSetsData, undefined>;
+```
+You can also pass in a `DataConnect` instance to the Query hook function.
+```javascript
+useGetSets(options?: useDataConnectQueryOptions<GetSetsData>): UseDataConnectQueryResult<GetSetsData, undefined>;
+```
+
+### Variables
+The `GetSets` Query has no variables.
+### Return Type
+Recall that calling the `GetSets` Query hook function returns a `UseQueryResult` object. This object holds the state of your Query, including whether the Query is loading, has completed, or has succeeded/failed, and any data returned by the Query, among other things.
+
+To check the status of a Query, use the `UseQueryResult.status` field. You can also check for pending / success / error status using the `UseQueryResult.isPending`, `UseQueryResult.isSuccess`, and `UseQueryResult.isError` fields.
+
+To access the data returned by a Query, use the `UseQueryResult.data` field. The data for the `GetSets` Query is of type `GetSetsData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+```javascript
+export interface GetSetsData {
+  sets: ({
+    id: UUIDString;
+    displayName: string;
+    code: string;
+    releaseDate: DateString;
+  } & Set_Key)[];
+}
+```
+
+To learn more about the `UseQueryResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery).
+
+### Using `GetSets`'s Query hook function
+
+```javascript
+import { getDataConnect } from 'firebase/data-connect';
+import { connectorConfig } from '@firebasegen/default-connector';
+import { useGetSets } from '@firebasegen/default-connector/react'
+
+export default function GetSetsComponent() {
+  // You don't have to do anything to "execute" the Query.
+  // Call the Query hook function to get a `UseQueryResult` object which holds the state of your Query.
+  const query = useGetSets();
+
+  // You can also pass in a `DataConnect` instance to the Query hook function.
+  const dataConnect = getDataConnect(connectorConfig);
+  const query = useGetSets(dataConnect);
+
+  // You can also pass in a `useDataConnectQueryOptions` object to the Query hook function.
+  const options = { staleTime: 5 * 1000 };
+  const query = useGetSets(options);
+
+  // You can also pass both a `DataConnect` instance and a `useDataConnectQueryOptions` object.
+  const dataConnect = getDataConnect(connectorConfig);
+  const options = { staleTime: 5 * 1000 };
+  const query = useGetSets(dataConnect, options);
+
+  // Then, you can render your component dynamically based on the status of the Query.
+  if (query.isPending) {
+    return <div>Loading...</div>;
+  }
+
+  if (query.isError) {
+    return <div>Error: {query.error.message}</div>;
+  }
+
+  // If the Query is successful, you can access the data returned using the `UseQueryResult.data` field.
+  if (query.isSuccess) {
+    console.log(query.data.sets);
+  }
+  return <div>Query execution {query.isSuccess ? 'successful' : 'failed'}!</div>;
+}
+```
+
+## GetCardsPossessedByUser
+You can execute the `GetCardsPossessedByUser` Query using the following Query hook function, which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts):
+
+```javascript
+useGetCardsPossessedByUser(dc: DataConnect, options?: useDataConnectQueryOptions<GetCardsPossessedByUserData>): UseDataConnectQueryResult<GetCardsPossessedByUserData, undefined>;
+```
+You can also pass in a `DataConnect` instance to the Query hook function.
+```javascript
+useGetCardsPossessedByUser(options?: useDataConnectQueryOptions<GetCardsPossessedByUserData>): UseDataConnectQueryResult<GetCardsPossessedByUserData, undefined>;
+```
+
+### Variables
+The `GetCardsPossessedByUser` Query has no variables.
+### Return Type
+Recall that calling the `GetCardsPossessedByUser` Query hook function returns a `UseQueryResult` object. This object holds the state of your Query, including whether the Query is loading, has completed, or has succeeded/failed, and any data returned by the Query, among other things.
+
+To check the status of a Query, use the `UseQueryResult.status` field. You can also check for pending / success / error status using the `UseQueryResult.isPending`, `UseQueryResult.isSuccess`, and `UseQueryResult.isError` fields.
+
+To access the data returned by a Query, use the `UseQueryResult.data` field. The data for the `GetCardsPossessedByUser` Query is of type `GetCardsPossessedByUserData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+```javascript
+export interface GetCardsPossessedByUserData {
+  userCards: ({
+    quantity: number;
+    card: {
+      id: UUIDString;
+      cardNumber: string;
+      description?: string | null;
+      displayName: string;
+      rarity: {
+        displayName: string;
+      };
+        packs_via_CardPack: ({
+          set: {
+            code: string;
+          };
+        })[];
+    } & Card_Key;
+  })[];
+}
+```
+
+To learn more about the `UseQueryResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery).
+
+### Using `GetCardsPossessedByUser`'s Query hook function
+
+```javascript
+import { getDataConnect } from 'firebase/data-connect';
+import { connectorConfig } from '@firebasegen/default-connector';
+import { useGetCardsPossessedByUser } from '@firebasegen/default-connector/react'
+
+export default function GetCardsPossessedByUserComponent() {
+  // You don't have to do anything to "execute" the Query.
+  // Call the Query hook function to get a `UseQueryResult` object which holds the state of your Query.
+  const query = useGetCardsPossessedByUser();
+
+  // You can also pass in a `DataConnect` instance to the Query hook function.
+  const dataConnect = getDataConnect(connectorConfig);
+  const query = useGetCardsPossessedByUser(dataConnect);
+
+  // You can also pass in a `useDataConnectQueryOptions` object to the Query hook function.
+  const options = { staleTime: 5 * 1000 };
+  const query = useGetCardsPossessedByUser(options);
+
+  // You can also pass both a `DataConnect` instance and a `useDataConnectQueryOptions` object.
+  const dataConnect = getDataConnect(connectorConfig);
+  const options = { staleTime: 5 * 1000 };
+  const query = useGetCardsPossessedByUser(dataConnect, options);
+
+  // Then, you can render your component dynamically based on the status of the Query.
+  if (query.isPending) {
+    return <div>Loading...</div>;
+  }
+
+  if (query.isError) {
+    return <div>Error: {query.error.message}</div>;
+  }
+
+  // If the Query is successful, you can access the data returned using the `UseQueryResult.data` field.
+  if (query.isSuccess) {
+    console.log(query.data.userCards);
+  }
+  return <div>Query execution {query.isSuccess ? 'successful' : 'failed'}!</div>;
+}
+```
+
+## GetCardsBySetCode
+You can execute the `GetCardsBySetCode` Query using the following Query hook function, which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts):
+
+```javascript
+useGetCardsBySetCode(dc: DataConnect, vars: GetCardsBySetCodeVariables, options?: useDataConnectQueryOptions<GetCardsBySetCodeData>): UseDataConnectQueryResult<GetCardsBySetCodeData, GetCardsBySetCodeVariables>;
+```
+You can also pass in a `DataConnect` instance to the Query hook function.
+```javascript
+useGetCardsBySetCode(vars: GetCardsBySetCodeVariables, options?: useDataConnectQueryOptions<GetCardsBySetCodeData>): UseDataConnectQueryResult<GetCardsBySetCodeData, GetCardsBySetCodeVariables>;
+```
+
+### Variables
+The `GetCardsBySetCode` Query requires an argument of type `GetCardsBySetCodeVariables`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+
+```javascript
+export interface GetCardsBySetCodeVariables {
+  setCode: string;
+}
+```
+### Return Type
+Recall that calling the `GetCardsBySetCode` Query hook function returns a `UseQueryResult` object. This object holds the state of your Query, including whether the Query is loading, has completed, or has succeeded/failed, and any data returned by the Query, among other things.
+
+To check the status of a Query, use the `UseQueryResult.status` field. You can also check for pending / success / error status using the `UseQueryResult.isPending`, `UseQueryResult.isSuccess`, and `UseQueryResult.isError` fields.
+
+To access the data returned by a Query, use the `UseQueryResult.data` field. The data for the `GetCardsBySetCode` Query is of type `GetCardsBySetCodeData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+```javascript
+export interface GetCardsBySetCodeData {
+  cardPacks: ({
+    card: {
+      id: UUIDString;
+      cardNumber: string;
+      displayName: string;
+      rarity: {
+        code: string;
+      };
+    } & Card_Key;
+      pack: {
+        set: {
+          code: string;
+          displayName: string;
+          releaseDate: DateString;
+        };
+      };
+  })[];
+}
+```
+
+To learn more about the `UseQueryResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery).
+
+### Using `GetCardsBySetCode`'s Query hook function
+
+```javascript
+import { getDataConnect } from 'firebase/data-connect';
+import { connectorConfig, GetCardsBySetCodeVariables } from '@firebasegen/default-connector';
+import { useGetCardsBySetCode } from '@firebasegen/default-connector/react'
+
+export default function GetCardsBySetCodeComponent() {
+  // The `useGetCardsBySetCode` Query hook requires an argument of type `GetCardsBySetCodeVariables`:
+  const getCardsBySetCodeVars: GetCardsBySetCodeVariables = {
+    setCode: ..., 
+  };
+
+  // You don't have to do anything to "execute" the Query.
+  // Call the Query hook function to get a `UseQueryResult` object which holds the state of your Query.
+  const query = useGetCardsBySetCode(getCardsBySetCodeVars);
+  // Variables can be defined inline as well.
+  const query = useGetCardsBySetCode({ setCode: ..., });
+
+  // You can also pass in a `DataConnect` instance to the Query hook function.
+  const dataConnect = getDataConnect(connectorConfig);
+  const query = useGetCardsBySetCode(dataConnect, getCardsBySetCodeVars);
+
+  // You can also pass in a `useDataConnectQueryOptions` object to the Query hook function.
+  const options = { staleTime: 5 * 1000 };
+  const query = useGetCardsBySetCode(getCardsBySetCodeVars, options);
+
+  // You can also pass both a `DataConnect` instance and a `useDataConnectQueryOptions` object.
+  const dataConnect = getDataConnect(connectorConfig);
+  const options = { staleTime: 5 * 1000 };
+  const query = useGetCardsBySetCode(dataConnect, getCardsBySetCodeVars, options);
+
+  // Then, you can render your component dynamically based on the status of the Query.
+  if (query.isPending) {
+    return <div>Loading...</div>;
+  }
+
+  if (query.isError) {
+    return <div>Error: {query.error.message}</div>;
+  }
+
+  // If the Query is successful, you can access the data returned using the `UseQueryResult.data` field.
+  if (query.isSuccess) {
+    console.log(query.data.cardPacks);
+  }
+  return <div>Query execution {query.isSuccess ? 'successful' : 'failed'}!</div>;
+}
+```
+
+## GetOfferedCards
+You can execute the `GetOfferedCards` Query using the following Query hook function, which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts):
+
+```javascript
+useGetOfferedCards(dc: DataConnect, options?: useDataConnectQueryOptions<GetOfferedCardsData>): UseDataConnectQueryResult<GetOfferedCardsData, undefined>;
+```
+You can also pass in a `DataConnect` instance to the Query hook function.
+```javascript
+useGetOfferedCards(options?: useDataConnectQueryOptions<GetOfferedCardsData>): UseDataConnectQueryResult<GetOfferedCardsData, undefined>;
+```
+
+### Variables
+The `GetOfferedCards` Query has no variables.
+### Return Type
+Recall that calling the `GetOfferedCards` Query hook function returns a `UseQueryResult` object. This object holds the state of your Query, including whether the Query is loading, has completed, or has succeeded/failed, and any data returned by the Query, among other things.
+
+To check the status of a Query, use the `UseQueryResult.status` field. You can also check for pending / success / error status using the `UseQueryResult.isPending`, `UseQueryResult.isSuccess`, and `UseQueryResult.isError` fields.
+
+To access the data returned by a Query, use the `UseQueryResult.data` field. The data for the `GetOfferedCards` Query is of type `GetOfferedCardsData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+```javascript
+export interface GetOfferedCardsData {
+  offers: ({
+    card: {
+      id: UUIDString;
+      cardNumber: string;
+      displayName: string;
+      rarity: {
+        code: string;
+      };
+        packs_via_CardPack: ({
+          set: {
+            code: string;
+            displayName: string;
+            releaseDate: DateString;
+          };
+        })[];
+    } & Card_Key;
+      createdAt: TimestampString;
+  })[];
+}
+```
+
+To learn more about the `UseQueryResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery).
+
+### Using `GetOfferedCards`'s Query hook function
+
+```javascript
+import { getDataConnect } from 'firebase/data-connect';
+import { connectorConfig } from '@firebasegen/default-connector';
+import { useGetOfferedCards } from '@firebasegen/default-connector/react'
+
+export default function GetOfferedCardsComponent() {
+  // You don't have to do anything to "execute" the Query.
+  // Call the Query hook function to get a `UseQueryResult` object which holds the state of your Query.
+  const query = useGetOfferedCards();
+
+  // You can also pass in a `DataConnect` instance to the Query hook function.
+  const dataConnect = getDataConnect(connectorConfig);
+  const query = useGetOfferedCards(dataConnect);
+
+  // You can also pass in a `useDataConnectQueryOptions` object to the Query hook function.
+  const options = { staleTime: 5 * 1000 };
+  const query = useGetOfferedCards(options);
+
+  // You can also pass both a `DataConnect` instance and a `useDataConnectQueryOptions` object.
+  const dataConnect = getDataConnect(connectorConfig);
+  const options = { staleTime: 5 * 1000 };
+  const query = useGetOfferedCards(dataConnect, options);
+
+  // Then, you can render your component dynamically based on the status of the Query.
+  if (query.isPending) {
+    return <div>Loading...</div>;
+  }
+
+  if (query.isError) {
+    return <div>Error: {query.error.message}</div>;
+  }
+
+  // If the Query is successful, you can access the data returned using the `UseQueryResult.data` field.
+  if (query.isSuccess) {
+    console.log(query.data.offers);
+  }
+  return <div>Query execution {query.isSuccess ? 'successful' : 'failed'}!</div>;
+}
+```
+
+## GetPacks
+You can execute the `GetPacks` Query using the following Query hook function, which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts):
+
+```javascript
+useGetPacks(dc: DataConnect, options?: useDataConnectQueryOptions<GetPacksData>): UseDataConnectQueryResult<GetPacksData, undefined>;
+```
+You can also pass in a `DataConnect` instance to the Query hook function.
+```javascript
+useGetPacks(options?: useDataConnectQueryOptions<GetPacksData>): UseDataConnectQueryResult<GetPacksData, undefined>;
+```
+
+### Variables
+The `GetPacks` Query has no variables.
+### Return Type
+Recall that calling the `GetPacks` Query hook function returns a `UseQueryResult` object. This object holds the state of your Query, including whether the Query is loading, has completed, or has succeeded/failed, and any data returned by the Query, among other things.
+
+To check the status of a Query, use the `UseQueryResult.status` field. You can also check for pending / success / error status using the `UseQueryResult.isPending`, `UseQueryResult.isSuccess`, and `UseQueryResult.isError` fields.
+
+To access the data returned by a Query, use the `UseQueryResult.data` field. The data for the `GetPacks` Query is of type `GetPacksData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+```javascript
+export interface GetPacksData {
+  packs: ({
+    displayName: string;
+    set: {
+      code: string;
+    };
+  })[];
+}
+```
+
+To learn more about the `UseQueryResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery).
+
+### Using `GetPacks`'s Query hook function
+
+```javascript
+import { getDataConnect } from 'firebase/data-connect';
+import { connectorConfig } from '@firebasegen/default-connector';
+import { useGetPacks } from '@firebasegen/default-connector/react'
+
+export default function GetPacksComponent() {
+  // You don't have to do anything to "execute" the Query.
+  // Call the Query hook function to get a `UseQueryResult` object which holds the state of your Query.
+  const query = useGetPacks();
+
+  // You can also pass in a `DataConnect` instance to the Query hook function.
+  const dataConnect = getDataConnect(connectorConfig);
+  const query = useGetPacks(dataConnect);
+
+  // You can also pass in a `useDataConnectQueryOptions` object to the Query hook function.
+  const options = { staleTime: 5 * 1000 };
+  const query = useGetPacks(options);
+
+  // You can also pass both a `DataConnect` instance and a `useDataConnectQueryOptions` object.
+  const dataConnect = getDataConnect(connectorConfig);
+  const options = { staleTime: 5 * 1000 };
+  const query = useGetPacks(dataConnect, options);
+
+  // Then, you can render your component dynamically based on the status of the Query.
+  if (query.isPending) {
+    return <div>Loading...</div>;
+  }
+
+  if (query.isError) {
+    return <div>Error: {query.error.message}</div>;
+  }
+
+  // If the Query is successful, you can access the data returned using the `UseQueryResult.data` field.
+  if (query.isSuccess) {
+    console.log(query.data.packs);
+  }
+  return <div>Query execution {query.isSuccess ? 'successful' : 'failed'}!</div>;
+}
+```
+
+## GetPacksAndCards
+You can execute the `GetPacksAndCards` Query using the following Query hook function, which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts):
+
+```javascript
+useGetPacksAndCards(dc: DataConnect, options?: useDataConnectQueryOptions<GetPacksAndCardsData>): UseDataConnectQueryResult<GetPacksAndCardsData, undefined>;
+```
+You can also pass in a `DataConnect` instance to the Query hook function.
+```javascript
+useGetPacksAndCards(options?: useDataConnectQueryOptions<GetPacksAndCardsData>): UseDataConnectQueryResult<GetPacksAndCardsData, undefined>;
+```
+
+### Variables
+The `GetPacksAndCards` Query has no variables.
+### Return Type
+Recall that calling the `GetPacksAndCards` Query hook function returns a `UseQueryResult` object. This object holds the state of your Query, including whether the Query is loading, has completed, or has succeeded/failed, and any data returned by the Query, among other things.
+
+To check the status of a Query, use the `UseQueryResult.status` field. You can also check for pending / success / error status using the `UseQueryResult.isPending`, `UseQueryResult.isSuccess`, and `UseQueryResult.isError` fields.
+
+To access the data returned by a Query, use the `UseQueryResult.data` field. The data for the `GetPacksAndCards` Query is of type `GetPacksAndCardsData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+```javascript
+export interface GetPacksAndCardsData {
+  packs: ({
+    displayName: string;
+    set: {
+      code: string;
+      displayName: string;
+      releaseDate: DateString;
+    };
+      cards_via_CardPack: ({
+        id: UUIDString;
+        cardNumber: string;
+        displayName: string;
+        rarity: {
+          code: string;
+        };
+      } & Card_Key)[];
+  })[];
+}
+```
+
+To learn more about the `UseQueryResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery).
+
+### Using `GetPacksAndCards`'s Query hook function
+
+```javascript
+import { getDataConnect } from 'firebase/data-connect';
+import { connectorConfig } from '@firebasegen/default-connector';
+import { useGetPacksAndCards } from '@firebasegen/default-connector/react'
+
+export default function GetPacksAndCardsComponent() {
+  // You don't have to do anything to "execute" the Query.
+  // Call the Query hook function to get a `UseQueryResult` object which holds the state of your Query.
+  const query = useGetPacksAndCards();
+
+  // You can also pass in a `DataConnect` instance to the Query hook function.
+  const dataConnect = getDataConnect(connectorConfig);
+  const query = useGetPacksAndCards(dataConnect);
+
+  // You can also pass in a `useDataConnectQueryOptions` object to the Query hook function.
+  const options = { staleTime: 5 * 1000 };
+  const query = useGetPacksAndCards(options);
+
+  // You can also pass both a `DataConnect` instance and a `useDataConnectQueryOptions` object.
+  const dataConnect = getDataConnect(connectorConfig);
+  const options = { staleTime: 5 * 1000 };
+  const query = useGetPacksAndCards(dataConnect, options);
+
+  // Then, you can render your component dynamically based on the status of the Query.
+  if (query.isPending) {
+    return <div>Loading...</div>;
+  }
+
+  if (query.isError) {
+    return <div>Error: {query.error.message}</div>;
+  }
+
+  // If the Query is successful, you can access the data returned using the `UseQueryResult.data` field.
+  if (query.isSuccess) {
+    console.log(query.data.packs);
+  }
+  return <div>Query execution {query.isSuccess ? 'successful' : 'failed'}!</div>;
+}
+```
+
+## GetRequestedCards
+You can execute the `GetRequestedCards` Query using the following Query hook function, which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts):
+
+```javascript
+useGetRequestedCards(dc: DataConnect, options?: useDataConnectQueryOptions<GetRequestedCardsData>): UseDataConnectQueryResult<GetRequestedCardsData, undefined>;
+```
+You can also pass in a `DataConnect` instance to the Query hook function.
+```javascript
+useGetRequestedCards(options?: useDataConnectQueryOptions<GetRequestedCardsData>): UseDataConnectQueryResult<GetRequestedCardsData, undefined>;
+```
+
+### Variables
+The `GetRequestedCards` Query has no variables.
+### Return Type
+Recall that calling the `GetRequestedCards` Query hook function returns a `UseQueryResult` object. This object holds the state of your Query, including whether the Query is loading, has completed, or has succeeded/failed, and any data returned by the Query, among other things.
+
+To check the status of a Query, use the `UseQueryResult.status` field. You can also check for pending / success / error status using the `UseQueryResult.isPending`, `UseQueryResult.isSuccess`, and `UseQueryResult.isError` fields.
+
+To access the data returned by a Query, use the `UseQueryResult.data` field. The data for the `GetRequestedCards` Query is of type `GetRequestedCardsData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+```javascript
+export interface GetRequestedCardsData {
+  requests: ({
+    card: {
+      id: UUIDString;
+      cardNumber: string;
+      displayName: string;
+      rarity: {
+        code: string;
+      };
+        packs_via_CardPack: ({
+          set: {
+            code: string;
+            displayName: string;
+            releaseDate: DateString;
+          };
+        })[];
+    } & Card_Key;
+      createdAt: TimestampString;
+  })[];
+}
+```
+
+To learn more about the `UseQueryResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery).
+
+### Using `GetRequestedCards`'s Query hook function
+
+```javascript
+import { getDataConnect } from 'firebase/data-connect';
+import { connectorConfig } from '@firebasegen/default-connector';
+import { useGetRequestedCards } from '@firebasegen/default-connector/react'
+
+export default function GetRequestedCardsComponent() {
+  // You don't have to do anything to "execute" the Query.
+  // Call the Query hook function to get a `UseQueryResult` object which holds the state of your Query.
+  const query = useGetRequestedCards();
+
+  // You can also pass in a `DataConnect` instance to the Query hook function.
+  const dataConnect = getDataConnect(connectorConfig);
+  const query = useGetRequestedCards(dataConnect);
+
+  // You can also pass in a `useDataConnectQueryOptions` object to the Query hook function.
+  const options = { staleTime: 5 * 1000 };
+  const query = useGetRequestedCards(options);
+
+  // You can also pass both a `DataConnect` instance and a `useDataConnectQueryOptions` object.
+  const dataConnect = getDataConnect(connectorConfig);
+  const options = { staleTime: 5 * 1000 };
+  const query = useGetRequestedCards(dataConnect, options);
+
+  // Then, you can render your component dynamically based on the status of the Query.
+  if (query.isPending) {
+    return <div>Loading...</div>;
+  }
+
+  if (query.isError) {
+    return <div>Error: {query.error.message}</div>;
+  }
+
+  // If the Query is successful, you can access the data returned using the `UseQueryResult.data` field.
+  if (query.isSuccess) {
+    console.log(query.data.requests);
+  }
+  return <div>Query execution {query.isSuccess ? 'successful' : 'failed'}!</div>;
+}
+```
+
 # Mutations
 
 The React generated SDK provides Mutations hook functions that call and return [`useDataConnectMutation`](https://react-query-firebase.invertase.dev/react/data-connect/mutations) hooks from TanStack Query Firebase.
@@ -1174,84 +1176,90 @@ Here's a general overview of how to use the generated Mutation hooks in your cod
 
 Below are examples of how to use the `default` connector's generated Mutation hook functions to execute each Mutation. You can also follow the examples from the [Data Connect documentation](https://firebase.google.com/docs/data-connect/web-sdk#operations-react-angular).
 
-## AddRelatedCard
-You can execute the `AddRelatedCard` Mutation using the `UseMutationResult` object returned by the following Mutation hook function (which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts)):
+## AddSet
+You can execute the `AddSet` Mutation using the `UseMutationResult` object returned by the following Mutation hook function (which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts)):
 ```javascript
-useAddRelatedCard(options?: useDataConnectMutationOptions<AddRelatedCardData, FirebaseError, AddRelatedCardVariables>): UseDataConnectMutationResult<AddRelatedCardData, AddRelatedCardVariables>;
+useAddSet(options?: useDataConnectMutationOptions<AddSetData, FirebaseError, AddSetVariables | void>): UseDataConnectMutationResult<AddSetData, AddSetVariables>;
 ```
 You can also pass in a `DataConnect` instance to the Mutation hook function.
 ```javascript
-useAddRelatedCard(dc: DataConnect, options?: useDataConnectMutationOptions<AddRelatedCardData, FirebaseError, AddRelatedCardVariables>): UseDataConnectMutationResult<AddRelatedCardData, AddRelatedCardVariables>;
+useAddSet(dc: DataConnect, options?: useDataConnectMutationOptions<AddSetData, FirebaseError, AddSetVariables | void>): UseDataConnectMutationResult<AddSetData, AddSetVariables>;
 ```
 
 ### Variables
-The `AddRelatedCard` Mutation requires an argument of type `AddRelatedCardVariables`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+The `AddSet` Mutation has an optional argument of type `AddSetVariables`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
 
 ```javascript
-export interface AddRelatedCardVariables {
-  cardId: UUIDString;
-  relatedCardId: UUIDString;
+export interface AddSetVariables {
+  displayName?: string | null;
+  code?: string | null;
+  releaseDate?: DateString | null;
 }
 ```
 ### Return Type
-Recall that calling the `AddRelatedCard` Mutation hook function returns a `UseMutationResult` object. This object holds the state of your Mutation, including whether the Mutation is loading, has completed, or has succeeded/failed, among other things.
+Recall that calling the `AddSet` Mutation hook function returns a `UseMutationResult` object. This object holds the state of your Mutation, including whether the Mutation is loading, has completed, or has succeeded/failed, among other things.
 
 To check the status of a Mutation, use the `UseMutationResult.status` field. You can also check for pending / success / error status using the `UseMutationResult.isPending`, `UseMutationResult.isSuccess`, and `UseMutationResult.isError` fields.
 
 To execute the Mutation, call `UseMutationResult.mutate()`. This function executes the Mutation, but does not return the data from the Mutation.
 
-To access the data returned by a Mutation, use the `UseMutationResult.data` field. The data for the `AddRelatedCard` Mutation is of type `AddRelatedCardData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+To access the data returned by a Mutation, use the `UseMutationResult.data` field. The data for the `AddSet` Mutation is of type `AddSetData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
 ```javascript
-export interface AddRelatedCardData {
-  relatedCard_insert: RelatedCard_Key;
+export interface AddSetData {
+  set_insert: Set_Key;
 }
 ```
 
 To learn more about the `UseMutationResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useMutation).
 
-### Using `AddRelatedCard`'s Mutation hook function
+### Using `AddSet`'s Mutation hook function
 
 ```javascript
 import { getDataConnect } from 'firebase/data-connect';
-import { connectorConfig, AddRelatedCardVariables } from '@firebasegen/default-connector';
-import { useAddRelatedCard } from '@firebasegen/default-connector/react'
+import { connectorConfig, AddSetVariables } from '@firebasegen/default-connector';
+import { useAddSet } from '@firebasegen/default-connector/react'
 
-export default function AddRelatedCardComponent() {
+export default function AddSetComponent() {
   // Call the Mutation hook function to get a `UseMutationResult` object which holds the state of your Mutation.
-  const mutation = useAddRelatedCard();
+  const mutation = useAddSet();
 
   // You can also pass in a `DataConnect` instance to the Mutation hook function.
   const dataConnect = getDataConnect(connectorConfig);
-  const mutation = useAddRelatedCard(dataConnect);
+  const mutation = useAddSet(dataConnect);
 
   // You can also pass in a `useDataConnectMutationOptions` object to the Mutation hook function.
   const options = {
     onSuccess: () => { console.log('Mutation succeeded!'); }
   };
-  const mutation = useAddRelatedCard(options);
+  const mutation = useAddSet(options);
 
   // You can also pass both a `DataConnect` instance and a `useDataConnectMutationOptions` object.
   const dataConnect = getDataConnect(connectorConfig);
   const options = {
     onSuccess: () => { console.log('Mutation succeeded!'); }
   };
-  const mutation = useAddRelatedCard(dataConnect, options);
+  const mutation = useAddSet(dataConnect, options);
 
   // After calling the Mutation hook function, you must call `UseMutationResult.mutate()` to execute the Mutation.
-  // The `useAddRelatedCard` Mutation requires an argument of type `AddRelatedCardVariables`:
-  const addRelatedCardVars: AddRelatedCardVariables = {
-    cardId: ..., 
-    relatedCardId: ..., 
+  // The `useAddSet` Mutation has an optional argument of type `AddSetVariables`:
+  const addSetVars: AddSetVariables = {
+    displayName: ..., // optional
+    code: ..., // optional
+    releaseDate: ..., // optional
   };
-  mutation.mutate(addRelatedCardVars);
+  mutation.mutate(addSetVars);
   // Variables can be defined inline as well.
-  mutation.mutate({ cardId: ..., relatedCardId: ..., });
+  mutation.mutate({ displayName: ..., code: ..., releaseDate: ..., });
+  // Since all variables are optional for this Mutation, you can omit the `AddSetVariables` argument.
+  mutation.mutate();
 
   // You can also pass in a `useDataConnectMutationOptions` object to `UseMutationResult.mutate()`.
+  // Since all variables are optional for this Mutation, you can provide options without providing any variables.
+  // To do so, you must pass `undefined` where you would normally pass the variables.
   const options = {
     onSuccess: () => { console.log('Mutation succeeded!'); }
   };
-  mutation.mutate(addRelatedCardVars, options);
+  mutation.mutate(addSetVars /** or undefined */, options);
 
   // Then, you can render your component dynamically based on the status of the Mutation.
   if (mutation.isPending) {
@@ -1264,7 +1272,7 @@ export default function AddRelatedCardComponent() {
 
   // If the Mutation is successful, you can access the data returned using the `UseMutationResult.data` field.
   if (mutation.isSuccess) {
-    console.log(mutation.data.relatedCard_insert);
+    console.log(mutation.data.set_insert);
   }
   return <div>Mutation execution {mutation.isSuccess ? 'successful' : 'failed'}!</div>;
 }
@@ -1619,314 +1627,6 @@ export default function ChangeUserLastLoginComponent() {
   // If the Mutation is successful, you can access the data returned using the `UseMutationResult.data` field.
   if (mutation.isSuccess) {
     console.log(mutation.data.user_update);
-  }
-  return <div>Mutation execution {mutation.isSuccess ? 'successful' : 'failed'}!</div>;
-}
-```
-
-## AddCardsPack
-You can execute the `AddCardsPack` Mutation using the `UseMutationResult` object returned by the following Mutation hook function (which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts)):
-```javascript
-useAddCardsPack(options?: useDataConnectMutationOptions<AddCardsPackData, FirebaseError, AddCardsPackVariables | void>): UseDataConnectMutationResult<AddCardsPackData, AddCardsPackVariables>;
-```
-You can also pass in a `DataConnect` instance to the Mutation hook function.
-```javascript
-useAddCardsPack(dc: DataConnect, options?: useDataConnectMutationOptions<AddCardsPackData, FirebaseError, AddCardsPackVariables | void>): UseDataConnectMutationResult<AddCardsPackData, AddCardsPackVariables>;
-```
-
-### Variables
-The `AddCardsPack` Mutation has an optional argument of type `AddCardsPackVariables`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
-
-```javascript
-export interface AddCardsPackVariables {
-  cardId?: UUIDString | null;
-  packId?: UUIDString | null;
-}
-```
-### Return Type
-Recall that calling the `AddCardsPack` Mutation hook function returns a `UseMutationResult` object. This object holds the state of your Mutation, including whether the Mutation is loading, has completed, or has succeeded/failed, among other things.
-
-To check the status of a Mutation, use the `UseMutationResult.status` field. You can also check for pending / success / error status using the `UseMutationResult.isPending`, `UseMutationResult.isSuccess`, and `UseMutationResult.isError` fields.
-
-To execute the Mutation, call `UseMutationResult.mutate()`. This function executes the Mutation, but does not return the data from the Mutation.
-
-To access the data returned by a Mutation, use the `UseMutationResult.data` field. The data for the `AddCardsPack` Mutation is of type `AddCardsPackData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
-```javascript
-export interface AddCardsPackData {
-  cardPack_insert: CardPack_Key;
-}
-```
-
-To learn more about the `UseMutationResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useMutation).
-
-### Using `AddCardsPack`'s Mutation hook function
-
-```javascript
-import { getDataConnect } from 'firebase/data-connect';
-import { connectorConfig, AddCardsPackVariables } from '@firebasegen/default-connector';
-import { useAddCardsPack } from '@firebasegen/default-connector/react'
-
-export default function AddCardsPackComponent() {
-  // Call the Mutation hook function to get a `UseMutationResult` object which holds the state of your Mutation.
-  const mutation = useAddCardsPack();
-
-  // You can also pass in a `DataConnect` instance to the Mutation hook function.
-  const dataConnect = getDataConnect(connectorConfig);
-  const mutation = useAddCardsPack(dataConnect);
-
-  // You can also pass in a `useDataConnectMutationOptions` object to the Mutation hook function.
-  const options = {
-    onSuccess: () => { console.log('Mutation succeeded!'); }
-  };
-  const mutation = useAddCardsPack(options);
-
-  // You can also pass both a `DataConnect` instance and a `useDataConnectMutationOptions` object.
-  const dataConnect = getDataConnect(connectorConfig);
-  const options = {
-    onSuccess: () => { console.log('Mutation succeeded!'); }
-  };
-  const mutation = useAddCardsPack(dataConnect, options);
-
-  // After calling the Mutation hook function, you must call `UseMutationResult.mutate()` to execute the Mutation.
-  // The `useAddCardsPack` Mutation has an optional argument of type `AddCardsPackVariables`:
-  const addCardsPackVars: AddCardsPackVariables = {
-    cardId: ..., // optional
-    packId: ..., // optional
-  };
-  mutation.mutate(addCardsPackVars);
-  // Variables can be defined inline as well.
-  mutation.mutate({ cardId: ..., packId: ..., });
-  // Since all variables are optional for this Mutation, you can omit the `AddCardsPackVariables` argument.
-  mutation.mutate();
-
-  // You can also pass in a `useDataConnectMutationOptions` object to `UseMutationResult.mutate()`.
-  // Since all variables are optional for this Mutation, you can provide options without providing any variables.
-  // To do so, you must pass `undefined` where you would normally pass the variables.
-  const options = {
-    onSuccess: () => { console.log('Mutation succeeded!'); }
-  };
-  mutation.mutate(addCardsPackVars /** or undefined */, options);
-
-  // Then, you can render your component dynamically based on the status of the Mutation.
-  if (mutation.isPending) {
-    return <div>Loading...</div>;
-  }
-
-  if (mutation.isError) {
-    return <div>Error: {mutation.error.message}</div>;
-  }
-
-  // If the Mutation is successful, you can access the data returned using the `UseMutationResult.data` field.
-  if (mutation.isSuccess) {
-    console.log(mutation.data.cardPack_insert);
-  }
-  return <div>Mutation execution {mutation.isSuccess ? 'successful' : 'failed'}!</div>;
-}
-```
-
-## AddPack
-You can execute the `AddPack` Mutation using the `UseMutationResult` object returned by the following Mutation hook function (which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts)):
-```javascript
-useAddPack(options?: useDataConnectMutationOptions<AddPackData, FirebaseError, AddPackVariables | void>): UseDataConnectMutationResult<AddPackData, AddPackVariables>;
-```
-You can also pass in a `DataConnect` instance to the Mutation hook function.
-```javascript
-useAddPack(dc: DataConnect, options?: useDataConnectMutationOptions<AddPackData, FirebaseError, AddPackVariables | void>): UseDataConnectMutationResult<AddPackData, AddPackVariables>;
-```
-
-### Variables
-The `AddPack` Mutation has an optional argument of type `AddPackVariables`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
-
-```javascript
-export interface AddPackVariables {
-  displayName?: string | null;
-  setCode?: string | null;
-}
-```
-### Return Type
-Recall that calling the `AddPack` Mutation hook function returns a `UseMutationResult` object. This object holds the state of your Mutation, including whether the Mutation is loading, has completed, or has succeeded/failed, among other things.
-
-To check the status of a Mutation, use the `UseMutationResult.status` field. You can also check for pending / success / error status using the `UseMutationResult.isPending`, `UseMutationResult.isSuccess`, and `UseMutationResult.isError` fields.
-
-To execute the Mutation, call `UseMutationResult.mutate()`. This function executes the Mutation, but does not return the data from the Mutation.
-
-To access the data returned by a Mutation, use the `UseMutationResult.data` field. The data for the `AddPack` Mutation is of type `AddPackData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
-```javascript
-export interface AddPackData {
-  query?: {
-    sets: ({
-      id: UUIDString;
-    } & Set_Key)[];
-  };
-    pack_insert: Pack_Key;
-}
-```
-
-To learn more about the `UseMutationResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useMutation).
-
-### Using `AddPack`'s Mutation hook function
-
-```javascript
-import { getDataConnect } from 'firebase/data-connect';
-import { connectorConfig, AddPackVariables } from '@firebasegen/default-connector';
-import { useAddPack } from '@firebasegen/default-connector/react'
-
-export default function AddPackComponent() {
-  // Call the Mutation hook function to get a `UseMutationResult` object which holds the state of your Mutation.
-  const mutation = useAddPack();
-
-  // You can also pass in a `DataConnect` instance to the Mutation hook function.
-  const dataConnect = getDataConnect(connectorConfig);
-  const mutation = useAddPack(dataConnect);
-
-  // You can also pass in a `useDataConnectMutationOptions` object to the Mutation hook function.
-  const options = {
-    onSuccess: () => { console.log('Mutation succeeded!'); }
-  };
-  const mutation = useAddPack(options);
-
-  // You can also pass both a `DataConnect` instance and a `useDataConnectMutationOptions` object.
-  const dataConnect = getDataConnect(connectorConfig);
-  const options = {
-    onSuccess: () => { console.log('Mutation succeeded!'); }
-  };
-  const mutation = useAddPack(dataConnect, options);
-
-  // After calling the Mutation hook function, you must call `UseMutationResult.mutate()` to execute the Mutation.
-  // The `useAddPack` Mutation has an optional argument of type `AddPackVariables`:
-  const addPackVars: AddPackVariables = {
-    displayName: ..., // optional
-    setCode: ..., // optional
-  };
-  mutation.mutate(addPackVars);
-  // Variables can be defined inline as well.
-  mutation.mutate({ displayName: ..., setCode: ..., });
-  // Since all variables are optional for this Mutation, you can omit the `AddPackVariables` argument.
-  mutation.mutate();
-
-  // You can also pass in a `useDataConnectMutationOptions` object to `UseMutationResult.mutate()`.
-  // Since all variables are optional for this Mutation, you can provide options without providing any variables.
-  // To do so, you must pass `undefined` where you would normally pass the variables.
-  const options = {
-    onSuccess: () => { console.log('Mutation succeeded!'); }
-  };
-  mutation.mutate(addPackVars /** or undefined */, options);
-
-  // Then, you can render your component dynamically based on the status of the Mutation.
-  if (mutation.isPending) {
-    return <div>Loading...</div>;
-  }
-
-  if (mutation.isError) {
-    return <div>Error: {mutation.error.message}</div>;
-  }
-
-  // If the Mutation is successful, you can access the data returned using the `UseMutationResult.data` field.
-  if (mutation.isSuccess) {
-    console.log(mutation.data.query);
-    console.log(mutation.data.pack_insert);
-  }
-  return <div>Mutation execution {mutation.isSuccess ? 'successful' : 'failed'}!</div>;
-}
-```
-
-## AddSet
-You can execute the `AddSet` Mutation using the `UseMutationResult` object returned by the following Mutation hook function (which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts)):
-```javascript
-useAddSet(options?: useDataConnectMutationOptions<AddSetData, FirebaseError, AddSetVariables | void>): UseDataConnectMutationResult<AddSetData, AddSetVariables>;
-```
-You can also pass in a `DataConnect` instance to the Mutation hook function.
-```javascript
-useAddSet(dc: DataConnect, options?: useDataConnectMutationOptions<AddSetData, FirebaseError, AddSetVariables | void>): UseDataConnectMutationResult<AddSetData, AddSetVariables>;
-```
-
-### Variables
-The `AddSet` Mutation has an optional argument of type `AddSetVariables`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
-
-```javascript
-export interface AddSetVariables {
-  displayName?: string | null;
-  code?: string | null;
-  releaseDate?: DateString | null;
-}
-```
-### Return Type
-Recall that calling the `AddSet` Mutation hook function returns a `UseMutationResult` object. This object holds the state of your Mutation, including whether the Mutation is loading, has completed, or has succeeded/failed, among other things.
-
-To check the status of a Mutation, use the `UseMutationResult.status` field. You can also check for pending / success / error status using the `UseMutationResult.isPending`, `UseMutationResult.isSuccess`, and `UseMutationResult.isError` fields.
-
-To execute the Mutation, call `UseMutationResult.mutate()`. This function executes the Mutation, but does not return the data from the Mutation.
-
-To access the data returned by a Mutation, use the `UseMutationResult.data` field. The data for the `AddSet` Mutation is of type `AddSetData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
-```javascript
-export interface AddSetData {
-  set_insert: Set_Key;
-}
-```
-
-To learn more about the `UseMutationResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useMutation).
-
-### Using `AddSet`'s Mutation hook function
-
-```javascript
-import { getDataConnect } from 'firebase/data-connect';
-import { connectorConfig, AddSetVariables } from '@firebasegen/default-connector';
-import { useAddSet } from '@firebasegen/default-connector/react'
-
-export default function AddSetComponent() {
-  // Call the Mutation hook function to get a `UseMutationResult` object which holds the state of your Mutation.
-  const mutation = useAddSet();
-
-  // You can also pass in a `DataConnect` instance to the Mutation hook function.
-  const dataConnect = getDataConnect(connectorConfig);
-  const mutation = useAddSet(dataConnect);
-
-  // You can also pass in a `useDataConnectMutationOptions` object to the Mutation hook function.
-  const options = {
-    onSuccess: () => { console.log('Mutation succeeded!'); }
-  };
-  const mutation = useAddSet(options);
-
-  // You can also pass both a `DataConnect` instance and a `useDataConnectMutationOptions` object.
-  const dataConnect = getDataConnect(connectorConfig);
-  const options = {
-    onSuccess: () => { console.log('Mutation succeeded!'); }
-  };
-  const mutation = useAddSet(dataConnect, options);
-
-  // After calling the Mutation hook function, you must call `UseMutationResult.mutate()` to execute the Mutation.
-  // The `useAddSet` Mutation has an optional argument of type `AddSetVariables`:
-  const addSetVars: AddSetVariables = {
-    displayName: ..., // optional
-    code: ..., // optional
-    releaseDate: ..., // optional
-  };
-  mutation.mutate(addSetVars);
-  // Variables can be defined inline as well.
-  mutation.mutate({ displayName: ..., code: ..., releaseDate: ..., });
-  // Since all variables are optional for this Mutation, you can omit the `AddSetVariables` argument.
-  mutation.mutate();
-
-  // You can also pass in a `useDataConnectMutationOptions` object to `UseMutationResult.mutate()`.
-  // Since all variables are optional for this Mutation, you can provide options without providing any variables.
-  // To do so, you must pass `undefined` where you would normally pass the variables.
-  const options = {
-    onSuccess: () => { console.log('Mutation succeeded!'); }
-  };
-  mutation.mutate(addSetVars /** or undefined */, options);
-
-  // Then, you can render your component dynamically based on the status of the Mutation.
-  if (mutation.isPending) {
-    return <div>Loading...</div>;
-  }
-
-  if (mutation.isError) {
-    return <div>Error: {mutation.error.message}</div>;
-  }
-
-  // If the Mutation is successful, you can access the data returned using the `UseMutationResult.data` field.
-  if (mutation.isSuccess) {
-    console.log(mutation.data.set_insert);
   }
   return <div>Mutation execution {mutation.isSuccess ? 'successful' : 'failed'}!</div>;
 }
@@ -2318,194 +2018,6 @@ export default function AddCardComponent() {
 }
 ```
 
-## AddCardToOffer
-You can execute the `AddCardToOffer` Mutation using the `UseMutationResult` object returned by the following Mutation hook function (which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts)):
-```javascript
-useAddCardToOffer(options?: useDataConnectMutationOptions<AddCardToOfferData, FirebaseError, AddCardToOfferVariables>): UseDataConnectMutationResult<AddCardToOfferData, AddCardToOfferVariables>;
-```
-You can also pass in a `DataConnect` instance to the Mutation hook function.
-```javascript
-useAddCardToOffer(dc: DataConnect, options?: useDataConnectMutationOptions<AddCardToOfferData, FirebaseError, AddCardToOfferVariables>): UseDataConnectMutationResult<AddCardToOfferData, AddCardToOfferVariables>;
-```
-
-### Variables
-The `AddCardToOffer` Mutation requires an argument of type `AddCardToOfferVariables`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
-
-```javascript
-export interface AddCardToOfferVariables {
-  cardId: UUIDString;
-}
-```
-### Return Type
-Recall that calling the `AddCardToOffer` Mutation hook function returns a `UseMutationResult` object. This object holds the state of your Mutation, including whether the Mutation is loading, has completed, or has succeeded/failed, among other things.
-
-To check the status of a Mutation, use the `UseMutationResult.status` field. You can also check for pending / success / error status using the `UseMutationResult.isPending`, `UseMutationResult.isSuccess`, and `UseMutationResult.isError` fields.
-
-To execute the Mutation, call `UseMutationResult.mutate()`. This function executes the Mutation, but does not return the data from the Mutation.
-
-To access the data returned by a Mutation, use the `UseMutationResult.data` field. The data for the `AddCardToOffer` Mutation is of type `AddCardToOfferData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
-```javascript
-export interface AddCardToOfferData {
-  offer_insert: Offer_Key;
-}
-```
-
-To learn more about the `UseMutationResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useMutation).
-
-### Using `AddCardToOffer`'s Mutation hook function
-
-```javascript
-import { getDataConnect } from 'firebase/data-connect';
-import { connectorConfig, AddCardToOfferVariables } from '@firebasegen/default-connector';
-import { useAddCardToOffer } from '@firebasegen/default-connector/react'
-
-export default function AddCardToOfferComponent() {
-  // Call the Mutation hook function to get a `UseMutationResult` object which holds the state of your Mutation.
-  const mutation = useAddCardToOffer();
-
-  // You can also pass in a `DataConnect` instance to the Mutation hook function.
-  const dataConnect = getDataConnect(connectorConfig);
-  const mutation = useAddCardToOffer(dataConnect);
-
-  // You can also pass in a `useDataConnectMutationOptions` object to the Mutation hook function.
-  const options = {
-    onSuccess: () => { console.log('Mutation succeeded!'); }
-  };
-  const mutation = useAddCardToOffer(options);
-
-  // You can also pass both a `DataConnect` instance and a `useDataConnectMutationOptions` object.
-  const dataConnect = getDataConnect(connectorConfig);
-  const options = {
-    onSuccess: () => { console.log('Mutation succeeded!'); }
-  };
-  const mutation = useAddCardToOffer(dataConnect, options);
-
-  // After calling the Mutation hook function, you must call `UseMutationResult.mutate()` to execute the Mutation.
-  // The `useAddCardToOffer` Mutation requires an argument of type `AddCardToOfferVariables`:
-  const addCardToOfferVars: AddCardToOfferVariables = {
-    cardId: ..., 
-  };
-  mutation.mutate(addCardToOfferVars);
-  // Variables can be defined inline as well.
-  mutation.mutate({ cardId: ..., });
-
-  // You can also pass in a `useDataConnectMutationOptions` object to `UseMutationResult.mutate()`.
-  const options = {
-    onSuccess: () => { console.log('Mutation succeeded!'); }
-  };
-  mutation.mutate(addCardToOfferVars, options);
-
-  // Then, you can render your component dynamically based on the status of the Mutation.
-  if (mutation.isPending) {
-    return <div>Loading...</div>;
-  }
-
-  if (mutation.isError) {
-    return <div>Error: {mutation.error.message}</div>;
-  }
-
-  // If the Mutation is successful, you can access the data returned using the `UseMutationResult.data` field.
-  if (mutation.isSuccess) {
-    console.log(mutation.data.offer_insert);
-  }
-  return <div>Mutation execution {mutation.isSuccess ? 'successful' : 'failed'}!</div>;
-}
-```
-
-## RemoveCardFromOffer
-You can execute the `RemoveCardFromOffer` Mutation using the `UseMutationResult` object returned by the following Mutation hook function (which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts)):
-```javascript
-useRemoveCardFromOffer(options?: useDataConnectMutationOptions<RemoveCardFromOfferData, FirebaseError, RemoveCardFromOfferVariables>): UseDataConnectMutationResult<RemoveCardFromOfferData, RemoveCardFromOfferVariables>;
-```
-You can also pass in a `DataConnect` instance to the Mutation hook function.
-```javascript
-useRemoveCardFromOffer(dc: DataConnect, options?: useDataConnectMutationOptions<RemoveCardFromOfferData, FirebaseError, RemoveCardFromOfferVariables>): UseDataConnectMutationResult<RemoveCardFromOfferData, RemoveCardFromOfferVariables>;
-```
-
-### Variables
-The `RemoveCardFromOffer` Mutation requires an argument of type `RemoveCardFromOfferVariables`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
-
-```javascript
-export interface RemoveCardFromOfferVariables {
-  cardId: UUIDString;
-}
-```
-### Return Type
-Recall that calling the `RemoveCardFromOffer` Mutation hook function returns a `UseMutationResult` object. This object holds the state of your Mutation, including whether the Mutation is loading, has completed, or has succeeded/failed, among other things.
-
-To check the status of a Mutation, use the `UseMutationResult.status` field. You can also check for pending / success / error status using the `UseMutationResult.isPending`, `UseMutationResult.isSuccess`, and `UseMutationResult.isError` fields.
-
-To execute the Mutation, call `UseMutationResult.mutate()`. This function executes the Mutation, but does not return the data from the Mutation.
-
-To access the data returned by a Mutation, use the `UseMutationResult.data` field. The data for the `RemoveCardFromOffer` Mutation is of type `RemoveCardFromOfferData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
-```javascript
-export interface RemoveCardFromOfferData {
-  offer_delete?: Offer_Key | null;
-}
-```
-
-To learn more about the `UseMutationResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useMutation).
-
-### Using `RemoveCardFromOffer`'s Mutation hook function
-
-```javascript
-import { getDataConnect } from 'firebase/data-connect';
-import { connectorConfig, RemoveCardFromOfferVariables } from '@firebasegen/default-connector';
-import { useRemoveCardFromOffer } from '@firebasegen/default-connector/react'
-
-export default function RemoveCardFromOfferComponent() {
-  // Call the Mutation hook function to get a `UseMutationResult` object which holds the state of your Mutation.
-  const mutation = useRemoveCardFromOffer();
-
-  // You can also pass in a `DataConnect` instance to the Mutation hook function.
-  const dataConnect = getDataConnect(connectorConfig);
-  const mutation = useRemoveCardFromOffer(dataConnect);
-
-  // You can also pass in a `useDataConnectMutationOptions` object to the Mutation hook function.
-  const options = {
-    onSuccess: () => { console.log('Mutation succeeded!'); }
-  };
-  const mutation = useRemoveCardFromOffer(options);
-
-  // You can also pass both a `DataConnect` instance and a `useDataConnectMutationOptions` object.
-  const dataConnect = getDataConnect(connectorConfig);
-  const options = {
-    onSuccess: () => { console.log('Mutation succeeded!'); }
-  };
-  const mutation = useRemoveCardFromOffer(dataConnect, options);
-
-  // After calling the Mutation hook function, you must call `UseMutationResult.mutate()` to execute the Mutation.
-  // The `useRemoveCardFromOffer` Mutation requires an argument of type `RemoveCardFromOfferVariables`:
-  const removeCardFromOfferVars: RemoveCardFromOfferVariables = {
-    cardId: ..., 
-  };
-  mutation.mutate(removeCardFromOfferVars);
-  // Variables can be defined inline as well.
-  mutation.mutate({ cardId: ..., });
-
-  // You can also pass in a `useDataConnectMutationOptions` object to `UseMutationResult.mutate()`.
-  const options = {
-    onSuccess: () => { console.log('Mutation succeeded!'); }
-  };
-  mutation.mutate(removeCardFromOfferVars, options);
-
-  // Then, you can render your component dynamically based on the status of the Mutation.
-  if (mutation.isPending) {
-    return <div>Loading...</div>;
-  }
-
-  if (mutation.isError) {
-    return <div>Error: {mutation.error.message}</div>;
-  }
-
-  // If the Mutation is successful, you can access the data returned using the `UseMutationResult.data` field.
-  if (mutation.isSuccess) {
-    console.log(mutation.data.offer_delete);
-  }
-  return <div>Mutation execution {mutation.isSuccess ? 'successful' : 'failed'}!</div>;
-}
-```
-
 ## AddRarity
 You can execute the `AddRarity` Mutation using the `UseMutationResult` object returned by the following Mutation hook function (which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts)):
 ```javascript
@@ -2601,6 +2113,208 @@ export default function AddRarityComponent() {
   // If the Mutation is successful, you can access the data returned using the `UseMutationResult.data` field.
   if (mutation.isSuccess) {
     console.log(mutation.data.rarity_insert);
+  }
+  return <div>Mutation execution {mutation.isSuccess ? 'successful' : 'failed'}!</div>;
+}
+```
+
+## AddPack
+You can execute the `AddPack` Mutation using the `UseMutationResult` object returned by the following Mutation hook function (which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts)):
+```javascript
+useAddPack(options?: useDataConnectMutationOptions<AddPackData, FirebaseError, AddPackVariables | void>): UseDataConnectMutationResult<AddPackData, AddPackVariables>;
+```
+You can also pass in a `DataConnect` instance to the Mutation hook function.
+```javascript
+useAddPack(dc: DataConnect, options?: useDataConnectMutationOptions<AddPackData, FirebaseError, AddPackVariables | void>): UseDataConnectMutationResult<AddPackData, AddPackVariables>;
+```
+
+### Variables
+The `AddPack` Mutation has an optional argument of type `AddPackVariables`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+
+```javascript
+export interface AddPackVariables {
+  displayName?: string | null;
+  setCode?: string | null;
+}
+```
+### Return Type
+Recall that calling the `AddPack` Mutation hook function returns a `UseMutationResult` object. This object holds the state of your Mutation, including whether the Mutation is loading, has completed, or has succeeded/failed, among other things.
+
+To check the status of a Mutation, use the `UseMutationResult.status` field. You can also check for pending / success / error status using the `UseMutationResult.isPending`, `UseMutationResult.isSuccess`, and `UseMutationResult.isError` fields.
+
+To execute the Mutation, call `UseMutationResult.mutate()`. This function executes the Mutation, but does not return the data from the Mutation.
+
+To access the data returned by a Mutation, use the `UseMutationResult.data` field. The data for the `AddPack` Mutation is of type `AddPackData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+```javascript
+export interface AddPackData {
+  query?: {
+    sets: ({
+      id: UUIDString;
+    } & Set_Key)[];
+  };
+    pack_insert: Pack_Key;
+}
+```
+
+To learn more about the `UseMutationResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useMutation).
+
+### Using `AddPack`'s Mutation hook function
+
+```javascript
+import { getDataConnect } from 'firebase/data-connect';
+import { connectorConfig, AddPackVariables } from '@firebasegen/default-connector';
+import { useAddPack } from '@firebasegen/default-connector/react'
+
+export default function AddPackComponent() {
+  // Call the Mutation hook function to get a `UseMutationResult` object which holds the state of your Mutation.
+  const mutation = useAddPack();
+
+  // You can also pass in a `DataConnect` instance to the Mutation hook function.
+  const dataConnect = getDataConnect(connectorConfig);
+  const mutation = useAddPack(dataConnect);
+
+  // You can also pass in a `useDataConnectMutationOptions` object to the Mutation hook function.
+  const options = {
+    onSuccess: () => { console.log('Mutation succeeded!'); }
+  };
+  const mutation = useAddPack(options);
+
+  // You can also pass both a `DataConnect` instance and a `useDataConnectMutationOptions` object.
+  const dataConnect = getDataConnect(connectorConfig);
+  const options = {
+    onSuccess: () => { console.log('Mutation succeeded!'); }
+  };
+  const mutation = useAddPack(dataConnect, options);
+
+  // After calling the Mutation hook function, you must call `UseMutationResult.mutate()` to execute the Mutation.
+  // The `useAddPack` Mutation has an optional argument of type `AddPackVariables`:
+  const addPackVars: AddPackVariables = {
+    displayName: ..., // optional
+    setCode: ..., // optional
+  };
+  mutation.mutate(addPackVars);
+  // Variables can be defined inline as well.
+  mutation.mutate({ displayName: ..., setCode: ..., });
+  // Since all variables are optional for this Mutation, you can omit the `AddPackVariables` argument.
+  mutation.mutate();
+
+  // You can also pass in a `useDataConnectMutationOptions` object to `UseMutationResult.mutate()`.
+  // Since all variables are optional for this Mutation, you can provide options without providing any variables.
+  // To do so, you must pass `undefined` where you would normally pass the variables.
+  const options = {
+    onSuccess: () => { console.log('Mutation succeeded!'); }
+  };
+  mutation.mutate(addPackVars /** or undefined */, options);
+
+  // Then, you can render your component dynamically based on the status of the Mutation.
+  if (mutation.isPending) {
+    return <div>Loading...</div>;
+  }
+
+  if (mutation.isError) {
+    return <div>Error: {mutation.error.message}</div>;
+  }
+
+  // If the Mutation is successful, you can access the data returned using the `UseMutationResult.data` field.
+  if (mutation.isSuccess) {
+    console.log(mutation.data.query);
+    console.log(mutation.data.pack_insert);
+  }
+  return <div>Mutation execution {mutation.isSuccess ? 'successful' : 'failed'}!</div>;
+}
+```
+
+## AddRelatedCard
+You can execute the `AddRelatedCard` Mutation using the `UseMutationResult` object returned by the following Mutation hook function (which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts)):
+```javascript
+useAddRelatedCard(options?: useDataConnectMutationOptions<AddRelatedCardData, FirebaseError, AddRelatedCardVariables>): UseDataConnectMutationResult<AddRelatedCardData, AddRelatedCardVariables>;
+```
+You can also pass in a `DataConnect` instance to the Mutation hook function.
+```javascript
+useAddRelatedCard(dc: DataConnect, options?: useDataConnectMutationOptions<AddRelatedCardData, FirebaseError, AddRelatedCardVariables>): UseDataConnectMutationResult<AddRelatedCardData, AddRelatedCardVariables>;
+```
+
+### Variables
+The `AddRelatedCard` Mutation requires an argument of type `AddRelatedCardVariables`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+
+```javascript
+export interface AddRelatedCardVariables {
+  cardId: UUIDString;
+  relatedCardId: UUIDString;
+}
+```
+### Return Type
+Recall that calling the `AddRelatedCard` Mutation hook function returns a `UseMutationResult` object. This object holds the state of your Mutation, including whether the Mutation is loading, has completed, or has succeeded/failed, among other things.
+
+To check the status of a Mutation, use the `UseMutationResult.status` field. You can also check for pending / success / error status using the `UseMutationResult.isPending`, `UseMutationResult.isSuccess`, and `UseMutationResult.isError` fields.
+
+To execute the Mutation, call `UseMutationResult.mutate()`. This function executes the Mutation, but does not return the data from the Mutation.
+
+To access the data returned by a Mutation, use the `UseMutationResult.data` field. The data for the `AddRelatedCard` Mutation is of type `AddRelatedCardData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+```javascript
+export interface AddRelatedCardData {
+  relatedCard_insert: RelatedCard_Key;
+}
+```
+
+To learn more about the `UseMutationResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useMutation).
+
+### Using `AddRelatedCard`'s Mutation hook function
+
+```javascript
+import { getDataConnect } from 'firebase/data-connect';
+import { connectorConfig, AddRelatedCardVariables } from '@firebasegen/default-connector';
+import { useAddRelatedCard } from '@firebasegen/default-connector/react'
+
+export default function AddRelatedCardComponent() {
+  // Call the Mutation hook function to get a `UseMutationResult` object which holds the state of your Mutation.
+  const mutation = useAddRelatedCard();
+
+  // You can also pass in a `DataConnect` instance to the Mutation hook function.
+  const dataConnect = getDataConnect(connectorConfig);
+  const mutation = useAddRelatedCard(dataConnect);
+
+  // You can also pass in a `useDataConnectMutationOptions` object to the Mutation hook function.
+  const options = {
+    onSuccess: () => { console.log('Mutation succeeded!'); }
+  };
+  const mutation = useAddRelatedCard(options);
+
+  // You can also pass both a `DataConnect` instance and a `useDataConnectMutationOptions` object.
+  const dataConnect = getDataConnect(connectorConfig);
+  const options = {
+    onSuccess: () => { console.log('Mutation succeeded!'); }
+  };
+  const mutation = useAddRelatedCard(dataConnect, options);
+
+  // After calling the Mutation hook function, you must call `UseMutationResult.mutate()` to execute the Mutation.
+  // The `useAddRelatedCard` Mutation requires an argument of type `AddRelatedCardVariables`:
+  const addRelatedCardVars: AddRelatedCardVariables = {
+    cardId: ..., 
+    relatedCardId: ..., 
+  };
+  mutation.mutate(addRelatedCardVars);
+  // Variables can be defined inline as well.
+  mutation.mutate({ cardId: ..., relatedCardId: ..., });
+
+  // You can also pass in a `useDataConnectMutationOptions` object to `UseMutationResult.mutate()`.
+  const options = {
+    onSuccess: () => { console.log('Mutation succeeded!'); }
+  };
+  mutation.mutate(addRelatedCardVars, options);
+
+  // Then, you can render your component dynamically based on the status of the Mutation.
+  if (mutation.isPending) {
+    return <div>Loading...</div>;
+  }
+
+  if (mutation.isError) {
+    return <div>Error: {mutation.error.message}</div>;
+  }
+
+  // If the Mutation is successful, you can access the data returned using the `UseMutationResult.data` field.
+  if (mutation.isSuccess) {
+    console.log(mutation.data.relatedCard_insert);
   }
   return <div>Mutation execution {mutation.isSuccess ? 'successful' : 'failed'}!</div>;
 }
@@ -2789,6 +2503,294 @@ export default function RemoveCardFromRequestComponent() {
   // If the Mutation is successful, you can access the data returned using the `UseMutationResult.data` field.
   if (mutation.isSuccess) {
     console.log(mutation.data.request_delete);
+  }
+  return <div>Mutation execution {mutation.isSuccess ? 'successful' : 'failed'}!</div>;
+}
+```
+
+## AddCardsPack
+You can execute the `AddCardsPack` Mutation using the `UseMutationResult` object returned by the following Mutation hook function (which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts)):
+```javascript
+useAddCardsPack(options?: useDataConnectMutationOptions<AddCardsPackData, FirebaseError, AddCardsPackVariables | void>): UseDataConnectMutationResult<AddCardsPackData, AddCardsPackVariables>;
+```
+You can also pass in a `DataConnect` instance to the Mutation hook function.
+```javascript
+useAddCardsPack(dc: DataConnect, options?: useDataConnectMutationOptions<AddCardsPackData, FirebaseError, AddCardsPackVariables | void>): UseDataConnectMutationResult<AddCardsPackData, AddCardsPackVariables>;
+```
+
+### Variables
+The `AddCardsPack` Mutation has an optional argument of type `AddCardsPackVariables`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+
+```javascript
+export interface AddCardsPackVariables {
+  cardId?: UUIDString | null;
+  packId?: UUIDString | null;
+}
+```
+### Return Type
+Recall that calling the `AddCardsPack` Mutation hook function returns a `UseMutationResult` object. This object holds the state of your Mutation, including whether the Mutation is loading, has completed, or has succeeded/failed, among other things.
+
+To check the status of a Mutation, use the `UseMutationResult.status` field. You can also check for pending / success / error status using the `UseMutationResult.isPending`, `UseMutationResult.isSuccess`, and `UseMutationResult.isError` fields.
+
+To execute the Mutation, call `UseMutationResult.mutate()`. This function executes the Mutation, but does not return the data from the Mutation.
+
+To access the data returned by a Mutation, use the `UseMutationResult.data` field. The data for the `AddCardsPack` Mutation is of type `AddCardsPackData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+```javascript
+export interface AddCardsPackData {
+  cardPack_insert: CardPack_Key;
+}
+```
+
+To learn more about the `UseMutationResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useMutation).
+
+### Using `AddCardsPack`'s Mutation hook function
+
+```javascript
+import { getDataConnect } from 'firebase/data-connect';
+import { connectorConfig, AddCardsPackVariables } from '@firebasegen/default-connector';
+import { useAddCardsPack } from '@firebasegen/default-connector/react'
+
+export default function AddCardsPackComponent() {
+  // Call the Mutation hook function to get a `UseMutationResult` object which holds the state of your Mutation.
+  const mutation = useAddCardsPack();
+
+  // You can also pass in a `DataConnect` instance to the Mutation hook function.
+  const dataConnect = getDataConnect(connectorConfig);
+  const mutation = useAddCardsPack(dataConnect);
+
+  // You can also pass in a `useDataConnectMutationOptions` object to the Mutation hook function.
+  const options = {
+    onSuccess: () => { console.log('Mutation succeeded!'); }
+  };
+  const mutation = useAddCardsPack(options);
+
+  // You can also pass both a `DataConnect` instance and a `useDataConnectMutationOptions` object.
+  const dataConnect = getDataConnect(connectorConfig);
+  const options = {
+    onSuccess: () => { console.log('Mutation succeeded!'); }
+  };
+  const mutation = useAddCardsPack(dataConnect, options);
+
+  // After calling the Mutation hook function, you must call `UseMutationResult.mutate()` to execute the Mutation.
+  // The `useAddCardsPack` Mutation has an optional argument of type `AddCardsPackVariables`:
+  const addCardsPackVars: AddCardsPackVariables = {
+    cardId: ..., // optional
+    packId: ..., // optional
+  };
+  mutation.mutate(addCardsPackVars);
+  // Variables can be defined inline as well.
+  mutation.mutate({ cardId: ..., packId: ..., });
+  // Since all variables are optional for this Mutation, you can omit the `AddCardsPackVariables` argument.
+  mutation.mutate();
+
+  // You can also pass in a `useDataConnectMutationOptions` object to `UseMutationResult.mutate()`.
+  // Since all variables are optional for this Mutation, you can provide options without providing any variables.
+  // To do so, you must pass `undefined` where you would normally pass the variables.
+  const options = {
+    onSuccess: () => { console.log('Mutation succeeded!'); }
+  };
+  mutation.mutate(addCardsPackVars /** or undefined */, options);
+
+  // Then, you can render your component dynamically based on the status of the Mutation.
+  if (mutation.isPending) {
+    return <div>Loading...</div>;
+  }
+
+  if (mutation.isError) {
+    return <div>Error: {mutation.error.message}</div>;
+  }
+
+  // If the Mutation is successful, you can access the data returned using the `UseMutationResult.data` field.
+  if (mutation.isSuccess) {
+    console.log(mutation.data.cardPack_insert);
+  }
+  return <div>Mutation execution {mutation.isSuccess ? 'successful' : 'failed'}!</div>;
+}
+```
+
+## AddCardToOffer
+You can execute the `AddCardToOffer` Mutation using the `UseMutationResult` object returned by the following Mutation hook function (which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts)):
+```javascript
+useAddCardToOffer(options?: useDataConnectMutationOptions<AddCardToOfferData, FirebaseError, AddCardToOfferVariables>): UseDataConnectMutationResult<AddCardToOfferData, AddCardToOfferVariables>;
+```
+You can also pass in a `DataConnect` instance to the Mutation hook function.
+```javascript
+useAddCardToOffer(dc: DataConnect, options?: useDataConnectMutationOptions<AddCardToOfferData, FirebaseError, AddCardToOfferVariables>): UseDataConnectMutationResult<AddCardToOfferData, AddCardToOfferVariables>;
+```
+
+### Variables
+The `AddCardToOffer` Mutation requires an argument of type `AddCardToOfferVariables`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+
+```javascript
+export interface AddCardToOfferVariables {
+  cardId: UUIDString;
+}
+```
+### Return Type
+Recall that calling the `AddCardToOffer` Mutation hook function returns a `UseMutationResult` object. This object holds the state of your Mutation, including whether the Mutation is loading, has completed, or has succeeded/failed, among other things.
+
+To check the status of a Mutation, use the `UseMutationResult.status` field. You can also check for pending / success / error status using the `UseMutationResult.isPending`, `UseMutationResult.isSuccess`, and `UseMutationResult.isError` fields.
+
+To execute the Mutation, call `UseMutationResult.mutate()`. This function executes the Mutation, but does not return the data from the Mutation.
+
+To access the data returned by a Mutation, use the `UseMutationResult.data` field. The data for the `AddCardToOffer` Mutation is of type `AddCardToOfferData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+```javascript
+export interface AddCardToOfferData {
+  offer_insert: Offer_Key;
+}
+```
+
+To learn more about the `UseMutationResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useMutation).
+
+### Using `AddCardToOffer`'s Mutation hook function
+
+```javascript
+import { getDataConnect } from 'firebase/data-connect';
+import { connectorConfig, AddCardToOfferVariables } from '@firebasegen/default-connector';
+import { useAddCardToOffer } from '@firebasegen/default-connector/react'
+
+export default function AddCardToOfferComponent() {
+  // Call the Mutation hook function to get a `UseMutationResult` object which holds the state of your Mutation.
+  const mutation = useAddCardToOffer();
+
+  // You can also pass in a `DataConnect` instance to the Mutation hook function.
+  const dataConnect = getDataConnect(connectorConfig);
+  const mutation = useAddCardToOffer(dataConnect);
+
+  // You can also pass in a `useDataConnectMutationOptions` object to the Mutation hook function.
+  const options = {
+    onSuccess: () => { console.log('Mutation succeeded!'); }
+  };
+  const mutation = useAddCardToOffer(options);
+
+  // You can also pass both a `DataConnect` instance and a `useDataConnectMutationOptions` object.
+  const dataConnect = getDataConnect(connectorConfig);
+  const options = {
+    onSuccess: () => { console.log('Mutation succeeded!'); }
+  };
+  const mutation = useAddCardToOffer(dataConnect, options);
+
+  // After calling the Mutation hook function, you must call `UseMutationResult.mutate()` to execute the Mutation.
+  // The `useAddCardToOffer` Mutation requires an argument of type `AddCardToOfferVariables`:
+  const addCardToOfferVars: AddCardToOfferVariables = {
+    cardId: ..., 
+  };
+  mutation.mutate(addCardToOfferVars);
+  // Variables can be defined inline as well.
+  mutation.mutate({ cardId: ..., });
+
+  // You can also pass in a `useDataConnectMutationOptions` object to `UseMutationResult.mutate()`.
+  const options = {
+    onSuccess: () => { console.log('Mutation succeeded!'); }
+  };
+  mutation.mutate(addCardToOfferVars, options);
+
+  // Then, you can render your component dynamically based on the status of the Mutation.
+  if (mutation.isPending) {
+    return <div>Loading...</div>;
+  }
+
+  if (mutation.isError) {
+    return <div>Error: {mutation.error.message}</div>;
+  }
+
+  // If the Mutation is successful, you can access the data returned using the `UseMutationResult.data` field.
+  if (mutation.isSuccess) {
+    console.log(mutation.data.offer_insert);
+  }
+  return <div>Mutation execution {mutation.isSuccess ? 'successful' : 'failed'}!</div>;
+}
+```
+
+## RemoveCardFromOffer
+You can execute the `RemoveCardFromOffer` Mutation using the `UseMutationResult` object returned by the following Mutation hook function (which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts)):
+```javascript
+useRemoveCardFromOffer(options?: useDataConnectMutationOptions<RemoveCardFromOfferData, FirebaseError, RemoveCardFromOfferVariables>): UseDataConnectMutationResult<RemoveCardFromOfferData, RemoveCardFromOfferVariables>;
+```
+You can also pass in a `DataConnect` instance to the Mutation hook function.
+```javascript
+useRemoveCardFromOffer(dc: DataConnect, options?: useDataConnectMutationOptions<RemoveCardFromOfferData, FirebaseError, RemoveCardFromOfferVariables>): UseDataConnectMutationResult<RemoveCardFromOfferData, RemoveCardFromOfferVariables>;
+```
+
+### Variables
+The `RemoveCardFromOffer` Mutation requires an argument of type `RemoveCardFromOfferVariables`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+
+```javascript
+export interface RemoveCardFromOfferVariables {
+  cardId: UUIDString;
+}
+```
+### Return Type
+Recall that calling the `RemoveCardFromOffer` Mutation hook function returns a `UseMutationResult` object. This object holds the state of your Mutation, including whether the Mutation is loading, has completed, or has succeeded/failed, among other things.
+
+To check the status of a Mutation, use the `UseMutationResult.status` field. You can also check for pending / success / error status using the `UseMutationResult.isPending`, `UseMutationResult.isSuccess`, and `UseMutationResult.isError` fields.
+
+To execute the Mutation, call `UseMutationResult.mutate()`. This function executes the Mutation, but does not return the data from the Mutation.
+
+To access the data returned by a Mutation, use the `UseMutationResult.data` field. The data for the `RemoveCardFromOffer` Mutation is of type `RemoveCardFromOfferData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+```javascript
+export interface RemoveCardFromOfferData {
+  offer_delete?: Offer_Key | null;
+}
+```
+
+To learn more about the `UseMutationResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useMutation).
+
+### Using `RemoveCardFromOffer`'s Mutation hook function
+
+```javascript
+import { getDataConnect } from 'firebase/data-connect';
+import { connectorConfig, RemoveCardFromOfferVariables } from '@firebasegen/default-connector';
+import { useRemoveCardFromOffer } from '@firebasegen/default-connector/react'
+
+export default function RemoveCardFromOfferComponent() {
+  // Call the Mutation hook function to get a `UseMutationResult` object which holds the state of your Mutation.
+  const mutation = useRemoveCardFromOffer();
+
+  // You can also pass in a `DataConnect` instance to the Mutation hook function.
+  const dataConnect = getDataConnect(connectorConfig);
+  const mutation = useRemoveCardFromOffer(dataConnect);
+
+  // You can also pass in a `useDataConnectMutationOptions` object to the Mutation hook function.
+  const options = {
+    onSuccess: () => { console.log('Mutation succeeded!'); }
+  };
+  const mutation = useRemoveCardFromOffer(options);
+
+  // You can also pass both a `DataConnect` instance and a `useDataConnectMutationOptions` object.
+  const dataConnect = getDataConnect(connectorConfig);
+  const options = {
+    onSuccess: () => { console.log('Mutation succeeded!'); }
+  };
+  const mutation = useRemoveCardFromOffer(dataConnect, options);
+
+  // After calling the Mutation hook function, you must call `UseMutationResult.mutate()` to execute the Mutation.
+  // The `useRemoveCardFromOffer` Mutation requires an argument of type `RemoveCardFromOfferVariables`:
+  const removeCardFromOfferVars: RemoveCardFromOfferVariables = {
+    cardId: ..., 
+  };
+  mutation.mutate(removeCardFromOfferVars);
+  // Variables can be defined inline as well.
+  mutation.mutate({ cardId: ..., });
+
+  // You can also pass in a `useDataConnectMutationOptions` object to `UseMutationResult.mutate()`.
+  const options = {
+    onSuccess: () => { console.log('Mutation succeeded!'); }
+  };
+  mutation.mutate(removeCardFromOfferVars, options);
+
+  // Then, you can render your component dynamically based on the status of the Mutation.
+  if (mutation.isPending) {
+    return <div>Loading...</div>;
+  }
+
+  if (mutation.isError) {
+    return <div>Error: {mutation.error.message}</div>;
+  }
+
+  // If the Mutation is successful, you can access the data returned using the `UseMutationResult.data` field.
+  if (mutation.isSuccess) {
+    console.log(mutation.data.offer_delete);
   }
   return <div>Mutation execution {mutation.isSuccess ? 'successful' : 'failed'}!</div>;
 }
