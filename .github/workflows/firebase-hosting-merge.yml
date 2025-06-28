@@ -33,11 +33,11 @@ jobs:
                   echo ADMIN_UID=${{secrets.ADMIN_UID}} >> .env
                   echo WORK_USER_UID=${{secrets.WORK_USER_UID}} >> .env
                   echo POKEMON_TRADES_USER_UID=${{secrets.POKEMON_TRADES_USER_UID}} >> .env
-                  echo FIREBASE_SERVICE_ACCOUNT_BASE64=${{ secrets.FIREBASE_SERVICE_ACCOUNT_BASE64 }}
+                  echo FIREBASE_SERVICE_ACCOUNT_BASE64=${{ secrets.FIREBASE_SERVICE_ACCOUNT_BASE64 }} >> .env
             - name: Decode Firebase Service Account Key
               shell: bash
               run: |
-                echo "${FIREBASE_SERVICE_ACCOUNT_BASE64}" | base64 --decode > firebase-service-account.json
+                  echo "${FIREBASE_SERVICE_ACCOUNT_BASE64}" | base64 --decode > firebase-service-account.json
             - name: Install dependencies
               run: npm install
             - uses: FirebaseExtended/action-hosting-deploy@v0
