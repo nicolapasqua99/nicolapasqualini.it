@@ -16,6 +16,7 @@ function getAppInstance(): App {
 }
 
 export function getServerAuth() {
+    console.log(getAppInstance())
     return getAuth(getAppInstance())
 }
 

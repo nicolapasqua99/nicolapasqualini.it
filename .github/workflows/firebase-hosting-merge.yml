@@ -39,10 +39,10 @@ jobs:
                   FIREBASE_SERVICE_ACCOUNT_BASE64: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_BASE64 }}
               run: |
                   echo "${FIREBASE_SERVICE_ACCOUNT_BASE64}" | base64 --decode > firebase-service-account.json
-            # - name: Check Service Account File existence 
+            # - name: Check Service Account File
             #   env: 
             #     GOOGLE_APPLICATION_CREDENTIALS: ./firebase-service-account.json
-            #   run: ls && echo $GOOGLE_APPLICATION_CREDENTIALS
+            #   run: ls 
             - name: Install dependencies
               run: npm install
             - uses: FirebaseExtended/action-hosting-deploy@v0
@@ -56,3 +56,5 @@ jobs:
                   FIREBASE_CLI_EXPERIMENTS: webframeworks
                   GOOGLE_APPLICATION_CREDENTIALS: ./firebase-service-account.json
                   FIREBASE_PROJECT_ID: ${{vars.NEXT_PUBLIC_PROJECT_ID}}
+            - name: Check Environment Variables
+              run: printenv
