@@ -33,9 +33,10 @@ jobs:
                   echo ADMIN_UID=${{secrets.ADMIN_UID}} >> .env
                   echo WORK_USER_UID=${{secrets.WORK_USER_UID}} >> .env
                   echo POKEMON_TRADES_USER_UID=${{secrets.POKEMON_TRADES_USER_UID}} >> .env
-                  echo FIREBASE_SERVICE_ACCOUNT_BASE64=${{ secrets.FIREBASE_SERVICE_ACCOUNT_BASE64 }} >> .env
             - name: Decode Firebase Service Account Key
               shell: bash
+              env:
+                  FIREBASE_SERVICE_ACCOUNT_BASE64: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_BASE64 }}
               run: |
                   echo "${FIREBASE_SERVICE_ACCOUNT_BASE64}" | base64 --decode > firebase-service-account.json
             - name: Install dependencies
