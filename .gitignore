@@ -28,6 +28,7 @@ dataconnect-debug.log*
 firebase-debug.log*
 firestore-debug.log*
 pubsub-debug.log*
+pglite-debug.log*
 
 # local env files
 .env*.local
