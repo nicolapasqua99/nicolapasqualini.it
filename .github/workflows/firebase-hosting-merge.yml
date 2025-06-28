@@ -39,10 +39,10 @@ jobs:
                   FIREBASE_SERVICE_ACCOUNT_BASE64: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_BASE64 }}
               run: |
                   echo "${FIREBASE_SERVICE_ACCOUNT_BASE64}" | base64 --decode > firebase-service-account.json
+            - name: Check Service Account File existence and content
+              run: ls && cat firebase-service-account.json
             - name: Install dependencies
               run: npm install
-            - name: Check Service Account File existence
-              run: ls
             # - uses: FirebaseExtended/action-hosting-deploy@v0
             #   with:
             #       repoToken: ${{ secrets.GITHUB_TOKEN }}
