@@ -43,13 +43,13 @@ jobs:
               run: ls && cat firebase-service-account.json
             - name: Install dependencies
               run: npm install
-            # - uses: FirebaseExtended/action-hosting-deploy@v0
-            #   with:
-            #       repoToken: ${{ secrets.GITHUB_TOKEN }}
-            #       firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PORTFOLIO_NP }}
-            #       channelId: live
-            #       projectId: nicolapasqualini-portfolio
-            #   env:
-            #       FIREBASE_CLI_EXPERIMENTS: webframeworks
-            #       GOOGLE_APPLICATION_CREDENTIALS: ./firebase-service-account.json
-            #       FIREBASE_PROJECT_ID: ${{vars.NEXT_PUBLIC_PROJECT_ID}}
+            - uses: FirebaseExtended/action-hosting-deploy@v0
+              with:
+                  repoToken: ${{ secrets.GITHUB_TOKEN }}
+                  firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PORTFOLIO_NP }}
+                  channelId: live
+                  projectId: nicolapasqualini-portfolio
+              env:
+                  FIREBASE_CLI_EXPERIMENTS: webframeworks
+                  GOOGLE_APPLICATION_CREDENTIALS: ./firebase-service-account.json
+                  FIREBASE_PROJECT_ID: ${{vars.NEXT_PUBLIC_PROJECT_ID}}
