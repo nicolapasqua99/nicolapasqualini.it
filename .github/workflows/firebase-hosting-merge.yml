@@ -22,6 +22,7 @@ jobs:
             - name: Create and populate env file
               run: |
                   touch .env
+                  echo NEXT_PUBLIC_API_KEY=${{ vars.NEXT_PUBLIC_API_KEY }} >> .env
                   echo NEXT_PUBLIC_AUTH_DOMAIN=${{vars.NEXT_PUBLIC_AUTH_DOMAIN}} >> .env
                   echo NEXT_PUBLIC_DATABASE_URL=${{vars.NEXT_PUBLIC_DATABASE_URL}} >> .env
                   echo NEXT_PUBLIC_PROJECT_ID=${{vars.NEXT_PUBLIC_PROJECT_ID}} >> .env
@@ -40,14 +41,15 @@ jobs:
                   echo "${FIREBASE_SERVICE_ACCOUNT_BASE64}" | base64 --decode > firebase-service-account.json
             - name: Install dependencies
               run: npm install
-            - uses: FirebaseExtended/action-hosting-deploy@v0
-              with:
-                  repoToken: ${{ secrets.GITHUB_TOKEN }}
-                  firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PORTFOLIO_NP }}
-                  channelId: live
-                  projectId: nicolapasqualini-portfolio
-              env:
-                  FIREBASE_CLI_EXPERIMENTS: webframeworks
-                  NEXT_PUBLIC_API_KEY: ${{ vars.NEXT_PUBLIC_API_KEY }}
-                  GOOGLE_APPLICATION_CREDENTIALS: ./firebase-service-account.json
-                  FIREBASE_PROJECT_ID: ${{vars.NEXT_PUBLIC_PROJECT_ID}}
+            - name: Check Service Account File existence
+              run: ls
+            # - uses: FirebaseExtended/action-hosting-deploy@v0
+            #   with:
+            #       repoToken: ${{ secrets.GITHUB_TOKEN }}
+            #       firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PORTFOLIO_NP }}
+            #       channelId: live
+            #       projectId: nicolapasqualini-portfolio
+            #   env:
+            #       FIREBASE_CLI_EXPERIMENTS: webframeworks
+            #       GOOGLE_APPLICATION_CREDENTIALS: ./firebase-service-account.json
+            #       FIREBASE_PROJECT_ID: ${{vars.NEXT_PUBLIC_PROJECT_ID}}
