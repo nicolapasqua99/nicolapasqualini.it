@@ -30,7 +30,8 @@ firestore-debug.log*
 pubsub-debug.log*
 pglite-debug.log*
 
-# local env files
+# env files
+*.env
 .env*.local
 
 # vercel
@@ -39,8 +40,8 @@ pglite-debug.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# firebase
 .firebase
-
+firebase-service-account.json
 .dataconnect/
-
-*.env
