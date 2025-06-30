@@ -10,23 +10,23 @@ export async function POST(): Promise<NextResponse<IGenericApiResponse | null>> 
             const idToken = authorization.split('Bearer ')[1]
             const decodedTokenClaims = await getServerAuth().verifyIdToken(idToken)
             if (decodedTokenClaims) {
-                if (decodedTokenClaims.uid === process.env.ADMIN_UID) {
+                if (decodedTokenClaims.uid === process.env.PORTFOLIO_ADMIN_UID) {
                     // Set admin role for the user
                     await getServerAuth().setCustomUserClaims(decodedTokenClaims.uid, {
                         locals: {
                             role: 'admin'
                         }
                     })
-                    if (process.env.WORK_USER_UID && process.env.POKEMON_TRADES_USER_UID) {
+                    if (process.env.PORTFOLIO_WORK_UID && process.env.PORTFOLIO_POKEMON_TRADES_UID) {
                         // Set user role for the work pages user
-                        await getServerAuth().setCustomUserClaims(process.env.WORK_USER_UID, {
+                        await getServerAuth().setCustomUserClaims(process.env.PORTFOLIO_WORK_UID, {
                             locals: {
                                 role: 'user',
                                 section: 'work'
                             }
                         })
                         // Set user role for the pokemon trades user
-                        await getServerAuth().setCustomUserClaims(process.env.POKEMON_TRADES_USER_UID, {
+                        await getServerAuth().setCustomUserClaims(process.env.PORTFOLIO_POKEMON_TRADES_UID, {
                             locals: {
                                 role: 'user',
                                 section: 'pokemontrades'
