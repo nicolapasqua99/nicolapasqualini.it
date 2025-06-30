@@ -53,10 +53,21 @@ env:
       - RUNTIME
   - variable: FIREBASE_SERVICE_ACCOUNT_BASE64
     secret: FIREBASE_SERVICE_ACCOUNT_BASE64
+    availability:
+      - BUILD
   # Firebase ADMIN SDK
   - variable: PORTFOLIO_ADMIN_UID
     secret: PORTFOLIO_ADMIN_UID
+    availability:
+      - BUILD
+      - RUNTIME
   - variable: PORTFOLIO_WORK_UID
     secret: PORTFOLIO_WORK_UID
+    availability:
+      - BUILD
+      - RUNTIME
   - variable: PORTFOLIO_POKEMON_TRADES_UID
     secret: PORTFOLIO_POKEMON_TRADES_UID
+    availability:
+      - BUILD
+      - RUNTIME

@@ -7,7 +7,8 @@
     "prebuild": "echo \"${FIREBASE_SERVICE_ACCOUNT_BASE64}\" | base64 --decode > firebase-service-account.json",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export"
   },
   "dependencies": {
     "@firebasegen/default-connector": "./dataconnect-generated",
@@ -34,5 +35,6 @@
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
     "typescript": "^5"
-  }
+  },
+  "packageManager": "pnpm@9.4.0+sha1.9217c800d4ab947a7aee520242a7b70d64fc7638"
 }
