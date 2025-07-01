@@ -7,6 +7,8 @@ import { RARITIES_LIST } from './_data/rarities'
 import { executeQuery, getDataConnect } from 'firebase/data-connect'
 import { initializeApp } from 'firebase/app'
 
+export const dynamic = 'force-static';
+
 async function isAuthorized(role: 'admin' | 'user', section?: string) {
     const authorization = (await headers()).get('Authorization')
     if (authorization?.startsWith('Bearer ')) {

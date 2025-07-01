@@ -3,6 +3,8 @@ import { getServerAuth } from '@/src/lib/firebase-server'
 import { cookies, headers } from 'next/headers'
 import { NextResponse } from 'next/server'
 
+export const dynamic = 'force-static';
+
 export async function POST(): Promise<NextResponse<IGenericApiResponse | null>> {
     try {
         const authorization = (await headers()).get('Authorization')
