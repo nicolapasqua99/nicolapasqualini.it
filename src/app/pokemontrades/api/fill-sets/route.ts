@@ -5,8 +5,6 @@ import { headers } from 'next/headers'
 import { NextResponse } from 'next/server'
 import { SETS_LIST } from './_data/sets'
 
-export const dynamic = 'force-static';
-
 // export async function POST(): Promise<NextResponse<IGenericApiResponse | null>> {
 //     try {
 //         const authorization = (await headers()).get('Authorization')

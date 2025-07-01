@@ -1,11 +1,12 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-    distDir: 'build',
     compiler: {
         styledComponents: true
     },
-    output: 'export'
+    eslint: {
+        ignoreDuringBuilds: true,
+    }
 }
 
 module.exports = nextConfig

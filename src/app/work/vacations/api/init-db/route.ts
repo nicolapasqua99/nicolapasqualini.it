@@ -2,8 +2,6 @@ import { getServerFirestore } from '@/src/lib/firebase-server'
 import { doc, setDoc } from 'firebase/firestore'
 import { NextRequest, NextResponse } from 'next/server'
 
-export const dynamic = 'force-static';
-
 export async function POST(request: NextRequest): Promise<NextResponse> {
     // TODO: Implement password check
     // let password: string | null = null

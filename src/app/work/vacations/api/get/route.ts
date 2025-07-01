@@ -4,8 +4,6 @@ import { DocumentData, QuerySnapshot } from 'firebase-admin/firestore'
 import { collection, documentId, getDocs } from 'firebase/firestore'
 import { NextRequest, NextResponse } from 'next/server'
 
-export const dynamic = 'force-static';
-
 function getMonthIndex(monthName: IMonthName): number {
     return (
         {

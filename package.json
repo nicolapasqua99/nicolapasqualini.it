@@ -7,8 +7,10 @@
     "prebuild": "echo \"${FIREBASE_SERVICE_ACCOUNT_BASE64}\" | base64 --decode > firebase-service-account.json",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "export": "next export"
+    "lint": "npm run lint:next && npm:lint:prettier",
+    "lint:next": "next lint",
+    "lint:prettier": "prettier --check --ignore-path .gitignore .",
+    "lint:fix": "npm run lint:next -- --fix && npm run lint:prettier -- --write"
   },
   "dependencies": {
     "@firebasegen/default-connector": "./dataconnect-generated",
