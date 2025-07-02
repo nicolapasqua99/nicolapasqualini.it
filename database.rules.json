@@ -1,7 +1,23 @@
 {
-  /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
   "rules": {
-    ".read": true,
-    ".write": true
+    "$section": {
+      // This rule applies to child nodes under the root of the database.
+      // $section is a wildcard variable representing the name of the child node.
+
+      // This rule validates that the name of the child node ($section) is either 'work' or 'dnd'.
+      // This means only these two sections are allowed at the top level of the database.
+      ".validate": "$section === 'work' || $section === 'dnd'",
+
+      // These read and write rules control access to the data within each section ('work' or 'dnd').
+      // They allow reading and writing if the user is authenticated (auth != null) and either:
+      // 1. The user's role is 'user' and their assigned section (auth.token.section) matches the current section being accessed ($section).
+      // 2. The user's role is 'admin'.
+      ".read": "auth != null && ((auth.token.role === 'user' && auth.token.section === $section) || auth.token.role === 'admin')",
+      ".write": "auth != null && ((auth.token.role === 'user' && auth.token.section === $section) || auth.token.role === 'admin')"
+    },
+    // These are default read and write rules that apply to the root of the database if no other rules match.
+    // They restrict read and write access to only users with the 'admin' role.
+    ".read": "auth != null && auth.token.role === 'admin'",
+    ".write": "auth != null && auth.token.role === 'admin'"
   }
 }
