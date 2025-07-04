@@ -12,12 +12,12 @@
       // They allow reading and writing if the user is authenticated (auth != null) and either:
       // 1. The user's role is 'user' and their assigned section (auth.token.section) matches the current section being accessed ($section).
       // 2. The user's role is 'admin'.
-      ".read": "auth != null && ((auth.token.role === 'user' && auth.token.section === $section) || auth.token.role === 'admin')",
-      ".write": "auth != null && ((auth.token.role === 'user' && auth.token.section === $section) || auth.token.role === 'admin')"
+      ".read": "auth != null && ((auth.token.locals.role === 'user' && auth.token.locals.section === $section) || auth.token.locals.role === 'admin')",
+      ".write": "auth != null && ((auth.token.locals.role === 'user' && auth.token.locals.section === $section) || auth.token.locals.role === 'admin')"
     },
     // These are default read and write rules that apply to the root of the database if no other rules match.
     // They restrict read and write access to only users with the 'admin' role.
-    ".read": "auth != null && auth.token.role === 'admin'",
-    ".write": "auth != null && auth.token.role === 'admin'"
+    ".read": "auth != null && auth.token.locals.role === 'admin'",
+    ".write": "auth != null && auth.token.locals.role === 'admin'"
   }
 }
