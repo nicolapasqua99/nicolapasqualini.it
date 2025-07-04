@@ -58,10 +58,12 @@ const ErrorStyledComponent = styled.p`
 
 export default function Home() {
     const [error, setError] = useState<string | null>(null)
-
+    
     let authorizationContextValue = useContext(AuthorizationContext)
 
     async function initDBRarities() {
+        setError(null)
+
         try {
             let response = await fetch('/pokemontrades/api/fill-rarities', {
                 headers: [
@@ -88,11 +90,11 @@ export default function Home() {
     return (
         <MainStyledComponent>
             <ContainerStyledComponent>
-                <h2>You are logged in as: {authorizationContextValue.user!.email}</h2>
-                {authorizationContextValue.claims!.role !== 'admin' && (
+                {authorizationContextValue.user && (<h2>You are logged in as: {authorizationContextValue.user.email}</h2>)}
+                {authorizationContextValue.claims && authorizationContextValue.claims.role !== 'admin' && (
                     <h2>You are not an admin.</h2>
                 )}
-                {authorizationContextValue.claims!.role === 'admin' && (
+                {authorizationContextValue.claims && authorizationContextValue.claims.role === 'admin' && (
                     <>
                         <ButtonStyledComponent type="button" onClick={initDBRarities}>
                             Initialize Card Rarities in DB

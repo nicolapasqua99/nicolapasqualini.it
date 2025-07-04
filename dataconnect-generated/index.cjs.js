@@ -7,52 +7,64 @@ const connectorConfig = {
 };
 exports.connectorConfig = connectorConfig;
 
-const addCardToRequestRef = (dcOrVars, vars) => {
+const addRarityRef = (dcOrVars, vars) => {
   const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
   dcInstance._useGeneratedSdk();
-  return mutationRef(dcInstance, 'AddCardToRequest', inputVars);
+  return mutationRef(dcInstance, 'AddRarity', inputVars);
 }
-addCardToRequestRef.operationName = 'AddCardToRequest';
-exports.addCardToRequestRef = addCardToRequestRef;
+addRarityRef.operationName = 'AddRarity';
+exports.addRarityRef = addRarityRef;
 
-exports.addCardToRequest = function addCardToRequest(dcOrVars, vars) {
-  return executeMutation(addCardToRequestRef(dcOrVars, vars));
+exports.addRarity = function addRarity(dcOrVars, vars) {
+  return executeMutation(addRarityRef(dcOrVars, vars));
 };
 
-const removeCardFromRequestRef = (dcOrVars, vars) => {
-  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
-  dcInstance._useGeneratedSdk();
-  return mutationRef(dcInstance, 'RemoveCardFromRequest', inputVars);
-}
-removeCardFromRequestRef.operationName = 'RemoveCardFromRequest';
-exports.removeCardFromRequestRef = removeCardFromRequestRef;
-
-exports.removeCardFromRequest = function removeCardFromRequest(dcOrVars, vars) {
-  return executeMutation(removeCardFromRequestRef(dcOrVars, vars));
-};
-
-const addSetRef = (dcOrVars, vars) => {
-  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars);
-  dcInstance._useGeneratedSdk();
-  return mutationRef(dcInstance, 'AddSet', inputVars);
-}
-addSetRef.operationName = 'AddSet';
-exports.addSetRef = addSetRef;
-
-exports.addSet = function addSet(dcOrVars, vars) {
-  return executeMutation(addSetRef(dcOrVars, vars));
-};
-
-const getSetsRef = (dc) => {
+const getCardsPossessedByUserRef = (dc) => {
   const { dc: dcInstance} = validateArgs(connectorConfig, dc, undefined);
   dcInstance._useGeneratedSdk();
-  return queryRef(dcInstance, 'GetSets');
+  return queryRef(dcInstance, 'GetCardsPossessedByUser');
 }
-getSetsRef.operationName = 'GetSets';
-exports.getSetsRef = getSetsRef;
+getCardsPossessedByUserRef.operationName = 'GetCardsPossessedByUser';
+exports.getCardsPossessedByUserRef = getCardsPossessedByUserRef;
 
-exports.getSets = function getSets(dc) {
-  return executeQuery(getSetsRef(dc));
+exports.getCardsPossessedByUser = function getCardsPossessedByUser(dc) {
+  return executeQuery(getCardsPossessedByUserRef(dc));
+};
+
+const getUserRef = (dc) => {
+  const { dc: dcInstance} = validateArgs(connectorConfig, dc, undefined);
+  dcInstance._useGeneratedSdk();
+  return queryRef(dcInstance, 'GetUser');
+}
+getUserRef.operationName = 'GetUser';
+exports.getUserRef = getUserRef;
+
+exports.getUser = function getUser(dc) {
+  return executeQuery(getUserRef(dc));
+};
+
+const getCardsBySetCodeRef = (dcOrVars, vars) => {
+  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
+  dcInstance._useGeneratedSdk();
+  return queryRef(dcInstance, 'GetCardsBySetCode', inputVars);
+}
+getCardsBySetCodeRef.operationName = 'GetCardsBySetCode';
+exports.getCardsBySetCodeRef = getCardsBySetCodeRef;
+
+exports.getCardsBySetCode = function getCardsBySetCode(dcOrVars, vars) {
+  return executeQuery(getCardsBySetCodeRef(dcOrVars, vars));
+};
+
+const addCardRef = (dcOrVars, vars) => {
+  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars);
+  dcInstance._useGeneratedSdk();
+  return mutationRef(dcInstance, 'AddCard', inputVars);
+}
+addCardRef.operationName = 'AddCard';
+exports.addCardRef = addCardRef;
+
+exports.addCard = function addCard(dcOrVars, vars) {
+  return executeMutation(addCardRef(dcOrVars, vars));
 };
 
 const getRaritiesRef = (dc) => {
@@ -65,6 +77,18 @@ exports.getRaritiesRef = getRaritiesRef;
 
 exports.getRarities = function getRarities(dc) {
   return executeQuery(getRaritiesRef(dc));
+};
+
+const getRequestedCardsRef = (dc) => {
+  const { dc: dcInstance} = validateArgs(connectorConfig, dc, undefined);
+  dcInstance._useGeneratedSdk();
+  return queryRef(dcInstance, 'GetRequestedCards');
+}
+getRequestedCardsRef.operationName = 'GetRequestedCards';
+exports.getRequestedCardsRef = getRequestedCardsRef;
+
+exports.getRequestedCards = function getRequestedCards(dc) {
+  return executeQuery(getRequestedCardsRef(dc));
 };
 
 const addCardToUserRef = (dcOrVars, vars) => {
@@ -101,30 +125,6 @@ exports.updateCardQuantityRef = updateCardQuantityRef;
 
 exports.updateCardQuantity = function updateCardQuantity(dcOrVars, vars) {
   return executeMutation(updateCardQuantityRef(dcOrVars, vars));
-};
-
-const getCardsPossessedByUserRef = (dc) => {
-  const { dc: dcInstance} = validateArgs(connectorConfig, dc, undefined);
-  dcInstance._useGeneratedSdk();
-  return queryRef(dcInstance, 'GetCardsPossessedByUser');
-}
-getCardsPossessedByUserRef.operationName = 'GetCardsPossessedByUser';
-exports.getCardsPossessedByUserRef = getCardsPossessedByUserRef;
-
-exports.getCardsPossessedByUser = function getCardsPossessedByUser(dc) {
-  return executeQuery(getCardsPossessedByUserRef(dc));
-};
-
-const addCardsPackRef = (dcOrVars, vars) => {
-  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars);
-  dcInstance._useGeneratedSdk();
-  return mutationRef(dcInstance, 'AddCardsPack', inputVars);
-}
-addCardsPackRef.operationName = 'AddCardsPack';
-exports.addCardsPackRef = addCardsPackRef;
-
-exports.addCardsPack = function addCardsPack(dcOrVars, vars) {
-  return executeMutation(addCardsPackRef(dcOrVars, vars));
 };
 
 const getCardsRef = (dc) => {
@@ -175,64 +175,88 @@ exports.removeCardFromOffer = function removeCardFromOffer(dcOrVars, vars) {
   return executeMutation(removeCardFromOfferRef(dcOrVars, vars));
 };
 
-const getOfferedCardsRef = (dc) => {
-  const { dc: dcInstance} = validateArgs(connectorConfig, dc, undefined);
+const addPackRef = (dcOrVars, vars) => {
+  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars);
   dcInstance._useGeneratedSdk();
-  return queryRef(dcInstance, 'GetOfferedCards');
+  return mutationRef(dcInstance, 'AddPack', inputVars);
 }
-getOfferedCardsRef.operationName = 'GetOfferedCards';
-exports.getOfferedCardsRef = getOfferedCardsRef;
+addPackRef.operationName = 'AddPack';
+exports.addPackRef = addPackRef;
 
-exports.getOfferedCards = function getOfferedCards(dc) {
-  return executeQuery(getOfferedCardsRef(dc));
+exports.addPack = function addPack(dcOrVars, vars) {
+  return executeMutation(addPackRef(dcOrVars, vars));
 };
 
-const getRequestedCardsRef = (dc) => {
+const getPacksRef = (dc) => {
   const { dc: dcInstance} = validateArgs(connectorConfig, dc, undefined);
   dcInstance._useGeneratedSdk();
-  return queryRef(dcInstance, 'GetRequestedCards');
+  return queryRef(dcInstance, 'GetPacks');
 }
-getRequestedCardsRef.operationName = 'GetRequestedCards';
-exports.getRequestedCardsRef = getRequestedCardsRef;
+getPacksRef.operationName = 'GetPacks';
+exports.getPacksRef = getPacksRef;
 
-exports.getRequestedCards = function getRequestedCards(dc) {
-  return executeQuery(getRequestedCardsRef(dc));
+exports.getPacks = function getPacks(dc) {
+  return executeQuery(getPacksRef(dc));
 };
 
-const getUserRef = (dc) => {
+const getPacksAndCardsRef = (dc) => {
   const { dc: dcInstance} = validateArgs(connectorConfig, dc, undefined);
   dcInstance._useGeneratedSdk();
-  return queryRef(dcInstance, 'GetUser');
+  return queryRef(dcInstance, 'GetPacksAndCards');
 }
-getUserRef.operationName = 'GetUser';
-exports.getUserRef = getUserRef;
+getPacksAndCardsRef.operationName = 'GetPacksAndCards';
+exports.getPacksAndCardsRef = getPacksAndCardsRef;
 
-exports.getUser = function getUser(dc) {
-  return executeQuery(getUserRef(dc));
+exports.getPacksAndCards = function getPacksAndCards(dc) {
+  return executeQuery(getPacksAndCardsRef(dc));
 };
 
-const getCardsBySetCodeRef = (dcOrVars, vars) => {
+const getRelatedCardsRef = (dcOrVars, vars) => {
   const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
   dcInstance._useGeneratedSdk();
-  return queryRef(dcInstance, 'GetCardsBySetCode', inputVars);
+  return queryRef(dcInstance, 'GetRelatedCards', inputVars);
 }
-getCardsBySetCodeRef.operationName = 'GetCardsBySetCode';
-exports.getCardsBySetCodeRef = getCardsBySetCodeRef;
+getRelatedCardsRef.operationName = 'GetRelatedCards';
+exports.getRelatedCardsRef = getRelatedCardsRef;
 
-exports.getCardsBySetCode = function getCardsBySetCode(dcOrVars, vars) {
-  return executeQuery(getCardsBySetCodeRef(dcOrVars, vars));
+exports.getRelatedCards = function getRelatedCards(dcOrVars, vars) {
+  return executeQuery(getRelatedCardsRef(dcOrVars, vars));
 };
 
-const addRelatedCardRef = (dcOrVars, vars) => {
+const addCardToRequestRef = (dcOrVars, vars) => {
   const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
   dcInstance._useGeneratedSdk();
-  return mutationRef(dcInstance, 'AddRelatedCard', inputVars);
+  return mutationRef(dcInstance, 'AddCardToRequest', inputVars);
 }
-addRelatedCardRef.operationName = 'AddRelatedCard';
-exports.addRelatedCardRef = addRelatedCardRef;
+addCardToRequestRef.operationName = 'AddCardToRequest';
+exports.addCardToRequestRef = addCardToRequestRef;
 
-exports.addRelatedCard = function addRelatedCard(dcOrVars, vars) {
-  return executeMutation(addRelatedCardRef(dcOrVars, vars));
+exports.addCardToRequest = function addCardToRequest(dcOrVars, vars) {
+  return executeMutation(addCardToRequestRef(dcOrVars, vars));
+};
+
+const removeCardFromRequestRef = (dcOrVars, vars) => {
+  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
+  dcInstance._useGeneratedSdk();
+  return mutationRef(dcInstance, 'RemoveCardFromRequest', inputVars);
+}
+removeCardFromRequestRef.operationName = 'RemoveCardFromRequest';
+exports.removeCardFromRequestRef = removeCardFromRequestRef;
+
+exports.removeCardFromRequest = function removeCardFromRequest(dcOrVars, vars) {
+  return executeMutation(removeCardFromRequestRef(dcOrVars, vars));
+};
+
+const addSetRef = (dcOrVars, vars) => {
+  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars);
+  dcInstance._useGeneratedSdk();
+  return mutationRef(dcInstance, 'AddSet', inputVars);
+}
+addSetRef.operationName = 'AddSet';
+exports.addSetRef = addSetRef;
+
+exports.addSet = function addSet(dcOrVars, vars) {
+  return executeMutation(addSetRef(dcOrVars, vars));
 };
 
 const addUserRef = (dc) => {
@@ -283,74 +307,50 @@ exports.changeUserLastLogin = function changeUserLastLogin(dc) {
   return executeMutation(changeUserLastLoginRef(dc));
 };
 
-const addCardRef = (dcOrVars, vars) => {
+const addCardsPackRef = (dcOrVars, vars) => {
   const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars);
   dcInstance._useGeneratedSdk();
-  return mutationRef(dcInstance, 'AddCard', inputVars);
+  return mutationRef(dcInstance, 'AddCardsPack', inputVars);
 }
-addCardRef.operationName = 'AddCard';
-exports.addCardRef = addCardRef;
+addCardsPackRef.operationName = 'AddCardsPack';
+exports.addCardsPackRef = addCardsPackRef;
 
-exports.addCard = function addCard(dcOrVars, vars) {
-  return executeMutation(addCardRef(dcOrVars, vars));
+exports.addCardsPack = function addCardsPack(dcOrVars, vars) {
+  return executeMutation(addCardsPackRef(dcOrVars, vars));
 };
 
-const addPackRef = (dcOrVars, vars) => {
-  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars);
-  dcInstance._useGeneratedSdk();
-  return mutationRef(dcInstance, 'AddPack', inputVars);
-}
-addPackRef.operationName = 'AddPack';
-exports.addPackRef = addPackRef;
-
-exports.addPack = function addPack(dcOrVars, vars) {
-  return executeMutation(addPackRef(dcOrVars, vars));
-};
-
-const getPacksRef = (dc) => {
+const getOfferedCardsRef = (dc) => {
   const { dc: dcInstance} = validateArgs(connectorConfig, dc, undefined);
   dcInstance._useGeneratedSdk();
-  return queryRef(dcInstance, 'GetPacks');
+  return queryRef(dcInstance, 'GetOfferedCards');
 }
-getPacksRef.operationName = 'GetPacks';
-exports.getPacksRef = getPacksRef;
+getOfferedCardsRef.operationName = 'GetOfferedCards';
+exports.getOfferedCardsRef = getOfferedCardsRef;
 
-exports.getPacks = function getPacks(dc) {
-  return executeQuery(getPacksRef(dc));
+exports.getOfferedCards = function getOfferedCards(dc) {
+  return executeQuery(getOfferedCardsRef(dc));
 };
 
-const getPacksAndCardsRef = (dc) => {
+const addRelatedCardRef = (dcOrVars, vars) => {
+  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
+  dcInstance._useGeneratedSdk();
+  return mutationRef(dcInstance, 'AddRelatedCard', inputVars);
+}
+addRelatedCardRef.operationName = 'AddRelatedCard';
+exports.addRelatedCardRef = addRelatedCardRef;
+
+exports.addRelatedCard = function addRelatedCard(dcOrVars, vars) {
+  return executeMutation(addRelatedCardRef(dcOrVars, vars));
+};
+
+const getSetsRef = (dc) => {
   const { dc: dcInstance} = validateArgs(connectorConfig, dc, undefined);
   dcInstance._useGeneratedSdk();
-  return queryRef(dcInstance, 'GetPacksAndCards');
+  return queryRef(dcInstance, 'GetSets');
 }
-getPacksAndCardsRef.operationName = 'GetPacksAndCards';
-exports.getPacksAndCardsRef = getPacksAndCardsRef;
+getSetsRef.operationName = 'GetSets';
+exports.getSetsRef = getSetsRef;
 
-exports.getPacksAndCards = function getPacksAndCards(dc) {
-  return executeQuery(getPacksAndCardsRef(dc));
-};
-
-const addRarityRef = (dcOrVars, vars) => {
-  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
-  dcInstance._useGeneratedSdk();
-  return mutationRef(dcInstance, 'AddRarity', inputVars);
-}
-addRarityRef.operationName = 'AddRarity';
-exports.addRarityRef = addRarityRef;
-
-exports.addRarity = function addRarity(dcOrVars, vars) {
-  return executeMutation(addRarityRef(dcOrVars, vars));
-};
-
-const getRelatedCardsRef = (dcOrVars, vars) => {
-  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
-  dcInstance._useGeneratedSdk();
-  return queryRef(dcInstance, 'GetRelatedCards', inputVars);
-}
-getRelatedCardsRef.operationName = 'GetRelatedCards';
-exports.getRelatedCardsRef = getRelatedCardsRef;
-
-exports.getRelatedCards = function getRelatedCards(dcOrVars, vars) {
-  return executeQuery(getRelatedCardsRef(dcOrVars, vars));
+exports.getSets = function getSets(dc) {
+  return executeQuery(getSetsRef(dc));
 };

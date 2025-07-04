@@ -413,53 +413,65 @@ export interface User_Key {
   __typename?: 'User_Key';
 }
 
-interface AddCardToRequestRef {
+interface AddRarityRef {
   /* Allow users to create refs without passing in DataConnect */
-  (vars: AddCardToRequestVariables): MutationRef<AddCardToRequestData, AddCardToRequestVariables>;
+  (vars: AddRarityVariables): MutationRef<AddRarityData, AddRarityVariables>;
   /* Allow users to pass in custom DataConnect instances */
-  (dc: DataConnect, vars: AddCardToRequestVariables): MutationRef<AddCardToRequestData, AddCardToRequestVariables>;
+  (dc: DataConnect, vars: AddRarityVariables): MutationRef<AddRarityData, AddRarityVariables>;
   operationName: string;
 }
-export const addCardToRequestRef: AddCardToRequestRef;
+export const addRarityRef: AddRarityRef;
 
-export function addCardToRequest(vars: AddCardToRequestVariables): MutationPromise<AddCardToRequestData, AddCardToRequestVariables>;
-export function addCardToRequest(dc: DataConnect, vars: AddCardToRequestVariables): MutationPromise<AddCardToRequestData, AddCardToRequestVariables>;
+export function addRarity(vars: AddRarityVariables): MutationPromise<AddRarityData, AddRarityVariables>;
+export function addRarity(dc: DataConnect, vars: AddRarityVariables): MutationPromise<AddRarityData, AddRarityVariables>;
 
-interface RemoveCardFromRequestRef {
+interface GetCardsPossessedByUserRef {
   /* Allow users to create refs without passing in DataConnect */
-  (vars: RemoveCardFromRequestVariables): MutationRef<RemoveCardFromRequestData, RemoveCardFromRequestVariables>;
+  (): QueryRef<GetCardsPossessedByUserData, undefined>;
   /* Allow users to pass in custom DataConnect instances */
-  (dc: DataConnect, vars: RemoveCardFromRequestVariables): MutationRef<RemoveCardFromRequestData, RemoveCardFromRequestVariables>;
+  (dc: DataConnect): QueryRef<GetCardsPossessedByUserData, undefined>;
   operationName: string;
 }
-export const removeCardFromRequestRef: RemoveCardFromRequestRef;
+export const getCardsPossessedByUserRef: GetCardsPossessedByUserRef;
 
-export function removeCardFromRequest(vars: RemoveCardFromRequestVariables): MutationPromise<RemoveCardFromRequestData, RemoveCardFromRequestVariables>;
-export function removeCardFromRequest(dc: DataConnect, vars: RemoveCardFromRequestVariables): MutationPromise<RemoveCardFromRequestData, RemoveCardFromRequestVariables>;
+export function getCardsPossessedByUser(): QueryPromise<GetCardsPossessedByUserData, undefined>;
+export function getCardsPossessedByUser(dc: DataConnect): QueryPromise<GetCardsPossessedByUserData, undefined>;
 
-interface AddSetRef {
+interface GetUserRef {
   /* Allow users to create refs without passing in DataConnect */
-  (vars?: AddSetVariables): MutationRef<AddSetData, AddSetVariables>;
+  (): QueryRef<GetUserData, undefined>;
   /* Allow users to pass in custom DataConnect instances */
-  (dc: DataConnect, vars?: AddSetVariables): MutationRef<AddSetData, AddSetVariables>;
+  (dc: DataConnect): QueryRef<GetUserData, undefined>;
   operationName: string;
 }
-export const addSetRef: AddSetRef;
+export const getUserRef: GetUserRef;
 
-export function addSet(vars?: AddSetVariables): MutationPromise<AddSetData, AddSetVariables>;
-export function addSet(dc: DataConnect, vars?: AddSetVariables): MutationPromise<AddSetData, AddSetVariables>;
+export function getUser(): QueryPromise<GetUserData, undefined>;
+export function getUser(dc: DataConnect): QueryPromise<GetUserData, undefined>;
 
-interface GetSetsRef {
+interface GetCardsBySetCodeRef {
   /* Allow users to create refs without passing in DataConnect */
-  (): QueryRef<GetSetsData, undefined>;
+  (vars: GetCardsBySetCodeVariables): QueryRef<GetCardsBySetCodeData, GetCardsBySetCodeVariables>;
   /* Allow users to pass in custom DataConnect instances */
-  (dc: DataConnect): QueryRef<GetSetsData, undefined>;
+  (dc: DataConnect, vars: GetCardsBySetCodeVariables): QueryRef<GetCardsBySetCodeData, GetCardsBySetCodeVariables>;
   operationName: string;
 }
-export const getSetsRef: GetSetsRef;
+export const getCardsBySetCodeRef: GetCardsBySetCodeRef;
 
-export function getSets(): QueryPromise<GetSetsData, undefined>;
-export function getSets(dc: DataConnect): QueryPromise<GetSetsData, undefined>;
+export function getCardsBySetCode(vars: GetCardsBySetCodeVariables): QueryPromise<GetCardsBySetCodeData, GetCardsBySetCodeVariables>;
+export function getCardsBySetCode(dc: DataConnect, vars: GetCardsBySetCodeVariables): QueryPromise<GetCardsBySetCodeData, GetCardsBySetCodeVariables>;
+
+interface AddCardRef {
+  /* Allow users to create refs without passing in DataConnect */
+  (vars?: AddCardVariables): MutationRef<AddCardData, AddCardVariables>;
+  /* Allow users to pass in custom DataConnect instances */
+  (dc: DataConnect, vars?: AddCardVariables): MutationRef<AddCardData, AddCardVariables>;
+  operationName: string;
+}
+export const addCardRef: AddCardRef;
+
+export function addCard(vars?: AddCardVariables): MutationPromise<AddCardData, AddCardVariables>;
+export function addCard(dc: DataConnect, vars?: AddCardVariables): MutationPromise<AddCardData, AddCardVariables>;
 
 interface GetRaritiesRef {
   /* Allow users to create refs without passing in DataConnect */
@@ -472,6 +484,18 @@ export const getRaritiesRef: GetRaritiesRef;
 
 export function getRarities(): QueryPromise<GetRaritiesData, undefined>;
 export function getRarities(dc: DataConnect): QueryPromise<GetRaritiesData, undefined>;
+
+interface GetRequestedCardsRef {
+  /* Allow users to create refs without passing in DataConnect */
+  (): QueryRef<GetRequestedCardsData, undefined>;
+  /* Allow users to pass in custom DataConnect instances */
+  (dc: DataConnect): QueryRef<GetRequestedCardsData, undefined>;
+  operationName: string;
+}
+export const getRequestedCardsRef: GetRequestedCardsRef;
+
+export function getRequestedCards(): QueryPromise<GetRequestedCardsData, undefined>;
+export function getRequestedCards(dc: DataConnect): QueryPromise<GetRequestedCardsData, undefined>;
 
 interface AddCardToUserRef {
   /* Allow users to create refs without passing in DataConnect */
@@ -508,30 +532,6 @@ export const updateCardQuantityRef: UpdateCardQuantityRef;
 
 export function updateCardQuantity(vars: UpdateCardQuantityVariables): MutationPromise<UpdateCardQuantityData, UpdateCardQuantityVariables>;
 export function updateCardQuantity(dc: DataConnect, vars: UpdateCardQuantityVariables): MutationPromise<UpdateCardQuantityData, UpdateCardQuantityVariables>;
-
-interface GetCardsPossessedByUserRef {
-  /* Allow users to create refs without passing in DataConnect */
-  (): QueryRef<GetCardsPossessedByUserData, undefined>;
-  /* Allow users to pass in custom DataConnect instances */
-  (dc: DataConnect): QueryRef<GetCardsPossessedByUserData, undefined>;
-  operationName: string;
-}
-export const getCardsPossessedByUserRef: GetCardsPossessedByUserRef;
-
-export function getCardsPossessedByUser(): QueryPromise<GetCardsPossessedByUserData, undefined>;
-export function getCardsPossessedByUser(dc: DataConnect): QueryPromise<GetCardsPossessedByUserData, undefined>;
-
-interface AddCardsPackRef {
-  /* Allow users to create refs without passing in DataConnect */
-  (vars?: AddCardsPackVariables): MutationRef<AddCardsPackData, AddCardsPackVariables>;
-  /* Allow users to pass in custom DataConnect instances */
-  (dc: DataConnect, vars?: AddCardsPackVariables): MutationRef<AddCardsPackData, AddCardsPackVariables>;
-  operationName: string;
-}
-export const addCardsPackRef: AddCardsPackRef;
-
-export function addCardsPack(vars?: AddCardsPackVariables): MutationPromise<AddCardsPackData, AddCardsPackVariables>;
-export function addCardsPack(dc: DataConnect, vars?: AddCardsPackVariables): MutationPromise<AddCardsPackData, AddCardsPackVariables>;
 
 interface GetCardsRef {
   /* Allow users to create refs without passing in DataConnect */
@@ -581,65 +581,89 @@ export const removeCardFromOfferRef: RemoveCardFromOfferRef;
 export function removeCardFromOffer(vars: RemoveCardFromOfferVariables): MutationPromise<RemoveCardFromOfferData, RemoveCardFromOfferVariables>;
 export function removeCardFromOffer(dc: DataConnect, vars: RemoveCardFromOfferVariables): MutationPromise<RemoveCardFromOfferData, RemoveCardFromOfferVariables>;
 
-interface GetOfferedCardsRef {
+interface AddPackRef {
   /* Allow users to create refs without passing in DataConnect */
-  (): QueryRef<GetOfferedCardsData, undefined>;
+  (vars?: AddPackVariables): MutationRef<AddPackData, AddPackVariables>;
   /* Allow users to pass in custom DataConnect instances */
-  (dc: DataConnect): QueryRef<GetOfferedCardsData, undefined>;
+  (dc: DataConnect, vars?: AddPackVariables): MutationRef<AddPackData, AddPackVariables>;
   operationName: string;
 }
-export const getOfferedCardsRef: GetOfferedCardsRef;
+export const addPackRef: AddPackRef;
 
-export function getOfferedCards(): QueryPromise<GetOfferedCardsData, undefined>;
-export function getOfferedCards(dc: DataConnect): QueryPromise<GetOfferedCardsData, undefined>;
+export function addPack(vars?: AddPackVariables): MutationPromise<AddPackData, AddPackVariables>;
+export function addPack(dc: DataConnect, vars?: AddPackVariables): MutationPromise<AddPackData, AddPackVariables>;
 
-interface GetRequestedCardsRef {
+interface GetPacksRef {
   /* Allow users to create refs without passing in DataConnect */
-  (): QueryRef<GetRequestedCardsData, undefined>;
+  (): QueryRef<GetPacksData, undefined>;
   /* Allow users to pass in custom DataConnect instances */
-  (dc: DataConnect): QueryRef<GetRequestedCardsData, undefined>;
+  (dc: DataConnect): QueryRef<GetPacksData, undefined>;
   operationName: string;
 }
-export const getRequestedCardsRef: GetRequestedCardsRef;
+export const getPacksRef: GetPacksRef;
 
-export function getRequestedCards(): QueryPromise<GetRequestedCardsData, undefined>;
-export function getRequestedCards(dc: DataConnect): QueryPromise<GetRequestedCardsData, undefined>;
+export function getPacks(): QueryPromise<GetPacksData, undefined>;
+export function getPacks(dc: DataConnect): QueryPromise<GetPacksData, undefined>;
 
-interface GetUserRef {
+interface GetPacksAndCardsRef {
   /* Allow users to create refs without passing in DataConnect */
-  (): QueryRef<GetUserData, undefined>;
+  (): QueryRef<GetPacksAndCardsData, undefined>;
   /* Allow users to pass in custom DataConnect instances */
-  (dc: DataConnect): QueryRef<GetUserData, undefined>;
+  (dc: DataConnect): QueryRef<GetPacksAndCardsData, undefined>;
   operationName: string;
 }
-export const getUserRef: GetUserRef;
+export const getPacksAndCardsRef: GetPacksAndCardsRef;
 
-export function getUser(): QueryPromise<GetUserData, undefined>;
-export function getUser(dc: DataConnect): QueryPromise<GetUserData, undefined>;
+export function getPacksAndCards(): QueryPromise<GetPacksAndCardsData, undefined>;
+export function getPacksAndCards(dc: DataConnect): QueryPromise<GetPacksAndCardsData, undefined>;
 
-interface GetCardsBySetCodeRef {
+interface GetRelatedCardsRef {
   /* Allow users to create refs without passing in DataConnect */
-  (vars: GetCardsBySetCodeVariables): QueryRef<GetCardsBySetCodeData, GetCardsBySetCodeVariables>;
+  (vars: GetRelatedCardsVariables): QueryRef<GetRelatedCardsData, GetRelatedCardsVariables>;
   /* Allow users to pass in custom DataConnect instances */
-  (dc: DataConnect, vars: GetCardsBySetCodeVariables): QueryRef<GetCardsBySetCodeData, GetCardsBySetCodeVariables>;
+  (dc: DataConnect, vars: GetRelatedCardsVariables): QueryRef<GetRelatedCardsData, GetRelatedCardsVariables>;
   operationName: string;
 }
-export const getCardsBySetCodeRef: GetCardsBySetCodeRef;
+export const getRelatedCardsRef: GetRelatedCardsRef;
 
-export function getCardsBySetCode(vars: GetCardsBySetCodeVariables): QueryPromise<GetCardsBySetCodeData, GetCardsBySetCodeVariables>;
-export function getCardsBySetCode(dc: DataConnect, vars: GetCardsBySetCodeVariables): QueryPromise<GetCardsBySetCodeData, GetCardsBySetCodeVariables>;
+export function getRelatedCards(vars: GetRelatedCardsVariables): QueryPromise<GetRelatedCardsData, GetRelatedCardsVariables>;
+export function getRelatedCards(dc: DataConnect, vars: GetRelatedCardsVariables): QueryPromise<GetRelatedCardsData, GetRelatedCardsVariables>;
 
-interface AddRelatedCardRef {
+interface AddCardToRequestRef {
   /* Allow users to create refs without passing in DataConnect */
-  (vars: AddRelatedCardVariables): MutationRef<AddRelatedCardData, AddRelatedCardVariables>;
+  (vars: AddCardToRequestVariables): MutationRef<AddCardToRequestData, AddCardToRequestVariables>;
   /* Allow users to pass in custom DataConnect instances */
-  (dc: DataConnect, vars: AddRelatedCardVariables): MutationRef<AddRelatedCardData, AddRelatedCardVariables>;
+  (dc: DataConnect, vars: AddCardToRequestVariables): MutationRef<AddCardToRequestData, AddCardToRequestVariables>;
   operationName: string;
 }
-export const addRelatedCardRef: AddRelatedCardRef;
+export const addCardToRequestRef: AddCardToRequestRef;
 
-export function addRelatedCard(vars: AddRelatedCardVariables): MutationPromise<AddRelatedCardData, AddRelatedCardVariables>;
-export function addRelatedCard(dc: DataConnect, vars: AddRelatedCardVariables): MutationPromise<AddRelatedCardData, AddRelatedCardVariables>;
+export function addCardToRequest(vars: AddCardToRequestVariables): MutationPromise<AddCardToRequestData, AddCardToRequestVariables>;
+export function addCardToRequest(dc: DataConnect, vars: AddCardToRequestVariables): MutationPromise<AddCardToRequestData, AddCardToRequestVariables>;
+
+interface RemoveCardFromRequestRef {
+  /* Allow users to create refs without passing in DataConnect */
+  (vars: RemoveCardFromRequestVariables): MutationRef<RemoveCardFromRequestData, RemoveCardFromRequestVariables>;
+  /* Allow users to pass in custom DataConnect instances */
+  (dc: DataConnect, vars: RemoveCardFromRequestVariables): MutationRef<RemoveCardFromRequestData, RemoveCardFromRequestVariables>;
+  operationName: string;
+}
+export const removeCardFromRequestRef: RemoveCardFromRequestRef;
+
+export function removeCardFromRequest(vars: RemoveCardFromRequestVariables): MutationPromise<RemoveCardFromRequestData, RemoveCardFromRequestVariables>;
+export function removeCardFromRequest(dc: DataConnect, vars: RemoveCardFromRequestVariables): MutationPromise<RemoveCardFromRequestData, RemoveCardFromRequestVariables>;
+
+interface AddSetRef {
+  /* Allow users to create refs without passing in DataConnect */
+  (vars?: AddSetVariables): MutationRef<AddSetData, AddSetVariables>;
+  /* Allow users to pass in custom DataConnect instances */
+  (dc: DataConnect, vars?: AddSetVariables): MutationRef<AddSetData, AddSetVariables>;
+  operationName: string;
+}
+export const addSetRef: AddSetRef;
+
+export function addSet(vars?: AddSetVariables): MutationPromise<AddSetData, AddSetVariables>;
+export function addSet(dc: DataConnect, vars?: AddSetVariables): MutationPromise<AddSetData, AddSetVariables>;
 
 interface AddUserRef {
   /* Allow users to create refs without passing in DataConnect */
@@ -689,75 +713,51 @@ export const changeUserLastLoginRef: ChangeUserLastLoginRef;
 export function changeUserLastLogin(): MutationPromise<ChangeUserLastLoginData, undefined>;
 export function changeUserLastLogin(dc: DataConnect): MutationPromise<ChangeUserLastLoginData, undefined>;
 
-interface AddCardRef {
+interface AddCardsPackRef {
   /* Allow users to create refs without passing in DataConnect */
-  (vars?: AddCardVariables): MutationRef<AddCardData, AddCardVariables>;
+  (vars?: AddCardsPackVariables): MutationRef<AddCardsPackData, AddCardsPackVariables>;
   /* Allow users to pass in custom DataConnect instances */
-  (dc: DataConnect, vars?: AddCardVariables): MutationRef<AddCardData, AddCardVariables>;
+  (dc: DataConnect, vars?: AddCardsPackVariables): MutationRef<AddCardsPackData, AddCardsPackVariables>;
   operationName: string;
 }
-export const addCardRef: AddCardRef;
+export const addCardsPackRef: AddCardsPackRef;
 
-export function addCard(vars?: AddCardVariables): MutationPromise<AddCardData, AddCardVariables>;
-export function addCard(dc: DataConnect, vars?: AddCardVariables): MutationPromise<AddCardData, AddCardVariables>;
+export function addCardsPack(vars?: AddCardsPackVariables): MutationPromise<AddCardsPackData, AddCardsPackVariables>;
+export function addCardsPack(dc: DataConnect, vars?: AddCardsPackVariables): MutationPromise<AddCardsPackData, AddCardsPackVariables>;
 
-interface AddPackRef {
+interface GetOfferedCardsRef {
   /* Allow users to create refs without passing in DataConnect */
-  (vars?: AddPackVariables): MutationRef<AddPackData, AddPackVariables>;
+  (): QueryRef<GetOfferedCardsData, undefined>;
   /* Allow users to pass in custom DataConnect instances */
-  (dc: DataConnect, vars?: AddPackVariables): MutationRef<AddPackData, AddPackVariables>;
+  (dc: DataConnect): QueryRef<GetOfferedCardsData, undefined>;
   operationName: string;
 }
-export const addPackRef: AddPackRef;
+export const getOfferedCardsRef: GetOfferedCardsRef;
 
-export function addPack(vars?: AddPackVariables): MutationPromise<AddPackData, AddPackVariables>;
-export function addPack(dc: DataConnect, vars?: AddPackVariables): MutationPromise<AddPackData, AddPackVariables>;
+export function getOfferedCards(): QueryPromise<GetOfferedCardsData, undefined>;
+export function getOfferedCards(dc: DataConnect): QueryPromise<GetOfferedCardsData, undefined>;
 
-interface GetPacksRef {
+interface AddRelatedCardRef {
   /* Allow users to create refs without passing in DataConnect */
-  (): QueryRef<GetPacksData, undefined>;
+  (vars: AddRelatedCardVariables): MutationRef<AddRelatedCardData, AddRelatedCardVariables>;
   /* Allow users to pass in custom DataConnect instances */
-  (dc: DataConnect): QueryRef<GetPacksData, undefined>;
+  (dc: DataConnect, vars: AddRelatedCardVariables): MutationRef<AddRelatedCardData, AddRelatedCardVariables>;
   operationName: string;
 }
-export const getPacksRef: GetPacksRef;
+export const addRelatedCardRef: AddRelatedCardRef;
 
-export function getPacks(): QueryPromise<GetPacksData, undefined>;
-export function getPacks(dc: DataConnect): QueryPromise<GetPacksData, undefined>;
+export function addRelatedCard(vars: AddRelatedCardVariables): MutationPromise<AddRelatedCardData, AddRelatedCardVariables>;
+export function addRelatedCard(dc: DataConnect, vars: AddRelatedCardVariables): MutationPromise<AddRelatedCardData, AddRelatedCardVariables>;
 
-interface GetPacksAndCardsRef {
+interface GetSetsRef {
   /* Allow users to create refs without passing in DataConnect */
-  (): QueryRef<GetPacksAndCardsData, undefined>;
+  (): QueryRef<GetSetsData, undefined>;
   /* Allow users to pass in custom DataConnect instances */
-  (dc: DataConnect): QueryRef<GetPacksAndCardsData, undefined>;
+  (dc: DataConnect): QueryRef<GetSetsData, undefined>;
   operationName: string;
 }
-export const getPacksAndCardsRef: GetPacksAndCardsRef;
+export const getSetsRef: GetSetsRef;
 
-export function getPacksAndCards(): QueryPromise<GetPacksAndCardsData, undefined>;
-export function getPacksAndCards(dc: DataConnect): QueryPromise<GetPacksAndCardsData, undefined>;
-
-interface AddRarityRef {
-  /* Allow users to create refs without passing in DataConnect */
-  (vars: AddRarityVariables): MutationRef<AddRarityData, AddRarityVariables>;
-  /* Allow users to pass in custom DataConnect instances */
-  (dc: DataConnect, vars: AddRarityVariables): MutationRef<AddRarityData, AddRarityVariables>;
-  operationName: string;
-}
-export const addRarityRef: AddRarityRef;
-
-export function addRarity(vars: AddRarityVariables): MutationPromise<AddRarityData, AddRarityVariables>;
-export function addRarity(dc: DataConnect, vars: AddRarityVariables): MutationPromise<AddRarityData, AddRarityVariables>;
-
-interface GetRelatedCardsRef {
-  /* Allow users to create refs without passing in DataConnect */
-  (vars: GetRelatedCardsVariables): QueryRef<GetRelatedCardsData, GetRelatedCardsVariables>;
-  /* Allow users to pass in custom DataConnect instances */
-  (dc: DataConnect, vars: GetRelatedCardsVariables): QueryRef<GetRelatedCardsData, GetRelatedCardsVariables>;
-  operationName: string;
-}
-export const getRelatedCardsRef: GetRelatedCardsRef;
-
-export function getRelatedCards(vars: GetRelatedCardsVariables): QueryPromise<GetRelatedCardsData, GetRelatedCardsVariables>;
-export function getRelatedCards(dc: DataConnect, vars: GetRelatedCardsVariables): QueryPromise<GetRelatedCardsData, GetRelatedCardsVariables>;
+export function getSets(): QueryPromise<GetSetsData, undefined>;
+export function getSets(dc: DataConnect): QueryPromise<GetSetsData, undefined>;
 

@@ -1,4 +1,4 @@
-mutation AddPack($displayName: String, $setCode: String) @auth(level: NO_ACCESS) {
+mutation AddPack($displayName: String, $setCode: String) @auth(expr: "auth.token.locals.role == 'admin'") {
     query {
         sets(where: { code: { eq: $setCode  } }) {
             id
