@@ -1,15 +1,11 @@
 'use client'
 
-import { FormEvent, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import Link from 'next/link'
 
 import styled from 'styled-components'
-import { onIdTokenChanged, signInWithEmailAndPassword, signOut, User } from 'firebase/auth'
-import { getClientAuth } from '@/src/lib/firebase-client'
 import { ButtonStyledComponent } from '@/src/app/_components/_styled/button'
-import { INinoverseClaims } from '@/src/app/login/model'
-import { addCard } from '@/dataconnect/dataconnect-generated'
-import { init } from 'next/dist/compiled/webpack/webpack'
+import { AuthorizationContext } from '../../_context/authorization.context'
 
 const MainStyledComponent = styled.main`
     width: 100vw;
@@ -62,46 +58,16 @@ const ErrorStyledComponent = styled.p`
 
 export default function Home() {
     const [error, setError] = useState<string | null>(null)
-    const [currentUser, setCurrentUser] = useState<User | null>(null)
-    const [status, setStatus] = useState<'unloaded' | 'loaded'>('unloaded')
-    const [hasAccess, setHasAccess] = useState<boolean>(false)
-    const [claims, setClaims] = useState<INinoverseClaims | null>(null)
 
-    useEffect(() => {
-        onIdTokenChanged(getClientAuth(), async user => {
-            if (user) {
-                if (!currentUser || user.uid != currentUser.uid) {
-                    const token = await user.getIdTokenResult()
-                    const tokenClaims: INinoverseClaims = token.claims.locals as INinoverseClaims
-                    if (tokenClaims.role) {
-                        setCurrentUser(user)
-                        setClaims({
-                            role: tokenClaims.role,
-                            section: tokenClaims.section || 'all',
-                            token: token.token
-                        })
-                        setHasAccess(true)
-                    }
-                }
-            } else {
-                setHasAccess(false)
-            }
-            if (!hasAccess && currentUser) {
-                setCurrentUser(null)
-                setClaims(null)
-            }
-            if (status === 'unloaded') setStatus('loaded')
-        })
-    }, [currentUser, status])
+    let authorizationContextValue = useContext(AuthorizationContext)
 
     async function initDBRarities() {
-        setError(null)
-
-        await fetch('/pokemontrades/api/fill-rarities', {
-            headers: [
-                ['Authorization', `Bearer ${claims?.token}`]
-            ]
-        }).then(async response => {
+        try {
+            let response = await fetch('/pokemontrades/api/fill-rarities', {
+                headers: [
+                    ['Authorization', `Bearer ${authorizationContextValue?.token}`]
+                ]
+            })
             if (response.ok) {
                 let responseData = await response.json()
                 if (responseData.code !== 0) {
@@ -110,38 +76,36 @@ export default function Home() {
             } else {
                 throw new Error(`Network error during fill rarities db: ${response.status}.`)
             }
-        })
+        } catch (error: any) {
+            if (error.message) {
+                setError(error.message)
+            } else {
+                setError('An error occurred during initialization of card rarities. Please try again later.')
+            }
+        }
     }
 
     return (
         <MainStyledComponent>
             <ContainerStyledComponent>
-                <>
-                    {claims?.token}
-                    {status === 'unloaded' && <h2>Loading...</h2>}
-                    {status === 'loaded' && (
-                        <>
-                            {!hasAccess && <h2>You are logged in as {currentUser?.email}, you don&apos;t have access to this page.</h2>}
-                            {hasAccess && (
-                                <>
-                                    <h2>You are logged in as: {currentUser?.email}</h2>
-                                    <>
-                                        <ButtonStyledComponent type="button" onClick={initDBRarities}>
-                                            Initialize Card Rarities in DB
-                                        </ButtonStyledComponent>
-                                        {/* <ButtonStyledComponent onClick={initDBSets()}></ButtonStyledComponent> */}
-                                        {/* <ButtonStyledComponent onClick={initDBPacks()}></ButtonStyledComponent> */}
-                                    </>
-                                </>
-                            )}
-                            <ButtonStyledComponent>
-                                <Link href="/login">Back to login page</Link>
-                            </ButtonStyledComponent>
-                        </>
-                    )}
-                    {error && <ErrorStyledComponent>{error}</ErrorStyledComponent>}
-                </>
-            </ContainerStyledComponent>
-        </MainStyledComponent>
+                <h2>You are logged in as: {authorizationContextValue.user!.email}</h2>
+                {authorizationContextValue.claims!.role !== 'admin' && (
+                    <h2>You are not an admin.</h2>
+                )}
+                {authorizationContextValue.claims!.role === 'admin' && (
+                    <>
+                        <ButtonStyledComponent type="button" onClick={initDBRarities}>
+                            Initialize Card Rarities in DB
+                        </ButtonStyledComponent>
+                        {/* <ButtonStyledComponent onClick={initDBSets()}></ButtonStyledComponent> */}
+                        {/* <ButtonStyledComponent onClick={initDBPacks()}></ButtonStyledComponent> */}
+                    </>
+                )}
+                <ButtonStyledComponent>
+                    <Link href="/login">Back to login page</Link>
+                </ButtonStyledComponent>
+                {error && <ErrorStyledComponent>{error}</ErrorStyledComponent>}
+            </ContainerStyledComponent >
+        </MainStyledComponent >
     )
 }

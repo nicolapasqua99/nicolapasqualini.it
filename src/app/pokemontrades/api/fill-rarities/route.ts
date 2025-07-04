@@ -26,7 +26,6 @@ export async function GET(): Promise<NextResponse<IGenericApiResponse | null>> {
     try {
         if (await isAuthorized('admin')) {
             let rarities = await getRaritiesArray()
-            console.warn('RARITIES: ', rarities)
             let raritiesToAdd
             if (!rarities || rarities.rarities.length === 0) {
                 raritiesToAdd = RARITIES_LIST

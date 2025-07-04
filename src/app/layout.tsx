@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { Oxanium, Pixelify_Sans, Press_Start_2P, Quicksand, Rubik_Glitch } from 'next/font/google'
 import StyledComponentsRegistry from '../lib/styled-components-registry'
 import './globals.css'
+import { AuthorizationContext, AuthorizationProvider } from './_context/authorization.context'
 
 const quicksand = Quicksand({
     subsets: ['latin'],
@@ -47,7 +48,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en">
             <body className={`${quicksand.className} ${oxanium.className} ${rubikGlitch.variable} ${pressStart2P.variable} ${pixelifySans.variable}`}>
-                <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+                <StyledComponentsRegistry>
+                    <AuthorizationProvider>
+                        {children}
+                    </AuthorizationProvider>
+                </StyledComponentsRegistry>
             </body>
         </html>
     )

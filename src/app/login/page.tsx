@@ -1,13 +1,13 @@
 'use client'
 
-import { FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useContext, useState } from 'react'
 import Link from 'next/link'
 
 import styled from 'styled-components'
-import { onIdTokenChanged, signInWithEmailAndPassword, signOut, User } from 'firebase/auth'
+import { signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { getClientAuth } from '@/src/lib/firebase-client'
 import { ButtonStyledComponent } from '../_components/_styled/button'
-import { INinoverseClaims } from './model'
+import { AuthorizationContext } from '../_context/authorization.context'
 
 const MainStyledComponent = styled.main`
     width: 100vw;
@@ -116,78 +116,10 @@ const ErrorStyledComponent = styled.p`
 
 export default function Home() {
     const [error, setError] = useState<string | null>(null)
-    const [currentUser, setCurrentUser] = useState<User | null>(null)
-    const [status, setStatus] = useState<'unloaded' | 'loaded'>('unloaded')
-    const [hasAccess, setHasAccess] = useState<boolean>(false)
-    const [claims, setClaims] = useState<INinoverseClaims | null>(null)
 
-    useEffect(() => {
-        onIdTokenChanged(getClientAuth(), async user => {
-            if (user) {
-                if (!currentUser || user.uid != currentUser.uid) {
-                    const token = await user.getIdTokenResult()
-                    const tokenClaims: INinoverseClaims = token.claims.locals as INinoverseClaims
-                    if (tokenClaims.role) {
-                        await setToken(token.token)
-                        setCurrentUser(user)
-                        setClaims({
-                            role: tokenClaims.role,
-                            section: tokenClaims.section || 'all',
-                            token: token.token
-                        })
-                        setHasAccess(true)
-                    }
-                }
-            } else {
-                setHasAccess(false)
-            }
-            if (!hasAccess && currentUser) {
-                await deleteToken()
-                setCurrentUser(null)
-                setClaims(null)
-            }
-            if (status === 'unloaded') setStatus('loaded')
-        })
-    }, [currentUser, status])
-
-    async function setToken(token: string) {
-        setError(null)
-
-        await fetch('/login/api/login', {
-            method: 'POST',
-            headers: [
-                ['Content-Type', 'application/json'],
-                ['Authorization', `Bearer ${token}`]
-            ]
-        }).then(async response => {
-            if (response.ok) {
-                let responseData = await response.json()
-                if (responseData.code !== 0) {
-                    throw new Error(`Login error: ${responseData.code} - ${responseData.errorMessage}.`)
-                }
-            } else {
-                throw new Error(`Network error during login: ${response.status}.`)
-            }
-        })
-    }
-
-    async function deleteToken() {
-        await fetch('/login/api/logout', {
-            method: 'GET'
-        }).then(async response => {
-            if (response.ok) {
-                let responseData = await response.json()
-                if (responseData.code !== 0) {
-                    throw new Error(`Logout occurred: ${responseData.code} - ${responseData.errorMessage}.`)
-                }
-            } else {
-                throw new Error(`Network error during logout: ${response.status}.`)
-            }
-        })
-    }
+    let authorizationContextValue = useContext(AuthorizationContext)
 
     async function login(formEvent: FormEvent<HTMLFormElement>) {
-        setError(null)
         formEvent.preventDefault()
 
         const formData = new FormData(formEvent.currentTarget)
@@ -195,10 +127,8 @@ export default function Home() {
         const username: string = formData.get('username') as string
         if (password && username) {
             try {
-                let userCredentialResponse = await signInWithEmailAndPassword(getClientAuth(), username, password)
-                let token = await userCredentialResponse.user.getIdToken()
-                setToken(token)
-                setCurrentUser(userCredentialResponse.user)
+                await signInWithEmailAndPassword(getClientAuth(), username, password)
+                setError(null)
             } catch (error: any) {
                 if (error.message) {
                     setError(error.message)
@@ -210,13 +140,9 @@ export default function Home() {
     }
 
     async function logout() {
-        setError(null)
-
         try {
             await signOut(getClientAuth())
-            deleteToken()
-            setCurrentUser(null)
-            setHasAccess(false)
+            setError(null)
         } catch (error: any) {
             if (error.message) {
                 setError(error.message)
@@ -227,81 +153,82 @@ export default function Home() {
     }
 
     async function initUsers() {
-        await fetch('/login/api/init-users', {
-            method: 'POST',
-            headers: [
-                ['Content-Type', 'application/json'],
-                ['Authorization', `Bearer ${await getClientAuth().currentUser?.getIdToken()}`]
-            ]
-        }).then(async response => {
+        try {
+            let response = await fetch('/login/api/init-users', {
+                method: 'POST',
+                headers: [
+                    ['Content-Type', 'application/json'],
+                    ['Authorization', `Bearer ${await getClientAuth().currentUser?.getIdToken()}`]
+                ]
+            })
             if (response.ok) {
                 let responseData = await response.json()
                 if (responseData.code !== 0) {
-                    throw new Error(`Initialization error: ${responseData.code} - ${responseData.errorMsg}.`)
+                    throw new Error(`User initialization error: ${responseData.code} - ${responseData.errorMsg}.`)
                 }
             } else {
-                throw new Error(`Network error during initialization: ${response.status}.`)
+                throw new Error(`Network error during user initialization: ${response.status}.`)
             }
-        })
+            setError(null)
+        } catch (error: any) {
+            if (error.message) {
+                setError(error.message)
+            } else {
+                setError('An error occurred during login. Please try again later.')
+            }
+        }
     }
 
     return (
         <MainStyledComponent>
             <ContainerStyledComponent>
-                <>
-                    {status === 'unloaded' && <h1>Loading...</h1>}
-                    {status === 'loaded' && (
-                        <>
-                            {!hasAccess && (
-                                <FormStyledComponent onSubmit={login}>
-                                    <label htmlFor="username">Insert username.</label>
-                                    <input type="username" name="username" />
-                                    <span></span>
-                                    <label htmlFor="psw">Insert password.</label>
-                                    <input type="password" name="psw" />
-                                    <span></span>
-                                    <ButtonStyledComponent type="submit">LOGIN</ButtonStyledComponent>
-                                </FormStyledComponent>
-                            )}
-                            {hasAccess && (
-                                <>
-                                    <h2>Autenticato come: {currentUser?.email}</h2>
-                                    {(claims?.section === 'work' || claims?.role === 'admin') && (
-                                        <>
-                                            <ButtonStyledComponent>
-                                                <Link href="/work/daily">Daily tracker</Link>
-                                            </ButtonStyledComponent>
-                                            <ButtonStyledComponent>
-                                                <Link href="/work/vacations">Vacation tracker</Link>
-                                            </ButtonStyledComponent>
-                                        </>
-                                    )}
-                                    {(claims?.section === 'pokemontrades' || claims?.role === 'admin') && (
-                                        <>
-                                            <ButtonStyledComponent>
-                                                <Link href="/pokemontrades">Pokemon Trades</Link>
-                                            </ButtonStyledComponent>
-                                        </>
-                                    )}
-                                    {claims?.role === 'admin' && (
-                                        <>
-                                            <ButtonStyledComponent>
-                                                <Link href="/pokemontrades/admin">Pokemon Trades Admin</Link>
-                                            </ButtonStyledComponent>
-                                            <ButtonStyledComponent type="button" onClick={() => initUsers()}>
-                                                Initialize Users
-                                            </ButtonStyledComponent>
-                                        </>
-                                    )}
-                                    <ButtonStyledComponent type="button" onClick={() => logout()}>
-                                        Logout
-                                    </ButtonStyledComponent>
-                                </>
-                            )}
-                            {error && <ErrorStyledComponent>{error}</ErrorStyledComponent>}
-                        </>
-                    )}
-                </>
+                {!authorizationContextValue.user && (
+                    <FormStyledComponent onSubmit={login}>
+                        <label htmlFor="username">Insert username.</label>
+                        <input type="username" name="username" />
+                        <span></span>
+                        <label htmlFor="psw">Insert password.</label>
+                        <input type="password" name="psw" />
+                        <span></span>
+                        <ButtonStyledComponent type="submit">LOGIN</ButtonStyledComponent>
+                    </FormStyledComponent>
+                )}
+                {authorizationContextValue.user && authorizationContextValue.claims && (
+                    <>
+                        <h2>Autenticato come: {authorizationContextValue.user.email}</h2>
+                        {(authorizationContextValue.claims.section === 'work' || authorizationContextValue.claims.role === 'admin') && (
+                            <>
+                                <ButtonStyledComponent>
+                                    <Link href="/work/daily">Daily tracker</Link>
+                                </ButtonStyledComponent>
+                                <ButtonStyledComponent>
+                                    <Link href="/work/vacations">Vacation tracker</Link>
+                                </ButtonStyledComponent>
+                            </>
+                        )}
+                        {(authorizationContextValue.claims.section === 'pokemontrades' || authorizationContextValue.claims.role === 'admin') && (
+                            <>
+                                <ButtonStyledComponent>
+                                    <Link href="/pokemontrades">Pokemon Trades</Link>
+                                </ButtonStyledComponent>
+                            </>
+                        )}
+                        {authorizationContextValue.claims.role === 'admin' && (
+                            <>
+                                <ButtonStyledComponent>
+                                    <Link href="/pokemontrades/admin">Pokemon Trades Admin</Link>
+                                </ButtonStyledComponent>
+                                <ButtonStyledComponent type="button" onClick={() => initUsers()}>
+                                    Initialize Users
+                                </ButtonStyledComponent>
+                            </>
+                        )}
+                        <ButtonStyledComponent type="button" onClick={() => logout()}>
+                            Logout
+                        </ButtonStyledComponent>
+                    </>
+                )}
+                {error && <ErrorStyledComponent>{error}</ErrorStyledComponent>}
             </ContainerStyledComponent>
         </MainStyledComponent>
     )
