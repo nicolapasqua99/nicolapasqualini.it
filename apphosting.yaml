@@ -71,3 +71,13 @@ env:
     availability:
       - BUILD
       - RUNTIME
+  - variable: PORTFOLIO_NINI_UID
+    secret: PORTFOLIO_NINI_UID
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: PORTFOLIO_DND_UID
+    secret: PORTFOLIO_DND_UID
+    availability:
+      - BUILD
+      - RUNTIME

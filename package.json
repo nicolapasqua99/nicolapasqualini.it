@@ -5,7 +5,7 @@
   "scripts": {
     "predev": "set -a && source ./.env && set +a && echo \"${FIREBASE_SERVICE_ACCOUNT_BASE64}\" | base64 --decode > firebase-service-account.json",
     "dev": "next dev --turbopack",
-    "prebuild": "echo \"${FIREBASE_SERVICE_ACCOUNT_BASE64}\" | base64 --decode > firebase-service-account.json",
+    "prebuild": "set -a && source ./.env && set +a && echo \"${FIREBASE_SERVICE_ACCOUNT_BASE64}\" | base64 --decode > firebase-service-account.json",
     "build": "next build",
     "start": "next start",
     "lint": "npm run lint:next && npm:lint:prettier",
@@ -14,7 +14,11 @@
     "lint:fix": "npm run lint:next -- --fix && npm run lint:prettier -- --write"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@firebasegen/default-connector": "./dataconnect-generated",
+    "@mui/icons-material": "^7.2.0",
+    "@mui/material": "^7.2.0",
     "firebase": "^11.9.1",
     "firebase-admin": "^13.4.0",
     "next": "15.3.4",
@@ -34,9 +38,9 @@
     "@types/react-dom": "^19",
     "encoding": "^0.1.13",
     "esbuild": "^0.19.2",
-    "firebase-tools": "^14.9.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
+    "firebase-tools": "^14.9.0",
     "typescript": "^5"
   },
   "packageManager": "pnpm@9.4.0+sha1.9217c800d4ab947a7aee520242a7b70d64fc7638"

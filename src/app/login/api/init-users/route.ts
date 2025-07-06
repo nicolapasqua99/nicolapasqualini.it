@@ -9,30 +9,49 @@ export async function POST(): Promise<NextResponse<IGenericApiResponse | null>> 
         if (authorization?.startsWith('Bearer ')) {
             const idToken = authorization.split('Bearer ')[1]
             const decodedTokenClaims = await getServerAuth().verifyIdToken(idToken)
+            if (!process.env.PORTFOLIO_ADMIN_UID || 
+                !process.env.PORTFOLIO_WORK_UID || 
+                !process.env.PORTFOLIO_POKEMON_TRADES_UID || 
+                !process.env.PORTFOLIO_NINI_UID || 
+                !process.env.PORTFOLIO_DND_UID) {
+                throw new Error('Missing needed secrets')
+            }
             if (decodedTokenClaims) {
                 if (decodedTokenClaims.uid === process.env.PORTFOLIO_ADMIN_UID) {
-                    // Set admin role for the user
+                    // Set admin role
                     await getServerAuth().setCustomUserClaims(decodedTokenClaims.uid, {
                         locals: {
                             role: 'admin'
                         }
                     })
-                    if (process.env.PORTFOLIO_WORK_UID && process.env.PORTFOLIO_POKEMON_TRADES_UID) {
-                        // Set user role for the work pages user
-                        await getServerAuth().setCustomUserClaims(process.env.PORTFOLIO_WORK_UID, {
-                            locals: {
-                                role: 'user',
-                                section: 'work'
-                            }
-                        })
-                        // Set user role for the pokemon trades user
-                        await getServerAuth().setCustomUserClaims(process.env.PORTFOLIO_POKEMON_TRADES_UID, {
-                            locals: {
-                                role: 'user',
-                                section: 'pokemontrades'
-                            }
-                        })
-                    }
+                    // Set user role and section for work user
+                    await getServerAuth().setCustomUserClaims(process.env.PORTFOLIO_WORK_UID, {
+                        locals: {
+                            role: 'user',
+                            section: 'work'
+                        }
+                    })
+                    // Set user role and section for pokemon trades user
+                    await getServerAuth().setCustomUserClaims(process.env.PORTFOLIO_POKEMON_TRADES_UID, {
+                        locals: {
+                            role: 'user',
+                            section: 'pokemontrades'
+                        }
+                    })
+                    // Set user role and section for nini user
+                    await getServerAuth().setCustomUserClaims(process.env.PORTFOLIO_NINI_UID, {
+                        locals: {
+                            role: 'user',
+                            section: 'nini'
+                        }
+                    })
+                    // Set user role and section for dnd user
+                    await getServerAuth().setCustomUserClaims(process.env.PORTFOLIO_DND_UID, {
+                        locals: {
+                            role: 'user',
+                            section: 'dnd'
+                        }
+                    })
                 }
             }
         }

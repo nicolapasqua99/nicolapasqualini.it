@@ -1,9 +1,9 @@
 import { checkIfUserAuthorized } from '@/src/lib/authorization'
 import { redirect } from 'next/navigation'
 
-export default async function WorkLayout({ children }: { children: React.ReactNode }) {
+export default async function ProjectsLayout({ children }: { children: React.ReactNode }) {
     try {
-        await checkIfUserAuthorized({role: 'user', section: 'work'})
+        await checkIfUserAuthorized({role: 'admin', section: null})
     } catch (error) {
         redirect('/login')
     }

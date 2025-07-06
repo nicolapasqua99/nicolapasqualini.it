@@ -1,19 +1,9 @@
 'use client'
 
+import { IAuthorizationContext, INinoverseClaims } from "@/src/lib/authorization";
 import { getClientAuth } from "@/src/lib/firebase-client";
-import { onIdTokenChanged, User } from "firebase/auth";
+import { onIdTokenChanged } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
-
-export interface INinoverseClaims {
-    role: 'admin' | 'user'
-    section: 'work' | 'pokemontrades'
-}
-
-export interface IAuthorizationContext {
-    token: string | null
-    user: User | null
-    claims: INinoverseClaims | null
-}
 
 export const AuthorizationContext = createContext<IAuthorizationContext>({
     token: null,

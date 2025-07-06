@@ -1,25 +1,9 @@
-import { getServerAuth } from '@/src/lib/firebase-server'
-import { cookies, headers } from 'next/headers'
+import { checkIfUserAuthorized } from '@/src/lib/authorization'
 import { redirect } from 'next/navigation'
 
-export default async function PokemonTradesLayout({ children }: { children: React.ReactNode }) {
+export default async function PokemonTradesAdmin({ children }: { children: React.ReactNode }) {
     try {
-        const headerList = await headers()
-        const currentPath = headerList.get('x-current-path')
-        if (currentPath === '/login') {
-            return <>{children}</>
-        }
-        const session = (await cookies()).get('__session')?.value || ''
-        if (!session) {
-            throw new Error('Missing session cookie')
-        }
-        let decodedClaims = await getServerAuth().verifySessionCookie(session, true)
-        if (!decodedClaims) {
-            throw new Error('Missing or invalid claims')
-        }
-        if (decodedClaims.locals?.role !== 'admin') {
-            throw new Error('Unauthorized access to pokemontrades section')
-        }
+        await checkIfUserAuthorized({role: 'admin', section: null})
     } catch (error) {
         redirect('/login')
     }

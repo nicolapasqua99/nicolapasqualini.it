@@ -211,13 +211,27 @@ export default function Home() {
                                 <ButtonStyledComponent>
                                     <Link href="/pokemontrades">Pokemon Trades</Link>
                                 </ButtonStyledComponent>
+                                {authorizationContextValue.claims.role === 'admin' && (
+                                    <>
+                                        <ButtonStyledComponent>
+                                            <Link href="/pokemontrades/admin">Pokemon Trades Admin</Link>
+                                        </ButtonStyledComponent>
+                                    </>
+                                )}
+                            </>
+                        )}
+                        {(authorizationContextValue.claims.section === 'nini' || authorizationContextValue.claims.role === 'admin') && (
+                            <>
+                                <ButtonStyledComponent>
+                                    <Link href="/nini/natale">Natale</Link>
+                                </ButtonStyledComponent>
+                                <ButtonStyledComponent>
+                                    <Link href="/nini/parigi">Parigi</Link>
+                                </ButtonStyledComponent>
                             </>
                         )}
                         {authorizationContextValue.claims.role === 'admin' && (
                             <>
-                                <ButtonStyledComponent>
-                                    <Link href="/pokemontrades/admin">Pokemon Trades Admin</Link>
-                                </ButtonStyledComponent>
                                 <ButtonStyledComponent type="button" onClick={() => initUsers()}>
                                     Initialize Users
                                 </ButtonStyledComponent>
