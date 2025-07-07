@@ -5,7 +5,7 @@
   "scripts": {
     "predev": "set -a && source ./.env && set +a && echo \"${FIREBASE_SERVICE_ACCOUNT_BASE64}\" | base64 --decode > firebase-service-account.json",
     "dev": "next dev --turbopack",
-    "prebuild": "set -a && source ./.env && set +a && echo \"${FIREBASE_SERVICE_ACCOUNT_BASE64}\" | base64 --decode > firebase-service-account.json",
+    "prebuild": "echo \"${FIREBASE_SERVICE_ACCOUNT_BASE64}\" | base64 --decode > firebase-service-account.json",
     "build": "next build",
     "start": "next start",
     "lint": "npm run lint:next && npm:lint:prettier",
