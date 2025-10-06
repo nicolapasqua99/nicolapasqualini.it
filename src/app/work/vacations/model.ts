@@ -4,6 +4,13 @@ export type IMonthFullName = 'January' | 'February' | 'March' | 'April' | 'May' 
 
 export type IYearName = '2023' | '2024' | '2025' | '2026'
 
+export interface IDateInfo {
+    month: IMonthName
+    year: IYearName
+    startWorkMonth: IMonthName
+    startWorkYear: IYearName
+}
+
 export interface IMonthInfo {
     month: IMonthName
     year: IYearName
