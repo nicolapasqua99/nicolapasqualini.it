@@ -1,9 +1,9 @@
-import { checkIfUserAuthorized } from '@/src/lib/authorization'
+import { checkIfUserAuthorizedOnVisiting } from '@/src/lib/authorization'
 import { redirect } from 'next/navigation'
 
 export default async function PokemonTradesAdmin({ children }: { children: React.ReactNode }) {
     try {
-        await checkIfUserAuthorized({role: 'admin', section: null})
+        await checkIfUserAuthorizedOnVisiting({role: 'admin', section: null})
     } catch (error) {
         redirect('/login')
     }
